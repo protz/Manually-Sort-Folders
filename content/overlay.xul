@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="folderPane.js" />
+  <menu id="tasksMenu" >
+    <menupopup id="taskPopup">
+      <menuitem insertafter="activityManager" id="manuallySortFolders"
+        oncommand="window.open('chrome://tbsortfolders/content/', '', 'chrome');"
+        label="Manually sort folders" />
+    </menupopup>
+  </menu>
+</overlay>

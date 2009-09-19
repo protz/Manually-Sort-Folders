@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"  type="text/css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="Sort folders manually" onload="on_load();">
+  <!--<script type="application/x-javascript" src="jquery-nightly.js" />-->
+  <script type="application/x-javascript" src="jquery.js" />
+  <!--<script type="application/x-javascript" src="chrome://messenger/content/jquery.js" />-->
+  <script type="application/x-javascript" src="ui.js" />
+  <script type="application/x-javascript" src="folderPane.js" />
+
+    <hbox>
+      <description>
+        A very simple extension that allows you to manually sort your folders.
+      </description>
+    </hbox>
+    <hbox>
+      <menulist oncommand="on_account_changed();">
+        <menupopup id="accounts_menu">
+        </menupopup>
+      </menulist>
+      <menulist oncommand="on_sort_method_changed();" id="sort_method">
+        <menupopup>
+          <menuitem value="0" label="Use Thunderbird's default" />
+          <menuitem value="1" label="Use plain string compare" />
+          <menuitem value="2" label="Use a manually defined sort" />
+        </menupopup>
+      </menulist>
+      <spacer flex="1" />
+    </hbox>
+    <hbox id="manual_sort_box">
+      <listbox id="folders_list" style="height: 200px;">
+      </listbox>
+      <vbox>
+        <button label="Move Up" oncommand="move_up();" />
+        <button label="Move Down" oncommand="move_down();" />
+      </vbox>
+      <spacer flex="1" />
+    </hbox>
+    <hbox>
+      <spacer flex="1" />
+      <button label="Cancel" oncommand="on_cancel();"/>
+      <button label="OK" oncommand="on_ok();"/>
+    </hbox>
+
+</window>
