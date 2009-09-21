@@ -5,19 +5,21 @@ var tbsf_data;
 
 function on_load() {
   let json = tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object()));
-  //dump("Stored JSON "+json+"\n");
   tbsf_data = JSON.parse(json);
 
-  let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
-                          .getService(Components.interfaces.nsIMsgAccountManager);
+  let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
   let accounts = acctMgr.accounts;
   let name;
   for (var i = 0; i < accounts.Count(); i++) {
+    //fill the menulist with the right elements
     let account = accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount);
     name = account.incomingServer.rootFolder.prettiestName;
     let $it = $(document.createElement("menuitem")).attr("label", name);
-    g_accounts[name] = account;
     $("#accounts_menu").append($it);
+
+    //register the account for future use, create the right data structure in
+    //the data
+    g_accounts[name] = account;
     if (!tbsf_data[name]) tbsf_data[name] = Array();
   }
   $("#accounts_menu").parent().attr("label", name);
@@ -27,33 +29,21 @@ function on_load() {
 var current_account = null;
 
 function fill_manual_sort(move_up, move_down) {
-  if (!tbsf_data[current_account][1]) {
-    dump("!!! No manual sort data yet...\n");
+  if (!tbsf_data[current_account][1])
     tbsf_data[current_account][1] = {};
-  }
-
-  dump("Current account: "+current_account+"\n");
-  //dump("tbsf_data[current_account] "+JSON.stringify(tbsf_data[current_account])+"\n");
-  dump("Moving up "+move_up+" current position "+tbsf_data[current_account][1][move_up]+"\n");
-  dump("Moving down "+move_down+" current position "+tbsf_data[current_account][1][move_down]+"\n");
 
   $("#folders_list").empty();
   let account = g_accounts[current_account];
   let rootFolder = account.incomingServer.rootFolder; // nsIMsgFolder
 
   let sort_func = function(a,b) tbsf_sort_functions[2](tbsf_data[current_account][1], a, b);
-  /*for (let k in tbsf_data[current_account][1]) {
-    dump(tbsf_data[current_account][1][k]+" "+k+"\n");
-  }*/
-
   let walk;
   let i = 0;
   let generate = function(ftvItem, prefix) {
     let folder = ftvItem._folder;
-    //dump(i+ " " + folder.folderURL+"\n");
     tbsf_data[current_account][1][folder.folderURL] = i;
 
-    let name = prefix+folder.prettiestName+" "+i;
+    let name = prefix+folder.prettiestName;
     let $it = $(document.createElement("listitem")).attr("label", name);
     $it[0].value = folder.folderURL;
     $("#folders_list").append($it);
@@ -66,6 +56,7 @@ function fill_manual_sort(move_up, move_down) {
   };
 
   walk = function(rootFolder, prefix) {
+    //create an array with all the folders in it
     let subFoldersIterator = rootFolder.subFolders; // nsIMsgFolder
     let ftvItems = Array();
     while (subFoldersIterator.hasMoreElements()) {
@@ -73,9 +64,10 @@ function fill_manual_sort(move_up, move_down) {
       ftvItems.push(new opener.ftvItem(subFolder));
     }
     ftvItems.sort(sort_func);
-    //ftvItems.sort(function (a,b) tbsf_data[current_account][1][a._folder.folderURL] > tbsf_data[current_account][1][b._folder.folderURL]);
-    //for (f in ftvItems) dump(ftvItems[f]._folder.prettiestName+" "); dump("\n");
 
+    //generate the listitems while at the same time setting the key in tbsf_data
+    //for the sort index, AND take care of swapping with the next item if moving
+    //something
     let k = 0;
     while (k < ftvItems.length) {
       let my_url = ftvItems[k]._folder.folderURL;
@@ -107,7 +99,7 @@ function move_down() {
 }
 
 function get_sort_method_for_account(aAccount) {
-  if (tbsf_data[aAccount])
+  if (tbsf_data[aAccount] && tbsf_data[aAccount][0] !== undefined)
     return tbsf_data[aAccount][0];
   else
     return 0;
@@ -118,8 +110,7 @@ function on_account_changed() {
   let new_account = $("#accounts_menu").parent().attr("label");
   if (new_account != current_account) {
     current_account = new_account;
-    var sort_method = get_sort_method_for_account(new_account);
-    dump("Previous sort method for account "+current_account+" "+sort_method+"\n");
+    let sort_method = get_sort_method_for_account(current_account);
     $("#sort_method")[0].value = sort_method;
     on_sort_method_changed();
   }
@@ -129,15 +120,23 @@ function on_sort_method_changed() {
   let sort_method = $("#sort_method").attr("value");
   tbsf_data[current_account][0] = sort_method;
   if (sort_method == 2) {
-    $("#manual_sort_box").css("visibility", "");
+    $("#default_sort_box").css("display", "none");
+    $("#alphabetical_sort_box").css("display", "none");
+    $("#manual_sort_box").css("display", "");
     fill_manual_sort();
-  } else {
-    $("#manual_sort_box").css("visibility", "hidden");
+  } else if (sort_method == 1) {
+    $("#default_sort_box").css("display", "none");
+    $("#alphabetical_sort_box").css("display", "");
+    $("#manual_sort_box").css("display", "none");
+  } else if (sort_method == 0) {
+    $("#default_sort_box").css("display", "");
+    $("#alphabetical_sort_box").css("display", "none");
+    $("#manual_sort_box").css("display", "none");
   }
+
 }
 
 function on_ok() {
-  on_account_changed();
   tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
   window.close();
 }

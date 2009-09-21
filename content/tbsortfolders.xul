@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/global.css"  type="text/css"?>
 
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="Sort folders manually" onload="on_load();">
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="Sort folders manually" onload="on_load();">
   <!--<script type="application/x-javascript" src="jquery-nightly.js" />-->
   <script type="application/x-javascript" src="jquery.js" />
   <!--<script type="application/x-javascript" src="chrome://messenger/content/jquery.js" />-->
@@ -27,15 +28,43 @@
       </menulist>
       <spacer flex="1" />
     </hbox>
+    <hbox id="default_sort_box">
+      <image src="chrome://tbsortfolders/content/default.png"
+        style="padding-left: 5px"/>
+      <description width="300px">
+        This is Thunderbird's default sort function. Unlike GMail, it doesn't
+        take into account special unicode symbols.
+      </description>
+    </hbox>
+    <hbox id="alphabetical_sort_box">
+      <image src="chrome://tbsortfolders/content/sorted.png"
+        style="padding-left: 5px"/>
+      <description width="300px">
+        This is a standard sort function that uses nothing but the most basic
+        string comparison function. It allows to create different categories of
+        folders à la GMail by using special Unicode symbols.
+      </description>
+    </hbox>
     <hbox id="manual_sort_box">
-      <listbox id="folders_list" style="height: 200px;">
+      <listbox id="folders_list">
       </listbox>
       <vbox>
-        <button label="Move Up" oncommand="move_up();" />
-        <button label="Move Down" oncommand="move_down();" />
+        <hbox>
+          <button label="Move Up" oncommand="move_up();" />
+          <button label="Move Down" oncommand="move_down();" />
+          <spacer flex="1" />
+        </hbox>
+        <description width="300px">
+          Use the buttons above to manually sort your folders. Come back here
+          later if a new folder is created.
+        </description>
       </vbox>
-      <spacer flex="1" />
     </hbox>
+    <description width="400px">
+      Just switch the folders view (e.g. switch to "Smart Folders" then back to
+      "All Folders") or restart Thunderbird to have your new settings taken into
+      account.
+    </description>
     <hbox>
       <spacer flex="1" />
       <button label="Cancel" oncommand="on_cancel();"/>
