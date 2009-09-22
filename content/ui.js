@@ -1,7 +1,54 @@
 var g_accounts = Object();
-
 var tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
 var tbsf_data;
+var current_account = null;
+
+function dumpTree(node, prefix) {
+  if (prefix === undefined) prefix = "";
+  dump(prefix+node.tagName+"\n");
+  for (let i = 0; i < node.children.length; i++)
+    dumpTree(node.children[i], prefix+" ");
+}
+
+function encodeFolderURL(s) {
+  let elts = s.split("/");
+  for (let i = 3; i < elts.length; ++i)
+    elts[i] = rawurlencode(elts[i]);
+  return elts.join("/");
+}
+
+function rebuildTree() {
+  let mySort = function(aTreeItems) {
+    let treeItems = Array();
+    let key = function(treeItem) encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
+    let label = function(treeItem) treeItem.querySelector("treerow > treecell").getAttribute("label");
+    let myFtvItem = function(treeItem) {
+      let url = key(treeItem);
+      let text = label(treeItem);
+      return { _folder: { folderURL: url }, text: text };
+    }
+
+    for (let i = 0; i < aTreeItems.length; ++i)
+      treeItems.push(aTreeItems[i]);
+    for (let i = 0; i < treeItems.length; ++i) {
+      //dump(label(treeItems[i])+"\n");
+      let nTreeItems = treeItems[i].querySelectorAll("treechildren > treeitem");
+      if (nTreeItems.length)
+        mySort(nTreeItems);
+    }
+    treeItems.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
+    for (let i = 0; i < treeItems.length; ++i)
+      treeItems[i].parentNode.appendChild(treeItems[i].parentNode.removeChild(treeItems[i]));
+
+    /*for (k in tbsf_data[current_account][1])
+      dump(k+"\n");
+    for (let i = 0; i < treeItems.length; ++i)
+      dump(key(treeItems[i])+"\n");*/
+  }
+
+  let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
+  mySort(children);
+}
 
 function on_load() {
   let json = tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object()));
@@ -23,18 +70,39 @@ function on_load() {
     if (!tbsf_data[name]) tbsf_data[name] = Array();
   }
   $("#accounts_menu").parent().attr("label", name);
+
+  let someListener = {
+    //item: null,
+    willRebuild : function(builder) {
+      //this.item = builder.getResourceAtIndex(builder.root.currentIndex);
+    },
+    didRebuild : function(builder) {
+      /*if (this.item) {
+        var idx = builder.getIndexOfResource(this.item)
+        if (idx != -1) builder.root.view.selection.select(idx);
+      }*/
+
+      //dumpTree(document.getElementById("foldersTree"), "");
+
+      rebuildTree();
+    }
+  };
+
+  document.getElementById("foldersTree").builder.addListener(someListener);
+
   on_account_changed();
 }
-
-var current_account = null;
 
 function fill_manual_sort(move_up, move_down) {
   if (!tbsf_data[current_account][1])
     tbsf_data[current_account][1] = {};
 
-  $("#folders_list").empty();
   let account = g_accounts[current_account];
   let rootFolder = account.incomingServer.rootFolder; // nsIMsgFolder
+  let tree = document.getElementById("foldersTree");
+  tree.setAttribute("ref", rootFolder.URI);
+
+  /*$("#folders_list").empty();
 
   let sort_func = function(a,b) tbsf_sort_functions[2](tbsf_data[current_account][1], a, b);
   let walk;
@@ -87,15 +155,43 @@ function fill_manual_sort(move_up, move_down) {
       }
     }
   }
-  walk(rootFolder, "");
+  walk(rootFolder, "");*/
 }
 
-function move_up() {
-  fill_manual_sort($("#folders_list")[0].value, null);
+function move_up(index) {
+  //fill_manual_sort($("#folders_list")[0].value, null);
+  let tree = document.getElementById("foldersTree");
+  let treeItem = tree.view.getItemAtIndex(index);
+  let uri = tree.view.getCellValue(index, tree.columns.getColumnAt(0));
+  uri = encodeFolderURL(uri);
+  dump(uri+"\n");
+  if (treeItem.previousSibling) {
+    dump("Ok\n");
+    let previousUri = tree.view.getCellValue(index - 1, tree.columns.getColumnAt(0));
+    previousUri = encodeFolderURL(previousUri);
+    let data = tbsf_data[current_account][1];
+    data[previousUri]++;
+    data[uri]--;
+    rebuildTree();
+  }
 }
 
-function move_down() {
-  fill_manual_sort(null, $("#folders_list")[0].value);
+function on_move_up() {
+  let tree = document.getElementById("foldersTree");
+  let i = tree.currentIndex;
+  move_up(i);
+  if (i > 0)
+    tree.view.selection.select(i-1);
+}
+
+function on_move_down() {
+  let tree = document.getElementById("foldersTree");
+  let treeItem = tree.view.getItemAtIndex(tree.currentIndex);
+  let i = tree.currentIndex;
+  if (treeItem.nextSibling) {
+    move_up(i + 1);
+    tree.view.selection.select(i+1);
+  }
 }
 
 function get_sort_method_for_account(aAccount) {
