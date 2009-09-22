@@ -154,7 +154,7 @@ function on_move_up() {
   let i = tree.currentIndex;
   if (treeItem.previousSibling) {
     move_up(treeItem);
-    tree.view.selection.select(i-1);
+    tree.view.selection.select(tree.view.getIndexOfItem(treeItem));
   }
 }
 
@@ -164,7 +164,7 @@ function on_move_down() {
   let i = tree.currentIndex;
   if (treeItem.nextSibling) {
     move_up(treeItem.nextSibling);
-    tree.view.selection.select(i+1);
+    tree.view.selection.select(tree.view.getIndexOfItem(treeItem));
   }
 }
 
