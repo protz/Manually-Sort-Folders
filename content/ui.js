@@ -3,6 +3,13 @@ var tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
 var tbsf_data;
 var current_account = null;
 
+function assert(v, s) {
+  if (!v) {
+    Application.console.log("Assertion failure "+s);
+    throw "Assertion failure";
+  }
+}
+
 function dumpTree(node, prefix) {
   if (prefix === undefined) prefix = "";
   dump(prefix+node.tagName+"\n");
@@ -26,6 +33,7 @@ function itemLabel(treeItem) {
 }
 
 function rebuildTree(full) {
+  let dfs = 0;
   let mySort = function(aTreeItems) {
     let treeItems = Array();
     let myFtvItem = function(treeItem) {
@@ -36,13 +44,20 @@ function rebuildTree(full) {
 
     for (let i = 0; i < aTreeItems.length; ++i)
       treeItems.push(aTreeItems[i]);
+    treeItems.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
+
     for (let i = 0; i < treeItems.length; ++i) {
-      //dump(label(treeItems[i])+"\n");
+      dfs++;
+      let data = tbsf_data[current_account][1];
+      if (data[itemKey(treeItems[i])] !== undefined)
+        assert(data[itemKey(treeItems[i])] == dfs, "dfs "+dfs+" data "+data[itemKey(treeItems[i])]);
+      else
+        data[itemKey(treeItems[i])] = dfs;
+
       let nTreeItems = treeItems[i].querySelectorAll("treechildren > treeitem");
       if (nTreeItems.length)
         mySort(nTreeItems);
     }
-    treeItems.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
 
     if (full) {
       for (let i = 0; i < treeItems.length; ++i)
