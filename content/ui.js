@@ -17,14 +17,20 @@ function encodeFolderURL(s) {
   return elts.join("/");
 }
 
-function rebuildTree() {
+function itemKey(treeItem) {
+    return encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
+}
+
+function itemLabel(treeItem) {
+    return treeItem.querySelector("treerow > treecell").getAttribute("label");
+}
+
+function rebuildTree(full) {
   let mySort = function(aTreeItems) {
     let treeItems = Array();
-    let key = function(treeItem) encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
-    let label = function(treeItem) treeItem.querySelector("treerow > treecell").getAttribute("label");
     let myFtvItem = function(treeItem) {
-      let url = key(treeItem);
-      let text = label(treeItem);
+      let url = itemKey(treeItem);
+      let text = itemLabel(treeItem);
       return { _folder: { folderURL: url }, text: text };
     }
 
@@ -37,8 +43,19 @@ function rebuildTree() {
         mySort(nTreeItems);
     }
     treeItems.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
-    for (let i = 0; i < treeItems.length; ++i)
-      treeItems[i].parentNode.appendChild(treeItems[i].parentNode.removeChild(treeItems[i]));
+
+    if (full) {
+      for (let i = 0; i < treeItems.length; ++i)
+        treeItems[i].parentNode.appendChild(treeItems[i].parentNode.removeChild(treeItems[i]));
+    } else {
+      let i = 0;
+      while (i < treeItems.length && treeItems[0].parentNode.children[i] == treeItems[i])
+        i++;
+      if (i < treeItems.length - 1) {
+        let parent = treeItems[0].parentNode;
+        parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]);
+      }
+    }
 
     /*for (k in tbsf_data[current_account][1])
       dump(k+"\n");
@@ -84,7 +101,7 @@ function on_load() {
 
       //dumpTree(document.getElementById("foldersTree"), "");
 
-      rebuildTree();
+      rebuildTree(true);
     }
   };
 
@@ -101,87 +118,44 @@ function fill_manual_sort(move_up, move_down) {
   let rootFolder = account.incomingServer.rootFolder; // nsIMsgFolder
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", rootFolder.URI);
-
-  /*$("#folders_list").empty();
-
-  let sort_func = function(a,b) tbsf_sort_functions[2](tbsf_data[current_account][1], a, b);
-  let walk;
-  let i = 0;
-  let generate = function(ftvItem, prefix) {
-    let folder = ftvItem._folder;
-    tbsf_data[current_account][1][folder.folderURL] = i;
-
-    let name = prefix+folder.prettiestName;
-    let $it = $(document.createElement("listitem")).attr("label", name);
-    $it[0].value = folder.folderURL;
-    $("#folders_list").append($it);
-    if (folder.hasSubFolders) {
-      if (prefix == "")
-        walk(folder, "|-- ");
-      else
-        walk(folder, "  "+prefix);
-    }
-  };
-
-  walk = function(rootFolder, prefix) {
-    //create an array with all the folders in it
-    let subFoldersIterator = rootFolder.subFolders; // nsIMsgFolder
-    let ftvItems = Array();
-    while (subFoldersIterator.hasMoreElements()) {
-      let subFolder = subFoldersIterator.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-      ftvItems.push(new opener.ftvItem(subFolder));
-    }
-    ftvItems.sort(sort_func);
-
-    //generate the listitems while at the same time setting the key in tbsf_data
-    //for the sort index, AND take care of swapping with the next item if moving
-    //something
-    let k = 0;
-    while (k < ftvItems.length) {
-      let my_url = ftvItems[k]._folder.folderURL;
-      let next_url = k < ftvItems.length - 1 ? ftvItems[k+1]._folder.folderURL : null;
-      if ((my_url == move_down && k < ftvItems.length - 1) || (next_url && next_url == move_up)) {
-        move_up = null;
-        move_down = null;
-        i++;
-        generate(ftvItems[k+1], prefix);
-        i++;
-        generate(ftvItems[k], prefix);
-        k += 2;
-      } else {
-        i++;
-        generate(ftvItems[k], prefix);
-        k++;
-      }
-    }
-  }
-  walk(rootFolder, "");*/
 }
 
-function move_up(index) {
-  //fill_manual_sort($("#folders_list")[0].value, null);
+function renumber(treeItem, start) {
+  tbsf_data[current_account][1][itemKey(treeItem)] = start++;
+  let children = treeItem.querySelectorAll("treechildren > treeitem");
+  for (let i = 0; i < children.length; ++i)
+    start = renumber(children[i], start);
+  return start;
+}
+
+function move_up(treeItem) {
   let tree = document.getElementById("foldersTree");
-  let treeItem = tree.view.getItemAtIndex(index);
-  let uri = tree.view.getCellValue(index, tree.columns.getColumnAt(0));
-  uri = encodeFolderURL(uri);
-  dump(uri+"\n");
+  let uri = itemKey(treeItem);
+  //dump(uri+"\n");
   if (treeItem.previousSibling) {
-    dump("Ok\n");
-    let previousUri = tree.view.getCellValue(index - 1, tree.columns.getColumnAt(0));
-    previousUri = encodeFolderURL(previousUri);
+    let previousItem = treeItem.previousSibling;
+    let previousUri = itemKey(previousItem);
     let data = tbsf_data[current_account][1];
-    data[previousUri]++;
-    data[uri]--;
+    renumber(previousItem, renumber(treeItem, data[previousUri]));
     rebuildTree();
+  } else {
+    dump("This is unexpected\n");
   }
+  /*for (let i = 0; i < 10; ++i) {
+    let treeItem = tree.view.getItemAtIndex(i);
+    let k = itemKey(treeItem);
+    dump(tbsf_data[current_account][1][k]+" ");
+  } dump("\n");*/
 }
 
 function on_move_up() {
   let tree = document.getElementById("foldersTree");
+  let treeItem = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
-  move_up(i);
-  if (i > 0)
+  if (treeItem.previousSibling) {
+    move_up(treeItem);
     tree.view.selection.select(i-1);
+  }
 }
 
 function on_move_down() {
@@ -189,7 +163,7 @@ function on_move_down() {
   let treeItem = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
   if (treeItem.nextSibling) {
-    move_up(i + 1);
+    move_up(treeItem.nextSibling);
     tree.view.selection.select(i+1);
   }
 }
