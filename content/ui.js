@@ -93,15 +93,16 @@ function on_load() {
     //fill the menulist with the right elements
     let account = accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount);
     name = account.incomingServer.rootFolder.prettiestName;
-    let $it = $(document.createElement("menuitem")).attr("label", name);
-    $("#accounts_menu").append($it);
+    let it = document.createElement("menuitem");
+    it.setAttribute("label", name);
+    document.getElementById("accounts_menu").appendChild(it);
 
     //register the account for future use, create the right data structure in
     //the data
     g_accounts[name] = account;
     if (!tbsf_data[name]) tbsf_data[name] = Array();
   }
-  $("#accounts_menu").parent().attr("label", name);
+  document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
   let someListener = {
     //item: null,
@@ -192,31 +193,31 @@ function get_sort_method_for_account(aAccount) {
 
 function on_account_changed() {
   //update the UI
-  let new_account = $("#accounts_menu").parent().attr("label");
+  let new_account = document.getElementById("accounts_menu").parentNode.getAttribute("label");
   if (new_account != current_account) {
     current_account = new_account;
     let sort_method = get_sort_method_for_account(current_account);
-    $("#sort_method")[0].value = sort_method;
+    document.getElementById("sort_method").value = sort_method;
     on_sort_method_changed();
   }
 }
 
 function on_sort_method_changed() {
-  let sort_method = $("#sort_method").attr("value");
+  let sort_method = document.getElementById("sort_method").getAttribute("value");
   tbsf_data[current_account][0] = sort_method;
   if (sort_method == 2) {
-    $("#default_sort_box").css("display", "none");
-    $("#alphabetical_sort_box").css("display", "none");
-    $("#manual_sort_box").css("display", "");
+    document.getElementById("default_sort_box").style.display = "none";
+    document.getElementById("alphabetical_sort_box").style.display = "none";
+    document.getElementById("manual_sort_box").style.display = "";
     fill_manual_sort();
   } else if (sort_method == 1) {
-    $("#default_sort_box").css("display", "none");
-    $("#alphabetical_sort_box").css("display", "");
-    $("#manual_sort_box").css("display", "none");
+    document.getElementById("default_sort_box").style.display = "none";
+    document.getElementById("alphabetical_sort_box").style.display = "";
+    document.getElementById("manual_sort_box").style.display = "none";
   } else if (sort_method == 0) {
-    $("#default_sort_box").css("display", "");
-    $("#alphabetical_sort_box").css("display", "none");
-    $("#manual_sort_box").css("display", "none");
+    document.getElementById("default_sort_box").style.display = "";
+    document.getElementById("alphabetical_sort_box").style.display = "none";
+    document.getElementById("manual_sort_box").style.display = "none";
   }
 
 }

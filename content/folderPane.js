@@ -56,7 +56,8 @@ function sortFolderItems (aFtvItems) {
 function update_prefs_functions() {
   let tbsf_data = JSON.parse(tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object ())));
   tbsf_prefs_functions = Object();
-  for (key in tbsf_data) {
+  for (vkey in tbsf_data) {
+    let key = vkey;
     if (tbsf_data[key][0] == 2) {
       //feed the manual sort function with the associated sort data
       tbsf_prefs_functions[key] = function (a,b) tbsf_sort_functions[2](tbsf_data[key][1], a, b);

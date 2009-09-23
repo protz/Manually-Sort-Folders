@@ -4,9 +4,6 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         title="Sort folders manually" onload="on_load();">
-  <!--<script type="application/x-javascript" src="jquery-nightly.js" />-->
-  <script type="application/x-javascript" src="jquery.js" />
-  <!--<script type="application/x-javascript" src="chrome://messenger/content/jquery.js" />-->
   <script type="application/x-javascript" src="ui.js" />
   <script type="application/x-javascript" src="utils.js" />
   <script type="application/x-javascript" src="folderPane.js" />
