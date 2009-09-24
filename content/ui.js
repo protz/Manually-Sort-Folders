@@ -25,7 +25,8 @@ function encodeFolderURL(s) {
 }
 
 function itemKey(treeItem) {
-    return encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
+    //return encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
+    return treeItem.querySelector("treerow > treecell").getAttribute("value");
 }
 
 function itemLabel(treeItem) {
@@ -39,7 +40,7 @@ function rebuildTree(full) {
     let myFtvItem = function(treeItem) {
       let url = itemKey(treeItem);
       let text = itemLabel(treeItem);
-      return { _folder: { folderURL: url }, text: text };
+      return { _folder: { folderURL: url, URI: url }, text: text };
     }
 
     for (let i = 0; i < aTreeItems.length; ++i)
@@ -49,10 +50,19 @@ function rebuildTree(full) {
     for (let i = 0; i < treeItems.length; ++i) {
       dfs++;
       let data = tbsf_data[current_account][1];
-      if (data[itemKey(treeItems[i])] !== undefined)
+      /*if (data[itemKey(treeItems[i])] !== undefined)
         assert(data[itemKey(treeItems[i])] == dfs, "dfs "+dfs+" data "+data[itemKey(treeItems[i])]);
-      else
-        data[itemKey(treeItems[i])] = dfs;
+      else*/
+      /* We need to do this: in case a folder has been deleted in the middle of
+      the DFS, the sort keys are not contiguous anymore and we maintain the
+      invariant above. The invariant above (the assert) is broken if a folder
+      has been deleted in the meanwhile so we make sure it is enforced through
+      this line. Most of the time the line below does nothing.
+      
+      It is to be remarked that when a folder has been added, it is sorted
+      \emph{at the end} of the list so the test above gives true (it's
+      actually undefined) and we set the right sort keys. */
+      data[itemKey(treeItems[i])] = dfs;
 
       let nTreeItems = treeItems[i].querySelectorAll("treechildren > treeitem");
       if (nTreeItems.length)
@@ -72,14 +82,18 @@ function rebuildTree(full) {
       }
     }
 
-    /*for (k in tbsf_data[current_account][1])
-      dump(k+"\n");
-    for (let i = 0; i < treeItems.length; ++i)
-      dump(key(treeItems[i])+"\n");*/
   }
 
   let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
   mySort(children);
+
+  /*dump("---\n");
+  for (k in tbsf_data[current_account][1])
+    dump(k+"\n");
+  dump("---"+children.length+"\n");
+  for (let i = 0; i < children.length; ++i)
+    dump(itemKey(children[i])+"\n");*/
+
 }
 
 function on_load() {

@@ -19,8 +19,9 @@ var tbsf_sort_functions = [
   function (data, a, b) {
     /* If a folder was added and we don't have a custom key for it, we just put
      * it at the end. Such folders are sorted with "alphabetical" sort function */
-    let k1 = a._folder.folderURL;
-    let k2 = b._folder.folderURL;
+    let k1 = a._folder.URI;
+    let k2 = b._folder.URI;
+    //dump(k1+" "+k2+"\n");
     if (!data[k1] && data[k2])
       return 1;
     else if (data[k1] && !data[k2])
