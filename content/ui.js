@@ -17,20 +17,12 @@ function dumpTree(node, prefix) {
     dumpTree(node.children[i], prefix+" ");
 }
 
-function encodeFolderURL(s) {
-  let elts = s.split("/");
-  for (let i = 3; i < elts.length; ++i)
-    elts[i] = rawurlencode(elts[i]);
-  return elts.join("/");
-}
-
 function itemKey(treeItem) {
-    //return encodeFolderURL(treeItem.querySelector("treerow > treecell").getAttribute("value"));
-    return treeItem.querySelector("treerow > treecell").getAttribute("value");
+  return treeItem.querySelector("treerow > treecell").getAttribute("value");
 }
 
 function itemLabel(treeItem) {
-    return treeItem.querySelector("treerow > treecell").getAttribute("label");
+  return treeItem.querySelector("treerow > treecell").getAttribute("label");
 }
 
 function rebuildTree(full) {
@@ -70,9 +62,12 @@ function rebuildTree(full) {
     }
 
     if (full) {
+      //dummy, slow insertion algorithm (but only used when the folder list is
+      //initially built)
       for (let i = 0; i < treeItems.length; ++i)
         treeItems[i].parentNode.appendChild(treeItems[i].parentNode.removeChild(treeItems[i]));
     } else {
+      //cleverer one: we know we're only swapping two items
       let i = 0;
       while (i < treeItems.length && treeItems[0].parentNode.children[i] == treeItems[i])
         i++;
@@ -119,22 +114,9 @@ function on_load() {
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
   let someListener = {
-    //item: null,
-    willRebuild : function(builder) {
-      //this.item = builder.getResourceAtIndex(builder.root.currentIndex);
-    },
-    didRebuild : function(builder) {
-      /*if (this.item) {
-        var idx = builder.getIndexOfResource(this.item)
-        if (idx != -1) builder.root.view.selection.select(idx);
-      }*/
-
-      //dumpTree(document.getElementById("foldersTree"), "");
-
-      rebuildTree(true);
-    }
+    willRebuild : function(builder) { },
+    didRebuild : function(builder) { rebuildTree(true); }
   };
-
   document.getElementById("foldersTree").builder.addListener(someListener);
 
   on_account_changed();
