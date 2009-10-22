@@ -1,0 +1,12 @@
+<!ENTITY general.title "Manually sort folders">
+<!ENTITY general.description "A very simple extension that allows you to manually sort your folders.">
+<!ENTITY sortmethod.default "Use Thunderbird's default">
+<!ENTITY sortmethod.alphabetical "Use plain string compare">
+<!ENTITY sortmethod.custom "Use a manually defined sort function">
+<!ENTITY sortmethod.default.description "This is Thunderbird's default sort function. Unlike GMail, it doesn't take into account special unicode symbols.">
+<!ENTITY sortmethod.alphabetical.description "This is a standard sort function that uses nothing but the most basic string comparison function. It allows to create different categories of folders à la GMail by using special Unicode symbols.">
+<!ENTITY sortmethod.custom.description "Use the buttons above to manually sort your folders. If a new folder is added, it will be put at the end of the list. You can come back here later if that doesn't suit you.">
+<!ENTITY button.move_up "Move up">
+<!ENTITY button.move_down "Move down">
+<!ENTITY button.refresh "Refresh folder pane">
+<!ENTITY button.close "Close">

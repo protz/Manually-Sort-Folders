@@ -10,69 +10,74 @@ function assert(v, s) {
   }
 }
 
-function dumpTree(node, prefix) {
+function dump_tree(node, prefix) {
   if (prefix === undefined) prefix = "";
   dump(prefix+node.tagName+"\n");
   for (let i = 0; i < node.children.length; i++)
-    dumpTree(node.children[i], prefix+" ");
+    dump_tree(node.children[i], prefix+" ");
 }
 
-function itemKey(treeItem) {
-  return treeItem.querySelector("treerow > treecell").getAttribute("value");
+function item_key(tree_item) {
+  return tree_item.querySelector("treerow > treecell").getAttribute("value");
 }
 
-function itemLabel(treeItem) {
-  return treeItem.querySelector("treerow > treecell").getAttribute("label");
+function item_label(tree_item) {
+  return tree_item.querySelector("treerow > treecell").getAttribute("label");
 }
 
-function rebuildTree(full) {
+function rebuild_tree(full) {
   let dfs = 0;
-  let mySort = function(aTreeItems) {
-    let treeItems = Array();
-    let myFtvItem = function(treeItem) {
-      let url = itemKey(treeItem);
-      let text = itemLabel(treeItem);
+  let my_sort = function(a_tree_items) {
+    let tree_items = Array();
+    let myFtvItem = function(tree_item) {
+      let url = item_key(tree_item);
+      let text = item_label(tree_item);
       return { _folder: { folderURL: url, URI: url }, text: text };
     }
 
-    for (let i = 0; i < aTreeItems.length; ++i)
-      treeItems.push(aTreeItems[i]);
-    treeItems.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
+    for (let i = 0; i < a_tree_items.length; ++i)
+      tree_items.push(a_tree_items[i]);
+    tree_items.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
 
-    for (let i = 0; i < treeItems.length; ++i) {
+    for (let i = 0; i < tree_items.length; ++i) {
       dfs++;
       let data = tbsf_data[current_account][1];
-      /*if (data[itemKey(treeItems[i])] !== undefined)
-        assert(data[itemKey(treeItems[i])] == dfs, "dfs "+dfs+" data "+data[itemKey(treeItems[i])]);
+      /*if (data[item_key(tree_items[i])] !== undefined)
+        assert(data[item_key(tree_items[i])] == dfs, "dfs "+dfs+" data "+data[item_key(tree_items[i])]);
       else*/
       /* We need to do this: in case a folder has been deleted in the middle of
-      the DFS, the sort keys are not contiguous anymore and we maintain the
-      invariant above. The invariant above (the assert) is broken if a folder
-      has been deleted in the meanwhile so we make sure it is enforced through
-      this line. Most of the time the line below does nothing.
+      the DFS, the sort keys are not contiguous anymore. However, we wish to
+      maintain the invariant that is commented out above (the assert). The
+      invariant above (the assert) is broken if a folder has been deleted in the
+      meanwhile so we make sure it is enforced with the line below. It only
+      changes something in case a folder has been deleted/added since we last
+      walked the folder tree.
       
       It is to be remarked that when a folder has been added, it is sorted
-      \emph{at the end} of the list so the test above gives true (it's
-      actually undefined) and we set the right sort keys. */
-      data[itemKey(treeItems[i])] = dfs;
+      \emph{at the end} of the list (see special case and comments in
+      folderPane.js) so the test above gives true (it's undefined) and we set
+      the right sort keys. */
+      data[item_key(tree_items[i])] = dfs;
 
-      let nTreeItems = treeItems[i].querySelectorAll("treechildren > treeitem");
-      if (nTreeItems.length)
-        mySort(nTreeItems);
+      let n_tree_items = tree_items[i].querySelectorAll("treechildren > treeitem");
+      if (n_tree_items.length)
+        my_sort(n_tree_items);
     }
 
     if (full) {
       //dummy, slow insertion algorithm (but only used when the folder list is
       //initially built)
-      for (let i = 0; i < treeItems.length; ++i)
-        treeItems[i].parentNode.appendChild(treeItems[i].parentNode.removeChild(treeItems[i]));
+      for (let i = 0; i < tree_items.length; ++i)
+        tree_items[i].parentNode.appendChild(tree_items[i].parentNode.removeChild(tree_items[i]));
     } else {
       //cleverer one: we know we're only swapping two items
       let i = 0;
-      while (i < treeItems.length && treeItems[0].parentNode.children[i] == treeItems[i])
+      while (i < tree_items.length && tree_items[0].parentNode.children[i] == tree_items[i])
         i++;
-      if (i < treeItems.length - 1) {
-        let parent = treeItems[0].parentNode;
+      //we found a difference between what we want and the state of the UI: swap
+      //current item with the next
+      if (i < tree_items.length - 1) {
+        let parent = tree_items[0].parentNode;
         parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]);
       }
     }
@@ -80,14 +85,14 @@ function rebuildTree(full) {
   }
 
   let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
-  mySort(children);
+  my_sort(children);
 
   /*dump("---\n");
   for (k in tbsf_data[current_account][1])
     dump(k+"\n");
   dump("---"+children.length+"\n");
   for (let i = 0; i < children.length; ++i)
-    dump(itemKey(children[i])+"\n");*/
+    dump(item_key(children[i])+"\n");*/
 
 }
 
@@ -95,8 +100,8 @@ function on_load() {
   let json = tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object()));
   tbsf_data = JSON.parse(json);
 
-  let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
-  let accounts = acctMgr.accounts;
+  let account_manager = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
+  let accounts = account_manager.accounts;
   let name;
   for (var i = 0; i < accounts.Count(); i++) {
     //fill the menulist with the right elements
@@ -113,11 +118,11 @@ function on_load() {
   }
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
-  let someListener = {
+  let some_listener = {
     willRebuild : function(builder) { },
-    didRebuild : function(builder) { rebuildTree(true); }
+    didRebuild : function(builder) { rebuild_tree(true); }
   };
-  document.getElementById("foldersTree").builder.addListener(someListener);
+  document.getElementById("foldersTree").builder.addListener(some_listener);
 
   on_account_changed();
 }
@@ -127,62 +132,62 @@ function fill_manual_sort(move_up, move_down) {
     tbsf_data[current_account][1] = {};
 
   let account = g_accounts[current_account];
-  let rootFolder = account.incomingServer.rootFolder; // nsIMsgFolder
+  let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
   let tree = document.getElementById("foldersTree");
-  tree.setAttribute("ref", rootFolder.URI);
+  tree.setAttribute("ref", root_folder.URI);
 }
 
 function renumber(treeItem, start) {
-  tbsf_data[current_account][1][itemKey(treeItem)] = start++;
+  tbsf_data[current_account][1][item_key(treeItem)] = start++;
   let children = treeItem.querySelectorAll("treechildren > treeitem");
   for (let i = 0; i < children.length; ++i)
     start = renumber(children[i], start);
   return start;
 }
 
-function move_up(treeItem) {
+function move_up(tree_item) {
   let tree = document.getElementById("foldersTree");
-  let uri = itemKey(treeItem);
+  let uri = item_key(tree_item);
   //dump(uri+"\n");
-  if (treeItem.previousSibling) {
-    let previousItem = treeItem.previousSibling;
-    let previousUri = itemKey(previousItem);
+  if (tree_item.previousSibling) {
+    let previous_item = tree_item.previousSibling;
+    let previous_uri = item_key(previous_item);
     let data = tbsf_data[current_account][1];
-    renumber(previousItem, renumber(treeItem, data[previousUri]));
-    rebuildTree();
+    renumber(previous_item, renumber(tree_item, data[previous_uri]));
+    rebuild_tree();
   } else {
     dump("This is unexpected\n");
   }
   /*for (let i = 0; i < 10; ++i) {
-    let treeItem = tree.view.getItemAtIndex(i);
-    let k = itemKey(treeItem);
+    let tree_item = tree.view.getItemAtIndex(i);
+    let k = item_key(tree_item);
     dump(tbsf_data[current_account][1][k]+" ");
   } dump("\n");*/
 }
 
 function on_move_up() {
   let tree = document.getElementById("foldersTree");
-  let treeItem = tree.view.getItemAtIndex(tree.currentIndex);
+  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
-  if (treeItem.previousSibling) {
-    move_up(treeItem);
-    tree.view.selection.select(tree.view.getIndexOfItem(treeItem));
+  if (tree_item.previousSibling) {
+    move_up(tree_item);
+    tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
   }
 }
 
 function on_move_down() {
   let tree = document.getElementById("foldersTree");
-  let treeItem = tree.view.getItemAtIndex(tree.currentIndex);
+  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
-  if (treeItem.nextSibling) {
-    move_up(treeItem.nextSibling);
-    tree.view.selection.select(tree.view.getIndexOfItem(treeItem));
+  if (tree_item.nextSibling) {
+    move_up(tree_item.nextSibling);
+    tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
   }
 }
 
-function get_sort_method_for_account(aAccount) {
-  if (tbsf_data[aAccount] && tbsf_data[aAccount][0] !== undefined)
-    return tbsf_data[aAccount][0];
+function get_sort_method_for_account(account) {
+  if (tbsf_data[account] && tbsf_data[account][0] !== undefined)
+    return tbsf_data[account][0];
   else
     return 0;
 }
@@ -218,11 +223,13 @@ function on_sort_method_changed() {
 
 }
 
-function on_ok() {
-  tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
+function on_close() {
+  on_refresh();
   window.close();
 }
 
-function on_cancel() {
-  window.close();
+function on_refresh() {
+  //it's a getter/setter so that actually does sth
+  tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
+  window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
 }

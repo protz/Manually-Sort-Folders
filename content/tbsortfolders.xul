@@ -2,16 +2,15 @@
 <?xml-stylesheet href="chrome://global/skin/global.css"  type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/msgSelectOffline.css" type="text/css"?>
 
+<!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/ui.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="Sort folders manually" onload="on_load();">
+        title="&general.title;" onload="on_load();">
   <script type="application/x-javascript" src="ui.js" />
   <script type="application/x-javascript" src="utils.js" />
   <script type="application/x-javascript" src="folderPane.js" />
 
     <hbox>
-      <description>
-        A very simple extension that allows you to manually sort your folders.
-      </description>
+      <description>&general.description;</description>
     </hbox>
     <hbox>
       <menulist oncommand="on_account_changed();">
@@ -20,9 +19,9 @@
       </menulist>
       <menulist oncommand="on_sort_method_changed();" id="sort_method">
         <menupopup>
-          <menuitem value="0" label="Use Thunderbird's default" />
-          <menuitem value="1" label="Use plain string compare" />
-          <menuitem value="2" label="Use a manually defined sort" />
+          <menuitem value="0" label="&sortmethod.default;" />
+          <menuitem value="1" label="&sortmethod.alphabetical;" />
+          <menuitem value="2" label="&sortmethod.custom;" />
         </menupopup>
       </menulist>
       <spacer flex="1" />
@@ -30,23 +29,16 @@
     <hbox id="default_sort_box">
       <image src="chrome://tbsortfolders/content/default.png"
         style="padding-left: 5px"/>
-      <description width="300px">
-        This is Thunderbird's default sort function. Unlike GMail, it doesn't
-        take into account special unicode symbols.
-      </description>
+      <description width="300px">&sortmethod.default.description;</description>
     </hbox>
     <hbox id="alphabetical_sort_box">
       <image src="chrome://tbsortfolders/content/sorted.png"
         style="padding-left: 5px"/>
-      <description width="300px">
-        This is a standard sort function that uses nothing but the most basic
-        string comparison function. It allows to create different categories of
-        folders à la GMail by using special Unicode symbols.
-      </description>
+      <description width="300px">&sortmethod.alphabetical.description;</description>
     </hbox>
     <hbox id="manual_sort_box">
 
-      <!-- Borrowed from mail/base/content/msgSelectOffline.xul -->
+      <!-- Borrowed and adapted from mail/base/content/msgSelectOffline.xul -->
       <tree id="foldersTree"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
         width="161px" height="221px"
@@ -105,25 +97,23 @@
 
       <vbox>
         <hbox>
-          <button label="Move Up" oncommand="on_move_up();" />
-          <button label="Move Down" oncommand="on_move_down();" />
+          <button oncommand="on_move_up();">
+            <image src="chrome://tbsortfolders/content/style/up.png" />
+            <label value="&button.move_up;" />
+          </button>
+          <button oncommand="on_move_down();">
+            <image src="chrome://tbsortfolders/content/style/down.png" />
+            <label value="&button.move_down;" />
+          </button>
           <spacer flex="1" />
         </hbox>
-        <description width="300px">
-          Use the buttons above to manually sort your folders. Come back here
-          later if a new folder is created.
-        </description>
+        <description width="300px">&sortmethod.custom.description;</description>
       </vbox>
     </hbox>
-    <description width="400px">
-      Just switch the folders view (e.g. switch to "Smart Folders" then back to
-      "All Folders") or restart Thunderbird to have your new settings taken into
-      account.
-    </description>
     <hbox>
       <spacer flex="1" />
-      <button label="Cancel" oncommand="on_cancel();"/>
-      <button label="OK" oncommand="on_ok();"/>
+      <button label="&button.refresh;" icon="refresh" oncommand="on_refresh();"/>
+      <button label="&button.close;" icon="close" oncommand="on_close();"/>
     </hbox>
 
 </window>

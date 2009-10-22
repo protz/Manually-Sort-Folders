@@ -6,7 +6,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
-    <em:version>0.1</em:version>
+    <em:version>0.2pre</em:version>
     
     <!-- Target Application this theme can install into, 
         with minimum and maximum supported versions. --> 
@@ -20,8 +20,7 @@
     
     <!-- Front End MetaData -->
     <em:name>Manually sort folders</em:name>
-    <em:description>An extension that allows you to change the way Thunderbird
-      sorts folders in the folder pane.</em:description>
+    <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
 
     <em:creator>Jonathan Protzenko</em:creator>
   </Description>      
