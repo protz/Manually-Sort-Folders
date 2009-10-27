@@ -1,11 +1,12 @@
 <!ENTITY general.title "Trier les dossiers manuellement">
-<!ENTITY general.description "Cette extension permet de trier simplement et efficacement les dossiers d'un compte donné.">
+<!ENTITY sortfolders.description "Cet onglet permet de trier les dossiers d'un compte donné.">
 <!ENTITY sortmethod.default "Utiliser la méthode par défaut de Thunderbird.">
 <!ENTITY sortmethod.alphabetical "Trier alphabétiquement.">
 <!ENTITY sortmethod.custom "Choisir à la main l'ordre de tri.">
 <!ENTITY sortmethod.default.description "La fonction de tri par défaut (exemple ci-contre), contrairement à GMail, ne prend pas en compte les symboles Unicode.">
 <!ENTITY sortmethod.alphabetical.description "Cette fonction de tri prend en compte les symboles unicode et vous permet de créer des catégories de dossiers comme dans GMail sans pour autant trier tous les dossiers manuellement.">
 <!ENTITY sortmethod.custom.description "Utilisez les boutons pour ordonner les dossiers comme vous le souhaitez. Si un dossier est ajouté ultérieurement, il apparaîtra en fin de liste. Dans l'hypothèse où cela ne vous convient pas, revenez ici pour choisir un emplacement pour le nouveau dossier.">
+<!ENTITY sortmethod.samplelegend "(Exemple de résultat ci-dessus)">
 <!ENTITY button.move_up "Monter">
 <!ENTITY button.move_down "Descendre">
 <!ENTITY button.refresh "Rafraîchir la liste des dossiers">

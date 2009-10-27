@@ -103,13 +103,14 @@ function on_load() {
   let account_manager = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
   let accounts = account_manager.accounts;
   let name;
+  let accounts_menu = document.getElementById("accounts_menu");
   for (var i = 0; i < accounts.Count(); i++) {
     //fill the menulist with the right elements
     let account = accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount);
     name = account.incomingServer.rootFolder.prettiestName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
-    document.getElementById("accounts_menu").appendChild(it);
+    accounts_menu.appendChild(it);
 
     //register the account for future use, create the right data structure in
     //the data
@@ -125,6 +126,8 @@ function on_load() {
   document.getElementById("foldersTree").builder.addListener(some_listener);
 
   on_account_changed();
+
+  accounts_on_load();
 }
 
 function fill_manual_sort(move_up, move_down) {
@@ -232,4 +235,84 @@ function on_refresh() {
   //it's a getter/setter so that actually does sth
   tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
   window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
+}
+
+
+/***********************/
+
+/*
+ * mail.accountmanager.accounts -> explode(",") -> ["account1", ...]
+ * mail.account.account1.server -> "server1"
+ * mail.server1.name -> "@free.fr"
+ * ! Local Folders, News & Blogs, Smart Folders = valeur spéciale ?
+ *
+ * mail.accountmanager.defaultaccount DOIT être le premier dans la liste
+ * préférence identities uniquement pour les "vrais comptes de mails"
+ * */
+
+function accounts_on_load() {
+  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
+  let servers = accounts.map(function (a) Application.prefs.get("mail.account."+a+".server").value);
+  let names = servers.map(function (s) Application.prefs.get("mail.server."+s+".name").value);
+
+  let accounts_list = document.getElementById("accounts_list");
+  for (let i = 0; i < accounts.length; ++i) {
+    let li = document.createElement("listitem");
+    li.setAttribute("label", names[i]);
+    li.value = accounts[i];
+    accounts_list.appendChild(li);
+  }
+}
+
+function account_move_up(index) {
+  let listbox = document.getElementById("accounts_list");
+  let item = listbox.getItemAtIndex(index);
+  if (!item)
+    return false;
+
+  let previous_item = item.previousSibling;
+  if (!previous_item)
+    return false;
+
+  let parent = item.parentNode;
+  parent.insertBefore(parent.removeChild(item), previous_item);
+
+  let pref = Application.prefs.get("mail.accountmanager.accounts");
+  Application.console.log(pref.value);
+  let accounts = pref.value.split(",");
+  for (let i = 0; i < accounts.length; ++i) {
+    if (accounts[i] == item.value) {
+      accounts[i] = previous_item.value;
+      continue;
+    }
+    if (accounts[i] == previous_item.value) {
+      accounts[i] = item.value;
+      continue;
+    }
+  }
+  let new_pref = accounts.join(",");
+  Application.console.log(new_pref);
+  pref.value = new_pref;
+
+  Application.prefs.get("mail.accountmanager.defaultaccount").value = accounts[0];
+
+  return true;
+}
+
+function on_account_move_up() {
+  let listbox = document.getElementById("accounts_list");
+  let i = listbox.selectedIndex;
+  if (account_move_up(i))
+    listbox.selectedIndex = i-1;
+}
+
+function on_account_move_down() {
+  let listbox = document.getElementById("accounts_list");
+  let i = listbox.selectedIndex;
+  if (account_move_up(i+1))
+    listbox.selectedIndex = i+1;
+}
+
+function on_account_restart() {
+  Application.restart();
 }
