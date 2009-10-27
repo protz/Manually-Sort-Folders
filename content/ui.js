@@ -1,3 +1,5 @@
+Components.utils.import("resource://tbsortfolders/sort.jsm");
+
 var g_accounts = Object();
 var tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
 var tbsf_data;
@@ -37,6 +39,7 @@ function rebuild_tree(full) {
 
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
+    //FIXME using global from folderPane.js
     tree_items.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
 
     for (let i = 0; i < tree_items.length; ++i) {

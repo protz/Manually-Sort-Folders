@@ -11,3 +11,7 @@
 <!ENTITY button.move_down "Descendre">
 <!ENTITY button.refresh "Rafraîchir la liste des dossiers">
 <!ENTITY button.close "Fermer">
+<!ENTITY accountssort.description "Cet onglet permet de choisir l'ordre dans lequel s'affichent les comptes dans le panneau latéral. Pour trier les dossiers d'un compte donné, veuillez vous référer à l'onglet suivant.">
+<!ENTITY accountsort.warning "Le compte Smart Folders ne correspond à rien de concret et doit être laissé en bas de la liste. Il est nécessaire de redémarrer Thunderbird pour que ces modifications soient prises en compte.">
+<!ENTITY tab.accounts "Trier les comptes">
+<!ENTITY tab.folders "Trier les dossiers">

@@ -6,20 +6,17 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         title="&general.title;" onload="on_load();">
   <script type="application/x-javascript" src="ui.js" />
-  <script type="application/x-javascript" src="utils.js" />
-  <script type="application/x-javascript" src="folderPane.js" />
 
-  <tabbox>
+  <tabbox selectedIndex="1">
     <tabs>
-      <tab><label value="Sort accounts" /></tab>
-      <tab><label value="Sort folders" /></tab>
+      <tab><label value="&tab.accounts;" /></tab>
+      <tab><label value="&tab.folders;" /></tab>
     </tabs>
     <tabpanels>
       <tabpanel>
         <vbox flex="1">
-          <description style="width: 400px">This panel allows you to order the
-            accounts in the folder pane. Use next tab if you wish to sort
-            folders inside an account.
+          <description style="width: 400px">
+            &accountssort.description;
           </description>
           <hbox flex="1">
             <listbox id="accounts_list" style="width: 161px">
@@ -37,9 +34,7 @@
                 <spacer flex="1" />
               </hbox>
               <description style="width: 300px">
-                Smart Folders is a virtual account and doesn't correspond to
-                anything. You must restart Thunderbird for these changes to be
-                taken into account.
+                &accountsort.warning;
               </description>
             </vbox>
           </hbox>
@@ -138,7 +133,7 @@
                 </rule>
               </template>
               <treecols>
-                <treecol id="folderNameCol" persist="hidden width" style="width: 161px" label="Folder Name" primary="true" />
+                <treecol id="folderNameCol" persist="hidden width" flex="1" label="Folder Name" primary="true" />
               </treecols>
             </tree>
 
