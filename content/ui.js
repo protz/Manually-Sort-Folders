@@ -39,7 +39,6 @@ function rebuild_tree(full) {
 
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
-    //FIXME using global from folderPane.js
     tree_items.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
 
     for (let i = 0; i < tree_items.length; ++i) {
@@ -81,7 +80,7 @@ function rebuild_tree(full) {
       //current item with the next
       if (i < tree_items.length - 1) {
         let parent = tree_items[0].parentNode;
-        parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]);
+        parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]); //XXX bug here?
       }
     }
 
@@ -240,6 +239,8 @@ function on_refresh() {
   window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
 }
 
+window.addEventListener("unload", on_refresh, false);
+
 
 /***********************/
 
@@ -255,8 +256,18 @@ function on_refresh() {
 
 function accounts_on_load() {
   let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
+  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
+  accounts = accounts.filter(function (x) x != defaultaccount);
+  accounts = [defaultaccount].concat(accounts);
   let servers = accounts.map(function (a) Application.prefs.get("mail.account."+a+".server").value);
-  let names = servers.map(function (s) Application.prefs.get("mail.server."+s+".name").value);
+  let types = servers.map(function (s) Application.prefs.get("mail.server."+s+".type").value);
+  let names = servers.map(function (s) {
+    try {
+      return Application.prefs.get("mail.server."+s+".name").value;
+    } catch (e) {
+      return Application.prefs.get("mail.server."+s+".hostname").value;
+    } });
+  Application.console.log(accounts);
 
   let accounts_list = document.getElementById("accounts_list");
   for (let i = 0; i < accounts.length; ++i) {
@@ -264,6 +275,8 @@ function accounts_on_load() {
     li.setAttribute("label", names[i]);
     li.value = accounts[i];
     accounts_list.appendChild(li);
+    /*if (names[i] == "Smart Folders")
+      li.style.display = "none";*/
   }
 }
 

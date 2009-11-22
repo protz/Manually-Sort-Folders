@@ -12,6 +12,6 @@
 <!ENTITY button.refresh "Refresh folder pane">
 <!ENTITY button.close "Close">
 <!ENTITY accountssort.description "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account.">
-<!ENTITY accountsort.warning "Smart Folders is a virtual account and doesn't correspond to anything. You must restart Thunderbird for these changes to be taken into account.">
+<!ENTITY accountsort.warning "Smart Folders is a virtual account and doesn't correspond to anything. You must restart Thunderbird for these changes to be taken into account. You must come here again if a new account is added to re-order everything.">
 <!ENTITY tab.accounts "Sort accounts">
 <!ENTITY tab.folders "Sort folders">
