@@ -172,9 +172,9 @@ function move_up(tree_item) {
 
 function on_move_up() {
   let tree = document.getElementById("foldersTree");
-  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
   if (i < 0) return;
+  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   if (tree_item.previousSibling) {
     move_up(tree_item);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
@@ -183,9 +183,9 @@ function on_move_up() {
 
 function on_move_down() {
   let tree = document.getElementById("foldersTree");
-  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
   if (i < 0) return;
+  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   if (tree_item.nextSibling) {
     move_up(tree_item.nextSibling);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
