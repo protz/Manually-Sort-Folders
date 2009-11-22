@@ -174,6 +174,7 @@ function on_move_up() {
   let tree = document.getElementById("foldersTree");
   let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
+  if (i < 0) return;
   if (tree_item.previousSibling) {
     move_up(tree_item);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
@@ -184,6 +185,7 @@ function on_move_down() {
   let tree = document.getElementById("foldersTree");
   let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   let i = tree.currentIndex;
+  if (i < 0) return;
   if (tree_item.nextSibling) {
     move_up(tree_item.nextSibling);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
@@ -254,6 +256,8 @@ window.addEventListener("unload", on_refresh, false);
  * préférence identities uniquement pour les "vrais comptes de mails"
  * */
 
+var g_other_accounts = null;
+
 function accounts_on_load() {
   let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
   let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
@@ -267,21 +271,88 @@ function accounts_on_load() {
     } catch (e) {
       return Application.prefs.get("mail.server."+s+".hostname").value;
     } });
-  Application.console.log(accounts);
 
-  let accounts_list = document.getElementById("accounts_list");
-  for (let i = 0; i < accounts.length; ++i) {
+  let mail_accounts = [];
+  let news_accounts = [];
+  let other_accounts = [];
+  let add_li = function (list, [account, server, type, name]) {
     let li = document.createElement("listitem");
-    li.setAttribute("label", names[i]);
-    li.value = accounts[i];
-    accounts_list.appendChild(li);
-    /*if (names[i] == "Smart Folders")
-      li.style.display = "none";*/
+    li.setAttribute("label", name);
+    li.value = account;
+    list.appendChild(li);
+  };
+  for (let i = 0; i < accounts.length; ++i) {
+    switch (types[i]) {
+      case "imap":
+      case "pop3":
+      case "movemail":
+      case "rss":
+        mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
+        add_li(document.getElementById("accounts_list"), mail_accounts[0]);
+        document.getElementById("default_account").firstChild.setAttribute("disabled", false);
+        break;
+      case "nntp":
+        news_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
+        let mi = document.createElement("menuitem");
+        mi.setAttribute("value", accounts[i]);
+        mi.setAttribute("label", names[i]);
+        document.getElementById("default_account").appendChild(mi);
+        add_li(document.getElementById("news_accounts_list"), news_accounts[0]);
+        if (defaultaccount == accounts[i])
+          mi.parentNode.parentNode.value = accounts[i];
+        break;
+      default:
+        let hidden = false;
+        try {
+          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
+          hidden = hidden_pref;
+        } catch (e) {
+        }
+        if (!hidden) {
+          let mi = document.createElement("menuitem");
+          mi.setAttribute("value", accounts[i]);
+          mi.setAttribute("label", names[i]);
+          document.getElementById("default_account").appendChild(mi);
+          if (defaultaccount == accounts[i])
+            mi.parentNode.parentNode.value = accounts[i];
+        }
+        other_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
+    }
   }
+  g_other_accounts = other_accounts;
 }
 
-function account_move_up(index) {
-  let listbox = document.getElementById("accounts_list");
+function update_accounts_prefs() {
+  let accounts = document.getElementById("accounts_list");
+  let new_pref = null;
+  let first_mail_account = null;
+  for (let i = 0; i < accounts.children.length; ++i) {
+    let child = accounts.children[i];
+    if (!first_mail_account)
+      first_mail_account = child.value;
+    new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
+  }
+  for (let i = 0; i < g_other_accounts.length; ++i) {
+    let [account, server, type, name] = g_other_accounts[i];
+    new_pref = new_pref ? (new_pref + "," + account) : account;
+  }
+  let news_accounts = document.getElementById("news_accounts_list");
+  for (let i = 0; i < news_accounts.children.length; ++i) {
+    let child = news_accounts.children[i];
+    new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
+  }
+
+  let pref = Application.prefs.get("mail.accountmanager.accounts");
+  pref.value = new_pref;
+
+  let default_account = document.getElementById("default_account").parentNode.value;
+  if (default_account == "-1")
+    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
+  else
+    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
+}
+
+function account_move_up(index, listbox) {
   let item = listbox.getItemAtIndex(index);
   if (!item)
     return false;
@@ -293,42 +364,43 @@ function account_move_up(index) {
   let parent = item.parentNode;
   parent.insertBefore(parent.removeChild(item), previous_item);
 
-  let pref = Application.prefs.get("mail.accountmanager.accounts");
-  Application.console.log(pref.value);
-  let accounts = pref.value.split(",");
-  for (let i = 0; i < accounts.length; ++i) {
-    if (accounts[i] == item.value) {
-      accounts[i] = previous_item.value;
-      continue;
-    }
-    if (accounts[i] == previous_item.value) {
-      accounts[i] = item.value;
-      continue;
-    }
-  }
-  let new_pref = accounts.join(",");
-  Application.console.log(new_pref);
-  pref.value = new_pref;
-
-  Application.prefs.get("mail.accountmanager.defaultaccount").value = accounts[0];
-
   return true;
 }
 
+var g_active_list = null;
+
 function on_account_move_up() {
-  let listbox = document.getElementById("accounts_list");
+  if (!g_active_list) return;
+
+  let listbox = g_active_list;
   let i = listbox.selectedIndex;
-  if (account_move_up(i))
+  if (i < 0) return;
+  if (account_move_up(i, listbox))
     listbox.selectedIndex = i-1;
+  update_accounts_prefs();
 }
 
 function on_account_move_down() {
-  let listbox = document.getElementById("accounts_list");
+  if (!g_active_list) return;
+
+  let listbox = g_active_list;
   let i = listbox.selectedIndex;
-  if (account_move_up(i+1))
+  if (i < 0) return;
+  if (account_move_up(i+1, listbox))
     listbox.selectedIndex = i+1;
+  update_accounts_prefs();
 }
 
 function on_account_restart() {
   Application.restart();
+}
+
+function on_accounts_list_click() {
+  g_active_list = document.getElementById("accounts_list");
+  document.getElementById("news_accounts_list").clearSelection();
+}
+
+function on_news_accounts_list_click() {
+  g_active_list = document.getElementById("news_accounts_list");
+  document.getElementById("accounts_list").clearSelection();
 }

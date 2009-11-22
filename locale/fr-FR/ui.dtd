@@ -11,7 +11,16 @@
 <!ENTITY button.move_down "Descendre">
 <!ENTITY button.refresh "Rafraîchir la liste des dossiers">
 <!ENTITY button.close "Fermer">
+<!ENTITY button.restart "Redémarrer Thunderbird">
 <!ENTITY accountssort.description "Cet onglet permet de choisir l'ordre dans lequel s'affichent les comptes dans le panneau latéral. Pour trier les dossiers d'un compte donné, veuillez vous référer à l'onglet suivant.">
-<!ENTITY accountsort.warning "Le compte Dossiers Virtuels ne correspond à rien de concret et doit être laissé en bas de la liste. Il est nécessaire de redémarrer Thunderbird pour que ces modifications soient prises en compte. Il est nécessaire de revenir ici si jamais vous ajoutez un nouveau compte.">
+<!ENTITY accountsort.warning "Les comptes de courrier, MoveMail ou RSS viennent en premier, suivis par les dossiers locaux, puis par les comptes de News. Les dossiers locaux ou l'un des comptes de news peuvent apparaître en premier dans la liste grâce à l'option ci-dessus.">
+<!ENTITY accountsort.restartwarning "Il est nécessaire de redémarrer Thunderbird pour que les changements soient pris en compte.">
 <!ENTITY tab.accounts "Trier les comptes">
 <!ENTITY tab.folders "Trier les dossiers">
+<!ENTITY gb.move "Déplacer le compte sélectionné">
+<!ENTITY gb.movefolder "Déplacer le dossier sélectionné">
+<!ENTITY gb.first "Compte à afficher en premier">
+<!ENTITY gb.extra "Quelques précisions">
+<!ENTITY gbfirst.default "Ce compte sera également le compte par défaut.">
+<!ENTITY tc.foldername "Dossier">
+<!ENTITY mi.firstmail "Premier compte courrier/RSS dans la liste">

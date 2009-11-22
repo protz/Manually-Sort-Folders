@@ -19,56 +19,82 @@
             &accountssort.description;
           </description>
           <hbox flex="1">
-            <listbox id="accounts_list" style="width: 161px">
-            </listbox>
             <vbox>
-              <hbox>
-                <button oncommand="on_account_move_up();">
-                  <image src="chrome://tbsortfolders/content/style/up.png" />
-                  <label value="&button.move_up;" />
-                </button>
-                <button oncommand="on_account_move_down();">
-                  <image src="chrome://tbsortfolders/content/style/down.png" />
-                  <label value="&button.move_down;" />
-                </button>
-                <spacer flex="1" />
-              </hbox>
-              <description style="width: 300px">
-                &accountsort.warning;
-              </description>
+              <listbox id="accounts_list" style="width: 161px" onclick="on_accounts_list_click();">
+              </listbox>
+              <listbox style="width: 161px" rows="1" disabled="true">
+                <listitem label="Local Folders" />
+              </listbox>
+              <listbox id="news_accounts_list" style="width: 161px" onclick="on_news_accounts_list_click();">
+              </listbox>
+            </vbox>
+            <vbox>
+              <groupbox>
+                <caption><description>&gb.move;</description></caption>
+                <hbox>
+                  <button oncommand="on_account_move_up();">
+                    <image src="chrome://tbsortfolders/content/style/up.png" />
+                    <label value="&button.move_up;" />
+                  </button>
+                  <button oncommand="on_account_move_down();">
+                    <image src="chrome://tbsortfolders/content/style/down.png" />
+                    <label value="&button.move_down;" />
+                  </button>
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
+                <caption><description>&gb.first;</description></caption>
+                <description style="max-width: 300px;">&gbfirst.default;</description>
+                <menulist oncommand="update_accounts_prefs();">
+                  <menupopup id="default_account">
+                    <menuitem value="-1" label="&mi.firstmail;" disabled="true" />
+                  </menupopup>
+                </menulist>
+              </groupbox>
+              <groupbox>
+                <caption><description>&gb.extra;</description></caption>
+                <description style="width: 300px">
+                  &accountsort.warning;
+                </description>
+                <description style="width: 300px">
+                  &accountsort.restartwarning;
+                </description>
+              </groupbox>
             </vbox>
           </hbox>
+          <spacer flex="1" />
           <hbox>
             <spacer flex="1" />
-            <button label="Restart Thunderbird" icon="refresh" oncommand="on_account_restart();"/>
+            <button label="&button.restart;" icon="refresh" oncommand="on_account_restart();"/>
             <button label="&button.close;" icon="close" oncommand="on_close();"/>
           </hbox>
         </vbox>
       </tabpanel>
       <tabpanel>
-        <vbox>
+        <vbox flex="1">
           <description style="width: 400px">&sortfolders.description;</description>
-          <hbox>
-            <menulist oncommand="on_account_changed();">
-              <menupopup id="accounts_menu">
-              </menupopup>
-            </menulist>
-            <menulist oncommand="on_sort_method_changed();" id="sort_method">
-              <menupopup>
-                <menuitem value="0" label="&sortmethod.default;" />
-                <menuitem value="1" label="&sortmethod.alphabetical;" />
-                <menuitem value="2" label="&sortmethod.custom;" />
-              </menupopup>
-            </menulist>
-            <spacer flex="1" />
-          </hbox>
+          <menulist oncommand="on_account_changed();">
+            <menupopup id="accounts_menu">
+            </menupopup>
+          </menulist>
+          <menulist oncommand="on_sort_method_changed();" id="sort_method" style="margin-bottom: 1ex">
+            <menupopup>
+              <menuitem value="0" label="&sortmethod.default;" />
+              <menuitem value="1" label="&sortmethod.alphabetical;" />
+              <menuitem value="2" label="&sortmethod.custom;" />
+            </menupopup>
+          </menulist>
           <hbox id="default_sort_box">
             <vbox>
               <image src="chrome://tbsortfolders/content/default.png"
                 style="padding-left: 5px"/>
               <description style="width: 161px; margin: 0; font-style: italic; height: 40px">&sortmethod.samplelegend;</description>
             </vbox>
-            <description width="300px">&sortmethod.default.description;</description>
+            <groupbox>
+              <caption>&gb.extra;</caption>
+              <description width="300px">&sortmethod.default.description;</description>
+            </groupbox>
           </hbox>
           <hbox id="alphabetical_sort_box">
             <vbox>
@@ -76,7 +102,10 @@
                 style="padding-left: 5px"/>
               <description style="width: 161px; margin: 0; font-style: italic; height: 40px">&sortmethod.samplelegend;</description>
             </vbox>
-            <description width="300px">&sortmethod.alphabetical.description;</description>
+            <groupbox>
+              <caption>&gb.extra;</caption>
+              <description width="300px">&sortmethod.alphabetical.description;</description>
+            </groupbox>
           </hbox>
           <hbox id="manual_sort_box">
 
@@ -86,7 +115,6 @@
               style="padding-left: 5px; overflow: hidden;
               width: 161px; height: 261px"
               treelines="true"
-              flex="1"
               hidecolumnpicker="true"
               datasources="rdf:msgaccountmanager rdf:mailnewsfolders"
               ref=""
@@ -133,25 +161,33 @@
                 </rule>
               </template>
               <treecols>
-                <treecol id="folderNameCol" persist="hidden width" flex="1" label="Folder Name" primary="true" />
+                <treecol id="folderNameCol" width="161px" persist="hidden width"
+                  label="&tc.foldername;" primary="true" />
               </treecols>
             </tree>
 
             <vbox>
-              <hbox>
-                <button oncommand="on_move_up();">
-                  <image src="chrome://tbsortfolders/content/style/up.png" />
-                  <label value="&button.move_up;" />
-                </button>
-                <button oncommand="on_move_down();">
-                  <image src="chrome://tbsortfolders/content/style/down.png" />
-                  <label value="&button.move_down;" />
-                </button>
-                <spacer flex="1" />
-              </hbox>
-              <description width="300px">&sortmethod.custom.description;</description>
+              <groupbox>
+                <caption>&gb.movefolder;</caption>
+                <hbox>
+                  <button oncommand="on_move_up();">
+                    <image src="chrome://tbsortfolders/content/style/up.png" />
+                    <label value="&button.move_up;" />
+                  </button>
+                  <button oncommand="on_move_down();">
+                    <image src="chrome://tbsortfolders/content/style/down.png" />
+                    <label value="&button.move_down;" />
+                  </button>
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
+                <caption>&gb.extra;</caption>
+                <description width="300px">&sortmethod.custom.description;</description>
+              </groupbox>
             </vbox>
           </hbox>
+          <spacer flex="1" />
           <hbox>
             <spacer flex="1" />
             <button label="&button.refresh;" icon="refresh" oncommand="on_refresh();"/>
