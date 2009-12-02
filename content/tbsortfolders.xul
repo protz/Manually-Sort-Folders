@@ -7,6 +7,10 @@
         title="&general.title;" onload="on_load();">
   <script type="application/x-javascript" src="ui.js" />
 
+  <description style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
+    You have no accounts set up yet!
+  </description>
+
   <tabbox selectedIndex="1">
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
@@ -25,7 +29,7 @@
               <listbox style="width: 161px" rows="1" disabled="true">
                 <listitem label="Local Folders" />
               </listbox>
-              <listbox id="news_accounts_list" style="width: 161px" onclick="on_news_accounts_list_click();">
+              <listbox id="news_accounts_list" style="width: 161px; display: none;" onclick="on_news_accounts_list_click();">
               </listbox>
             </vbox>
             <vbox>

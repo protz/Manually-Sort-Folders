@@ -28,6 +28,7 @@ function item_label(tree_item) {
 }
 
 function rebuild_tree(full) {
+  dump("rebuild_tree("+full+");\n");
   let dfs = 0;
   let my_sort = function(a_tree_items) {
     let tree_items = Array();
@@ -60,6 +61,8 @@ function rebuild_tree(full) {
       folderPane.js) so the test above gives true (it's undefined) and we set
       the right sort keys. */
       data[item_key(tree_items[i])] = dfs;
+      if (full)
+        dump("### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
 
       let n_tree_items = tree_items[i].querySelectorAll("treechildren > treeitem");
       if (n_tree_items.length)
@@ -74,7 +77,7 @@ function rebuild_tree(full) {
     } else {
       //cleverer one: we know we're only swapping two items
       let i = 0;
-      while (i < tree_items.length && tree_items[0].parentNode.children[i] == tree_items[i])
+      while (i < tree_items.length && tree_items[0].parentNode.children[i] == tree_items[i]) //XXX
         i++;
       //we found a difference between what we want and the state of the UI: swap
       //current item with the next
@@ -88,6 +91,7 @@ function rebuild_tree(full) {
 
   let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
   my_sort(children);
+
 
   /*dump("---\n");
   for (k in tbsf_data[current_account][1])
@@ -106,6 +110,11 @@ function on_load() {
   let accounts = account_manager.accounts;
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
+  if (!accounts.Count()) {
+    document.querySelector("tabbox").style.display = "none";
+    document.querySelector("#err_no_accounts").style.display = "";
+    return;
+  }
   for (var i = 0; i < accounts.Count(); i++) {
     //fill the menulist with the right elements
     let account = accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount);
@@ -121,11 +130,26 @@ function on_load() {
   }
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
+  /* That one is actually triggered once (after the template is built on load) */
   let some_listener = {
     willRebuild : function(builder) { },
-    didRebuild : function(builder) { rebuild_tree(true); }
+    didRebuild : function(builder) { dump("Tree rebuilt\n"); rebuild_tree(true); }
   };
   document.getElementById("foldersTree").builder.addListener(some_listener);
+
+  /* That one tracks changes that happen to the folder pane *while* the manually
+   * sort folders dialog is open */
+  /*let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
+    getService(Components.interfaces.nsIRDFDataSource);
+  rdf_source.AddObserver({
+    onAssert: function () {},
+    onBeginUpdateBatch: function () {},
+    onEndUpdateBatch: function () {},
+    onChange: function () { dump("*** rdf:mailnewsfolders changed, rebuilding tree...\n"); rebuild_tree(true); },
+    onMove: function () {},
+    onUnassert: function () {}
+  });*/
+
 
   on_account_changed();
 
@@ -281,6 +305,7 @@ function accounts_on_load() {
     li.value = account;
     list.appendChild(li);
   };
+  let news_account_found = false;
   for (let i = 0; i < accounts.length; ++i) {
     switch (types[i]) {
       case "imap":
@@ -292,6 +317,7 @@ function accounts_on_load() {
         document.getElementById("default_account").firstChild.setAttribute("disabled", false);
         break;
       case "nntp":
+        news_account_found = true;
         news_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
         let mi = document.createElement("menuitem");
         mi.setAttribute("value", accounts[i]);
@@ -320,6 +346,9 @@ function accounts_on_load() {
     }
   }
   g_other_accounts = other_accounts;
+  if (news_account_found) {
+    document.getElementById("news_accounts_list").style.display = "";
+  }
 }
 
 function update_accounts_prefs() {

@@ -13,7 +13,7 @@
 <!ENTITY button.close "Close">
 <!ENTITY button.restart "Restart Thunderbird">
 <!ENTITY accountssort.description "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account.">
-<!ENTITY accountsort.warning "Regular mail accounts, Unix Movemail accounts as well as RSS accounts must come first. Local Folders are next, and at the bottom of the list are the News accounts. You can override this order by choosing either Local Folders or one of your news accounts above to the default, hence moving it on top of the list.">
+<!ENTITY accountsort.warning "Regular mail accounts, Unix Movemail accounts as well as RSS accounts must come first. Local Folders are next, and at the bottom of the list are the News accounts. You can override this by choosing either Local Folders or one of the Newsgroup accounts as default, hence putting it on top of the list.">
 <!ENTITY accountsort.restartwarning "You must restart Thunderbird for the changes to take effect.">
 <!ENTITY tab.accounts "Sort accounts">
 <!ENTITY tab.folders "Sort folders">

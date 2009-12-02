@@ -1,3 +1,6 @@
-- Être CERTAIN que le truc des comptes fonctionne comme il faut
+- Régler le bug et re-soumettre à Mozilla
+- Virer les images d'exemple et mettre le folder pane en vrai, quoi...
 - Faire de quoi styler arbitrairement un dossier (y-compris changer l'icône) -->
-  modifier la source RDF ?
+  modifier la source RDF ? Éditer un fichier CSS on-the-fly ?
+- Faire un truc genre drag&drop dans la fenêtre principale qui serait plus cool,
+  mais méga compliqué et bouffeur de temps...
