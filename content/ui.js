@@ -20,31 +20,43 @@ function dump_tree(node, prefix) {
 }
 
 function item_key(tree_item) {
-  return tree_item.querySelector("treerow > treecell").getAttribute("value");
+  //return tree_item.querySelector("treerow > treecell").getAttribute("value");
+  for (let i = 0; i < tree_item.children.length; ++i)
+    if (tree_item.children[i].tagName == "treerow")
+      return tree_item.children[i].firstChild.getAttribute("value");
+  Application.console.log("TBSortFolders: severe error, no item key for "+tree_item+"\n");
 }
 
 function item_label(tree_item) {
-  return tree_item.querySelector("treerow > treecell").getAttribute("label");
+  //return tree_item.querySelector("treerow > treecell").getAttribute("label");
+  for (let i = 0; i < tree_item.children.length; ++i)
+    if (tree_item.children[i].tagName == "treerow")
+      return tree_item.children[i].firstChild.getAttribute("label");
+  Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
 }
 
 function rebuild_tree(full) {
   dump("rebuild_tree("+full+");\n");
   let dfs = 0;
-  let my_sort = function(a_tree_items) {
+  let fresh_data = {};
+  let my_sort = function(a_tree_items, indent) {
     let tree_items = Array();
+    //tree_items = a_tree_items;
     let myFtvItem = function(tree_item) {
       let url = item_key(tree_item);
       let text = item_label(tree_item);
       return { _folder: { folderURL: url, URI: url }, text: text };
     }
 
+    dump(indent+a_tree_items.length+" nodes passed\n");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
     tree_items.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
 
+    dump(indent+tree_items.length+" folders to examine\n");
     for (let i = 0; i < tree_items.length; ++i) {
       dfs++;
-      let data = tbsf_data[current_account][1];
+      //let data = tbsf_data[current_account][1];
       /*if (data[item_key(tree_items[i])] !== undefined)
         assert(data[item_key(tree_items[i])] == dfs, "dfs "+dfs+" data "+data[item_key(tree_items[i])]);
       else*/
@@ -60,13 +72,17 @@ function rebuild_tree(full) {
       \emph{at the end} of the list (see special case and comments in
       folderPane.js) so the test above gives true (it's undefined) and we set
       the right sort keys. */
-      data[item_key(tree_items[i])] = dfs;
+      fresh_data[item_key(tree_items[i])] = dfs;
       if (full)
-        dump("### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
+        dump(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
 
-      let n_tree_items = tree_items[i].querySelectorAll("treechildren > treeitem");
+      //let n_tree_items = tree_items[i].querySelectorAll("[thisnode] > treechildren > treeitem");
+      let n_tree_items = [];
+      for (let j = 0; j < tree_items[i].children.length; ++j)
+        if (tree_items[i].children[j].tagName == "treechildren")
+          n_tree_items = tree_items[i].children[j].children;
       if (n_tree_items.length)
-        my_sort(n_tree_items);
+        my_sort(n_tree_items, indent+" ");
     }
 
     if (full) {
@@ -77,20 +93,21 @@ function rebuild_tree(full) {
     } else {
       //cleverer one: we know we're only swapping two items
       let i = 0;
-      while (i < tree_items.length && tree_items[0].parentNode.children[i] == tree_items[i]) //XXX
+      while (i < tree_items.length && tree_items[0].parentNode.children[i] == tree_items[i])
         i++;
       //we found a difference between what we want and the state of the UI: swap
       //current item with the next
       if (i < tree_items.length - 1) {
         let parent = tree_items[0].parentNode;
-        parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]); //XXX bug here?
+        parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]);
       }
     }
 
   }
 
   let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
-  my_sort(children);
+  my_sort(children, "");
+  tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
 
 
   /*dump("---\n");
@@ -131,24 +148,31 @@ function on_load() {
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
   /* That one is actually triggered once (after the template is built on load) */
+  let folders_tree = document.getElementById("foldersTree");
   let some_listener = {
     willRebuild : function(builder) { },
     didRebuild : function(builder) { dump("Tree rebuilt\n"); rebuild_tree(true); }
   };
-  document.getElementById("foldersTree").builder.addListener(some_listener);
+  folders_tree.builder.addListener(some_listener);
+  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
 
   /* That one tracks changes that happen to the folder pane *while* the manually
    * sort folders dialog is open */
-  /*let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
+  let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
     getService(Components.interfaces.nsIRDFDataSource);
-  rdf_source.AddObserver({
+  let some_observer = {
     onAssert: function () {},
     onBeginUpdateBatch: function () {},
     onEndUpdateBatch: function () {},
-    onChange: function () { dump("*** rdf:mailnewsfolders changed, rebuilding tree...\n"); rebuild_tree(true); },
+    onChange: function () {
+      dump("*** rdf:mailnewsfolders changed, rebuilding tree...\n");
+      rebuild_tree(true);
+    },
     onMove: function () {},
     onUnassert: function () {}
-  });*/
+  };
+  rdf_source.AddObserver(some_observer);
+  window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);
 
 
   on_account_changed();
@@ -168,7 +192,11 @@ function fill_manual_sort(move_up, move_down) {
 
 function renumber(treeItem, start) {
   tbsf_data[current_account][1][item_key(treeItem)] = start++;
-  let children = treeItem.querySelectorAll("treechildren > treeitem");
+  let children = []; // = treeItem.querySelectorAll("treechildren > treeitem"); but only starting from the root
+  for (let j = 0; j < treeItem.children.length; ++j)
+    if (treeItem.children[j].tagName == "treechildren")
+      children = treeItem.children[j].children;
+
   for (let i = 0; i < children.length; ++i)
     start = renumber(children[i], start);
   return start;
@@ -184,6 +212,7 @@ function move_up(tree_item) {
     let data = tbsf_data[current_account][1];
     renumber(previous_item, renumber(tree_item, data[previous_uri]));
     rebuild_tree();
+    //tree.builder.rebuild();
   } else {
     dump("This is unexpected\n");
   }
@@ -260,8 +289,8 @@ function on_close() {
 }
 
 function on_refresh() {
-  //it's a getter/setter so that actually does sth
   tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
+  //it's a getter/setter so that actually does sth
   window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
 }
 
