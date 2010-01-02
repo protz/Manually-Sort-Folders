@@ -158,7 +158,7 @@ function on_load() {
 
   /* That one tracks changes that happen to the folder pane *while* the manually
    * sort folders dialog is open */
-  let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
+  /*let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
     getService(Components.interfaces.nsIRDFDataSource);
   let some_observer = {
     onAssert: function () {},
@@ -172,7 +172,7 @@ function on_load() {
     onUnassert: function () {}
   };
   rdf_source.AddObserver(some_observer);
-  window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);
+  window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);*/
 
 
   on_account_changed();
@@ -450,7 +450,9 @@ function on_account_move_down() {
 }
 
 function on_account_restart() {
-  Application.restart();
+  let app = window.opener.Application;
+  window.opener.setTimeout(function () { app.restart (); }, 2000);
+  window.close();
 }
 
 function on_accounts_list_click() {

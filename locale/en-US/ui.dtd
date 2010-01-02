@@ -24,3 +24,5 @@
 <!ENTITY gbfirst.default "This is also the default account.">
 <!ENTITY tc.foldername "Folder Name">
 <!ENTITY mi.firstmail "First RSS or Mail account in the list">
+<!ENTITY accountsort.localfolders "Local Folders">
+<!ENTITY accountsort.noaccountsetupyet "You have no account setup yet!">

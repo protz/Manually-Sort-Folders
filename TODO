@@ -1,6 +1,11 @@
-- Régler le bug et re-soumettre à Mozilla
+- Ne pas afficher les comptes qui utilisent la "global inbox" dans le menu de
+  tri
+- Mettre des marges sur les <groupbox>
 - Virer les images d'exemple et mettre le folder pane en vrai, quoi...
 - Faire de quoi styler arbitrairement un dossier (y-compris changer l'icône) -->
-  modifier la source RDF ? Éditer un fichier CSS on-the-fly ?
+  modifier la source RDF ? Éditer un fichier CSS on-the-fly ? Ajouter
+  dynamiquement un élément <style> dans messenger.xul ?
+- Faire de quoi cacher un dossier arbitrairement
+- Faire de quoi choisir le dossier initial par défaut
 - Faire un truc genre drag&drop dans la fenêtre principale qui serait plus cool,
   mais méga compliqué et bouffeur de temps...

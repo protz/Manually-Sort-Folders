@@ -6,7 +6,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
-    <em:version>0.4.1</em:version>
+    <em:version>0.4.3</em:version>
     
     <!-- Target Application this theme can install into, 
         with minimum and maximum supported versions. --> 
@@ -18,7 +18,24 @@
       </Description>
     </em:targetApplication>
     
-    <!-- Front End MetaData -->
+    <em:localized>
+      <Description>
+        <em:locale>fr</em:locale>
+        <em:name>Trier les dossiers manuellement</em:name>
+        <em:description>Cette extension permet de trier manuellement les comptes ainsi que les dossiers des différents comptes dans le panneau latéral.</em:description>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>ru-RU</em:locale>
+        <em:name>Manually sort folders (Ручная сортировка папок)</em:name>
+        <em:description>Расширение, которое позволит вам изменить порядок сортировки папок в панели папок Thunderbird.</em:description>
+        <em:creator>Джонатан Проценко</em:creator>
+        <em:translator>Пирятинский Виталий</em:translator>
+      </Description>
+    </em:localized>
+
     <em:name>Manually sort folders</em:name>
     <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
 

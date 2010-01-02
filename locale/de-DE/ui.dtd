@@ -1,0 +1,26 @@
+<!ENTITY general.title "Konten- &amp; Ordnerreihenfolge ändern">
+<!ENTITY sortfolders.description "Diese Ansicht erlaubt das Sortieren der Ordner eines jeden Kontos. Wählen Sie erst ein Konto aus und anschließend die Sortiermethode.">
+<!ENTITY sortmethod.default "Thunderbirds eigene Sortiermethode">
+<!ENTITY sortmethod.alphabetical "einfacher Vergleich des Ordnernamens">
+<!ENTITY sortmethod.custom "benutzerdefinierte Sortierfunktion">
+<!ENTITY sortmethod.default.description "Hierbei handelt es sich um Thunderbirds eigene Sortiermethode. Im Gegensatz zu Google Mail werden dabei besondere Unicode-Zeichen nicht berücksichtigt.">
+<!ENTITY sortmethod.alphabetical.description "Dies ist eine übliche Sortierfunktion, welche auf einfachem Zeichenvergleich der Namen basiert. Sie erlaubt die Erstellung verschiedener Ordnerkategorien wie bei Google Mail durch die Nutzung besonderer Unicode-Zeichen.">
+<!ENTITY sortmethod.custom.description "Die Ordner lassen sich über die obigen Schaltflächen verschieben. Später erstellte Ordner werden am Ende der Liste hinzugefügt. Die Veränderungen können später hier rückgängig gemacht werden.">
+<!ENTITY sortmethod.samplelegend "(Beispielhafte Konten-/Ordneransicht)">
+<!ENTITY button.move_up "Nach oben">
+<!ENTITY button.move_down "Nach unten">
+<!ENTITY button.refresh "Konten-/Ordnerliste aktualisieren">
+<!ENTITY button.close "Schließen">
+<!ENTITY button.restart "Thunderbird neu starten">
+<!ENTITY accountssort.description "Diese Ansicht erlaubt die Sortierung der Konten in der Konten-/Ordneransicht. Im nächsten Tab können die Ordner innerhalb eines Kontos sortiert werden.">
+<!ENTITY accountsort.warning "E-Mail-Konten, Unix-Movemail-Konten sowie Blog- &amp; News-Feed-Konten müssen an oberster Position einsortiert erscheinen. Danach folgen die &quot;Lokalen Ordner&quot; und als letztes Newsgruppen-Konten. Diese Regelung kann umgangen werden, indem das Konto &quot;Lokale Ordner&quot; oder eins der Newsgruppen-Konten als Standardkonto ausgewählt wird, wodurch es an die oberste Position gesetzt wird.">
+<!ENTITY accountsort.restartwarning "Zur Übernahme der Änderungen muss Thunderbird neu gestartet werden.">
+<!ENTITY tab.accounts "Konten sortieren">
+<!ENTITY tab.folders "Ordner sotieren">
+<!ENTITY gb.move "Ausgewähltes Konto verschieben">
+<!ENTITY gb.movefolder "Ausgewählten Ordner verschieben">
+<!ENTITY gb.first "Erstes Konto in der Konten-/Ordneransicht">
+<!ENTITY gb.extra "Weitere Informationen">
+<!ENTITY gbfirst.default "Dies ist das Standardkonto.">
+<!ENTITY tc.foldername "Ordnername">
+<!ENTITY mi.firstmail "Erstes Blog- &amp; Newsfeeds- oder E-Mail-Konto in der Liste">

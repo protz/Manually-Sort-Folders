@@ -1,5 +1,11 @@
 content tbsortfolders content/
 resource tbsortfolders modules/
 overlay chrome://messenger/content/messenger.xul chrome://tbsortfolders/content/overlay.xul
+locale tbsortfolders da-DK locale/da-DK/
+locale tbsortfolders de-DE locale/de-DE/
 locale tbsortfolders en-US locale/en-US/
-locale tbsortfolders fr-FR locale/fr-FR/
+locale tbsortfolders fr locale/fr/
+locale tbsortfolders it locale/it/
+locale tbsortfolders pl locale/pl/
+locale tbsortfolders pt-BR locale/pt-BR/
+locale tbsortfolders ru-RU locale/ru-RU/

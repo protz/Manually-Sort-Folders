@@ -8,7 +8,7 @@
   <script type="application/x-javascript" src="ui.js" />
 
   <description style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
-    You have no accounts set up yet!
+    &accountsort.noaccountsetupyet;
   </description>
 
   <tabbox selectedIndex="1">
@@ -27,7 +27,7 @@
               <listbox id="accounts_list" style="width: 161px" onclick="on_accounts_list_click();">
               </listbox>
               <listbox style="width: 161px" rows="1" disabled="true">
-                <listitem label="Local Folders" />
+                <listitem label="&accountsort.localfolders;" />
               </listbox>
               <listbox id="news_accounts_list" style="width: 161px; display: none;" onclick="on_news_accounts_list_click();">
               </listbox>
