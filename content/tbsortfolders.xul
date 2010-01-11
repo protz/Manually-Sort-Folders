@@ -201,18 +201,23 @@
         <description style="width: 400px">
           &extra.description;
         </description>
-        <hbox>
+        <groupbox>
+          <caption><description>&extra.startup;</description></caption>
           <label flex="1" value="&extra.startupfolder;" />
-          <vbox>
-            <checkbox label="&extra.uselast;" checked="false"
-                      id="folderCheckbox" onclick="on_check_last_folder(event);" />
+          <hbox>
+            <menulist oncommand="on_startup_folder_method_changed(event);" id="startup_folder_method" value="1">
+              <menupopup>
+                <menuitem value="0" label="&extra.uselast;" />
+                <menuitem value="1" label="&extra.usecustom;" />
+              </menupopup>
+            </menulist>
             <menulist id="startupFolder" label="&extra.nofolder;" oncommand="on_pick_folder(event);">
               <menupopup id="startupFolderPopup" type="folder" mode="filing"
                          showFileHereLabel="true"
                          fileHereLabel="&extra.usethisfolder;"/>
             </menulist>
-          </vbox>
-        </hbox>
+          </hbox>
+        </groupbox>
         <spacer flex="1" />
         <hbox>
           <spacer flex="1" />

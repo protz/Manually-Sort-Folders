@@ -486,16 +486,16 @@ function extra_on_load() {
     picker.folder = folder;
     picker.setAttribute("label", folder.prettyName);    
   } else {
-    let cb = document.getElementById("folderCheckbox");
-    cb.checked = true;
+    let menu = document.getElementById("startup_folder_method");
+    menu.value = "0";
     picker.disabled = true;
   }
 }
 
-function on_check_last_folder(event) {
-  let cb = document.getElementById("folderCheckbox");
+function on_startup_folder_method_changed(event) {
+  let menu = event.target;
   let picker = document.getElementById("startupFolder");
-  if (cb.checked) {
+  if (menu.value == "1") {
     picker.disabled = false;
     if (picker.folder)
       tbsf_prefs.setValue("startup_folder", picker.folder.URI);
