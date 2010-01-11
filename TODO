@@ -1,11 +1,13 @@
-- Ne pas afficher les comptes qui utilisent la "global inbox" dans le menu de
-  tri
-- Mettre des marges sur les <groupbox>
-- Virer les images d'exemple et mettre le folder pane en vrai, quoi...
-- Faire de quoi styler arbitrairement un dossier (y-compris changer l'icône) -->
-  modifier la source RDF ? Éditer un fichier CSS on-the-fly ? Ajouter
-  dynamiquement un élément <style> dans messenger.xul ?
-- Faire de quoi cacher un dossier arbitrairement
-- Faire de quoi choisir le dossier initial par défaut
-- Faire un truc genre drag&drop dans la fenêtre principale qui serait plus cool,
-  mais méga compliqué et bouffeur de temps...
+- Don't display accounts that use the global inbox in the "Sort Accounts" tab
+- Use margins for <groupbox>es
+- Remove the stupid "sample folder pane above" and put the *real* folder pane.
+- Add a tab that allows you to arbitrarily style a folder. The UI would be like
+  the "Filters" dialog of Thunderbird. For [pick a folder, a folder that has
+  depth + textbox], apply the following rule [color, underline, bold, icon,
+  hide]. [+] [-]
+  http://dafizilla.wordpress.com/2010/01/08/how-to-programmatically-change-xul-trees-pseudo-classes/
+  Each rule would be an XBL widget
+- Allow to choose the default startup folder
+- See if there's a simple way (like: hacking the root RDF source) to sort
+  Address Books
+- Enable drag&drop for sorting folders in the real folder pane [ETA: 2 weeks]

@@ -4,7 +4,9 @@ overlay chrome://messenger/content/messenger.xul chrome://tbsortfolders/content/
 locale tbsortfolders da-DK locale/da-DK/
 locale tbsortfolders de-DE locale/de-DE/
 locale tbsortfolders en-US locale/en-US/
+locale tbsortfolders es-ES locale/es-ES/
 locale tbsortfolders fr locale/fr/
+locale tbsortfolders ja locale/ja/
 locale tbsortfolders it locale/it/
 locale tbsortfolders pl locale/pl/
 locale tbsortfolders pt-BR locale/pt-BR/

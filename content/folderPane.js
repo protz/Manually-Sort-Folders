@@ -1,7 +1,13 @@
 (function () {
-  Components.utils.import("resource://tbsortfolders/sort.jsm");
+  /* For folder sorting */
 
-  var tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
+  const Cc = Components.classes;
+  const Ci = Components.interfaces;
+  const Cu = Components.utils;
+  Cu.import("resource://tbsortfolders/sort.jsm");
+  /* Cu.import("resource://gre/modules/folderUtils.jsm"); */
+
+  const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
   /* This array is populated either when the file is loaded or when the
    * preferences are updated. The keys are the account's prettiest names and the
    * values are the sort functions associated to each account. */
@@ -51,4 +57,18 @@
 
   update_prefs_functions();
   tbsf_prefs.get("tbsf_data").events.addListener("change", update_prefs_functions);
+
+  /* For default startup folder */
+  let oldLoad = gFolderTreeView.load;
+  gFolderTreeView.load = function (aTree, aJSONFile) {
+    oldLoad.call(this, aTree, aJSONFile);
+    let startup_folder = tbsf_prefs.getValue("startup_folder", "");
+    if (startup_folder != "") {
+      let folder = getFolderFromUri(startup_folder);
+      if (folder) {
+        dump("FOUND\n");
+        document.addEventListener("load", function() gFolderTreeView.selectFolder(folder, true), true);
+      }
+    }
+  };
 })()

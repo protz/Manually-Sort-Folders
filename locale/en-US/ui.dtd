@@ -26,3 +26,9 @@
 <!ENTITY mi.firstmail "First RSS or Mail account in the list">
 <!ENTITY accountsort.localfolders "Local Folders">
 <!ENTITY accountsort.noaccountsetupyet "You have no account setup yet!">
+<!ENTITY tab.extra "Extra settings">
+<!ENTITY extra.description "Use this tab to further customize Thunderbird using various folder-related settings">
+<!ENTITY extra.startupfolder "By default, start with the following folder selected">
+<!ENTITY extra.usethisfolder "Use this folder">
+<!ENTITY extra.nofolder "No folder selected">
+<!ENTITY extra.uselast "Use last opened folder">

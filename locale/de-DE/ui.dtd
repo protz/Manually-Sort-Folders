@@ -24,3 +24,5 @@
 <!ENTITY gbfirst.default "Dies ist das Standardkonto.">
 <!ENTITY tc.foldername "Ordnername">
 <!ENTITY mi.firstmail "Erstes Blog- &amp; Newsfeeds- oder E-Mail-Konto in der Liste">
+<!ENTITY accountsort.localfolders "Lokale Ordner">
+<!ENTITY accountsort.noaccountsetupyet "Es wurde noch kein Konto eingerichtet.">

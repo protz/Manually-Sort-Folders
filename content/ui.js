@@ -1,9 +1,18 @@
-Components.utils.import("resource://tbsortfolders/sort.jsm");
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+Cu.import("resource://tbsortfolders/sort.jsm");
+
+/* Use this module (which will be better than mine for getFolderByUri)... when
+ * it actually works, see bug 441437 */
+/* Cu.import("resource://gre/modules/folderUtils.jsm"); */
 
 var g_accounts = Object();
-var tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
+const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
 var tbsf_data;
 var current_account = null;
+
+/* Most of the functions below are for *folder* sorting */
 
 function assert(v, s) {
   if (!v) {
@@ -123,18 +132,18 @@ function on_load() {
   let json = tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object()));
   tbsf_data = JSON.parse(json);
 
-  let account_manager = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
+  let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
   let accounts = account_manager.accounts;
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
   if (!accounts.Count()) {
     document.querySelector("tabbox").style.display = "none";
-    document.querySelector("#err_no_accounts").style.display = "";
+    document.getElementById("err_no_accounts").style.display = "";
     return;
   }
   for (var i = 0; i < accounts.Count(); i++) {
     //fill the menulist with the right elements
-    let account = accounts.QueryElementAt(i, Components.interfaces.nsIMsgAccount);
+    let account = accounts.QueryElementAt(i, Ci.nsIMsgAccount);
     name = account.incomingServer.rootFolder.prettiestName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
@@ -178,6 +187,7 @@ function on_load() {
   on_account_changed();
 
   accounts_on_load();
+  extra_on_load();
 }
 
 function fill_manual_sort(move_up, move_down) {
@@ -297,17 +307,7 @@ function on_refresh() {
 window.addEventListener("unload", on_refresh, false);
 
 
-/***********************/
-
-/*
- * mail.accountmanager.accounts -> explode(",") -> ["account1", ...]
- * mail.account.account1.server -> "server1"
- * mail.server1.name -> "@free.fr"
- * ! Local Folders, News & Blogs, Smart Folders = valeur spéciale ?
- *
- * mail.accountmanager.defaultaccount DOIT être le premier dans la liste
- * préférence identities uniquement pour les "vrais comptes de mails"
- * */
+/* The functions below are for *account* sorting */
 
 var g_other_accounts = null;
 
@@ -451,7 +451,7 @@ function on_account_move_down() {
 
 function on_account_restart() {
   let app = window.opener.Application;
-  window.opener.setTimeout(function () { app.restart (); }, 2000);
+  window.opener.setTimeout(function () { app.restart(); }, 1000);
   window.close();
 }
 
@@ -463,4 +463,44 @@ function on_accounts_list_click() {
 function on_news_accounts_list_click() {
   g_active_list = document.getElementById("news_accounts_list");
   document.getElementById("accounts_list").clearSelection();
+}
+
+/* These are UI functions for the "Extra settings" tab */
+
+/* Borrowed from http://mxr.mozilla.org/comm-central/source/mailnews/base/prefs/content/am-copies.js */
+function on_pick_folder(aEvent) {
+  let folder = aEvent.target._folder;
+  let picker = document.getElementById("startupFolder");
+  picker.folder = folder;
+  picker.setAttribute("label", folder.prettyName);
+  tbsf_prefs.setValue("startup_folder", folder.URI);
+}
+
+function extra_on_load() {
+  let startup_folder = tbsf_prefs.getValue("startup_folder", "");
+  let picker = document.getElementById("startupFolder");
+  let folder;
+  if (startup_folder)
+    folder = getFolderFromUri(startup_folder);
+  if (folder) {
+    picker.folder = folder;
+    picker.setAttribute("label", folder.prettyName);    
+  } else {
+    let cb = document.getElementById("folderCheckbox");
+    cb.checked = true;
+    picker.disabled = true;
+  }
+}
+
+function on_check_last_folder(event) {
+  let cb = document.getElementById("folderCheckbox");
+  let picker = document.getElementById("startupFolder");
+  if (cb.checked) {
+    picker.disabled = false;
+    if (picker.folder)
+      tbsf_prefs.setValue("startup_folder", picker.folder.URI);
+  } else {
+    picker.disabled = true;
+    tbsf_prefs.setValue("startup_folder", "");
+  }
 }
