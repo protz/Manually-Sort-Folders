@@ -64,17 +64,18 @@
 
   gFolderTreeView.load = function (aTree, aJSONFile) {
     oldLoad.call(this, aTree, aJSONFile);
-    if (!firstRun)
-      return;
 
     let startup_folder = tbsf_prefs.getValue("startup_folder", "");
     if (startup_folder != "") {
       let folder = getFolderFromUri(startup_folder);
       if (folder) {
         dump("FOUND\n");
-        document.addEventListener("load", function() gFolderTreeView.selectFolder(folder, true), true);
+        document.addEventListener("load", function() {
+            if (firstRun)
+              gFolderTreeView.selectFolder(folder, true);
+            firstRun = false;
+          }, true);
       }
     }
-    firstRun = false;
   };
 })()
