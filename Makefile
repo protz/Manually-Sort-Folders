@@ -1,10 +1,8 @@
 EXCLUDES = $(addprefix --exclude , $(shell find . -iname '.*.sw*'))
 
-all: debug_template package
+all: debug_template dist
 
-release: release_template package
-
-package: dist upload
+release: release_template dist
 
 dist:
 	rm -f tbsortfolders.xpi

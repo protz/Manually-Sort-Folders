@@ -6,7 +6,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
-    <em:version>1.0__REPLACEME__</em:version>
+    <em:version>0.5__REPLACEME__</em:version>
     <em:iconURL>chrome://tbsortfolders/content/icon.png</em:iconURL>
     
     <!-- Target Application this theme can install into, 

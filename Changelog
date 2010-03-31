@@ -1,5 +1,6 @@
 -- v0.5 development series --
 
+- Switch to GitHub
 - Compatibility bump
 - Added ja, es-ES locales + final pl locale.
 - Added an extra tab for further customization. *You can now choose the default
