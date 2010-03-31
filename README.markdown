@@ -12,4 +12,4 @@ time).
 * Screenshots, pre-packaged builds on [my personal
 website](http://www.xulforum.org)
 * Stable version on
-* [AMO](https://addons.mozilla.org/en-US/thunderbird/addon/15102)
+[AMO](https://addons.mozilla.org/en-US/thunderbird/addon/15102)
