@@ -2,10 +2,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 Cu.import("resource://tbsortfolders/sort.jsm");
-
-/* Use this module (which will be better than mine for getFolderByUri)... when
- * it actually works, see bug 441437 */
-/* Cu.import("resource://gre/modules/folderUtils.jsm"); */
+Cu.import("resource://app/modules/MailUtils.js");
 
 var g_accounts = Object();
 const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
@@ -144,6 +141,8 @@ function on_load() {
   for (var i = 0; i < accounts.Count(); i++) {
     //fill the menulist with the right elements
     let account = accounts.QueryElementAt(i, Ci.nsIMsgAccount);
+    if (!account.incomingServer)
+      continue;
     name = account.incomingServer.rootFolder.prettiestName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
@@ -481,7 +480,7 @@ function extra_on_load() {
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
-    folder = getFolderFromUri(startup_folder);
+    folder = MailUtils.getFolderForURI(startup_folder);
   if (folder) {
     picker.folder = folder;
     picker.setAttribute("label", folder.prettyName);    

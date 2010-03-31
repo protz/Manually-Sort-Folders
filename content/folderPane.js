@@ -5,7 +5,7 @@
   const Ci = Components.interfaces;
   const Cu = Components.utils;
   Cu.import("resource://tbsortfolders/sort.jsm");
-  /* Cu.import("resource://gre/modules/folderUtils.jsm"); */
+  Cu.import("resource://app/modules/MailUtils.js");
 
   const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
   /* This array is populated either when the file is loaded or when the
@@ -59,23 +59,30 @@
   tbsf_prefs.get("tbsf_data").events.addListener("change", update_prefs_functions);
 
   /* For default startup folder */
-  let oldLoad = gFolderTreeView.load;
+  let oldRestoreTab = mailTabType.modes.folder.restoreTab;
+  let inRestoreTab = false;
+  mailTabType.modes.folder.restoreTab = function (x, y) {
+    inRestoreTab = true;
+    oldRestoreTab.call(this, x, y);
+    inRestoreTab = false;
+  };
+  let oldSelectFolder = gFolderTreeView.selectFolder;
   let firstRun = true;
-
-  gFolderTreeView.load = function (aTree, aJSONFile) {
-    oldLoad.call(this, aTree, aJSONFile);
-
-    let startup_folder = tbsf_prefs.getValue("startup_folder", "");
-    if (startup_folder != "") {
-      let folder = getFolderFromUri(startup_folder);
-      if (folder) {
-        dump("FOUND\n");
-        document.addEventListener("load", function() {
-            if (firstRun)
-              gFolderTreeView.selectFolder(folder, true);
-            firstRun = false;
-          }, true);
+  gFolderTreeView.selectFolder = function (x, y) {
+    if (firstRun && inRestoreTab) {
+      let startup_folder = tbsf_prefs.getValue("startup_folder", "");
+      if (startup_folder != "") {
+        let folder = MailUtils.getFolderForURI(startup_folder);
+        if (folder)
+          oldSelectFolder.call(this, folder, true);
+        else
+          oldSelectFolder.call(this, x, y);
+      } else {
+        oldSelectFolder.call(this, x, y);
       }
+      firstRun = false;
+    } else {
+      oldSelectFolder.call(this, x, y);
     }
   };
 })()

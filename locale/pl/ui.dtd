@@ -1,18 +1,18 @@
 <!ENTITY general.title "Sortuj foldery ręcznie">
-<!ENTITY sortfolders.description "Panel ten umożliwia ręczne sortowanie folderów każdego konta. Wybierz konto i sposób sortowania.">
+<!ENTITY sortfolders.description "Tutaj można ręcznie posortować foldery każdego konta. Wybierz konto i metodę sortowania.">
 <!ENTITY sortmethod.default "Używaj domyślnego Thunderbirda">
 <!ENTITY sortmethod.alphabetical "Używaj prostego porównania znaków">
 <!ENTITY sortmethod.custom "Używaj funkcji zdefiniowanych ręcznie">
 <!ENTITY sortmethod.default.description "To jest domyślna funkcja sortowania używana przez Thunderbirda. W odróżnieniu od Gmaila, nie pobiera na konto symboli specjalnych Unicode.">
-<!ENTITY sortmethod.alphabetical.description "To jest standardowa funkcja sortowania używająca tylko najbardziej podstawowych funkcji porównywania znaków. Umożliwia ona tworzenie różnych kategorii folderów podobnych do tworzonych przez Gmaila używając symboli specjalnych Unicode.">
-<!ENTITY sortmethod.custom.description "Użyj przycisków znajdujących się powyżej, by ręcznie posortować foldery. Nowo dodawane foldery będą umieszczane na końcu listy. Jeśli coś Ci nie odpowiada, możesz wrócić tutaj później.">
-<!ENTITY sortmethod.samplelegend "(Przykładowy panel folderu)">
+<!ENTITY sortmethod.alphabetical.description "To jest standardowa funkcja sortowania używająca tylko podstawowych funkcji porównywania ciągów znaków. Umożliwia ona tworzenie różnych kategorii folderów podobnych do tworzonych przez Gmaila, używając symboli specjalnych Unicode.">
+<!ENTITY sortmethod.custom.description "Użyj przycisków znajdujących się powyżej, by ręcznie posortować foldery. Nowo dodawane foldery będą umieszczane na końcu listy. W każdej chwili możesz tutaj wrócić i dowolnie zmieniać kolejność.">
+<!ENTITY sortmethod.samplelegend "(Przykładowy panel folderów)">
 <!ENTITY button.move_up "W górę">
 <!ENTITY button.move_down "W dół">
-<!ENTITY button.refresh "Odśwież panel folderu">
+<!ENTITY button.refresh "Odśwież panel folderów">
 <!ENTITY button.close "Zamknij">
 <!ENTITY button.restart "Uruchom ponownie Thunderbirda">
-<!ENTITY accountssort.description "Ten panel umożliwia określenie kolejności kont w panelu folderów. Użyj innej karty, by posortować foldery wewnątrz konta.">
+<!ENTITY accountssort.description "Tutaj można określić kolejność kont w panelu folderów. Przejdź do karty „Sortuj foldery”, by posortować foldery wewnątrz konta.">
 <!ENTITY accountsort.warning "Standardowe konta pocztowe, konta Unix Movemail, a także konta RSS muszą być na początku listy. Za nimi powinny znaleźć się Foldery lokalne i na końcu konta grup dyskusyjnych. Można zmienić to, wybierając Foldery lokalne lub jedno z kont grup dyskusyjnych jako domyślne i umieścić go na szczycie listy.">
 <!ENTITY accountsort.restartwarning "Aby zmiany zostały zastosowane, należy ponownie uruchomić Thunderbirda.">
 <!ENTITY tab.accounts "Sortuj konta">
@@ -23,6 +23,6 @@
 <!ENTITY gb.extra "Dodatkowe informacje">
 <!ENTITY gbfirst.default "To jest także domyślne konto.">
 <!ENTITY tc.foldername "Nazwa folderu">
-<!ENTITY mi.firstmail "Pierwszy kanał RSS lub konto popcztowe na liście">
+<!ENTITY mi.firstmail "Pierwszy kanał RSS lub konto pocztowe na liście">
 <!ENTITY accountsort.localfolders "Foldery lokalne">
 <!ENTITY accountsort.noaccountsetupyet "Nie masz jeszcze skonfigurowanego konta!">
