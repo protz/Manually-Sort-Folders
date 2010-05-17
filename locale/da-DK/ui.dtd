@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Første feed eller mailkonto i listen">
 <!ENTITY accountsort.localfolders "Lokale mapper">
 <!ENTITY accountsort.noaccountsetupyet "Du har endnu ikke oprettet nogen konto!">
+<!ENTITY tab.extra "Yderligere indstillinger">
+<!ENTITY extra.startup "Startmappe">
+<!ENTITY extra.description "Ved hjælp af forskellige mappe-relaterede indstillinger, kan du bruge dette faneblad til, at tilpasse Thunderbird yderligere.">
+<!ENTITY extra.startupfolder "Som standard, start med denne mappe åben">
+<!ENTITY extra.nofolder "Ingen mappe valgt">
+<!ENTITY extra.uselast "Anvend senest åbnede mappe">
+<!ENTITY extra.usecustom "Anvend brugervalgt mappe">
+<!ENTITY extra.usethisfolder "Anvend denne mappe">

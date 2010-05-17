@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Pierwszy kanał RSS lub konto pocztowe na liście">
 <!ENTITY accountsort.localfolders "Foldery lokalne">
 <!ENTITY accountsort.noaccountsetupyet "Nie masz jeszcze skonfigurowanego konta!">
+<!ENTITY tab.extra "Ustawienia dodatkowe">
+<!ENTITY extra.startup "Folder początkowy">
+<!ENTITY extra.description "Użyj tej karty, by dodatkowo dostosować Thunderbirda za pomocą różnych powiązanych z folderami ustawień">
+<!ENTITY extra.startupfolder "Rozpoczynaj z następującym otwartym folderem">
+<!ENTITY extra.nofolder "Nie wybrano folderu">
+<!ENTITY extra.uselast "Użyj ostatnio otwierany folder">
+<!ENTITY extra.usecustom "użyj własny folder">
+<!ENTITY extra.usethisfolder "Użyj ten folder">

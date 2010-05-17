@@ -1,5 +1,7 @@
 -- v0.5 development series --
 
+- Updated to work with newer nightlies including addon manager
+- Updated locales
 - Switch to GitHub
 - Compatibility bump
 - Added ja, es-ES locales + final pl locale.

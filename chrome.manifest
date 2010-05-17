@@ -6,8 +6,9 @@ locale tbsortfolders de-DE locale/de-DE/
 locale tbsortfolders en-US locale/en-US/
 locale tbsortfolders es-ES locale/es-ES/
 locale tbsortfolders fr locale/fr/
-locale tbsortfolders ja locale/ja/
 locale tbsortfolders it locale/it/
+locale tbsortfolders ja locale/ja/
 locale tbsortfolders pl locale/pl/
 locale tbsortfolders pt-BR locale/pt-BR/
 locale tbsortfolders ru-RU locale/ru-RU/
+locale tbsortfolders zh-CN locale/zh-CN/

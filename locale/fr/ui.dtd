@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Premier compte courrier/RSS dans la liste">
 <!ENTITY accountsort.localfolders "Dossiers locaux">
 <!ENTITY accountsort.noaccountsetupyet "Vous n'avez pas encore configuré de compte !">
+<!ENTITY tab.extra "Avancé">
+<!ENTITY extra.startup "Dossier à afficher au démarrage de Thunderbird.">
+<!ENTITY extra.description "Cet onglet vous permet de personnaliser Thunderbird à l'aide de divers réglages concernant les dossiers.">
+<!ENTITY extra.startupfolder "Par défaut, afficher le dossier suivant au démarrage de Thunderbird">
+<!ENTITY extra.nofolder "Pas de dossier sélectionné">
+<!ENTITY extra.uselast "Utiliser le dernier dossier ouvert">
+<!ENTITY extra.usecustom "Choisir un dossier particulier">
+<!ENTITY extra.usethisfolder "Utiliser ce dossier">

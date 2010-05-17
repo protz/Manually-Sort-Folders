@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Primer RDD o cuenta de correo en la lista">
 <!ENTITY accountsort.localfolders "Carpetas Locales">
 <!ENTITY accountsort.noaccountsetupyet "Aún no tiene un cuenta configurada.">
+<!ENTITY tab.extra "Opciones extra">
+<!ENTITY extra.startup "Carpeta de inicio">
+<!ENTITY extra.description "Usar esta pestaña para personalizar Thunderbird usando varias opciones relacionadas con carpetas">
+<!ENTITY extra.startupfolder "Comenzar predeterminadamente con la siguiente carpeta abierta">
+<!ENTITY extra.nofolder "Carpeta no seleccionada">
+<!ENTITY extra.uselast "Usar la última carpeta abierta">
+<!ENTITY extra.usecustom "Usar una carpeta personalizada">
+<!ENTITY extra.usethisfolder "Usar esta carpeta">

@@ -23,6 +23,14 @@
 <!ENTITY gb.extra "Informação adicional">
 <!ENTITY gbfirst.default "Esta também é a conta padrão.">
 <!ENTITY tc.foldername "Nome da Pasta">
-<!ENTITY mi.firstmail "Primeiro RSS ou conta de correio eletrônico na lista">
+<!ENTITY mi.firstmail "Primeiro RSS ou conta de correio eletrônico da lista">
 <!ENTITY accountsort.localfolders "Pastas Locais">
 <!ENTITY accountsort.noaccountsetupyet "Você não tem nenhuma configuração de conta ainda!">
+<!ENTITY tab.extra "Configurações extras">
+<!ENTITY extra.startup "Pasta de início">
+<!ENTITY extra.description "Use essa aba para personalizar ainda mais o Thunderbird usando várias configurações de pastas">
+<!ENTITY extra.startupfolder "Por padrão, comece abrindo a seguinte pasta">
+<!ENTITY extra.nofolder "Nenhuma pasta selecionada">
+<!ENTITY extra.uselast "Use a última pasta aberta">
+<!ENTITY extra.usecustom "Use uma pasta personalizada">
+<!ENTITY extra.usethisfolder "Use a presente pasta">

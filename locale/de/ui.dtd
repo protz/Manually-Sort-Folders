@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Erstes Blog- &amp; Newsfeeds- oder E-Mail-Konto in der Liste">
 <!ENTITY accountsort.localfolders "Lokale Ordner">
 <!ENTITY accountsort.noaccountsetupyet "Es wurde noch kein Konto eingerichtet.">
+<!ENTITY tab.extra "Erweitert">
+<!ENTITY extra.startup "Startordner">
+<!ENTITY extra.description "Tab für verschiedene ordnerbezogene Einstellungen">
+<!ENTITY extra.startupfolder "Beim Start von Thunderbird folgenden Ordner öffnen:">
+<!ENTITY extra.nofolder "Kein Ordner ausgewählt">
+<!ENTITY extra.uselast "Zuletzt geöffneten Ordner verwenden">
+<!ENTITY extra.usecustom "Benutzerdefinierten Ordner verwenden">
+<!ENTITY extra.usethisfolder "Diesen Ordner verwenden">

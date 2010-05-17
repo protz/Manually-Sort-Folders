@@ -3,26 +3,34 @@
 <!ENTITY sortmethod.default "Thunderbird のデフォルトを使用する">
 <!ENTITY sortmethod.alphabetical "単純な文字列の比較を使用する">
 <!ENTITY sortmethod.custom "手動による並び替えを使用する">
-<!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並び替え機能です。Gmail と異なり、特別なユニコード符号を考慮しません">
+<!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並び替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません">
 <!ENTITY sortmethod.alphabetical.description "これは最も基本的な文字列比較関数を使用する標準の並び替え機能です。 特別なユニコード符号を使用する Gmail のようなフォルダの異なるカテゴリを作成します。">
 <!ENTITY sortmethod.custom.description "手動でフォルダを分類するときは上のボタンを使用してください。 新しいフォルダが追加されるとリストの最後に置きます。 それが合わない場合は後で戻すことができます。">
 <!ENTITY sortmethod.samplelegend "(サンプルフォルダ欄)">
 <!ENTITY button.move_up "上へ">
 <!ENTITY button.move_down "下へ">
-<!ENTITY button.refresh "フォルダ欄の更新">
+<!ENTITY button.refresh "フォルダペインの更新">
 <!ENTITY button.close "閉じる">
 <!ENTITY button.restart "Thunderbird の再起動">
 <!ENTITY accountssort.description "このパネルではフォルダ欄のアカウントを選べます。アカウント内のフォルダを分類したいときは次のタブを使用してください。">
-<!ENTITY accountsort.warning "通常のメールアカウントは RSS アカウントと同様に Unix Movemail アカウントの最上部に置かれます。 その次にローカルフォルダ、そしてリスト最後は News アカウントとなります。 デフォルトとしてローカルフォルダか News グループアカウントのどちらかを選んでリスト先頭に配置することによってこれを変えることができます。">
+<!ENTITY accountsort.warning "通常のメールアカウントは RSS アカウントと同様に Unix Movemail アカウントの最上部に置かれます。 その次にローカルフォルダ、そしてリスト最後はブログとニュースアカウントとなります。 デフォルトとしてローカルフォルダかブログとニュースグループアカウントのどちらかを選んでリスト先頭に配置することによってこれを変えることができます。">
 <!ENTITY accountsort.restartwarning "変更を反映させるためには Thunderbird を再起動してください">
 <!ENTITY tab.accounts "アカウントの並び替え">
 <!ENTITY tab.folders "フォルダの並び替え">
 <!ENTITY gb.move "選択したアカウントの移動">
 <!ENTITY gb.movefolder "選択したフォルダの移動">
-<!ENTITY gb.first "フォルダパネルの最上部アカウント設定">
+<!ENTITY gb.first "フォルダペイン最上部のアカウント設定">
 <!ENTITY gb.extra "追加情報">
 <!ENTITY gbfirst.default "これはデフォルトアカウントです">
 <!ENTITY tc.foldername "フォルダ名">
 <!ENTITY mi.firstmail "フォルダペイン最上部を RSS またはメールアカウントにする">
-<!ENTITY accountsort.localfolders "フォルダペイン最上部をローカルフォルダにする">
+<!ENTITY accountsort.localfolders "ローカルフォルダ">
 <!ENTITY accountsort.noaccountsetupyet "アカウント設定がまだありません！">
+<!ENTITY tab.extra "追加設定">
+<!ENTITY extra.startup "起動フォルダ">
+<!ENTITY extra.description "ここではフォルダ関連の設定をすることで Thunderbird をさらにカスタマイズできます">
+<!ENTITY extra.startupfolder "以下のフォルダが開いた状態で起動する">
+<!ENTITY extra.nofolder "フォルダの選択なし">
+<!ENTITY extra.uselast "最後に開いたフォルダ">
+<!ENTITY extra.usecustom "カスタムフォルダ">
+<!ENTITY extra.usethisfolder "現在のフォルダ">

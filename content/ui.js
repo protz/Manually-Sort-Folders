@@ -5,7 +5,10 @@ Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource://app/modules/MailUtils.js");
 
 var g_accounts = Object();
-const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
+//const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
+const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
+  .getService(Ci.nsIPrefService)
+  .getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data;
 var current_account = null;
 
@@ -126,7 +129,7 @@ function rebuild_tree(full) {
 }
 
 function on_load() {
-  let json = tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object()));
+  let json = tbsf_prefs.getCharPref("tbsf_data");
   tbsf_data = JSON.parse(json);
 
   let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
@@ -298,7 +301,7 @@ function on_close() {
 }
 
 function on_refresh() {
-  tbsf_prefs.setValue("tbsf_data", JSON.stringify(tbsf_data));
+  tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
   window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
 }
@@ -472,11 +475,11 @@ function on_pick_folder(aEvent) {
   let picker = document.getElementById("startupFolder");
   picker.folder = folder;
   picker.setAttribute("label", folder.prettyName);
-  tbsf_prefs.setValue("startup_folder", folder.URI);
+  tbsf_prefs.setCharPref("startup_folder", folder.URI);
 }
 
 function extra_on_load() {
-  let startup_folder = tbsf_prefs.getValue("startup_folder", "");
+  let startup_folder = tbsf_prefs.getCharPref("startup_folder");
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
@@ -497,9 +500,9 @@ function on_startup_folder_method_changed(event) {
   if (menu.value == "1") {
     picker.disabled = false;
     if (picker.folder)
-      tbsf_prefs.setValue("startup_folder", picker.folder.URI);
+      tbsf_prefs.setCharPref("startup_folder", picker.folder.URI);
   } else {
     picker.disabled = true;
-    tbsf_prefs.setValue("startup_folder", "");
+    tbsf_prefs.setCharPref("startup_folder", "");
   }
 }

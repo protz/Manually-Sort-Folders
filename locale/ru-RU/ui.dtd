@@ -26,3 +26,11 @@
 <!ENTITY mi.firstmail "Первая учётная запись RSS или почты в списке">
 <!ENTITY accountsort.localfolders "Локальные папки">
 <!ENTITY accountsort.noaccountsetupyet "У вас нет ни одной учётной записи!">
+<!ENTITY tab.extra "Дополнительные настройки">
+<!ENTITY extra.startup "Папка запуска">
+<!ENTITY extra.description "С помощью этой вкладки вы сможете настроить различные параметры Thunderbird, связанные с папками">
+<!ENTITY extra.startupfolder "По умолчанию, открывать при запуске">
+<!ENTITY extra.nofolder "папка не выбрана">
+<!ENTITY extra.uselast "последнюю открытую папку">
+<!ENTITY extra.usecustom "папку по вашему выбору">
+<!ENTITY extra.usethisfolder "выбрать эту папку">

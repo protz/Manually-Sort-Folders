@@ -1,0 +1,36 @@
+<!ENTITY general.title "手动对文件夹排序">
+<!ENTITY sortfolders.description "这个面板使你对每个账户的文件夹进行排序。首先选择一个账户，然后选择排序方式。">
+<!ENTITY sortmethod.default "使用Thunderbird的默认设置">
+<!ENTITY sortmethod.alphabetical "采用纯字符串对比">
+<!ENTITY sortmethod.custom "使用一个自定义的排序功能">
+<!ENTITY sortmethod.default.description "这是Thunderbird的默认排序分类功能。它不像Gmail，它不会考虑特殊的Unicode字符。">
+<!ENTITY sortmethod.alphabetical.description "这是一个标准的排序功能，使用只是最基本的字符串比较函数。它允许使用特殊Unicode字符创建一个不同类型的文件夹à la GMail">
+<!ENTITY sortmethod.custom.description "使用以上按钮对你的文件夹手动排序。如果添加一个新的文件夹，它将被放在列表的最后面。你之后还可以返回如果那样不适合你。">
+<!ENTITY sortmethod.samplelegend "（以上示例文件夹窗格）">
+<!ENTITY button.move_up "向上移动">
+<!ENTITY button.move_down "向下移动">
+<!ENTITY button.refresh "刷新文件夹窗格">
+<!ENTITY button.close "关闭">
+<!ENTITY button.restart "重启Thunderbird">
+<!ENTITY accountssort.description "此面板允许你对文件夹窗格中的账户排序。使用下一个标签，如果你想对某一个账户中的文件夹排序。">
+<!ENTITY accountsort.warning "普通邮件账户，Unix Movemail账户和RSS账户必须要首先考虑。本地文件夹其次，列表的最下面是新账户。你可以选择本地文件夹或者新闻组账户作为默认，因此把它放到列表最上面以废除这个账户。">
+<!ENTITY accountsort.restartwarning "你必须重启Thunderbird使改变生效">
+<!ENTITY tab.accounts "对账户排序">
+<!ENTITY tab.folders "对文件夹排序">
+<!ENTITY gb.move "移动选定的账户">
+<!ENTITY gb.movefolder "移动选定的文件夹">
+<!ENTITY gb.first "文件夹窗格中的第一个账户">
+<!ENTITY gb.extra "更多信息">
+<!ENTITY gbfirst.default "这也是默认账户。">
+<!ENTITY tc.foldername "文件夹名">
+<!ENTITY mi.firstmail "列表中的第一个RSS订阅或电子邮件账户">
+<!ENTITY accountsort.localfolders "本地文件夹">
+<!ENTITY accountsort.noaccountsetupyet "你还没有设置账户呢！">
+<!ENTITY tab.extra "其它设置">
+<!ENTITY extra.startup "起始文件夹">
+<!ENTITY extra.description "使用这个标签用各种不同的文件夹相关设置进一步定制Thunderbird">
+<!ENTITY extra.startupfolder "默认，以以下打开的文件夹开始">
+<!ENTITY extra.nofolder "没有选择文件夹">
+<!ENTITY extra.uselast "使用上次打开的文件夹">
+<!ENTITY extra.usecustom "使用自定义文件夹">
+<!ENTITY extra.usethisfolder "使用这个文件夹">
