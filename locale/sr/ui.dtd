@@ -1,0 +1,36 @@
+<!ENTITY general.title "Ручно поређај фасцикле">
+<!ENTITY sortfolders.description "Ова табла вам омогућава да поређате фасцикле сваког налога. Прво одаберите налог, а онда начин ређања.">
+<!ENTITY sortmethod.default "користи подразумевано Тандербердово">
+<!ENTITY sortmethod.alphabetical "Користи поређење чистих ниски">
+<!ENTITY sortmethod.custom "користи ручно одређену функцију ређања">
+<!ENTITY sortmethod.default.description "Ово је подразумевана Тандербердова функција ређања. З разлику од GMail-а, не узима о обрзор подебне знакове у уникоду.">
+<!ENTITY sortmethod.alphabetical.description "Ово је стандардна функција ређања, која користи најједноставнији начин поређења. Дозвољава прављење различитих категорија фасцикли баш као GMail, користећи посебне знакове у уникоду.">
+<!ENTITY sortmethod.custom.description "Користите дугмад изнад да бисте ручно поређали фасцикле. Ако додате нову фасциклу, биће додана на дно списка. Можете да се вратите овамо назад, ако вам то не одговара.">
+<!ENTITY sortmethod.samplelegend "(пример табле фасцикле изнад)">
+<!ENTITY button.move_up "Помери нагоре">
+<!ENTITY button.move_down "Помери надоле">
+<!ENTITY button.refresh "Освежи таблу фасцикли">
+<!ENTITY button.close "Затвори">
+<!ENTITY button.restart "Поново покрени Тандерберд">
+<!ENTITY accountssort.description "Ова табла вам омогућава да поређате налоге у табли фасцикли. Користите следећи језичак ако желите да поређате фасцикле унутар њих.">
+<!ENTITY accountsort.warning "Обични налози за е-пошту, Unix Movemail налози, као и RSS налози морају да буду на почетку. Следе локалне фасцикле, а на дну су налози за новости. Ово можете да замените ако поставите локалне фасцикле или неки ог налога за новости као подразумевану, што ће их стаити на врх списка.">
+<!ENTITY accountsort.restartwarning "Морате да поново покренете Тандерберд да би измене биле примењене.">
+<!ENTITY tab.accounts "Поређај налоге">
+<!ENTITY tab.folders "Поређај фасцикле">
+<!ENTITY gb.move "Премести одабрани налог">
+<!ENTITY gb.movefolder "Премести одабрану фасцилку">
+<!ENTITY gb.first "Први налог у табли фасцикли">
+<!ENTITY gb.extra "Додатне информације">
+<!ENTITY gbfirst.default "Ово је и подразумевани налог.">
+<!ENTITY tc.foldername "Назив фасцикле">
+<!ENTITY mi.firstmail "Први RSS налог или налог за е-пошту на списку">
+<!ENTITY accountsort.localfolders "Локале фасцикле">
+<!ENTITY accountsort.noaccountsetupyet "Још увек нема подешених налога!">
+<!ENTITY tab.extra "Додатна подешавања">
+<!ENTITY extra.startup "Почетна фасцикла">
+<!ENTITY extra.description "Користите овај језичак за прилагођавање Тандерберда коришћењем разних подешавања везаним за фасцикле">
+<!ENTITY extra.startupfolder "Подразумевано, почни са отвореном следећом фасциклом">
+<!ENTITY extra.nofolder "Није одабрана фасцикла">
+<!ENTITY extra.uselast "Користи последњу отворену фасциклу">
+<!ENTITY extra.usecustom "Користи прилагођену фасциклу">
+<!ENTITY extra.usethisfolder "Користи ову фасциклу">
