@@ -5,7 +5,8 @@
   <menu id="tasksMenu" >
     <menupopup id="taskPopup">
       <menuitem insertafter="activityManager" id="tbsf_menu_item"
-        oncommand="window.open('chrome://tbsortfolders/content/', '', 'chrome, dialog, modal');"
+        oncommand="window.openDialog('chrome://tbsortfolders/content/', '',
+          'chrome=yes, modal=yes, dialog=no, resizable=yes');"
         label="&tbsf.menuentry.label;" />
     </menupopup>
   </menu>
