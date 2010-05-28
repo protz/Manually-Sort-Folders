@@ -12,25 +12,25 @@
     &accountsort.noaccountsetupyet;
   </description>
 
-  <tabbox selectedIndex="1">
+  <tabbox selectedIndex="1" flex="1">
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
       <tab><label value="&tab.folders;" /></tab>
       <tab><label value="&tab.extra;" /></tab>
     </tabs>
-    <tabpanels>
+    <tabpanels flex="1">
       <tabpanel orient="vertical">
         <description style="width: 400px">
           &accountssort.description;
         </description>
         <hbox flex="1">
           <vbox flex="1">
-            <listbox id="accounts_list" onclick="on_accounts_list_click();">
+            <listbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
             </listbox>
             <listbox rows="1" disabled="true">
               <listitem label="&accountsort.localfolders;" />
             </listbox>
-            <listbox id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
+            <listbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
             </listbox>
           </vbox>
           <vbox>
@@ -68,7 +68,6 @@
             </groupbox>
           </vbox>
         </hbox>
-        <spacer flex="1" />
         <hbox>
           <spacer flex="1" />
           <button label="&button.restart;" icon="refresh" oncommand="on_account_restart();"/>
@@ -89,7 +88,7 @@
           </menupopup>
         </menulist>
 
-        <hbox>
+        <hbox flex="1">
           <!-- Borrowed and adapted from mail/base/content/msgSelectOffline.xul -->
           <tree id="foldersTree"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -180,7 +179,6 @@
             </vbox>
           </vbox>
         </hbox>
-        <spacer flex="1" />
         <hbox>
           <spacer flex="1" />
           <button label="&button.refresh;" icon="refresh" oncommand="on_refresh();"/>
@@ -201,7 +199,7 @@
                 <menuitem value="1" label="&extra.usecustom;" />
               </menupopup>
             </menulist>
-            <menulist id="startupFolder" label="&extra.nofolder;" oncommand="on_pick_folder(event);">
+            <menulist id="startupFolder" label="&extra.nofolder;" oncommand="on_pick_folder(event);" flex="1">
               <menupopup id="startupFolderPopup" type="folder" mode="filing"
                          showFileHereLabel="true"
                          fileHereLabel="&extra.usethisfolder;"/>

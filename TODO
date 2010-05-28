@@ -1,5 +1,4 @@
 - Don't jump to the top if possible when clicking "refresh".
-- Collapse all folders by default in the UI folder pane.
 - Don't display accounts that use the global inbox in the "Sort Accounts" tab
 - Use margins for <groupbox>es
 - Add an option to apply the sorting logic to the "Favorites" folders (if

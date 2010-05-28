@@ -1,5 +1,6 @@
 -- v0.5 development series --
 
+- Collapse all folders by default for easier, faster sorting.
 - Remove the "sample folder pane" images that were confusing and allow changes
 to be seen in real-time.
 - Updated to work with newer nightlies including addon manager
