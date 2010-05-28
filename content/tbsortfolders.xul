@@ -24,13 +24,13 @@
           &accountssort.description;
         </description>
         <hbox flex="1">
-          <vbox>
-            <listbox id="accounts_list" style="width: 161px" onclick="on_accounts_list_click();">
+          <vbox flex="1">
+            <listbox id="accounts_list" onclick="on_accounts_list_click();">
             </listbox>
-            <listbox style="width: 161px" rows="1" disabled="true">
+            <listbox rows="1" disabled="true">
               <listitem label="&accountsort.localfolders;" />
             </listbox>
-            <listbox id="news_accounts_list" style="width: 161px; display: none;" onclick="on_news_accounts_list_click();">
+            <listbox id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
             </listbox>
           </vbox>
           <vbox>
@@ -88,30 +88,8 @@
             <menuitem value="2" label="&sortmethod.custom;" />
           </menupopup>
         </menulist>
-        <hbox id="default_sort_box">
-          <vbox>
-            <image src="chrome://tbsortfolders/content/default.png"
-              style="padding-left: 5px"/>
-            <description style="width: 161px; margin: 0; font-style: italic; height: 40px">&sortmethod.samplelegend;</description>
-          </vbox>
-          <groupbox>
-            <caption><description>&gb.extra;</description></caption>
-            <description width="300px">&sortmethod.default.description;</description>
-          </groupbox>
-        </hbox>
-        <hbox id="alphabetical_sort_box">
-          <vbox>
-            <image src="chrome://tbsortfolders/content/sorted.png"
-              style="padding-left: 5px"/>
-            <description style="width: 161px; margin: 0; font-style: italic; height: 40px">&sortmethod.samplelegend;</description>
-          </vbox>
-          <groupbox>
-            <caption><description>&gb.extra;</description></caption>
-            <description width="300px">&sortmethod.alphabetical.description;</description>
-          </groupbox>
-        </hbox>
-        <hbox id="manual_sort_box">
 
+        <hbox>
           <!-- Borrowed and adapted from mail/base/content/msgSelectOffline.xul -->
           <tree id="foldersTree"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -121,6 +99,7 @@
             hidecolumnpicker="true"
             datasources="rdf:msgaccountmanager rdf:mailnewsfolders"
             ref=""
+            flex="1"
             >
             <template>
               <query>
@@ -165,29 +144,40 @@
             </template>
             <treecols>
               <treecol id="folderNameCol" width="161px" persist="hidden width"
+                flex="1"
                 label="&tc.foldername;" primary="true" />
             </treecols>
           </tree>
 
           <vbox>
-            <groupbox>
-              <caption><description>&gb.movefolder;</description></caption>
-              <hbox>
-                <button oncommand="on_move_up();">
-                  <image src="chrome://tbsortfolders/content/style/up.png" />
-                  <label value="&button.move_up;" />
-                </button>
-                <button oncommand="on_move_down();">
-                  <image src="chrome://tbsortfolders/content/style/down.png" />
-                  <label value="&button.move_down;" />
-                </button>
-                <spacer flex="1" />
-              </hbox>
-            </groupbox>
-            <groupbox>
+            <groupbox id="default_sort_box">
               <caption><description>&gb.extra;</description></caption>
-              <description width="300px">&sortmethod.custom.description;</description>
+              <description width="300px">&sortmethod.default.description;</description>
             </groupbox>
+            <groupbox id="alphabetical_sort_box">
+              <caption><description>&gb.extra;</description></caption>
+              <description width="300px">&sortmethod.alphabetical.description;</description>
+            </groupbox>
+            <vbox id="manual_sort_box">
+              <groupbox>
+                <caption><description>&gb.movefolder;</description></caption>
+                <hbox>
+                  <button oncommand="on_move_up();">
+                    <image src="chrome://tbsortfolders/content/style/up.png" />
+                    <label value="&button.move_up;" />
+                  </button>
+                  <button oncommand="on_move_down();">
+                    <image src="chrome://tbsortfolders/content/style/down.png" />
+                    <label value="&button.move_down;" />
+                  </button>
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
+                <caption><description>&gb.extra;</description></caption>
+                <description width="300px">&sortmethod.custom.description;</description>
+              </groupbox>
+            </vbox>
           </vbox>
         </hbox>
         <spacer flex="1" />

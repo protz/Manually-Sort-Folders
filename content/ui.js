@@ -47,20 +47,35 @@ function item_label(tree_item) {
 function rebuild_tree(full) {
   dump("rebuild_tree("+full+");\n");
   let dfs = 0;
+  let myFtvItem = function(tree_item) {
+    let text = item_label(tree_item);
+    let folder = MailUtils.getFolderForURI(tree_item.id);
+    return { _folder: folder, text: text };
+  }
+  let sort_function;
+  let replace_data = false;
+  let sort_method = tbsf_data[current_account][0];
+  if (sort_method == 0) {
+      dump("0\n");
+      sort_function = function (c1, c2) tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
+  } else if (sort_method == 1) {
+      dump("1\n");
+      sort_function = function (c1, c2) tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
+  } else if (sort_method == 2) {
+      dump("2\n");
+      sort_function = 
+        function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
+      replace_data = true;
+  }
   let fresh_data = {};
   let my_sort = function(a_tree_items, indent) {
     let tree_items = Array();
     //tree_items = a_tree_items;
-    let myFtvItem = function(tree_item) {
-      let url = item_key(tree_item);
-      let text = item_label(tree_item);
-      return { _folder: { folderURL: url, URI: url }, text: text };
-    }
 
     dump(indent+a_tree_items.length+" nodes passed\n");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
-    tree_items.sort(function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2)));
+    tree_items.sort(sort_function);
 
     dump(indent+tree_items.length+" folders to examine\n");
     for (let i = 0; i < tree_items.length; ++i) {
@@ -111,20 +126,12 @@ function rebuild_tree(full) {
         parent.insertBefore(parent.removeChild(parent.children[i+1]), parent.children[i]);
       }
     }
-
   }
 
   let children = document.querySelectorAll("#foldersTree > treechildren > treeitem");
   my_sort(children, "");
-  tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
-
-
-  /*dump("---\n");
-  for (k in tbsf_data[current_account][1])
-    dump(k+"\n");
-  dump("---"+children.length+"\n");
-  for (let i = 0; i < children.length; ++i)
-    dump(item_key(children[i])+"\n");*/
+  if (replace_data)
+    tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
 
 }
 
@@ -192,16 +199,6 @@ function on_load() {
   extra_on_load();
 }
 
-function fill_manual_sort(move_up, move_down) {
-  if (!tbsf_data[current_account][1])
-    tbsf_data[current_account][1] = {};
-
-  let account = g_accounts[current_account];
-  let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
-  let tree = document.getElementById("foldersTree");
-  tree.setAttribute("ref", root_folder.URI);
-}
-
 function renumber(treeItem, start) {
   tbsf_data[current_account][1][item_key(treeItem)] = start++;
   let children = []; // = treeItem.querySelectorAll("treechildren > treeitem"); but only starting from the root
@@ -264,6 +261,13 @@ function get_sort_method_for_account(account) {
     return 0;
 }
 
+function update_tree() {
+  let account = g_accounts[current_account];
+  let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
+  let tree = document.getElementById("foldersTree");
+  tree.setAttribute("ref", root_folder.URI);
+}
+
 function on_account_changed() {
   //update the UI
   let new_account = document.getElementById("accounts_menu").parentNode.getAttribute("label");
@@ -271,6 +275,7 @@ function on_account_changed() {
     current_account = new_account;
     let sort_method = get_sort_method_for_account(current_account);
     document.getElementById("sort_method").value = sort_method;
+    update_tree();
     on_sort_method_changed();
   }
 }
@@ -282,7 +287,8 @@ function on_sort_method_changed() {
     document.getElementById("default_sort_box").style.display = "none";
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "";
-    fill_manual_sort();
+    if (!tbsf_data[current_account][1])
+      tbsf_data[current_account][1] = {};
   } else if (sort_method == 1) {
     document.getElementById("default_sort_box").style.display = "none";
     document.getElementById("alphabetical_sort_box").style.display = "";
@@ -292,7 +298,8 @@ function on_sort_method_changed() {
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "none";
   }
-
+  tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
+  rebuild_tree(true);
 }
 
 function on_close() {
