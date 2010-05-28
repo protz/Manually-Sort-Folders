@@ -35,7 +35,7 @@
           </vbox>
           <vbox>
             <groupbox>
-              <caption><description>&gb.move;</description></caption>
+              <caption label="&gb.move;" />
               <hbox>
                 <button oncommand="on_account_move_up();">
                   <image src="chrome://tbsortfolders/content/style/up.png" />
@@ -49,7 +49,7 @@
               </hbox>
             </groupbox>
             <groupbox>
-              <caption><description>&gb.first;</description></caption>
+              <caption label="&gb.first;" />
               <description style="max-width: 300px;">&gbfirst.default;</description>
               <menulist oncommand="update_accounts_prefs();">
                 <menupopup id="default_account">
@@ -58,7 +58,7 @@
               </menulist>
             </groupbox>
             <groupbox>
-              <caption><description>&gb.extra;</description></caption>
+              <caption label="&gb.extra;" />
               <description style="width: 300px">
                 &accountsort.warning;
               </description>
@@ -151,16 +151,16 @@
 
           <vbox>
             <groupbox id="default_sort_box">
-              <caption><description>&gb.extra;</description></caption>
+              <caption label="&gb.extra;" />
               <description width="300px">&sortmethod.default.description;</description>
             </groupbox>
             <groupbox id="alphabetical_sort_box">
-              <caption><description>&gb.extra;</description></caption>
+              <caption label="&gb.extra;" />
               <description width="300px">&sortmethod.alphabetical.description;</description>
             </groupbox>
             <vbox id="manual_sort_box">
               <groupbox>
-                <caption><description>&gb.movefolder;</description></caption>
+                <caption label="&gb.movefolder;" />
                 <hbox>
                   <button oncommand="on_move_up();">
                     <image src="chrome://tbsortfolders/content/style/up.png" />
@@ -174,7 +174,7 @@
                 </hbox>
               </groupbox>
               <groupbox>
-                <caption><description>&gb.extra;</description></caption>
+                <caption label="&gb.extra;" />
                 <description width="300px">&sortmethod.custom.description;</description>
               </groupbox>
             </vbox>
@@ -192,7 +192,7 @@
           &extra.description;
         </description>
         <groupbox>
-          <caption><description>&extra.startup;</description></caption>
+          <caption label="&extra.startup;" />
           <label flex="1" value="&extra.startupfolder;" />
           <hbox>
             <menulist oncommand="on_startup_folder_method_changed(event);" id="startup_folder_method" value="1">
