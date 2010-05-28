@@ -1,8 +1,10 @@
 -- v0.5 development series --
 
+- Remove the "sample folder pane" images that were confusing and allow changes
+to be seen in real-time.
 - Updated to work with newer nightlies including addon manager
 - Updated locales
-- New locales: ja, es-ES, zh-CN
+- New locales: ja, es-ES, zh-CN, sr, nl...
 - Added an extra tab for further customization. *You can now choose the default
 startup folder*.
 - Switch to GitHub

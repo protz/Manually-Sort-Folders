@@ -2,18 +2,8 @@
 - Collapse all folders by default in the UI folder pane.
 - Don't display accounts that use the global inbox in the "Sort Accounts" tab
 - Use margins for <groupbox>es
-- Remove the stupid "sample folder pane above" and put the *real* folder pane
-  --> use a flowable layout with 0-width descriptions and splitters to enlarge
-  the tree.
 - Add an option to apply the sorting logic to the "Favorites" folders (if
   possible simply).
-- Add a tab that allows you to arbitrarily style a folder. The UI would be like
-  the "Filters" dialog of Thunderbird. For [pick a folder, a folder that has
-  depth + textbox], apply the following rule [color, underline, bold, icon,
-  hide]. [+] [-]
-  http://dafizilla.wordpress.com/2010/01/08/how-to-programmatically-change-xul-trees-pseudo-classes/
-  Each rule would be an XBL widget. However, there's already a MailTweak
-  extension that does most of this.
 - Move the dialog to the "Preferences" dialog of the add-on (simpler) --> use
   nsIWindowMediator to access main window's variables such as gFolderTreeView
 - See if there's a simple way (like: hacking the root RDF source) to sort
