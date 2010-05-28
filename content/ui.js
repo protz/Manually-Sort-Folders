@@ -55,6 +55,7 @@ function rebuild_tree(full) {
   let sort_function;
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
+  let treeView = document.getElementById("foldersTree").treeBoxObject.view; 
   if (sort_method == 0) {
       dump("0\n");
       sort_function = function (c1, c2) tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
@@ -105,8 +106,11 @@ function rebuild_tree(full) {
       for (let j = 0; j < tree_items[i].children.length; ++j)
         if (tree_items[i].children[j].tagName == "treechildren")
           n_tree_items = tree_items[i].children[j].children;
-      if (n_tree_items.length)
+      if (n_tree_items.length) {
         my_sort(n_tree_items, indent+" ");
+        if (treeView.isContainer(i) && treeView.isContainerOpen(i))
+          treeView.toggleOpenState(i);
+      }
     }
 
     if (full) {
