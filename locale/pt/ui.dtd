@@ -1,0 +1,18 @@
+<!ENTITY general.title "Ordenar pastas manualmente">
+<!ENTITY sortmethod.default "Usar a pré-definida do Thunderbird">
+<!ENTITY sortmethod.samplelegend "(Painel da pasta de amostra acima)">
+<!ENTITY button.move_up "Mover para cima">
+<!ENTITY button.move_down "Mover para baixo">
+<!ENTITY button.refresh "Actualizar painel da pasta">
+<!ENTITY button.close "Fechar">
+<!ENTITY button.restart "Reiniciar Thunderbird">
+<!ENTITY tab.accounts "Ordenar contas">
+<!ENTITY tab.folders "Ordenar pastas">
+<!ENTITY tc.foldername "Nome da pasta">
+<!ENTITY accountsort.localfolders "Pastas locais">
+<!ENTITY tab.extra "Definições extra">
+<!ENTITY extra.startup "Pasta inicial">
+<!ENTITY extra.nofolder "nenhuma pasta seleccionada">
+<!ENTITY extra.uselast "Usar última pasta aberta">
+<!ENTITY extra.usecustom "Usar uma pasta personalizada">
+<!ENTITY extra.usethisfolder "Usar esta pasta">

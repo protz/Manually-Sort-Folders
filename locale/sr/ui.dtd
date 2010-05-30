@@ -18,7 +18,7 @@
 <!ENTITY tab.accounts "Поређај налоге">
 <!ENTITY tab.folders "Поређај фасцикле">
 <!ENTITY gb.move "Премести одабрани налог">
-<!ENTITY gb.movefolder "Премести одабрану фасцилку">
+<!ENTITY gb.movefolder "Премести одабрану фасциклу">
 <!ENTITY gb.first "Први налог у табли фасцикли">
 <!ENTITY gb.extra "Додатне информације">
 <!ENTITY gbfirst.default "Ово је и подразумевани налог.">

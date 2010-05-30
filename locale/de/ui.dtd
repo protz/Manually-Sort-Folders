@@ -16,14 +16,14 @@
 <!ENTITY accountsort.warning "E-Mail-Konten, Unix-Movemail-Konten sowie Blog- &amp; News-Feed-Konten müssen an oberster Position einsortiert erscheinen. Danach folgen die &quot;Lokalen Ordner&quot; und als letztes Newsgruppen-Konten. Diese Regelung kann umgangen werden, indem das Konto &quot;Lokale Ordner&quot; oder eins der Newsgruppen-Konten als Standardkonto ausgewählt wird, wodurch es an die oberste Position gesetzt wird.">
 <!ENTITY accountsort.restartwarning "Zur Übernahme der Änderungen muss Thunderbird neu gestartet werden.">
 <!ENTITY tab.accounts "Konten sortieren">
-<!ENTITY tab.folders "Ordner sotieren">
+<!ENTITY tab.folders "Ordner sortieren">
 <!ENTITY gb.move "Ausgewähltes Konto verschieben">
 <!ENTITY gb.movefolder "Ausgewählten Ordner verschieben">
 <!ENTITY gb.first "Erstes Konto in der Konten-/Ordneransicht">
 <!ENTITY gb.extra "Weitere Informationen">
 <!ENTITY gbfirst.default "Dies ist das Standardkonto.">
 <!ENTITY tc.foldername "Ordnername">
-<!ENTITY mi.firstmail "Erstes Blog- &amp; Newsfeeds- oder E-Mail-Konto in der Liste">
+<!ENTITY mi.firstmail "Erstes Blogs &amp; News-Feeds- oder E-Mail-Konto in der Liste">
 <!ENTITY accountsort.localfolders "Lokale Ordner">
 <!ENTITY accountsort.noaccountsetupyet "Es wurde noch kein Konto eingerichtet.">
 <!ENTITY tab.extra "Erweitert">

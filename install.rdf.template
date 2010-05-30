@@ -69,11 +69,33 @@
 
     <em:localized>
       <Description>
+        <em:locale>nl</em:locale>
+        <em:name>Manually Sort Folders</em:name>
+        <em:description>Een extensie waarmee u de manier kunt wijzigen waarop Thunderbird mappen sorteert in het mappenvenster.</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:translator>markh van BabelZilla.org</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
         <em:locale>pl</em:locale>
         <em:name>Manually sort folders</em:name>
         <em:description>Rozszerzenie umożliwia zmianę sposobu sortowania folderów w panelu folderów Thunderbirda.</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>Leszek(teo)Życzkowski</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>pt-BR</em:locale>
+        <em:name>Manually sort folders</em:name>
+        <em:description>Uma extensão que permite a você alterar a forma pela qual o Thunderbird organiza as pastas no painel.</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:translator>.Edgard Dias Magalhães (edgard.magalhaes@gmail.com)</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
