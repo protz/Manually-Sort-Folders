@@ -28,6 +28,17 @@
         <em:translator>Joergen</em:translator>
       </Description>
     </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Manually Sort Folders</em:name>
+        <em:description>Eine Erweiterung, die es ermöglicht, Thunderbirds Art der Sortierung in der Ordneransicht zu ändern.</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:translator>Archaeopteryx</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
+      </Description>
+    </em:localized>
    
     <em:localized>
       <Description>
@@ -84,6 +95,17 @@
           Thunderbird-e.</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>sklado</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>sr</em:locale>
+        <em:name>Ручно поређај фасцикле</em:name>
+        <em:description>Омогућава да помоћу контролне табле промените начин на који Тандерберд ређа фасцикле.</em:description>
+        <em:creator>Џонатан Проченко</em:creator>
+        <em:translator>Република Српска</em:translator>
         <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
