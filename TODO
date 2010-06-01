@@ -1,10 +1,7 @@
 - Don't jump to the top if possible when clicking "refresh".
 - Don't display accounts that use the global inbox in the "Sort Accounts" tab
-- Use margins for <groupbox>es
 - Add an option to apply the sorting logic to the "Favorites" folders (if
   possible simply).
 - Move the dialog to the "Preferences" dialog of the add-on (simpler) --> use
   nsIWindowMediator to access main window's variables such as gFolderTreeView
-- See if there's a simple way (like: hacking the root RDF source) to sort
-  Address Books
 - Enable drag&drop for sorting folders in the real folder pane [ETA: 2 weeks]

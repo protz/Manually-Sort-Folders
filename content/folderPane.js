@@ -41,7 +41,7 @@
   function update_prefs_functions() {
     let tbsf_data = JSON.parse(tbsf_prefs.getCharPref("tbsf_data"));
     tbsf_prefs_functions = Object();
-    for (vkey in tbsf_data) {
+    for (let vkey in tbsf_data) {
       let key = vkey;
       /* key[0] = 0 if the user asked for Tb's default sort function, 1 for
           alphabetical, 2 for custom sort
