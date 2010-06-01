@@ -26,6 +26,7 @@
         <em:name>Manually sort folders</em:name>
         <em:description>En udvidelse der lader dig ændre den måde hvorpå Thunderbird sorterer mapper i mappeoversigten.</em:description>
         <em:translator>Joergen</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
       </Description>
     </em:localized>
 
@@ -45,6 +46,7 @@
         <em:locale>fr</em:locale>
         <em:name>Trier les dossiers manuellement</em:name>
         <em:description>Cette extension permet de trier manuellement les comptes ainsi que les dossiers des différents comptes dans le panneau latéral.</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
       </Description>
     </em:localized>
 
@@ -54,6 +56,7 @@
         <em:name>Manually sort folders</em:name>
         <em:description>Permette di ordinare manualmente sia gli account che le relative cartelle nel pannello laterale tramite la finestra delle impostazioni accedendovi selezionando il menu principale di Thunderbird "Strumenti -> Impostazioni di Manually sort folders…"</em:description>
         <em:translator>MatrixIsAllOver</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
       </Description>
     </em:localized>
 
@@ -96,6 +99,16 @@
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>.Edgard Dias Magalhães (edgard.magalhaes@gmail.com)</em:translator>
         <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>pt-PT</em:locale>
+        <em:name>Manually sort folders</em:name>
+        <em:description>Uma extensão que permite alterar a forma como o Thunderbird organiza as pastas no painel de pastas.</em:description>
+        <em:translator>Carlos Simão (lloco73@gmail.com)</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
       </Description>
     </em:localized>
 
