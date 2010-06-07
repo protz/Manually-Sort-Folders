@@ -27,6 +27,7 @@
         <em:description>En udvidelse der lader dig ændre den måde hvorpå Thunderbird sorterer mapper i mappeoversigten.</em:description>
         <em:translator>Joergen</em:translator>
         <em:creator>Jonathan Protzenko</em:creator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
@@ -47,6 +48,7 @@
         <em:name>Trier les dossiers manuellement</em:name>
         <em:description>Cette extension permet de trier manuellement les comptes ainsi que les dossiers des différents comptes dans le panneau latéral.</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
@@ -57,6 +59,7 @@
         <em:description>Permette di ordinare manualmente sia gli account che le relative cartelle nel pannello laterale tramite la finestra delle impostazioni accedendovi selezionando il menu principale di Thunderbird "Strumenti -> Impostazioni di Manually sort folders…"</em:description>
         <em:translator>MatrixIsAllOver</em:translator>
         <em:creator>Jonathan Protzenko</em:creator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
@@ -67,6 +70,7 @@
         <em:description>Thunderbird のフォルダパネル内アカウントとフォルダの並び替え機能を提供します</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>kiki</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
@@ -88,6 +92,18 @@
         <em:description>Rozszerzenie umożliwia zmianę sposobu sortowania folderów w panelu folderów Thunderbirda.</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>Leszek(teo)Życzkowski</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>pt</em:locale>
+        <em:name>Manually sort folders</em:name>
+        <em:description>Uma extensão que permite alterar a forma como o Thunderbird organiza as pastas no painel de pastas.</em:description>
+        <em:translator>Carlos Simão (lloco73@gmail.com)</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
@@ -97,18 +113,8 @@
         <em:name>Manually sort folders</em:name>
         <em:description>Uma extensão que permite a você alterar a forma pela qual o Thunderbird organiza as pastas no painel.</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
-        <em:translator>.Edgard Dias Magalhães (edgard.magalhaes@gmail.com)</em:translator>
+        <em:translator>Edgard Dias Magalhães (edgard.magalhaes@gmail.com)</em:translator>
         <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
-      </Description>
-    </em:localized>
-
-    <em:localized>
-      <Description>
-        <em:locale>pt-PT</em:locale>
-        <em:name>Manually sort folders</em:name>
-        <em:description>Uma extensão que permite alterar a forma como o Thunderbird organiza as pastas no painel de pastas.</em:description>
-        <em:translator>Carlos Simão (lloco73@gmail.com)</em:translator>
-        <em:creator>Jonathan Protzenko</em:creator>
       </Description>
     </em:localized>
 
@@ -119,6 +125,7 @@
         <em:description>Расширение, которое позволит вам изменить порядок сортировки папок в панели папок Thunderbird.</em:description>
         <em:creator>Джонатан Проценко</em:creator>
         <em:translator>Пирятинский Виталий</em:translator>
+        <em:homepageURL>http://www.xulforum.org/go_code</em:homepageURL>
       </Description>
     </em:localized>
 
