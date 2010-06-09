@@ -9,7 +9,5 @@ Just run make and it will build the .xpi for you. Use install.rdf.template if
 you need to bump the version number, *not* install.rdf (it is overwritten each
 time).
 
-* Screenshots, pre-packaged builds on [my personal
-website](http://www.xulforum.org)
-* Stable version on
-[AMO](https://addons.mozilla.org/en-US/thunderbird/addon/15102)
+* Screenshots, pre-packaged builds on [the wiki](http://wiki.github.com/protz/Manually-Sort-Folders/)
+* Stable version on [AMO](https://addons.mozilla.org/en-US/thunderbird/addon/15102)
