@@ -1,12 +1,3 @@
--- v0.5 development series --
+-- v0.6 development series --
 
-- Compatible with Thunderbird 3.next
-- Collapse all folders by default for easier, faster sorting.
-- Remove the "sample folder pane" images that were confusing and allow changes
-to be seen in real-time.
-- Updated to work with newer nightlies including addon manager
-- Updated locales
-- New locales: ja, es-ES, zh-CN, sr, nl, pt...
-- Added an extra tab for further customization. *You can now choose the default
-startup folder*.
-- Switch to GitHub
+Nothing yet.
