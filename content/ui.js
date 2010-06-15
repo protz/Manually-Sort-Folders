@@ -44,7 +44,7 @@ function item_label(tree_item) {
   Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
 }
 
-function rebuild_tree(full) {
+function rebuild_tree(full, collapse) {
   dump("rebuild_tree("+full+");\n");
   let dfs = 0;
   let myFtvItem = function(tree_item) {
@@ -108,7 +108,7 @@ function rebuild_tree(full) {
           n_tree_items = tree_items[i].children[j].children;
       if (n_tree_items.length) {
         my_sort(n_tree_items, indent+" ");
-        if (treeView.isContainer(i) && treeView.isContainerOpen(i))
+        if (collapse && treeView.isContainer(i) && treeView.isContainerOpen(i))
           treeView.toggleOpenState(i);
       }
     }
@@ -303,7 +303,7 @@ function on_sort_method_changed() {
     document.getElementById("manual_sort_box").style.display = "none";
   }
   tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
-  rebuild_tree(true);
+  rebuild_tree(true, true);
 }
 
 function on_close() {
@@ -357,6 +357,8 @@ function accounts_on_load() {
         mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
         add_li(document.getElementById("accounts_list"), mail_accounts[0]);
         document.getElementById("default_account").firstChild.setAttribute("disabled", false);
+        /* We're not setting the "first account in the list" value in the UI
+         * because it defaults to "first rss or mail account in the list */
         break;
       case "nntp":
         news_account_found = true;
@@ -366,6 +368,7 @@ function accounts_on_load() {
         mi.setAttribute("label", names[i]);
         document.getElementById("default_account").appendChild(mi);
         add_li(document.getElementById("news_accounts_list"), news_accounts[0]);
+        /* Set the "first account in the list value in the UI */
         if (defaultaccount == accounts[i])
           mi.parentNode.parentNode.value = accounts[i];
         break;
@@ -381,6 +384,7 @@ function accounts_on_load() {
           mi.setAttribute("value", accounts[i]);
           mi.setAttribute("label", names[i]);
           document.getElementById("default_account").appendChild(mi);
+          /* Set the "first account in the list" value in the UI */
           if (defaultaccount == accounts[i])
             mi.parentNode.parentNode.value = accounts[i];
         }
