@@ -7,9 +7,7 @@
   Cu.import("resource://tbsortfolders/sort.jsm");
   Cu.import("resource://app/modules/MailUtils.js");
 
-  const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
-    .getService(Ci.nsIPrefService)
-    .getBranch("extensions.tbsortfolders@xulforum.org.");
+  const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
   /* This array is populated either when the file is loaded or when the
    * preferences are updated. The keys are the account's prettiest names and the
    * values are the sort functions associated to each account. */
@@ -39,7 +37,12 @@
   }
 
   function update_prefs_functions() {
-    let tbsf_data = JSON.parse(tbsf_prefs.getCharPref("tbsf_data"));
+    let tbsf_data;
+    try {
+      tbsf_data = JSON.parse(tbsf_prefs.getValue("tbsf_data", JSON.stringify(Object ())));
+    } catch (e) {
+      tbsf_data = {};
+    }
     tbsf_prefs_functions = Object();
     for (let vkey in tbsf_data) {
       let key = vkey;
@@ -58,30 +61,7 @@
   }
 
   update_prefs_functions();
-
-  let myPrefObserver = {
-    register: function mpo_register () {
-      tbsf_prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
-      tbsf_prefs.addObserver("", this, false);
-    },
-
-    unregister: function mpo_unregister () {
-      if (!tbsf_prefs) return;
-        tbsf_prefs.removeObserver("", this);
-    },
-
-    observe: function mpo_observe (aSubject, aTopic, aData) {
-      if (aTopic != "nsPref:changed")
-        return;
-      switch (aData) {
-        case "tbsf_data":
-          update_prefs_functions();
-          break;
-      }
-    }
-  };
-  myPrefObserver.register();
-
+  tbsf_prefs.get("tbsf_data").events.addListener("change", update_prefs_functions);
 
   /* For default startup folder */
   let oldRestoreTab = mailTabType.modes.folder.restoreTab;
@@ -95,7 +75,7 @@
   let firstRun = true;
   gFolderTreeView.selectFolder = function (x, y) {
     if (firstRun && inRestoreTab) {
-      let startup_folder = tbsf_prefs.getCharPref("startup_folder");
+      let startup_folder = tbsf_prefs.getValue("startup_folder", "");
       if (startup_folder != "") {
         let folder = MailUtils.getFolderForURI(startup_folder);
         if (folder)
