@@ -108,8 +108,10 @@ function rebuild_tree(full, collapse) {
           n_tree_items = tree_items[i].children[j].children;
       if (n_tree_items.length) {
         my_sort(n_tree_items, indent+" ");
-        if (collapse && tree_items[i].getAttribute("container") && tree_items[i].getAttribute("open"))
-          treeView.toggleOpenState(i);
+        if (collapse
+            && tree_items[i].getAttribute("container") == "true"
+            && tree_items[i].getAttribute("open") == "true")
+          tree_items[i].setAttribute("open", "false");
       }
     }
 
