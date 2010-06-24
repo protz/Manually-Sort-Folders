@@ -92,8 +92,6 @@
           <!-- Borrowed and adapted from mail/base/content/msgSelectOffline.xul -->
           <tree id="foldersTree"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-            style="padding-left: 5px; overflow: hidden;
-            width: 161px; height: 261px"
             treelines="true"
             hidecolumnpicker="true"
             datasources="rdf:msgaccountmanager rdf:mailnewsfolders"

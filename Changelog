@@ -1,3 +1,3 @@
 -- v0.6 development series --
 
-Bugfix release for multi-byte characters and folders that kept collapsing.
+New bugfix with collapsing folders by default. Fix appearance of the tree.
