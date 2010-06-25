@@ -47,10 +47,15 @@ function item_label(tree_item) {
 function rebuild_tree(full, collapse) {
   dump("rebuild_tree("+full+");\n");
   let dfs = 0;
+  let ftvItems = {};
+  /* Cache these expensive calls. They're called for each comparison :( */
   let myFtvItem = function(tree_item) {
-    let text = item_label(tree_item);
-    let folder = MailUtils.getFolderForURI(tree_item.id);
-    return { _folder: folder, text: text };
+    if (!ftvItems[tree_item.id]) {
+      let text = item_label(tree_item);
+      let folder = MailUtils.getFolderForURI(tree_item.id);
+      ftvItems[tree_item.id] = { _folder: folder, text: text };
+    }
+    return ftvItems[tree_item.id];
   }
   let sort_function;
   let replace_data = false;
