@@ -321,7 +321,10 @@ function on_close() {
 function on_refresh() {
   tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
-  window.opener.gFolderTreeView.mode = window.opener.gFolderTreeView.mode;
+  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
+    .getService(Ci.nsIWindowMediator)
+    .getMostRecentWindow("mail:3pane");
+  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
 }
 
 window.addEventListener("unload", on_refresh, false);
@@ -474,8 +477,10 @@ function on_account_move_down() {
 }
 
 function on_account_restart() {
-  let app = window.opener.Application;
-  window.opener.setTimeout(function () { app.restart(); }, 1000);
+  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
+    .getService(Ci.nsIWindowMediator)
+    .getMostRecentWindow("mail:3pane");
+  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
   window.close();
 }
 

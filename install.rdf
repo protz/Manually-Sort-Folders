@@ -11,6 +11,7 @@
     <em:name>Manually sort folders</em:name>
     <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
     <em:creator>Jonathan Protzenko</em:creator>
+    <em:optionsURL>chrome://tbsortfolders/content/tbsortfolders.xul</em:optionsURL>
     
     <em:targetApplication>
       <Description>
