@@ -11,9 +11,11 @@ dist:
 upload:
 	echo "cd jonathan/files\nput tbsortfolders.xpi\nput TODO TODO_tbsortfolders\nput Changelog Changelog_tbsortfolders" | ftp xulforum@ftp.xulforum.org
 
+DATE = $(shell date +%Y%m%d%H%M)
+
 debug_template:
 	cp -f install.rdf.template install.rdf
-	sed -i s/__REPLACEME__/\.$(shell date +%y%m%d)pre/ install.rdf
+	sed -i s/__REPLACEME__/\.$(DATE)pre/ install.rdf
 
 release_template:
 	cp -f install.rdf.template install.rdf
