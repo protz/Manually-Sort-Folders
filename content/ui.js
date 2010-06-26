@@ -41,15 +41,18 @@ function item_label(tree_item) {
   Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
 }
 
+let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
+let ftvItems = {};
+
 function rebuild_tree(full, collapse) {
   dump("rebuild_tree("+full+");\n");
   let dfs = 0;
-  let ftvItems = {};
   /* Cache these expensive calls. They're called for each comparison :( */
   let myFtvItem = function(tree_item) {
     if (!ftvItems[tree_item.id]) {
       let text = item_label(tree_item);
-      let folder = MailUtils.getFolderForURI(tree_item.id);
+      let folder = rdfService.GetResource(tree_item.id);
+      folder.QueryInterface(Ci.nsIMsgFolder);
       ftvItems[tree_item.id] = { _folder: folder, text: text };
     }
     return ftvItems[tree_item.id];
@@ -57,7 +60,6 @@ function rebuild_tree(full, collapse) {
   let sort_function;
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
-  let treeView = document.getElementById("foldersTree").treeBoxObject.view; 
   if (sort_method == 0) {
       dump("0\n");
       sort_function = function (c1, c2) tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
@@ -203,7 +205,6 @@ function on_load() {
   };
   rdf_source.AddObserver(some_observer);
   window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);*/
-
 
   on_account_changed();
 
