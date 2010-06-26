@@ -1,3 +1,6 @@
 -- v0.6 development series --
 
-New bugfix with collapsing folders by default. Fix appearance of the tree.
+- Improve performance when sorting large series of folders
+- The dialog is now accessible through the addon's preferences
+- New bugfix with collapsing folders by default.
+- Fix appearance of the tree.
