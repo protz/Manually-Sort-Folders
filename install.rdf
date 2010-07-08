@@ -6,7 +6,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
-    <em:version>0.6.4</em:version>
+    <em:version>0.6.5</em:version>
     <em:iconURL>chrome://tbsortfolders/content/icon.png</em:iconURL>
     <em:name>Manually sort folders</em:name>
     <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
@@ -149,6 +149,17 @@
         <em:description>Омогућава да помоћу контролне табле промените начин на који Тандерберд ређа фасцикле.</em:description>
         <em:creator>Џонатан Проченко</em:creator>
         <em:translator>Република Српска</em:translator>
+        <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>zh-TW</em:locale>
+        <em:name>Manually Sort Folders</em:name>
+        <em:description>一個能讓您改變Thunderbird信件匣窗格內資料夾排列方式的附加元件</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:translator>黃奕錡</em:translator>
         <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
       </Description>
     </em:localized>
