@@ -152,6 +152,17 @@
         <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
       </Description>
     </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>zh-TW</em:locale>
+        <em:name>Manually Sort Folders</em:name>
+        <em:description>一個能讓您改變Thunderbird信件匣窗格內資料夾排列方式的附加元件</em:description>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:translator>黃奕錡</em:translator>
+        <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
+      </Description>
+    </em:localized>
   </Description>      
 
 </RDF>
