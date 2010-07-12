@@ -4,8 +4,8 @@
 <!ENTITY sortmethod.alphabetical "単純な文字列の比較を使用する">
 <!ENTITY sortmethod.custom "手動による並び替えを使用する">
 <!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並び替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません">
-<!ENTITY sortmethod.alphabetical.description "これは最も基本的な文字列比較関数を使用する標準の並び替え機能です。 特別なユニコード符号を使用する Gmail のようなフォルダの異なるカテゴリを作成します。">
-<!ENTITY sortmethod.custom.description "手動でフォルダを分類するときは上のボタンを使用してください。 新しいフォルダが追加されるとリストの最後に置きます。 それが合わない場合は後で戻すことができます。">
+<!ENTITY sortmethod.alphabetical.description "これは最も基本的な文字列比較関数を使用する標準の並び替え機能です。 特別なユニコード符号を使用する Gmail のようなフォルダと異なるカテゴリを作成します。">
+<!ENTITY sortmethod.custom.description "手動でフォルダを分類するときは上のボタンを使用してください。 新規に追加及び名前を変更したフォルダはリストの最下段になります。 それが合わない場合は後で戻すことができます。">
 <!ENTITY sortmethod.samplelegend "(サンプルフォルダ欄)">
 <!ENTITY button.move_up "上へ">
 <!ENTITY button.move_down "下へ">
