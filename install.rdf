@@ -6,7 +6,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
-    <em:version>0.6.5</em:version>
+    <em:version>0.6.6</em:version>
     <em:iconURL>chrome://tbsortfolders/content/icon.png</em:iconURL>
     <em:name>Manually sort folders</em:name>
     <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
@@ -71,6 +71,17 @@
         <em:description>Thunderbird のフォルダパネル内アカウントとフォルダの並び替え機能を提供します</em:description>
         <em:creator>Jonathan Protzenko</em:creator>
         <em:translator>kiki</em:translator>
+        <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>nb-NO</em:locale>
+        <em:name>Sorter mapper manuelt</em:name>
+        <em:description>Denne utvidelsen gjør det mulig å endre rekkefølgen på kontoer og mapper i Thunderbirds mappevisning.</em:description>
+        <em:translator>Lars Andre Landås</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
         <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
       </Description>
     </em:localized>
