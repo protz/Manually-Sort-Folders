@@ -77,6 +77,17 @@
 
     <em:localized>
       <Description>
+        <em:locale>nb-NO</em:locale>
+        <em:name>Sorter mapper manuelt</em:name>
+        <em:description>Denne utvidelsen gjør det mulig å endre rekkefølgen på kontoer og mapper i Thunderbirds mappevisning.</em:description>
+        <em:translator>Lars Andre Landås</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
+        <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
         <em:locale>nl</em:locale>
         <em:name>Manually Sort Folders</em:name>
         <em:description>Een extensie waarmee u de manier kunt wijzigen waarop Thunderbird mappen sorteert in het mappenvenster.</em:description>
