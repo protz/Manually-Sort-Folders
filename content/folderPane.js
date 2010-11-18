@@ -39,7 +39,7 @@
   }
 
   function update_prefs_functions() {
-    let tbsf_data = JSON.parse(tbsf_prefs.getCharPref("tbsf_data"));
+    let tbsf_data = JSON.parse(tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data);
     tbsf_prefs_functions = Object();
     for (let vkey in tbsf_data) {
       let key = vkey;
@@ -95,7 +95,7 @@
   let firstRun = true;
   gFolderTreeView.selectFolder = function (x, y) {
     if (firstRun && inRestoreTab) {
-      let startup_folder = tbsf_prefs.getCharPref("startup_folder");
+      let startup_folder = tbsf_prefs.getComplexValue("startup_folder", Ci.nsISupportsString).data;
       if (startup_folder != "") {
         let folder = MailUtils.getFolderForURI(startup_folder);
         if (folder)

@@ -12,6 +12,13 @@ const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
 var tbsf_data;
 var current_account = null;
 
+function setStringPref(p, v) {
+  let str = Cc["@mozilla.org/supports-string;1"]
+            .createInstance(Ci.nsISupportsString);
+  str.data = v;
+  return tbsf_prefs.setComplexValue(p, Ci.nsISupportsString, str);
+}
+
 /* Most of the functions below are for *folder* sorting */
 
 function assert(v, s) {
@@ -149,7 +156,7 @@ function rebuild_tree(full, collapse) {
 }
 
 function on_load() {
-  let json = tbsf_prefs.getCharPref("tbsf_data");
+  let json = tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data;
   tbsf_data = JSON.parse(json);
 
   let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
@@ -310,7 +317,7 @@ function on_sort_method_changed() {
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "none";
   }
-  tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
+  setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   rebuild_tree(true, true);
 }
 
@@ -320,7 +327,7 @@ function on_close() {
 }
 
 function on_refresh() {
-  tbsf_prefs.setCharPref("tbsf_data", JSON.stringify(tbsf_data));
+  setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
   let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
     .getService(Ci.nsIWindowMediator)
@@ -503,11 +510,11 @@ function on_pick_folder(aEvent) {
   let picker = document.getElementById("startupFolder");
   picker.folder = folder;
   picker.setAttribute("label", folder.prettyName);
-  tbsf_prefs.setCharPref("startup_folder", folder.URI);
+  setStringPref("startup_folder", folder.URI);
 }
 
 function extra_on_load() {
-  let startup_folder = tbsf_prefs.getCharPref("startup_folder");
+  let startup_folder = tbsf_prefs.getComplexValue("startup_folder", Ci.nsISupportsString).data;
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
@@ -528,9 +535,9 @@ function on_startup_folder_method_changed(event) {
   if (menu.value == "1") {
     picker.disabled = false;
     if (picker.folder)
-      tbsf_prefs.setCharPref("startup_folder", picker.folder.URI);
+      setStringPref("startup_folder", picker.folder.URI);
   } else {
     picker.disabled = true;
-    tbsf_prefs.setCharPref("startup_folder", "");
+    setStringPref("startup_folder", "");
   }
 }
