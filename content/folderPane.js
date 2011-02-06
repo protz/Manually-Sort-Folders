@@ -5,7 +5,7 @@
   const Ci = Components.interfaces;
   const Cu = Components.utils;
   Cu.import("resource://tbsortfolders/sort.jsm");
-  Cu.import("resource://app/modules/MailUtils.js");
+  Cu.import("resource:///modules/MailUtils.js");
 
   const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
     .getService(Ci.nsIPrefService)

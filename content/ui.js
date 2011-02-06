@@ -2,7 +2,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 Cu.import("resource://tbsortfolders/sort.jsm");
-Cu.import("resource://app/modules/MailUtils.js");
+Cu.import("resource:///modules/MailUtils.js");
 
 var g_accounts = Object();
 //const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
