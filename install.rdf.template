@@ -23,7 +23,7 @@
  
     <em:localized>
       <Description>
-        <em:locale>da-DK</em:locale>
+        <em:locale>da</em:locale>
         <em:name>Manually sort folders</em:name>
         <em:description>En udvidelse der lader dig ændre den måde hvorpå Thunderbird sorterer mapper i mappeoversigten.</em:description>
         <em:translator>Joergen</em:translator>
@@ -160,6 +160,17 @@
         <em:description>Омогућава да помоћу контролне табле промените начин на који Тандерберд ређа фасцикле.</em:description>
         <em:creator>Џонатан Проченко</em:creator>
         <em:translator>Република Српска</em:translator>
+        <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>sv-SE</em:locale>
+        <em:name>Manually sort folders</em:name>
+        <em:description>Låter dig ändra det sätt på vilket Thunderbird sorterar mappar i mappanelen.</em:description>
+        <em:translator>Mikael Hiort af Ornäs</em:translator>
+        <em:creator>Jonathan Protzenko</em:creator>
         <em:homepageURL>http://wiki.github.com/protz/Manually-Sort-Folders/</em:homepageURL>
       </Description>
     </em:localized>
