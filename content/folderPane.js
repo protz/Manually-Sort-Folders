@@ -39,7 +39,11 @@
   }
 
   function update_prefs_functions() {
-    let tbsf_data = JSON.parse(tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data);
+    let tbsf_data = {};
+    try {
+      tbsf_data = JSON.parse(tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data);
+    } catch (e) {
+    }
     tbsf_prefs_functions = Object();
     for (let vkey in tbsf_data) {
       let key = vkey;

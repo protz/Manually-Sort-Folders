@@ -9,7 +9,7 @@ var g_accounts = Object();
 const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
   .getService(Ci.nsIPrefService)
   .getBranch("extensions.tbsortfolders@xulforum.org.");
-var tbsf_data;
+var tbsf_data = {};
 var current_account = null;
 
 function setStringPref(p, v) {
@@ -157,7 +157,10 @@ function rebuild_tree(full, collapse) {
 
 function on_load() {
   let json = tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data;
-  tbsf_data = JSON.parse(json);
+  try {
+    tbsf_data = JSON.parse(json);
+  } catch (e) {
+  }
 
   let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
   let accounts = account_manager.accounts;
