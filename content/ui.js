@@ -3,6 +3,7 @@ const Ci = Components.interfaces;
 const Cu = Components.utils;
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
+Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
 var g_accounts = Object();
 //const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
@@ -55,7 +56,7 @@ let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFServic
 let ftvItems = {};
 
 function rebuild_tree(full, collapse) {
-  dump("rebuild_tree("+full+");\n");
+  //dump("rebuild_tree("+full+");\n");
   let dfs = 0;
   /* Cache these expensive calls. They're called for each comparison :( */
   let myFtvItem = function(tree_item) {
@@ -71,13 +72,13 @@ function rebuild_tree(full, collapse) {
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
   if (sort_method == 0) {
-      dump("0\n");
+      //dump("0\n");
       sort_function = function (c1, c2) tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
-      dump("1\n");
+      //dump("1\n");
       sort_function = function (c1, c2) tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
-      dump("2\n");
+      //dump("2\n");
       sort_function = 
         function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
@@ -87,12 +88,12 @@ function rebuild_tree(full, collapse) {
     let tree_items = Array();
     //tree_items = a_tree_items;
 
-    dump(indent+a_tree_items.length+" nodes passed\n");
+    //dump(indent+a_tree_items.length+" nodes passed\n");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
     tree_items.sort(sort_function);
 
-    dump(indent+tree_items.length+" folders to examine\n");
+    //dump(indent+tree_items.length+" folders to examine\n");
     for (let i = 0; i < tree_items.length; ++i) {
       dfs++;
       //let data = tbsf_data[current_account][1];
@@ -112,8 +113,9 @@ function rebuild_tree(full, collapse) {
       folderPane.js) so the test above gives true (it's undefined) and we set
       the right sort keys. */
       fresh_data[item_key(tree_items[i])] = dfs;
-      if (full)
-        dump(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
+      if (full) {
+        //dump(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
+      }
 
       //let n_tree_items = tree_items[i].querySelectorAll("[thisnode] > treechildren > treeitem");
       let n_tree_items = [];
@@ -163,19 +165,20 @@ function on_load() {
   }
 
   let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
-  let accounts = account_manager.accounts;
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
-  if (!accounts.Count()) {
+  let accounts = [x for each (x in fixIterator(account_manager.accounts, Ci.nsIMsgAccount))];
+  if (!accounts.length) {
     document.querySelector("tabbox").style.display = "none";
     document.getElementById("err_no_accounts").style.display = "";
     return;
   }
-  for (var i = 0; i < accounts.Count(); i++) {
+  for each (let account in accounts) {
+    //dump(Object.keys(account)+"\n");
     //fill the menulist with the right elements
-    let account = accounts.QueryElementAt(i, Ci.nsIMsgAccount);
     if (!account.incomingServer)
       continue;
+    //dump(account.incomingServer.rootFolder.prettiestName+"\n");
     name = account.incomingServer.rootFolder.prettiestName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
@@ -192,7 +195,10 @@ function on_load() {
   let folders_tree = document.getElementById("foldersTree");
   let some_listener = {
     willRebuild : function(builder) { },
-    didRebuild : function(builder) { dump("Tree rebuilt\n"); rebuild_tree(true); }
+    didRebuild : function(builder) {
+      //dump("Tree rebuilt\n");
+      rebuild_tree(true);
+    }
   };
   folders_tree.builder.addListener(some_listener);
   window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
@@ -245,7 +251,7 @@ function move_up(tree_item) {
     rebuild_tree();
     //tree.builder.rebuild();
   } else {
-    dump("This is unexpected\n");
+    //dump("This is unexpected\n");
   }
   /*for (let i = 0; i < 10; ++i) {
     let tree_item = tree.view.getItemAtIndex(i);
