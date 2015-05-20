@@ -200,7 +200,7 @@
               </menupopup>
             </menulist>
             <menulist id="startupFolder" label="&extra.nofolder;" oncommand="on_pick_folder(event);" flex="1">
-              <menupopup id="startupFolderPopup" type="folder" mode="filing"
+              <menupopup id="startupFolderPopup" type="folder"
                          showFileHereLabel="true"
                          fileHereLabel="&extra.usethisfolder;"/>
             </menulist>
