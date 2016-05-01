@@ -73,14 +73,14 @@ function rebuild_tree(full, collapse) {
   let sort_method = tbsf_data[current_account][0];
   if (sort_method == 0) {
       //dump("0\n");
-      sort_function = function (c1, c2) tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
+      sort_function = (c1, c2) => tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
       //dump("1\n");
-      sort_function = function (c1, c2) tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
+      sort_function = (c1, c2) => tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
       //dump("2\n");
-      sort_function = 
-        function (c1, c2) tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
+      sort_function =
+        (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
   }
   let fresh_data = {};
@@ -107,7 +107,7 @@ function rebuild_tree(full, collapse) {
       meanwhile so we make sure it is enforced with the line below. It only
       changes something in case a folder has been deleted/added since we last
       walked the folder tree.
-      
+
       It is to be remarked that when a folder has been added, it is sorted
       \emph{at the end} of the list (see special case and comments in
       folderPane.js) so the test above gives true (it's undefined) and we set
@@ -167,13 +167,15 @@ function on_load() {
   let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
-  let accounts = [x for each (x in fixIterator(account_manager.accounts, Ci.nsIMsgAccount))];
+  let accounts = [];
+  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount))
+    accounts.push(x);
   if (!accounts.length) {
     document.querySelector("tabbox").style.display = "none";
     document.getElementById("err_no_accounts").style.display = "";
     return;
   }
-  for each (let account in accounts) {
+  for (let account of accounts) {
     //dump(Object.keys(account)+"\n");
     //fill the menulist with the right elements
     if (!account.incomingServer)
@@ -354,7 +356,7 @@ var g_other_accounts = null;
 function accounts_on_load() {
   let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
   let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
-  accounts = accounts.filter(function (x) x != defaultaccount);
+  accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
   let servers = accounts.map(function (a) Application.prefs.get("mail.account."+a+".server").value);
   let types = servers.map(function (s) Application.prefs.get("mail.server."+s+".type").value);
@@ -530,7 +532,7 @@ function extra_on_load() {
     folder = MailUtils.getFolderForURI(startup_folder);
   if (folder) {
     picker.folder = folder;
-    picker.setAttribute("label", folder.prettyName);    
+    picker.setAttribute("label", folder.prettyName);
   } else {
     let menu = document.getElementById("startup_folder_method");
     menu.value = "0";

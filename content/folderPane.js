@@ -18,7 +18,7 @@
   sortFolderItems = function (aFtvItems) {
     if (!aFtvItems.length)
       return;
-    
+
     //A sort function is associated to every account, so we get the account's name
     let parent = aFtvItems[0]._folder.parent;
     //In case we're asked to sort sub-folders, we walk up the tree up to the root
