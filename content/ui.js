@@ -13,13 +13,6 @@ const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
 var tbsf_data = {};
 var current_account = null;
 
-function setStringPref(p, v) {
-  let str = Cc["@mozilla.org/supports-string;1"]
-            .createInstance(Ci.nsISupportsString);
-  str.data = v;
-  return tbsf_prefs.setComplexValue(p, Ci.nsISupportsString, str);
-}
-
 /* Most of the functions below are for *folder* sorting */
 
 function assert(v, s) {
@@ -158,7 +151,7 @@ function rebuild_tree(full, collapse) {
 }
 
 function on_load() {
-  let json = tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data;
+  let json = tbsf_prefs.getStringPref("tbsf_data");
   try {
     tbsf_data = JSON.parse(json);
   } catch (e) {
@@ -202,7 +195,7 @@ function on_load() {
       rebuild_tree(true);
     }
   };
-  folders_tree.builder.addListener(some_listener);
+  folders_tree.builderVew.addListener(some_listener);
   window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
 
   /* That one tracks changes that happen to the folder pane *while* the manually
@@ -328,7 +321,7 @@ function on_sort_method_changed() {
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "none";
   }
-  setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   rebuild_tree(true, true);
 }
 
@@ -338,7 +331,7 @@ function on_close() {
 }
 
 function on_refresh() {
-  setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
   let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
     .getService(Ci.nsIWindowMediator)
@@ -358,8 +351,8 @@ function accounts_on_load() {
   let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
-  let servers = accounts.map(function (a) Application.prefs.get("mail.account."+a+".server").value);
-  let types = servers.map(function (s) Application.prefs.get("mail.server."+s+".type").value);
+  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
+  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
   let names = servers.map(function (s) {
     try {
       return Application.prefs.get("mail.server."+s+".name").value;
@@ -521,11 +514,11 @@ function on_pick_folder(aEvent) {
   let picker = document.getElementById("startupFolder");
   picker.folder = folder;
   picker.setAttribute("label", folder.prettyName);
-  setStringPref("startup_folder", folder.URI);
+  tbsf_prefs.setStringPref("startup_folder", folder.URI);
 }
 
 function extra_on_load() {
-  let startup_folder = tbsf_prefs.getComplexValue("startup_folder", Ci.nsISupportsString).data;
+  let startup_folder = tbsf_prefs.getStringPref("startup_folder");
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
@@ -546,9 +539,9 @@ function on_startup_folder_method_changed(event) {
   if (menu.value == "1") {
     picker.disabled = false;
     if (picker.folder)
-      setStringPref("startup_folder", picker.folder.URI);
+      tbsf_prefs.setStringPref("startup_folder", picker.folder.URI);
   } else {
     picker.disabled = true;
-    setStringPref("startup_folder", "");
+    tbsf_prefs.setStringPref("startup_folder", "");
   }
 }

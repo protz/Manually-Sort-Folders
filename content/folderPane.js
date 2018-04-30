@@ -41,7 +41,7 @@
   function update_prefs_functions() {
     let tbsf_data = {};
     try {
-      tbsf_data = JSON.parse(tbsf_prefs.getComplexValue("tbsf_data", Ci.nsISupportsString).data);
+      tbsf_data = JSON.parse(tbsf_prefs.getStringPref("tbsf_data"));
     } catch (e) {
     }
     tbsf_prefs_functions = Object();
@@ -53,7 +53,7 @@
       */
       if (tbsf_data[key][0] == 2) {
         //feed the manual sort function with the associated sort data
-        tbsf_prefs_functions[key] = function (a,b) tbsf_sort_functions[2](tbsf_data[key][1], a, b);
+        tbsf_prefs_functions[key] = (a,b) => tbsf_sort_functions[2](tbsf_data[key][1], a, b);
       } else {
         //other functions don't need specific data
         tbsf_prefs_functions[key] = tbsf_sort_functions[tbsf_data[key][0]];
@@ -65,7 +65,7 @@
 
   let myPrefObserver = {
     register: function mpo_register () {
-      tbsf_prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
+      tbsf_prefs.QueryInterface(Components.interfaces.nsIPrefBranch);
       tbsf_prefs.addObserver("", this, false);
     },
 
@@ -99,7 +99,7 @@
   let firstRun = true;
   gFolderTreeView.selectFolder = function (x, y) {
     if (firstRun && inRestoreTab) {
-      let startup_folder = tbsf_prefs.getComplexValue("startup_folder", Ci.nsISupportsString).data;
+      let startup_folder = tbsf_prefs.getStringPref("startup_folder");
       if (startup_folder != "") {
         let folder = MailUtils.getFolderForURI(startup_folder);
         if (folder)
