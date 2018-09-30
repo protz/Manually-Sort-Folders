@@ -11,7 +11,7 @@
     .getService(Ci.nsIPrefService)
     .getBranch("extensions.tbsortfolders@xulforum.org.");
   /* This array is populated either when the file is loaded or when the
-   * preferences are updated. The keys are the account's prettiest names and the
+   * preferences are updated. The keys are the account's pretty names and the
    * values are the sort functions associated to each account. */
   var tbsf_prefs_functions;
 
@@ -24,7 +24,7 @@
     //In case we're asked to sort sub-folders, we walk up the tree up to the root
     //item which is the "fake folder" representing the account.
     while (parent.parent) parent = parent.parent;
-    let parentName = parent.prettiestName;
+    let parentName = parent.prettyName;
 
     let sort_function;
     if (tbsf_prefs_functions[parentName]) {

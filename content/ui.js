@@ -5,6 +5,9 @@ Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
+var appStartup = Cc["@mozilla.org/toolkit/app-startup;1"]
+  .getService(Components.interfaces.nsIAppStartup);
+                 
 var g_accounts = Object();
 //const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
 const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
@@ -12,6 +15,16 @@ const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
   .getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data = {};
 var current_account = null;
+
+const mail_accountmanager_prefs = Cc["@mozilla.org/preferences-service;1"]
+  .getService(Ci.nsIPrefService)
+  .getBranch("mail.accountmanager.");
+const mail_account_prefs = Cc["@mozilla.org/preferences-service;1"]
+  .getService(Ci.nsIPrefService)
+  .getBranch("mail.account.");
+const mail_server_prefs = Cc["@mozilla.org/preferences-service;1"]
+  .getService(Ci.nsIPrefService)
+  .getBranch("mail.server.");
 
 /* Most of the functions below are for *folder* sorting */
 
@@ -173,8 +186,8 @@ function on_load() {
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
-    //dump(account.incomingServer.rootFolder.prettiestName+"\n");
-    name = account.incomingServer.rootFolder.prettiestName;
+    //dump(account.incomingServer.rootFolder.prettyName+"\n");
+    name = account.incomingServer.rootFolder.prettyName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
     accounts_menu.appendChild(it);
@@ -187,7 +200,7 @@ function on_load() {
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
   /* That one is actually triggered once (after the template is built on load) */
-  let folders_tree = document.getElementById("foldersTree");
+//  let folders_tree = document.getElementById("foldersTree");
   let some_listener = {
     willRebuild : function(builder) { },
     didRebuild : function(builder) {
@@ -195,8 +208,8 @@ function on_load() {
       rebuild_tree(true);
     }
   };
-  folders_tree.builderVew.addListener(some_listener);
-  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
+//  folders_tree.builderView.addListener(some_listener);
+//  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
 
   /* That one tracks changes that happen to the folder pane *while* the manually
    * sort folders dialog is open */
@@ -347,17 +360,23 @@ window.addEventListener("unload", on_refresh, false);
 var g_other_accounts = null;
 
 function accounts_on_load() {
-  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
-  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
+//  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
+//  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
+  let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
+  let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
-  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
-  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
+//  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
+//  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
+  let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
+  let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
     try {
-      return Application.prefs.get("mail.server."+s+".name").value;
+//      return Application.prefs.get("mail.server."+s+".name").value;
+      return mail_server_prefs.getStringPref(s+".name");
     } catch (e) {
-      return Application.prefs.get("mail.server."+s+".hostname").value;
+//      return Application.prefs.get("mail.server."+s+".hostname").value;
+      return mail_server_prefs.getStringPref(s+".hostname");
     } });
 
   let mail_accounts = [];
@@ -397,7 +416,8 @@ function accounts_on_load() {
       default:
         let hidden = false;
         try {
-          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
+//          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
+          let hidden_pref = mail_server_prefs.getStringPref(servers[i]+".hidden");
           hidden = hidden_pref;
         } catch (e) {
         }
@@ -439,14 +459,19 @@ function update_accounts_prefs() {
     new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
   }
 
-  let pref = Application.prefs.get("mail.accountmanager.accounts");
+//  let pref = Application.prefs.get("mail.accountmanager.accounts");
+  let pref = mail_accountmanager_prefs.getStringPref("accounts");
   pref.value = new_pref;
 
   let default_account = document.getElementById("default_account").parentNode.value;
-  if (default_account == "-1")
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
-  else
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
+  if (default_account == "-1") {
+//    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
+    mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
+  } else {
+//    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
+    mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
+    
+  }
 }
 
 function account_move_up(index, listbox) {
@@ -492,7 +517,9 @@ function on_account_restart() {
   let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
     .getService(Ci.nsIWindowMediator)
     .getMostRecentWindow("mail:3pane");
-  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
+//  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
+  mainWindow.setTimeout(function () { Cc['@mozilla.org/toolkit/app-startup;1'].getService(Components.interfaces.nsIAppStartup)
+    .quit(Components.interfaces.nsIAppStartup.Restart); }, 1000);
   window.close();
 }
 
