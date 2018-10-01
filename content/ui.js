@@ -1,9 +1,13 @@
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
+
+Cu.import("resource://tbsortfolders/logging.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
+
+let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.ui");
 
 var appStartup = Cc["@mozilla.org/toolkit/app-startup;1"]
   .getService(Components.interfaces.nsIAppStartup);
@@ -30,14 +34,14 @@ const mail_server_prefs = Cc["@mozilla.org/preferences-service;1"]
 
 function assert(v, s) {
   if (!v) {
-    Application.console.log("Assertion failure "+s);
+    tblog.error("Assertion failure "+s);
     throw "Assertion failure";
   }
 }
 
 function dump_tree(node, prefix) {
   if (prefix === undefined) prefix = "";
-  dump(prefix+node.tagName+"\n");
+  tblog.debug(prefix+node.tagName+"\n");
   for (let i = 0; i < node.children.length; i++)
     dump_tree(node.children[i], prefix+" ");
 }
@@ -47,7 +51,7 @@ function item_key(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("value");
-  Application.console.log("TBSortFolders: severe error, no item key for "+tree_item+"\n");
+  tblog.error("TBSortFolders: severe error, no item key for "+tree_item+"\n");
 }
 
 function item_label(tree_item) {
@@ -55,14 +59,14 @@ function item_label(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("label");
-  Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
+  tblog.error("TBSortFolders: severe error, no item label for "+tree_item+"\n");
 }
 
 let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
 let ftvItems = {};
 
 function rebuild_tree(full, collapse) {
-  //dump("rebuild_tree("+full+");\n");
+  tblog.debug("rebuild_tree("+full+");\n");
   let dfs = 0;
   /* Cache these expensive calls. They're called for each comparison :( */
   let myFtvItem = function(tree_item) {
@@ -78,13 +82,13 @@ function rebuild_tree(full, collapse) {
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
   if (sort_method == 0) {
-      //dump("0\n");
+      tblog.debug("0\n");
       sort_function = (c1, c2) => tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
-      //dump("1\n");
+      tblog.debug("1\n");
       sort_function = (c1, c2) => tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
-      //dump("2\n");
+      tblog.debug("2\n");
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
@@ -94,12 +98,12 @@ function rebuild_tree(full, collapse) {
     let tree_items = Array();
     //tree_items = a_tree_items;
 
-    //dump(indent+a_tree_items.length+" nodes passed\n");
+    tblog.debug(indent+a_tree_items.length+" nodes passed\n");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
     tree_items.sort(sort_function);
 
-    //dump(indent+tree_items.length+" folders to examine\n");
+    tblog.debug(indent+tree_items.length+" folders to examine\n");
     for (let i = 0; i < tree_items.length; ++i) {
       dfs++;
       //let data = tbsf_data[current_account][1];
@@ -120,7 +124,7 @@ function rebuild_tree(full, collapse) {
       the right sort keys. */
       fresh_data[item_key(tree_items[i])] = dfs;
       if (full) {
-        //dump(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
+        tblog.debug(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
       }
 
       //let n_tree_items = tree_items[i].querySelectorAll("[thisnode] > treechildren > treeitem");
@@ -164,6 +168,7 @@ function rebuild_tree(full, collapse) {
 }
 
 function on_load() {
+  tblog.debug("on_load");
   let json = tbsf_prefs.getStringPref("tbsf_data");
   try {
     tbsf_data = JSON.parse(json);
@@ -174,19 +179,20 @@ function on_load() {
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
   let accounts = [];
-  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount))
+  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
     accounts.push(x);
+  }
   if (!accounts.length) {
     document.querySelector("tabbox").style.display = "none";
     document.getElementById("err_no_accounts").style.display = "";
     return;
   }
   for (let account of accounts) {
-    //dump(Object.keys(account)+"\n");
+    tblog.debug(Object.keys(account)+"\n");
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
-    //dump(account.incomingServer.rootFolder.prettyName+"\n");
+    tblog.debug(account.incomingServer.rootFolder.prettyName+"\n");
     name = account.incomingServer.rootFolder.prettyName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
@@ -204,7 +210,7 @@ function on_load() {
   let some_listener = {
     willRebuild : function(builder) { },
     didRebuild : function(builder) {
-      //dump("Tree rebuilt\n");
+      tblog.debug("Tree rebuilt\n");
       rebuild_tree(true);
     }
   };
@@ -220,14 +226,14 @@ function on_load() {
     onBeginUpdateBatch: function () {},
     onEndUpdateBatch: function () {},
     onChange: function () {
-      dump("*** rdf:mailnewsfolders changed, rebuilding tree...\n");
+      tblog.debug("*** rdf:mailnewsfolders changed, rebuilding tree...\n");
       rebuild_tree(true);
     },
     onMove: function () {},
     onUnassert: function () {}
   };
   rdf_source.AddObserver(some_observer);
-  window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);*/
+  window.addEventListener("unload", function () { tblog.debug("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);*/
 
   on_account_changed();
 
@@ -250,7 +256,7 @@ function renumber(treeItem, start) {
 function move_up(tree_item) {
   let tree = document.getElementById("foldersTree");
   let uri = item_key(tree_item);
-  //dump(uri+"\n");
+  tblog.debug(uri+"\n");
   if (tree_item.previousSibling) {
     let previous_item = tree_item.previousSibling;
     let previous_uri = item_key(previous_item);
@@ -259,13 +265,13 @@ function move_up(tree_item) {
     rebuild_tree();
     //tree.builder.rebuild();
   } else {
-    //dump("This is unexpected\n");
+    tblog.debug("This is unexpected\n");
   }
   /*for (let i = 0; i < 10; ++i) {
     let tree_item = tree.view.getItemAtIndex(i);
     let k = item_key(tree_item);
-    dump(tbsf_data[current_account][1][k]+" ");
-  } dump("\n");*/
+    tblog.debug(tbsf_data[current_account][1][k]+" ");
+  } tblog.debug("\n");*/
 }
 
 function on_move_up() {
