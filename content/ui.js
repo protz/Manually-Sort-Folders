@@ -101,6 +101,7 @@ function rebuild_tree(full, collapse) {
     tblog.debug(indent+a_tree_items.length+" nodes passed");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
+    tblog.debug(indent+tree_items.length+" folders to examine before sort");
     tree_items.sort(sort_function);
 
     tblog.debug(indent+tree_items.length+" folders to examine");
@@ -165,6 +166,22 @@ function rebuild_tree(full, collapse) {
   if (replace_data)
     tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
 
+  let children2 = document.querySelectorAll("#foldersTree2 > treechildren > treeitem");
+  my_sort(children2, "");
+}
+
+function build_folder_tree(account) {
+  // Clear folder tree
+  let treechildren = document.getElementById("treeChildren2");
+  while (treechildren.firstChild) {
+    treechildren.removeChild(treechildren.firstChild);
+  }
+
+  // Fill folder tree
+  if (account.incomingServer.rootFolder.hasSubFolders) {
+    tblog.debug("Keys: "+Object.keys(account.incomingServer.rootFolder));
+    walk_folder(account.incomingServer.rootFolder,treechildren,0);
+  }
 }
 
 function walk_folder(folder,treechildren,depth) {
@@ -173,11 +190,16 @@ function walk_folder(folder,treechildren,depth) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
     let indent = ' '.repeat(2*depth);
     tblog.debug("Folder: "+indent+folder.prettyName);
+    tblog.debug("Folder URI: "+indent+folder.URI);
+    
+    let rdffolder = rdfService.GetResource(folder.URI);
+    tblog.debug("Folder id: "+indent+rdffolder);
     
     let treeitem = document.createElement('treeitem');
     let treerow = document.createElement('treerow');
     let treecell = document.createElement('treecell');
     treecell.setAttribute('label',folder.prettyName);
+    treecell.setAttribute('value',folder.URI);
     treerow.appendChild(treecell);
     treeitem.appendChild(treerow)
     
@@ -227,18 +249,6 @@ function on_load() {
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
     accounts_menu.appendChild(it);
-    
-    // Clear folder tree
-    let treechildren = document.getElementById("treeChildren2");
-    while (treechildren.firstChild) {
-      treechildren.removeChild(treechildren.firstChild);
-    }
-
-    // Fill folder tree
-    if (account.incomingServer.rootFolder.hasSubFolders) {
-      tblog.debug("Keys: "+Object.keys(account.incomingServer.rootFolder));
-      walk_folder(account.incomingServer.rootFolder,treechildren,0);
-    }
 
     //register the account for future use, create the right data structure in
     //the data
@@ -352,6 +362,8 @@ function update_tree() {
   let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", root_folder.URI);
+  
+  build_folder_tree(account);
 }
 
 function on_account_changed() {
