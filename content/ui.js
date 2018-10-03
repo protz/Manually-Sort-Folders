@@ -167,17 +167,35 @@ function rebuild_tree(full, collapse) {
 
 }
 
-function walk_folder(folder,depth) {
+function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
   while (subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
     let indent = ' '.repeat(2*depth);
     tblog.debug("Folder: "+indent+folder.prettyName);
+    
+    let treeitem = document.createElement('treeitem');
+    let treerow = document.createElement('treerow');
+    let treecell = document.createElement('treecell');
+    treecell.setAttribute('label',folder.prettyName);
+    treerow.appendChild(treecell);
+    treeitem.appendChild(treerow)
+    
     if (folder.hasSubFolders) {
-      walk_folder(folder,depth+1);
+
+      treeitem.setAttribute('container','true');
+      treeitem.setAttribute('open','true');
+      let treechildrensub = document.createElement('treechildren');
+      
+      walk_folder(folder,treechildrensub,depth+1);
+
+      treeitem.appendChild(treechildrensub)
     }
+    
+    treechildren.appendChild(treeitem);
   }
 }
+
 
 function on_load() {
   tblog.debug("on_load");
@@ -204,15 +222,22 @@ function on_load() {
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
-    tblog.debug(account.incomingServer.rootFolder.prettyName);
+    tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
     name = account.incomingServer.rootFolder.prettyName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
     accounts_menu.appendChild(it);
     
+    // Clear folder tree
+    let treechildren = document.getElementById("treeChildren2");
+    while (treechildren.firstChild) {
+      treechildren.removeChild(treechildren.firstChild);
+    }
+
+    // Fill folder tree
     if (account.incomingServer.rootFolder.hasSubFolders) {
       tblog.debug("Keys: "+Object.keys(account.incomingServer.rootFolder));
-      walk_folder(account.incomingServer.rootFolder,0);
+      walk_folder(account.incomingServer.rootFolder,treechildren,0);
     }
 
     //register the account for future use, create the right data structure in

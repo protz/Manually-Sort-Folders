@@ -148,6 +148,22 @@
             </treecols>
           </tree>
 
+          <tree id="foldersTree2"
+            style="overflow: hidden;
+            width: 161px; height: 261px"
+            treelines="true"
+            hidecolumnpicker="true"
+            flex="1"
+            >
+            <treecols>
+              <treecol id="folderNameCol2" width="161px" persist="hidden width"
+                flex="1"
+                label="&tc.foldername;" primary="true" />
+            </treecols>
+            <treechildren id="treeChildren2">
+            </treechildren>
+          </tree>
+          
           <vbox>
             <groupbox id="default_sort_box">
               <caption label="&gb.extra;" />
