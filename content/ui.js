@@ -13,11 +13,18 @@ const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
 var tbsf_data = {};
 var current_account = null;
 
+function get_pref_branch(s)
+{
+	return Cc["@mozilla.org/preferences-service;1"]
+  .getService(Ci.nsIPrefService)
+  .getBranch(s);
+}
+
 /* Most of the functions below are for *folder* sorting */
 
 function assert(v, s) {
   if (!v) {
-    Application.console.log("Assertion failure "+s);
+    console.error("Assertion failure "+s);
     throw "Assertion failure";
   }
 }
@@ -34,7 +41,7 @@ function item_key(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("value");
-  Application.console.log("TBSortFolders: severe error, no item key for "+tree_item+"\n");
+  console.error("TBSortFolders: severe error, no item key for "+tree_item+"\n");
 }
 
 function item_label(tree_item) {
@@ -42,7 +49,7 @@ function item_label(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("label");
-  Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
+  console.error("TBSortFolders: severe error, no item label for "+tree_item+"\n");
 }
 
 let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
@@ -173,8 +180,8 @@ function on_load() {
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
-    //dump(account.incomingServer.rootFolder.prettiestName+"\n");
-    name = account.incomingServer.rootFolder.prettiestName;
+    //dump(account.incomingServer.rootFolder.prettyName+"\n");
+    name = account.incomingServer.rootFolder.prettyName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
     accounts_menu.appendChild(it);
@@ -195,8 +202,13 @@ function on_load() {
       rebuild_tree(true);
     }
   };
-  folders_tree.builderVew.addListener(some_listener);
-  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
+	/* NOT WORKING IN TB60  */
+	try {
+    folders_tree.builder.addListener(some_listener);
+    window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
+	} catch (e) {
+		console.error("Failed to add listener to folders tree. Probably running on TB 60.");
+	}
 
   /* That one tracks changes that happen to the folder pane *while* the manually
    * sort folders dialog is open */
@@ -321,7 +333,8 @@ function on_sort_method_changed() {
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "none";
   }
-  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+	// COMMENTED OUT FOR NOW to avoid destroying existing sort prefs
+	// tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   rebuild_tree(true, true);
 }
 
@@ -331,7 +344,9 @@ function on_close() {
 }
 
 function on_refresh() {
-  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+  // COMMENTED OUT FOR NOW to avoid destroying existing sort prefs
+  // tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+
   //it's a getter/setter so that actually does sth
   let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
     .getService(Ci.nsIWindowMediator)
@@ -347,17 +362,17 @@ window.addEventListener("unload", on_refresh, false);
 var g_other_accounts = null;
 
 function accounts_on_load() {
-  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
-  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
+  let accounts = get_pref_branch("mail.accountmanager.").getStringPref("accounts").split(",");
+  let defaultaccount = get_pref_branch("mail.accountmanager.").getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
-  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
-  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
+  let servers = accounts.map((a) => get_pref_branch("mail.account." + a + ".").getStringPref("server"));
+  let types = servers.map((s) => get_pref_branch("mail.server." + s + ".").getStringPref("type"));
   let names = servers.map(function (s) {
     try {
-      return Application.prefs.get("mail.server."+s+".name").value;
+      return get_pref_branch("mail.server." + s + ".").getStringPref("name");
     } catch (e) {
-      return Application.prefs.get("mail.server."+s+".hostname").value;
+      return get_pref_branch("mail.server." + s + ".").getStringPref("hostname");
     } });
 
   let mail_accounts = [];
@@ -397,7 +412,7 @@ function accounts_on_load() {
       default:
         let hidden = false;
         try {
-          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
+          let hidden_pref = get_pref_branch("mail.server."+servers[i]+".").getBoolPref("hidden", false);
           hidden = hidden_pref;
         } catch (e) {
         }
@@ -439,14 +454,13 @@ function update_accounts_prefs() {
     new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
   }
 
-  let pref = Application.prefs.get("mail.accountmanager.accounts");
-  pref.value = new_pref;
+  get_pref_branch("mail.accountmanager.").setStringPref("accounts", new_pref);
 
   let default_account = document.getElementById("default_account").parentNode.value;
   if (default_account == "-1")
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
+    get_pref_branch("mail.accountmanager.").setStringPref("defaultaccount", first_mail_account);
   else
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
+    get_pref_branch("mail.accountmanager.").setStringPref("defaultaccount", default_account);
 }
 
 function account_move_up(index, listbox) {
@@ -492,7 +506,7 @@ function on_account_restart() {
   let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
     .getService(Ci.nsIWindowMediator)
     .getMostRecentWindow("mail:3pane");
-  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
+  mainWindow.setTimeout(function () { mainWindow.Services.startup.quit(Ci.nsIAppStartup.eAttemptQuit | Ci.nsIAppStartup.eRestart); }, 1000);
   window.close();
 }
 

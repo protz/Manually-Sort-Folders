@@ -6,13 +6,13 @@
 <!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/ui.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         title="&general.title;" onload="on_load();">
-  <script type="application/x-javascript" src="ui.js" />
+  <script type="application/javascript" src="ui.js" />
 
   <description style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
     &accountsort.noaccountsetupyet;
   </description>
 
-  <tabbox selectedIndex="1" flex="1">
+  <tabbox selectedIndex="0" flex="1">
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
       <tab><label value="&tab.folders;" /></tab>

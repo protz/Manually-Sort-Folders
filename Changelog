@@ -1,3 +1,12 @@
 -- v0.6 development series --
 
 New bugfix with collapsing folders by default. Fix appearance of the tree.
+
+-- v1.1.2b --
+
+Fixed some JS compatibilty problems with Thunerbird 60 (mainly about Application
+preference interfaces and restart). UI for account sorting works, folder sorting
+is still broken, but writing to folder sort preference is inhibited so we don't
+risk destroying existing sort order. Also using "pretty names" instead of
+"prettiest names" as the latter is deprecated and in practice identical to the
+first.
