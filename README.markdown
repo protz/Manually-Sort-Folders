@@ -6,6 +6,7 @@ Only the account sort is working for now.
 Tested on:  
 
 OpenSuSE 15.0 with Thunderbird 60.0 (email accounts only)  
+Windows 10 x64 with Thunderbird 60.2.1(32bit) (email accounts only)  
 
 NOT tested:  
 
