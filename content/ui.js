@@ -41,7 +41,7 @@ function assert(v, s) {
 
 function dump_tree(node, prefix) {
   if (prefix === undefined) prefix = "";
-  tblog.debug(prefix+node.tagName);
+  tblog.debug("Dump tree: "+prefix+node.tagName);
   for (let i = 0; i < node.children.length; i++)
     dump_tree(node.children[i], prefix+" ");
 }
@@ -82,13 +82,13 @@ function rebuild_tree(full, collapse) {
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
   if (sort_method == 0) {
-      tblog.debug("0");
+      tblog.debug("Sort method 0");
       sort_function = (c1, c2) => tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
-      tblog.debug("1");
+      tblog.debug("Sort method 1");
       sort_function = (c1, c2) => tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
-      tblog.debug("2");
+      tblog.debug("Sort method 2");
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
@@ -240,7 +240,7 @@ function on_load() {
     return;
   }
   for (let account of accounts) {
-    tblog.debug(Object.keys(account));
+    tblog.debug("Account keys: "+Object.keys(account));
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
@@ -291,8 +291,6 @@ function on_load() {
 
   accounts_on_load();
   extra_on_load();
-  
-  rebuild_tree(true,true);
 }
 
 function renumber(treeItem, start) {
@@ -310,7 +308,7 @@ function renumber(treeItem, start) {
 function move_up(tree_item) {
   let tree = document.getElementById("foldersTree");
   let uri = item_key(tree_item);
-  tblog.debug(uri);
+  tblog.debug("URI: "+uri);
   if (tree_item.previousSibling) {
     let previous_item = tree_item.previousSibling;
     let previous_uri = item_key(previous_item);
