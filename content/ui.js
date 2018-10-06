@@ -240,7 +240,7 @@ function on_load() {
     return;
   }
   for (let account of accounts) {
-    tblog.debug("Account keys: "+Object.keys(account));
+//    tblog.debug("Account keys: "+Object.keys(account));
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
@@ -361,7 +361,7 @@ function update_tree() {
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", root_folder.URI);
 
-  build_folder_tree(account);
+//  build_folder_tree(account);
 }
 
 function on_account_changed() {
@@ -520,17 +520,19 @@ function update_accounts_prefs() {
   }
 
 //  let pref = Application.prefs.get("mail.accountmanager.accounts");
-  let pref = mail_accountmanager_prefs.getStringPref("accounts");
-  pref.value = new_pref;
-
+//  pref.value = new_pref;
+  mail_accountmanager_prefs.setStringPref("accounts",new_pref);
+  tblog.debug("Sorted accounts: ",new_pref);
+  
   let default_account = document.getElementById("default_account").parentNode.value;
   if (default_account == "-1") {
 //    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
+    tblog.debug("Default account: ",first_mail_account);
   } else {
 //    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
     mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
-    
+    tblog.debug("Default account: ",default_account);
   }
 }
 
@@ -552,10 +554,14 @@ function account_move_up(index, listbox) {
 var g_active_list = null;
 
 function on_account_move_up() {
+  tblog.debug("on_account_move_up");
   if (!g_active_list) return;
 
   let listbox = g_active_list;
   let i = listbox.selectedIndex;
+  
+  tblog.debug("index: "+i);
+  
   if (i < 0) return;
   if (account_move_up(i, listbox))
     listbox.selectedIndex = i-1;
@@ -563,10 +569,14 @@ function on_account_move_up() {
 }
 
 function on_account_move_down() {
+  tblog.debug("on_account_move_down");
   if (!g_active_list) return;
 
   let listbox = g_active_list;
   let i = listbox.selectedIndex;
+  
+  tblog.debug("index: "+i);
+
   if (i < 0) return;
   if (account_move_up(i+1, listbox))
     listbox.selectedIndex = i+1;
