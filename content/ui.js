@@ -166,8 +166,8 @@ function rebuild_tree(full, collapse) {
   if (replace_data)
     tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
 
-  let children2 = document.querySelectorAll("#foldersTree2 > treechildren > treeitem");
-  my_sort(children2, "");
+//  let children2 = document.querySelectorAll("#foldersTree2 > treechildren > treeitem");
+//  my_sort(children2, "");
 }
 
 function build_folder_tree(account) {
@@ -192,8 +192,8 @@ function walk_folder(folder,treechildren,depth) {
     tblog.debug("Folder: "+indent+folder.prettyName);
     tblog.debug("Folder URI: "+indent+folder.URI);
     
-    let rdffolder = rdfService.GetResource(folder.URI);
-    tblog.debug("Folder id: "+indent+rdffolder);
+//    let rdffolder = rdfService.GetResource(folder.URI);
+//    tblog.debug("Folder id: "+indent+rdffolderd);
     
     let treeitem = document.createElement('treeitem');
     let treerow = document.createElement('treerow');
@@ -362,7 +362,7 @@ function update_tree() {
   let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", root_folder.URI);
-  
+
   build_folder_tree(account);
 }
 
