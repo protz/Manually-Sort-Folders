@@ -395,9 +395,7 @@ function on_close() {
 function on_refresh() {
   tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
-  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
-    .getService(Ci.nsIWindowMediator)
-    .getMostRecentWindow("mail:3pane");
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
   mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
 }
 
@@ -562,10 +560,7 @@ function on_account_move_down() {
 }
 
 function on_account_restart() {
-  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
-    .getService(Ci.nsIWindowMediator)
-    .getMostRecentWindow("mail:3pane");
-//  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
   mainWindow.setTimeout(function () { Services.startup.quit(Services.startup.eForceQuit|Services.startup.eRestart); },1000);
   window.close();
 }
