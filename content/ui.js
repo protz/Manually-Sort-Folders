@@ -2,6 +2,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
+Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://tbsortfolders/logging.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
@@ -588,8 +589,7 @@ function on_account_restart() {
     .getService(Ci.nsIWindowMediator)
     .getMostRecentWindow("mail:3pane");
 //  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
-  mainWindow.setTimeout(function () { Cc['@mozilla.org/toolkit/app-startup;1'].getService(Components.interfaces.nsIAppStartup)
-    .quit(Components.interfaces.nsIAppStartup.Restart); }, 1000);
+  mainWindow.setTimeout(function () { Services.startup.quit(Services.startup.eForceQuit|Services.startup.eRestart); },1000);
   window.close();
 }
 
