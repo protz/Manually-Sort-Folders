@@ -21,6 +21,10 @@
       </Description>
     </em:targetApplication>
 
+    <em:developer>Jonathan Protzenko</em:developer>
+    
+    <em:contributor>Maxime Rijnders</em:contributor>
+
     <em:localized>
       <Description>
         <em:locale>da</em:locale>
