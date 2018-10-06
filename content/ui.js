@@ -350,7 +350,7 @@ function update_tree() {
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", root_folder.URI);
 
-//  build_folder_tree(account);
+  build_folder_tree(account);
 }
 
 function on_account_changed() {
