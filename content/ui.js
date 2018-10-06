@@ -9,27 +9,15 @@ Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
 let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.ui");
-
-var appStartup = Cc["@mozilla.org/toolkit/app-startup;1"]
-  .getService(Components.interfaces.nsIAppStartup);
                  
 var g_accounts = Object();
-//const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
-const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
-  .getService(Ci.nsIPrefService)
-  .getBranch("extensions.tbsortfolders@xulforum.org.");
+const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data = {};
 var current_account = null;
 
-const mail_accountmanager_prefs = Cc["@mozilla.org/preferences-service;1"]
-  .getService(Ci.nsIPrefService)
-  .getBranch("mail.accountmanager.");
-const mail_account_prefs = Cc["@mozilla.org/preferences-service;1"]
-  .getService(Ci.nsIPrefService)
-  .getBranch("mail.account.");
-const mail_server_prefs = Cc["@mozilla.org/preferences-service;1"]
-  .getService(Ci.nsIPrefService)
-  .getBranch("mail.server.");
+const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
+const mail_account_prefs = Services.prefs.getBranch("mail.account.");
+const mail_server_prefs = Services.prefs.getBranch("mail.server.");
 
 /* Most of the functions below are for *folder* sorting */
 
@@ -421,22 +409,16 @@ window.addEventListener("unload", on_refresh, false);
 var g_other_accounts = null;
 
 function accounts_on_load() {
-//  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
-//  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
   let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
   let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
-//  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
-//  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
   let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
   let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
     try {
-//      return Application.prefs.get("mail.server."+s+".name").value;
       return mail_server_prefs.getStringPref(s+".name");
     } catch (e) {
-//      return Application.prefs.get("mail.server."+s+".hostname").value;
       return mail_server_prefs.getStringPref(s+".hostname");
     } });
 
@@ -477,7 +459,6 @@ function accounts_on_load() {
       default:
         let hidden = false;
         try {
-//          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
           let hidden_pref = mail_server_prefs.getStringPref(servers[i]+".hidden");
           hidden = hidden_pref;
         } catch (e) {
@@ -520,18 +501,14 @@ function update_accounts_prefs() {
     new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
   }
 
-//  let pref = Application.prefs.get("mail.accountmanager.accounts");
-//  pref.value = new_pref;
   mail_accountmanager_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: ",new_pref);
   
   let default_account = document.getElementById("default_account").parentNode.value;
   if (default_account == "-1") {
-//    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
     tblog.debug("Default account: ",first_mail_account);
   } else {
-//    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
     mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
     tblog.debug("Default account: ",default_account);
   }
