@@ -12,10 +12,10 @@
     &accountsort.noaccountsetupyet;
   </description>
 
-  <tabbox selectedIndex="1" flex="1">
+  <tabbox selectedIndex="0" flex="1">
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
-      <tab><label value="&tab.folders;" /></tab>
+      <tab hidden="true"><label value="&tab.folders;"/></tab>
       <tab><label value="&tab.extra;" /></tab>
     </tabs>
     <tabpanels flex="1">
