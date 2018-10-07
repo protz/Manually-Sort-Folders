@@ -160,11 +160,11 @@ function decode_special(flags) {
   if (flags & 0x00000100) {
     return 'Trash';
   } else if (flags & 0x00000200) {
-    return 'SentMail';
+    return 'Sent';
   } else if (flags & 0x00000400) {
     return 'Drafts';
   } else if (flags & 0x00000800) {
-    return 'Queue';
+    return 'Outbox';
   } else if (flags & 0x00001000) {
     return 'Inbox';
   } else if (flags & 0x00004000) {
