@@ -15,7 +15,7 @@ All other setups
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
 Warning:  
 
-Please be carreful using this updated plugin. It can kill your Thunderbird account config.  
+Please be careful using this updated plugin. It can kill your Thunderbird account config.  
 Make a backup of your Thunderbird config dir.  
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
