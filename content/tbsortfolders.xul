@@ -89,81 +89,21 @@
         </menulist>
 
         <hbox flex="1">
-          <!-- Borrowed and adapted from mail/base/content/msgSelectOffline.xul -->
           <tree id="foldersTree"
-            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
             style="overflow: hidden;
             width: 161px; height: 261px"
             treelines="true"
             hidecolumnpicker="true"
-            datasources="rdf:msgaccountmanager rdf:mailnewsfolders"
-            ref=""
             flex="1"
             >
-            <template>
-              <query>
-                <content uri="?container"/>
-                <member container="?container" child="?member"/>
-              </query>
-              <rule>
-                <bindings>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#FolderTreeName"
-                           object="?folderTreeName"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#FolderTreeName?sort=true"
-                           object="?folderTreeNameSort"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#SpecialFolder"
-                           object="?specialFolder"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#IsServer"
-                           object="?isServer"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#IsSecure"
-                           object="?isSecure"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#ServerType"
-                           object="?serverType"/>
-                  <binding subject="?member"
-                           predicate="http://home.netscape.com/NC-rdf#Synchronize"
-                           object="?synchronize"/>
-                </bindings>
-
-                <action>
-                  <treechildren>
-                    <treeitem uri="?member" open="true">
-                      <treerow>
-                        <treecell label="?folderTreeName" value="?member" properties="specialFolder-?specialFolder isServer-?isServer isSecure-?isSecure serverType-?serverType"/>
-                      </treerow>
-                    </treeitem>
-                  </treechildren>
-                </action>
-              </rule>
-            </template>
             <treecols>
               <treecol id="folderNameCol" width="161px" persist="hidden width"
                 flex="1"
                 label="&tc.foldername;" primary="true" />
             </treecols>
-          </tree>
-
-          <tree id="foldersTree2"
-            style="overflow: hidden;
-            width: 161px; height: 261px"
-            treelines="true"
-            hidecolumnpicker="true"
-            flex="1"
-            >
-            <treecols>
-              <treecol id="folderNameCol2" width="161px" persist="hidden width"
-                flex="1"
-                label="&tc.foldername;" primary="true" />
-            </treecols>
-            <treechildren id="treeChildren2">
+            <treechildren id="treeChildren">
             </treechildren>
           </tree>
-          
           <vbox>
             <groupbox id="default_sort_box">
               <caption label="&gb.extra;" />
