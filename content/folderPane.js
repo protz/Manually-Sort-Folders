@@ -4,12 +4,12 @@
   const Cc = Components.classes;
   const Ci = Components.interfaces;
   const Cu = Components.utils;
+
+  Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
   Cu.import("resource:///modules/MailUtils.js");
 
-  const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
-    .getService(Ci.nsIPrefService)
-    .getBranch("extensions.tbsortfolders@xulforum.org.");
+  const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
   /* This array is populated either when the file is loaded or when the
    * preferences are updated. The keys are the account's pretty names and the
    * values are the sort functions associated to each account. */
