@@ -1,8 +1,6 @@
 Manually Sort Folders
 =====================
 
-Only the account sort is working for now.  
-
 Tested on:  
 
 OpenSuSE 15.0 with Thunderbird 60.0 (email accounts only)  
@@ -15,7 +13,7 @@ All other setups
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
 Warning:  
 
-Please be carreful using this updated plugin. It can kill your Thunderbird account config.  
+Please be careful using this updated plugin. It can kill your Thunderbird account config.  
 Make a backup of your Thunderbird config dir.  
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
