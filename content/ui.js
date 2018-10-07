@@ -154,21 +154,42 @@ function rebuild_tree(full, collapse) {
   my_sort(children, "");
   if (replace_data)
     tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
+}
 
-//  let children2 = document.querySelectorAll("#foldersTree2 > treechildren > treeitem");
-//  my_sort(children2, "");
+function decode_special(flags) {
+  if (flags & 0x00000100) {
+    return 'Trash';
+  } else if (flags & 0x00000200) {
+    return 'SentMail';
+  } else if (flags & 0x00000400) {
+    return 'Drafts';
+  } else if (flags & 0x00000800) {
+    return 'Queue';
+  } else if (flags & 0x00001000) {
+    return 'Inbox';
+  } else if (flags & 0x00004000) {
+    return 'Archive';
+  } else if (flags & 0x00400000) {
+    return 'Templates';
+  } else if (flags & 0x40000000) {
+    return 'Junk';
+  } else if (flags & 0x80000000) {
+    return 'Favorite';
+  } else {
+    return 'Unknown';
+  }
 }
 
 function build_folder_tree(account) {
   // Clear folder tree
-  let treechildren = document.getElementById("treeChildren2");
+  let treechildren = document.getElementById("treeChildren");
   while (treechildren.firstChild) {
     treechildren.removeChild(treechildren.firstChild);
   }
 
   // Fill folder tree
   if (account.incomingServer.rootFolder.hasSubFolders) {
-    tblog.debug("Keys: "+Object.keys(account.incomingServer.rootFolder));
+    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));    
     walk_folder(account.incomingServer.rootFolder,treechildren,0);
   }
 }
@@ -177,21 +198,25 @@ function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
   while (subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+
     let indent = ' '.repeat(2*depth);
     tblog.debug("Folder: "+indent+folder.prettyName);
     tblog.debug("Folder URI: "+indent+folder.URI);
+    tblog.debug("Folder flags: "+indent+folder.flags);
     
-//    let rdffolder = rdfService.GetResource(folder.URI);
-//    tblog.debug("Folder id: "+indent+rdffolderd);
-    
+    let special_name = decode_special(folder.flags);
+    tblog.debug("Special name: "+special_name);
+
     let treeitem = document.createElement('treeitem');
+    treeitem.setAttribute('id',folder.URI);
     let treerow = document.createElement('treerow');
     let treecell = document.createElement('treecell');
     treecell.setAttribute('label',folder.prettyName);
     treecell.setAttribute('value',folder.URI);
+    treecell.setAttribute('properties','specialFolder-'+special_name);
     treerow.appendChild(treecell);
     treeitem.appendChild(treerow)
-    
+
     if (folder.hasSubFolders) {
 
       treeitem.setAttribute('container','true');
@@ -316,6 +341,7 @@ function move_up(tree_item) {
 }
 
 function on_move_up() {
+  tblog.debug("on_move_up");
   let tree = document.getElementById("foldersTree");
   let i = tree.currentIndex;
   if (i < 0) return;
@@ -327,6 +353,7 @@ function on_move_up() {
 }
 
 function on_move_down() {
+  tblog.debug("on_move_down");
   let tree = document.getElementById("foldersTree");
   let i = tree.currentIndex;
   if (i < 0) return;
