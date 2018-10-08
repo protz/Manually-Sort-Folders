@@ -1,8 +1,6 @@
 Manually Sort Folders
 =====================
 
-Only the account sort is working for now.  
-
 Tested on:  
 
 OpenSuSE 15.0 with Thunderbird 60.0 (email accounts only)  
