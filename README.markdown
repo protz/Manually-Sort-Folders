@@ -5,6 +5,7 @@ Tested on:
 
 OpenSuSE 15.0 with Thunderbird 60.0 (email accounts only)  
 Windows 10 x64 with Thunderbird 60.2.1(32bit) (email accounts only)  
+macOS 10.13.3 with Thunderbird 60.2.1(64bit) (email accounts only)  
 
 NOT tested:  
 
