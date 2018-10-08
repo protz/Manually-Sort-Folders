@@ -189,7 +189,7 @@ function build_folder_tree(account) {
 
   // Fill folder tree
   if (account.incomingServer.rootFolder.hasSubFolders) {
-    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));    
+    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));
     walk_folder(account.incomingServer.rootFolder,treechildren,0);
   }
 }
