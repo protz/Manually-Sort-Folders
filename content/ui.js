@@ -168,7 +168,7 @@ function decode_special(flags) {
   } else if (flags & 0x00001000) {
     return 'Inbox';
   } else if (flags & 0x00004000) {
-    return 'Archive';
+    return 'Archives';
   } else if (flags & 0x00400000) {
     return 'Templates';
   } else if (flags & 0x40000000) {
@@ -176,7 +176,7 @@ function decode_special(flags) {
   } else if (flags & 0x80000000) {
     return 'Favorite';
   } else {
-    return 'Unknown';
+    return 'none';
   }
 }
 
