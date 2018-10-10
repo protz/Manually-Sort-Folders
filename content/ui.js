@@ -248,6 +248,7 @@ function on_load() {
   for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
     accounts.push(x);
   }
+  tblog.debug("Total accounts: "+accounts.length);
   if (!accounts.length) {
     document.querySelector("tabbox").style.display = "none";
     document.getElementById("err_no_accounts").style.display = "";
@@ -527,15 +528,15 @@ function update_accounts_prefs() {
   }
 
   mail_accountmanager_prefs.setStringPref("accounts",new_pref);
-  tblog.debug("Sorted accounts: ",new_pref);
+  tblog.debug("Sorted accounts: "+new_pref);
   
   let default_account = document.getElementById("default_account").parentNode.value;
   if (default_account == "-1") {
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
-    tblog.debug("Default account: ",first_mail_account);
+    tblog.debug("Default account: "+first_mail_account);
   } else {
     mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
-    tblog.debug("Default account: ",default_account);
+    tblog.debug("Default account: "+default_account);
   }
 }
 
