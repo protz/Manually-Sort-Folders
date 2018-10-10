@@ -21,6 +21,26 @@
    * values are the sort functions associated to each account. */
   var tbsf_prefs_functions;
 
+  tblog.debug("Add observer");
+
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");  
+  let config = {attributes:true,childList:true,subtree:true};
+  var callback_foldertree =  function (mutationList, observer) {
+    tblog.debug("Observer activated");
+    for (let mutation of mutationList) {
+      if (mutation.type == 'childList') {
+        tblog.debug("Childnode added");
+      } else if (mutation.type == 'attributes') {
+        tblog.debug("The "+mutation.attributeName+" attribute changed");
+      }
+    }
+  };
+  var observer_foldertree = new MutationObserver(callback_foldertree);
+  observer_foldertree.observe(mainWindow.document.getElementById('folderTree'),config);
+  
+//  observer_foldertree.disconnect();
+ 
+  
   sortFolderItems = function (aFtvItems) {
     if (!aFtvItems.length)
       return;
