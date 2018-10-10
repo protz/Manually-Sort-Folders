@@ -189,7 +189,7 @@ function build_folder_tree(account) {
 
   // Fill folder tree
   if (account.incomingServer.rootFolder.hasSubFolders) {
-    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));
+//    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));
     walk_folder(account.incomingServer.rootFolder,treechildren,0);
   }
 }
@@ -272,36 +272,26 @@ function on_load() {
   }
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
-  /* That one is actually triggered once (after the template is built on load) */
-//  let folders_tree = document.getElementById("foldersTree");
-  let some_listener = {
-    willRebuild : function(builder) { },
-    didRebuild : function(builder) {
-      tblog.debug("Tree rebuilt");
-      rebuild_tree(true);
-    }
-  };
-//  folders_tree.builderView.addListener(some_listener);
-//  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
+  
+  tblog.debug("Accounts: "+account_manager.accounts.length);
+//  tblog.debug("Account Manager keys: "+Object.keys(account_manager));
 
-  /* That one tracks changes that happen to the folder pane *while* the manually
-   * sort folders dialog is open */
-  /*let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
-    getService(Components.interfaces.nsIRDFDataSource);
-  let some_observer = {
-    onAssert: function () {},
-    onBeginUpdateBatch: function () {},
-    onEndUpdateBatch: function () {},
-    onChange: function () {
-      tblog.debug("*** rdf:mailnewsfolders changed, rebuilding tree...");
-      rebuild_tree(true);
-    },
-    onMove: function () {},
-    onUnassert: function () {}
-  };
-  rdf_source.AddObserver(some_observer);
-  window.addEventListener("unload", function () { tblog.debug("Removed observer"); rdf_source.RemoveObserver(some_observer); }, false);*/
+  try {
+    let tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+    let tbsf_accounts = tbsf_prefs.getStringPref("accounts");
 
+    tblog.debug("TB Account: "+tb_accounts);
+    tblog.debug("TBSF Account: "+tbsf_accounts);
+
+    let tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+    let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+
+    tblog.debug("TB Default account: "+tb_default_account);
+    tblog.debug("TBSF Default account: "+tbsf_default_account);
+  } catch (x) {
+  }
+  
+  
   on_account_changed();
 
   accounts_on_load();
@@ -528,14 +518,17 @@ function update_accounts_prefs() {
   }
 
   mail_accountmanager_prefs.setStringPref("accounts",new_pref);
+  tbsf_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: "+new_pref);
   
   let default_account = document.getElementById("default_account").parentNode.value;
   if (default_account == "-1") {
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
+    tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
     tblog.debug("Default account: "+first_mail_account);
   } else {
     mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
+    tbsf_prefs.setStringPref("defaultaccount",default_account);
     tblog.debug("Default account: "+default_account);
   }
 }
