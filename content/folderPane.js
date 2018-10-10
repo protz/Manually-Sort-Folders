@@ -61,7 +61,7 @@
     tblog.debug("Current Default account: "+current_default_account);
     tblog.debug("Stored Default account: "+tbsf_default_account);
 
-    if (current_default_account !== tbsf_default_account) {
+    if (current_default_account !== tbsf_default_account && tbsf_default_account !== null) {
       mail_accountmanager_prefs.setStringPref("defaultaccount",tbsf_default_account);
       tblog.debug("Default account restored");
     }
