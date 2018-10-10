@@ -495,6 +495,7 @@ function accounts_on_load() {
   if (news_account_found) {
     document.getElementById("news_accounts_list").style.display = "";
   }
+  update_accounts_prefs();
 }
 
 function update_accounts_prefs() {
