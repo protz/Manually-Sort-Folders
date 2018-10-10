@@ -8,7 +8,7 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/Services.jsm");
 
-const TBSORTFOLDER_LOG_LEVEL = "Warn"; // "All" for debugging
+const TBSORTFOLDER_LOG_LEVEL = "Debug"; // "All" for debugging
 
 const COLOR_NORMAL          = "";
 const COLOR_RESET           = "\0o33[m";
