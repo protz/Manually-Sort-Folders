@@ -1,3 +1,4 @@
+
 (function () {
   /* For folder sorting */
 
@@ -13,7 +14,7 @@
   Cu.import("resource:///modules/MailUtils.js");
 
   tblog.debug("Init");
-  
+
   const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
   /* This array is populated either when the file is loaded or when the
    * preferences are updated. The keys are the account's pretty names and the
