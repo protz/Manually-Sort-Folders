@@ -275,13 +275,12 @@ function on_load() {
   
   tblog.debug("Accounts: "+account_manager.accounts.length);
 //  tblog.debug("Account Manager keys: "+Object.keys(account_manager));
-
   try {
     let tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
     let tbsf_accounts = tbsf_prefs.getStringPref("accounts");
 
-    tblog.debug("TB Account: "+tb_accounts);
-    tblog.debug("TBSF Account: "+tbsf_accounts);
+    tblog.debug("TB Accounts: "+tb_accounts);
+    tblog.debug("TBSF Accounts: "+tbsf_accounts);
 
     let tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
     let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
@@ -290,8 +289,8 @@ function on_load() {
     tblog.debug("TBSF Default account: "+tbsf_default_account);
   } catch (x) {
   }
-  
-  
+
+
   on_account_changed();
 
   accounts_on_load();
