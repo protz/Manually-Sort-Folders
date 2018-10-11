@@ -24,7 +24,7 @@
 
   var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
   var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-  tblog.debug("TB Account: "+tb_accounts);
+  tblog.debug("TB Accounts: "+tb_accounts);
   tblog.debug("TB Default account: "+tb_default_account);
 
   let tbsf_accounts = null;
@@ -32,7 +32,7 @@
   try {
     tbsf_accounts = tbsf_prefs.getStringPref("accounts");
     tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-    tblog.debug("TBSF Account: "+tbsf_accounts);
+    tblog.debug("TBSF Accounts: "+tbsf_accounts);
     tblog.debug("TBSF Default account: "+tbsf_default_account);
   } catch (x) {
   }
@@ -42,7 +42,7 @@
   let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");  
   let config = {attributes:true,attributeFilter:["maxpos"],childList:true,subtree:true};
   var callback_foldertree =  function (mutationList, observer) {
-    tblog.debug("Observer activated");
+//    tblog.debug("Observer activated");
 
 //    for (let mutation of mutationList) {
 //      if (mutation.type == 'childList') {
@@ -58,12 +58,12 @@
       tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
     } catch (x) {
     }
-    tblog.debug("Current Default account: "+current_default_account);
-    tblog.debug("Stored Default account: "+tbsf_default_account);
+//    tblog.debug("Current Default account: "+current_default_account);
+//    tblog.debug("Stored Default account: "+tbsf_default_account);
 
     if (current_default_account !== tbsf_default_account && tbsf_default_account !== null) {
       mail_accountmanager_prefs.setStringPref("defaultaccount",tbsf_default_account);
-      tblog.debug("Default account restored");
+//      tblog.debug("Default account restored");
     }
 
 /*
