@@ -12,7 +12,11 @@ tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
-Cu.import("resource:///modules/MailUtils.js");
+if (Services.appinfo.version >= 64.0) {
+  Cu.import("resource:///modules/MailUtils.jsm");
+} else {
+  Cu.import("resource:///modules/MailUtils.js");
+}
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
                  
 var g_accounts = Object();
