@@ -446,8 +446,11 @@ function accounts_on_load() {
   let news_accounts = [];
   let other_accounts = [];
   let add_li = function (list, [account, server, type, name]) {
-    let li = document.createElement("listitem");
-    li.setAttribute("label", name);
+    let li = document.createElement("richlistitem");
+    let desc = document.createElement("description");
+    let txt = document.createTextNode(name); 
+    desc.appendChild(txt);
+    li.appendChild(desc);
     li.value = account;
     list.appendChild(li);
   };

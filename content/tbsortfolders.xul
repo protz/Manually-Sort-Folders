@@ -25,13 +25,17 @@
         </description>
         <hbox flex="1">
           <vbox flex="1">
-            <listbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
-            </listbox>
-            <listbox rows="1" disabled="true">
-              <listitem label="&accountsort.localfolders;" />
-            </listbox>
-            <listbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
-            </listbox>
+            <richlistbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
+            </richlistbox>
+            <richlistbox rows="1" disabled="true">
+              <richlistitem>
+                <description>
+                  &accountsort.localfolders;
+                </description>
+              </richlistitem>
+            </richlistbox>
+            <richlistbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
+            </richlistbox>
           </vbox>
           <vbox>
             <groupbox>
