@@ -2,13 +2,18 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
+Cu.import("resource://gre/modules/Log.jsm");
+var tblog = Log.repository.getLogger("tbsortfolders.ui");
+
+tblog.level = Log.Level.Debug;
+
+tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
+tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
+
 Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://tbsortfolders/logging.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
-
-let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.ui");
                  
 var g_accounts = Object();
 const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
