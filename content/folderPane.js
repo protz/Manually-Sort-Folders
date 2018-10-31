@@ -190,4 +190,8 @@
       oldSelectFolder.call(this, x, y);
     }
   };
+  
+  /* Refresh pane */
+  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+
 })()
