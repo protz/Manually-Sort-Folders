@@ -13,6 +13,6 @@
     }
   },
   "icons": {
-    "32": "chrome://tbsortfolders/content/icon.png"
+    "32": "content/icon.png"
   }
 }
