@@ -1,3 +1,8 @@
+-- V1.3.0pre1
+
+Use manifest.json with "legacy" enabled to force overlay loading.
+Fixed Tb63 / Tb64 compatibilty issues.
+
 -- V1.2.0pre3
 
 Fixed the first account option "Local Folders". The "Local Folders" would drop to last if you added a new account afterwards.
