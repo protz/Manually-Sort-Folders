@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial;}
@@ -46,44 +47,27 @@ body {font-family: Arial;}
 <body>
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Accounts')" id="defaultOpen">Accounts</button>
-  <button class="tablinks" onclick="openTab(event, 'Folders')">Folders</button>
-  <button class="tablinks" onclick="openTab(event, 'Extra')">Extra</button>
+  <button class="tablinks active" id="Accounts">Accounts</button>
+  <button class="tablinks" id="Folders">Folders</button>
+  <button class="tablinks" id="Extra">Extra</button>
 </div>
 
-<div id="Accounts" class="tabcontent">
+<div id="AccountsContent" class="tabcontent" style="display:block">
   <h3>Accounts</h3>
   <p>Account list here</p>
 </div>
 
-<div id="Folders" class="tabcontent">
+<div id="FoldersContent" class="tabcontent">
   <h3>Folders</h3>
   <p>Folders list here.</p> 
 </div>
 
-<div id="Extra" class="tabcontent">
+<div id="ExtraContent" class="tabcontent">
   <h3>Extra</h3>
   <p>Extra options here.</p>
 </div>
 
-<script>
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
+<script src='js/options_tabbutton.js'/>
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-     
 </body>
 </html> 
