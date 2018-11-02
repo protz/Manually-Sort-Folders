@@ -14,9 +14,5 @@
   },
   "icons": {
     "32": "content/icon.png"
-  },
-  "options_ui": {
-    "page": "content/options.html",
-    "open_in_tab": true
   }
 }
