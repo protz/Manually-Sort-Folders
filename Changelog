@@ -1,3 +1,7 @@
+-- V1.3.0pre2
+
+Center preferences window.
+
 -- V1.3.0pre1
 
 Use manifest.json with "legacy" enabled to force overlay loading.
