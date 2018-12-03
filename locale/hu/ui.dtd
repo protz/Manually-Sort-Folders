@@ -1,0 +1,36 @@
+<!ENTITY general.title "Mappák kézi rendezése">
+<!ENTITY sortfolders.description "Ezzel a panellel minden fiók mappáit sorba rendezheti. Először válassza ki a fiókat, majd a rendezési módszert.">
+<!ENTITY sortmethod.default "Alapértelmezés használata">
+<!ENTITY sortmethod.alphabetical "Egyszerű összehasonlítás használata">
+<!ENTITY sortmethod.custom "Egyéni rendezési függvény használata">
+<!ENTITY sortmethod.default.description "Ez a Thunderbird alapértelmezett rendezési függvénye. A GMaillel ellentétben nem veszi figyelembe a speciális Unicode szimbólumokat.">
+<!ENTITY sortmethod.alphabetical.description "Ez az alapértelmezett rendezési függvény, amely nem csinál mást, mint egyszerűen összehasonlítja a karakterláncokat. Különböző mappakategóriák létrehozását teszi lehetővé, mint a GMail, azáltal, hogy speciális Unicode szimbólumokat használ.">
+<!ENTITY sortmethod.custom.description "Használja a fenti gombokat a mappák kézi rendezéséhez. Ha egy új mappa kerül hozzáadásra, akkor a lista végére kerül. Bármikor visszatérhet ide, ha a sorrend nem felel meg Önnek.">
+<!ENTITY sortmethod.samplelegend "(Minta mappa panel fent)">
+<!ENTITY button.move_up "Mozgatás fel">
+<!ENTITY button.move_down "Mozgatás le">
+<!ENTITY button.refresh "Mappa panel frissítése">
+<!ENTITY button.close "Bezárás">
+<!ENTITY button.restart "A Thunderbird újraindítása">
+<!ENTITY accountssort.description "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül.>
+<!ENTITY accountsort.warning "A szokásos e-mail fiókok, Unix Movemail fiókok és az RSS-fiókok jönnek először. A Helyi mappák a következőek, a lista alján pedig a Hírforrások szerepelnek. Ezt felülbírálhatja azzal, hogy a Helyi mappákat vagy egy Hírforrást választja alapértelmezettként, így azt téve a lista tetejére.">
+<!ENTITY accountsort.restartwarning "A változások érvénybe lépéséhez újra kell indítania a Thunderbirdöt.">
+<!ENTITY tab.accounts "Fiókok rendezése">
+<!ENTITY tab.folders "Mappák rendezése">
+<!ENTITY gb.move "A kiválasztott fiók mozgatása">
+<!ENTITY gb.movefolder "A kiválasztott mappa mozgatása">
+<!ENTITY gb.first "Első fiók a mappa panelen">
+<!ENTITY gb.extra "További információk">
+<!ENTITY gbfirst.default "Ez az alapértelmezett fiók.">
+<!ENTITY tc.foldername "Mappanév">
+<!ENTITY mi.firstmail "Első RSS vagy levelezőfiók a listában">
+<!ENTITY accountsort.localfolders "Helyi mappák">
+<!ENTITY accountsort.noaccountsetupyet "Még nincs fiókja beállítva!">
+<!ENTITY tab.extra "További beállítások">
+<!ENTITY extra.startup "Kezdeti mappa">
+<!ENTITY extra.description "Használja ezt a lapot a Thunderbird különböző mappákkal kapcsolatos beállításokkal történő testreszabásához">
+<!ENTITY extra.startupfolder "Alapértelmezetten indítson a következő mappa megnyitásával">
+<!ENTITY extra.nofolder "Nincs mappa kiválasztva">
+<!ENTITY extra.uselast "A legutóbb megnyitott mappa megnyitása">
+<!ENTITY extra.usecustom "Egyéni mappa használata">
+<!ENTITY extra.usethisfolder "Ezen mappa használata">
