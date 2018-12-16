@@ -1,30 +1,36 @@
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
+
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("resource://tbsortfolders/logging.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
+let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.ui");
+                 
 var g_accounts = Object();
-//const tbsf_prefs = Application.extensions.get("tbsortfolders@xulforum.org").prefs;
-const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
-  .getService(Ci.nsIPrefService)
-  .getBranch("extensions.tbsortfolders@xulforum.org.");
+const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data = {};
 var current_account = null;
+
+const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
+const mail_account_prefs = Services.prefs.getBranch("mail.account.");
+const mail_server_prefs = Services.prefs.getBranch("mail.server.");
 
 /* Most of the functions below are for *folder* sorting */
 
 function assert(v, s) {
   if (!v) {
-    Application.console.log("Assertion failure "+s);
+    tblog.error("Assertion failure "+s);
     throw "Assertion failure";
   }
 }
 
 function dump_tree(node, prefix) {
   if (prefix === undefined) prefix = "";
-  dump(prefix+node.tagName+"\n");
+  tblog.debug("Dump tree: "+prefix+node.tagName);
   for (let i = 0; i < node.children.length; i++)
     dump_tree(node.children[i], prefix+" ");
 }
@@ -34,7 +40,7 @@ function item_key(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("value");
-  Application.console.log("TBSortFolders: severe error, no item key for "+tree_item+"\n");
+  tblog.error("TBSortFolders: severe error, no item key for "+tree_item);
 }
 
 function item_label(tree_item) {
@@ -42,14 +48,14 @@ function item_label(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("label");
-  Application.console.log("TBSortFolders: severe error, no item label for "+tree_item+"\n");
+  tblog.error("TBSortFolders: severe error, no item label for "+tree_item);
 }
 
 let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
 let ftvItems = {};
 
 function rebuild_tree(full, collapse) {
-  //dump("rebuild_tree("+full+");\n");
+  tblog.debug("rebuild_tree("+full+");");
   let dfs = 0;
   /* Cache these expensive calls. They're called for each comparison :( */
   let myFtvItem = function(tree_item) {
@@ -65,13 +71,13 @@ function rebuild_tree(full, collapse) {
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
   if (sort_method == 0) {
-      //dump("0\n");
+      tblog.debug("Sort method 0");
       sort_function = (c1, c2) => tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
-      //dump("1\n");
+      tblog.debug("Sort method 1");
       sort_function = (c1, c2) => tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
-      //dump("2\n");
+      tblog.debug("Sort method 2");
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
@@ -81,12 +87,13 @@ function rebuild_tree(full, collapse) {
     let tree_items = Array();
     //tree_items = a_tree_items;
 
-    //dump(indent+a_tree_items.length+" nodes passed\n");
+    tblog.debug(indent+a_tree_items.length+" nodes passed");
     for (let i = 0; i < a_tree_items.length; ++i)
       tree_items.push(a_tree_items[i]);
+    tblog.debug(indent+tree_items.length+" folders to examine before sort");
     tree_items.sort(sort_function);
 
-    //dump(indent+tree_items.length+" folders to examine\n");
+    tblog.debug(indent+tree_items.length+" folders to examine");
     for (let i = 0; i < tree_items.length; ++i) {
       dfs++;
       //let data = tbsf_data[current_account][1];
@@ -107,7 +114,7 @@ function rebuild_tree(full, collapse) {
       the right sort keys. */
       fresh_data[item_key(tree_items[i])] = dfs;
       if (full) {
-        //dump(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i])+"\n");
+        tblog.debug(indent+"### Rebuilding "+dfs+" is "+item_key(tree_items[i]));
       }
 
       //let n_tree_items = tree_items[i].querySelectorAll("[thisnode] > treechildren > treeitem");
@@ -147,10 +154,87 @@ function rebuild_tree(full, collapse) {
   my_sort(children, "");
   if (replace_data)
     tbsf_data[current_account][1] = fresh_data; //this "fresh" array allows us to get rid of old folder's keys
-
 }
 
+function decode_special(flags) {
+  if (flags & 0x00000100) {
+    return 'Trash';
+  } else if (flags & 0x00000200) {
+    return 'Sent';
+  } else if (flags & 0x00000400) {
+    return 'Drafts';
+  } else if (flags & 0x00000800) {
+    return 'Outbox';
+  } else if (flags & 0x00001000) {
+    return 'Inbox';
+  } else if (flags & 0x00004000) {
+    return 'Archives';
+  } else if (flags & 0x00400000) {
+    return 'Templates';
+  } else if (flags & 0x40000000) {
+    return 'Junk';
+  } else if (flags & 0x80000000) {
+    return 'Favorite';
+  } else {
+    return 'none';
+  }
+}
+
+function build_folder_tree(account) {
+  // Clear folder tree
+  let treechildren = document.getElementById("treeChildren");
+  while (treechildren.firstChild) {
+    treechildren.removeChild(treechildren.firstChild);
+  }
+
+  // Fill folder tree
+  if (account.incomingServer.rootFolder.hasSubFolders) {
+//    tblog.debug("Root Folder keys: "+Object.keys(account.incomingServer.rootFolder));
+    walk_folder(account.incomingServer.rootFolder,treechildren,0);
+  }
+}
+
+function walk_folder(folder,treechildren,depth) {
+  let subFolders = folder.subFolders;
+  while (subFolders.hasMoreElements()) {
+    let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+
+    let indent = ' '.repeat(2*depth);
+    tblog.debug("Folder: "+indent+folder.prettyName);
+    tblog.debug("Folder URI: "+indent+folder.URI);
+    tblog.debug("Folder flags: "+indent+folder.flags);
+    
+    let special_name = decode_special(folder.flags);
+    tblog.debug("Special name: "+special_name);
+
+    let treeitem = document.createElement('treeitem');
+    treeitem.setAttribute('id',folder.URI);
+    let treerow = document.createElement('treerow');
+    let treecell = document.createElement('treecell');
+    treecell.setAttribute('label',folder.prettyName);
+    treecell.setAttribute('value',folder.URI);
+    treecell.setAttribute('properties','specialFolder-'+special_name);
+    treerow.appendChild(treecell);
+    treeitem.appendChild(treerow)
+
+    if (folder.hasSubFolders) {
+
+      treeitem.setAttribute('container','true');
+      treeitem.setAttribute('open','true');
+      let treechildrensub = document.createElement('treechildren');
+      
+      walk_folder(folder,treechildrensub,depth+1);
+
+      treeitem.appendChild(treechildrensub)
+    }
+    
+    treechildren.appendChild(treeitem);
+  }
+}
+
+
 function on_load() {
+  tblog.debug("on_load");
   let json = tbsf_prefs.getStringPref("tbsf_data");
   try {
     tbsf_data = JSON.parse(json);
@@ -161,20 +245,22 @@ function on_load() {
   let name;
   let accounts_menu = document.getElementById("accounts_menu");
   let accounts = [];
-  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount))
+  for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
     accounts.push(x);
+  }
+  tblog.debug("Total accounts: "+accounts.length);
   if (!accounts.length) {
     document.querySelector("tabbox").style.display = "none";
     document.getElementById("err_no_accounts").style.display = "";
     return;
   }
   for (let account of accounts) {
-    //dump(Object.keys(account)+"\n");
+//    tblog.debug("Account keys: "+Object.keys(account));
     //fill the menulist with the right elements
     if (!account.incomingServer)
       continue;
-    //dump(account.incomingServer.rootFolder.prettiestName+"\n");
-    name = account.incomingServer.rootFolder.prettiestName;
+    tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
+    name = account.incomingServer.rootFolder.prettyName;
     let it = document.createElement("menuitem");
     it.setAttribute("label", name);
     accounts_menu.appendChild(it);
@@ -186,35 +272,24 @@ function on_load() {
   }
   document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
 
-  /* That one is actually triggered once (after the template is built on load) */
-  let folders_tree = document.getElementById("foldersTree");
-  let some_listener = {
-    willRebuild : function(builder) { },
-    didRebuild : function(builder) {
-      //dump("Tree rebuilt\n");
-      rebuild_tree(true);
-    }
-  };
-  folders_tree.builderVew.addListener(some_listener);
-  window.addEventListener("unload", function () { folders_tree.builder.removeListener(some_listener); }, false);
+  
+  tblog.debug("Accounts: "+account_manager.accounts.length);
+//  tblog.debug("Account Manager keys: "+Object.keys(account_manager));
+  try {
+    let tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+    let tbsf_accounts = tbsf_prefs.getStringPref("accounts");
 
-  /* That one tracks changes that happen to the folder pane *while* the manually
-   * sort folders dialog is open */
-  /*let rdf_source = Components.classes["@mozilla.org/rdf/datasource;1?name=mailnewsfolders"].
-    getService(Components.interfaces.nsIRDFDataSource);
-  let some_observer = {
-    onAssert: function () {},
-    onBeginUpdateBatch: function () {},
-    onEndUpdateBatch: function () {},
-    onChange: function () {
-      dump("*** rdf:mailnewsfolders changed, rebuilding tree...\n");
-      rebuild_tree(true);
-    },
-    onMove: function () {},
-    onUnassert: function () {}
-  };
-  rdf_source.AddObserver(some_observer);
-  window.addEventListener("unload", function () { dump("Removed observer\n"); rdf_source.RemoveObserver(some_observer); }, false);*/
+    tblog.debug("TB Accounts: "+tb_accounts);
+    tblog.debug("TBSF Accounts: "+tbsf_accounts);
+
+    let tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+    let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+
+    tblog.debug("TB Default account: "+tb_default_account);
+    tblog.debug("TBSF Default account: "+tbsf_default_account);
+  } catch (x) {
+  }
+
 
   on_account_changed();
 
@@ -237,7 +312,7 @@ function renumber(treeItem, start) {
 function move_up(tree_item) {
   let tree = document.getElementById("foldersTree");
   let uri = item_key(tree_item);
-  //dump(uri+"\n");
+  tblog.debug("URI: "+uri);
   if (tree_item.previousSibling) {
     let previous_item = tree_item.previousSibling;
     let previous_uri = item_key(previous_item);
@@ -246,16 +321,17 @@ function move_up(tree_item) {
     rebuild_tree();
     //tree.builder.rebuild();
   } else {
-    //dump("This is unexpected\n");
+    tblog.debug("This is unexpected");
   }
   /*for (let i = 0; i < 10; ++i) {
     let tree_item = tree.view.getItemAtIndex(i);
     let k = item_key(tree_item);
-    dump(tbsf_data[current_account][1][k]+" ");
-  } dump("\n");*/
+    tblog.debug(tbsf_data[current_account][1][k]+" ");
+  } tblog.debug("");*/
 }
 
 function on_move_up() {
+  tblog.debug("on_move_up");
   let tree = document.getElementById("foldersTree");
   let i = tree.currentIndex;
   if (i < 0) return;
@@ -267,6 +343,7 @@ function on_move_up() {
 }
 
 function on_move_down() {
+  tblog.debug("on_move_down");
   let tree = document.getElementById("foldersTree");
   let i = tree.currentIndex;
   if (i < 0) return;
@@ -289,6 +366,8 @@ function update_tree() {
   let root_folder = account.incomingServer.rootFolder; // nsIMsgFolder
   let tree = document.getElementById("foldersTree");
   tree.setAttribute("ref", root_folder.URI);
+
+  build_folder_tree(account);
 }
 
 function on_account_changed() {
@@ -333,9 +412,7 @@ function on_close() {
 function on_refresh() {
   tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
   //it's a getter/setter so that actually does sth
-  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
-    .getService(Ci.nsIWindowMediator)
-    .getMostRecentWindow("mail:3pane");
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
   mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
 }
 
@@ -347,17 +424,17 @@ window.addEventListener("unload", on_refresh, false);
 var g_other_accounts = null;
 
 function accounts_on_load() {
-  let accounts = Application.prefs.get("mail.accountmanager.accounts").value.split(",");
-  let defaultaccount = Application.prefs.get("mail.accountmanager.defaultaccount").value;
+  let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
+  let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
-  let servers = accounts.map((a) => Application.prefs.get("mail.account."+a+".server").value);
-  let types = servers.map((s) => Application.prefs.get("mail.server."+s+".type").value);
+  let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
+  let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
     try {
-      return Application.prefs.get("mail.server."+s+".name").value;
+      return mail_server_prefs.getStringPref(s+".name");
     } catch (e) {
-      return Application.prefs.get("mail.server."+s+".hostname").value;
+      return mail_server_prefs.getStringPref(s+".hostname");
     } });
 
   let mail_accounts = [];
@@ -397,7 +474,7 @@ function accounts_on_load() {
       default:
         let hidden = false;
         try {
-          let hidden_pref = Application.prefs.get("mail.server."+servers[i]+".hidden").value;
+          let hidden_pref = mail_server_prefs.getStringPref(servers[i]+".hidden");
           hidden = hidden_pref;
         } catch (e) {
         }
@@ -417,6 +494,7 @@ function accounts_on_load() {
   if (news_account_found) {
     document.getElementById("news_accounts_list").style.display = "";
   }
+  update_accounts_prefs();
 }
 
 function update_accounts_prefs() {
@@ -439,14 +517,20 @@ function update_accounts_prefs() {
     new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
   }
 
-  let pref = Application.prefs.get("mail.accountmanager.accounts");
-  pref.value = new_pref;
-
+  mail_accountmanager_prefs.setStringPref("accounts",new_pref);
+  tbsf_prefs.setStringPref("accounts",new_pref);
+  tblog.debug("Sorted accounts: "+new_pref);
+  
   let default_account = document.getElementById("default_account").parentNode.value;
-  if (default_account == "-1")
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = first_mail_account;
-  else
-    Application.prefs.get("mail.accountmanager.defaultaccount").value = default_account;
+  if (default_account == "-1") {
+    mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
+    tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
+    tblog.debug("Default account: "+first_mail_account);
+  } else {
+    mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
+    tbsf_prefs.setStringPref("defaultaccount",default_account);
+    tblog.debug("Default account: "+default_account);
+  }
 }
 
 function account_move_up(index, listbox) {
@@ -467,10 +551,14 @@ function account_move_up(index, listbox) {
 var g_active_list = null;
 
 function on_account_move_up() {
+  tblog.debug("on_account_move_up");
   if (!g_active_list) return;
 
   let listbox = g_active_list;
   let i = listbox.selectedIndex;
+  
+  tblog.debug("index: "+i);
+  
   if (i < 0) return;
   if (account_move_up(i, listbox))
     listbox.selectedIndex = i-1;
@@ -478,10 +566,14 @@ function on_account_move_up() {
 }
 
 function on_account_move_down() {
+  tblog.debug("on_account_move_down");
   if (!g_active_list) return;
 
   let listbox = g_active_list;
   let i = listbox.selectedIndex;
+  
+  tblog.debug("index: "+i);
+
   if (i < 0) return;
   if (account_move_up(i+1, listbox))
     listbox.selectedIndex = i+1;
@@ -489,10 +581,8 @@ function on_account_move_down() {
 }
 
 function on_account_restart() {
-  let mainWindow = Cc['@mozilla.org/appshell/window-mediator;1']
-    .getService(Ci.nsIWindowMediator)
-    .getMostRecentWindow("mail:3pane");
-  mainWindow.setTimeout(function () { mainWindow.Application.restart(); }, 1000);
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
+  mainWindow.setTimeout(function () { Services.startup.quit(Services.startup.eForceQuit|Services.startup.eRestart); },1000);
   window.close();
 }
 

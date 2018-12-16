@@ -1,8 +1,27 @@
 Manually Sort Folders
 =====================
 
-This extension for Thunderbird 3.0.1+ adds a "Manually sort folders" entry into
-the Tools menu. Use it to, hum, manually sort your folders (that was obvious,
+Tested on:  
+
+OpenSuSE 15.0 with Thunderbird 60.0 (email accounts only)  
+Windows 10 x64 with Thunderbird 60.2.1(32bit) (email accounts only)  
+macOS 10.13.3 with Thunderbird 60.2.1(64bit) (email accounts only)  
+
+NOT tested:  
+
+All other setups  
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
+Warning:  
+
+Please be careful using this updated plugin. It can kill your Thunderbird account config.  
+Make a backup of your Thunderbird config dir.  
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
+
+
+This extension for Thunderbird 60+ adds a "Manually sort folders" entry into
+the Tools menu. Use it to, hum, manually sort your accounts and folders (that was obvious,
 wasn't it?).
 
 I sometimes put a development version

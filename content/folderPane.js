@@ -1,19 +1,86 @@
+
 (function () {
   /* For folder sorting */
 
   const Cc = Components.classes;
   const Ci = Components.interfaces;
   const Cu = Components.utils;
+
+  Cu.import("resource://tbsortfolders/logging.jsm");
+  let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.folderpane");
+
+  Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
   Cu.import("resource:///modules/MailUtils.js");
 
-  const tbsf_prefs = Cc["@mozilla.org/preferences-service;1"]
-    .getService(Ci.nsIPrefService)
-    .getBranch("extensions.tbsortfolders@xulforum.org.");
+  tblog.debug("Init");
+
+  const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
   /* This array is populated either when the file is loaded or when the
-   * preferences are updated. The keys are the account's prettiest names and the
+   * preferences are updated. The keys are the account's pretty names and the
    * values are the sort functions associated to each account. */
   var tbsf_prefs_functions;
+  const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
+
+  var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+  var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+  tblog.debug("TB Accounts: "+tb_accounts);
+  tblog.debug("TB Default account: "+tb_default_account);
+
+  let tbsf_accounts = null;
+  let tbsf_default_account = null;
+  try {
+    tbsf_accounts = tbsf_prefs.getStringPref("accounts");
+    tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+    tblog.debug("TBSF Accounts: "+tbsf_accounts);
+    tblog.debug("TBSF Default account: "+tbsf_default_account);
+  } catch (x) {
+  }
+
+  tblog.debug("Add observer");
+
+  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");  
+  let config = {attributes:true,attributeFilter:["maxpos"],childList:true,subtree:true};
+  var callback_foldertree =  function (mutationList, observer) {
+//    tblog.debug("Observer activated");
+
+//    for (let mutation of mutationList) {
+//      if (mutation.type == 'childList') {
+//        tblog.debug("Childnode added");
+//      } else if (mutation.type == 'attributes') {
+//        tblog.debug("The "+mutation.attributeName+" attribute changed");
+//      }
+//    }
+
+    let current_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+    let tbsf_default_account = null;
+    try {
+      tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+    } catch (x) {
+    }
+//    tblog.debug("Current Default account: "+current_default_account);
+//    tblog.debug("Stored Default account: "+tbsf_default_account);
+
+    if (current_default_account !== tbsf_default_account && tbsf_default_account !== null) {
+      mail_accountmanager_prefs.setStringPref("defaultaccount",tbsf_default_account);
+//      tblog.debug("Default account restored");
+    }
+
+/*
+    let current_tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+    let tbsf_accounts = null;
+    try {
+      tbsf_accounts = tbsf_prefs.getStringPref("accounts");
+    } catch (x) {
+    }
+    tblog.debug("Current accounts: "+current_tb_accounts);
+    tblog.debug("Stored accounts: "+tbsf_accounts);
+*/
+  };
+  var observer_foldertree = new MutationObserver(callback_foldertree);
+  observer_foldertree.observe(mainWindow.document.getElementById('folderTree'),config);
+
+//  observer_foldertree.disconnect();
 
   sortFolderItems = function (aFtvItems) {
     if (!aFtvItems.length)
@@ -24,7 +91,7 @@
     //In case we're asked to sort sub-folders, we walk up the tree up to the root
     //item which is the "fake folder" representing the account.
     while (parent.parent) parent = parent.parent;
-    let parentName = parent.prettiestName;
+    let parentName = parent.prettyName;
 
     let sort_function;
     if (tbsf_prefs_functions[parentName]) {
