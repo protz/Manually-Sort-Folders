@@ -25,8 +25,8 @@ the Tools menu. Use it to, hum, manually sort your accounts and folders (that wa
 wasn't it?).
 
 I sometimes put a development version
-[online](http://jonathan.xulforum.org/files/tbsortfolders.xpi), but over the
-past two years, I've only updated this addon once, as it is very stable; so your
+[online](https://jonathan.protzenko.fr/manually-sort-folders/), but over the
+past eight years, I've only updated this addon twice, as it is very stable; so your
 best bet is to just stick with the publicly available version on AMO.
 
 * Screenshots on [the wiki](http://wiki.github.com/protz/Manually-Sort-Folders/)
