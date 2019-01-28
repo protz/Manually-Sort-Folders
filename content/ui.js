@@ -451,6 +451,7 @@ function accounts_on_load() {
     switch (types[i]) {
       case "imap":
       case "pop3":
+      case "exquilla":
       case "movemail":
       case "rss":
         mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
