@@ -7,7 +7,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>tbsortfolders@xulforum.org</em:id>
     <em:type>2</em:type>
-    <em:version>2.0.0</em:version>
+    <em:version>2.0.0pre1</em:version>
     <em:iconURL>chrome://tbsortfolders/content/icon.png</em:iconURL>
     <em:name>Manually sort folders</em:name>
     <em:description>An extension that allows you to change the way Thunderbird sorts folders in the folder pane.</em:description>
