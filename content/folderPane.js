@@ -11,7 +11,11 @@
 
   Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
-  Cu.import("resource:///modules/MailUtils.js");
+  if (Services.appinfo.version >= 64.0) {
+    Cu.import("resource:///modules/MailUtils.jsm");
+  } else {
+    Cu.import("resource:///modules/MailUtils.js");
+  }
 
   tblog.debug("Init");
 
@@ -181,4 +185,8 @@
       oldSelectFolder.call(this, x, y);
     }
   };
+  
+  /* Refresh pane */
+  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+
 })()
