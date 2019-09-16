@@ -1,10 +1,10 @@
 <!ENTITY general.title "Konten- &amp; Ordnerreihenfolge ändern">
 <!ENTITY sortfolders.description "Diese Ansicht erlaubt das Sortieren der Ordner eines jeden Kontos. Wählen Sie erst ein Konto aus und anschließend die Sortiermethode.">
 <!ENTITY sortmethod.default "SeaMonkeys eigene Sortiermethode">
-<!ENTITY sortmethod.alphabetical "einfacher Vergleich des Ordnernamens">
-<!ENTITY sortmethod.custom "benutzerdefinierte Sortierfunktion">
-<!ENTITY sortmethod.default.description "Hierbei handelt es sich um SeaMonkeys eigene Sortiermethode. Im Gegensatz zu Google Mail werden dabei besondere Unicode-Zeichen nicht berücksichtigt.">
-<!ENTITY sortmethod.alphabetical.description "Dies ist eine übliche Sortierfunktion, welche auf einfachem Zeichenvergleich der Namen basiert. Sie erlaubt die Erstellung verschiedener Ordnerkategorien wie bei Google Mail durch die Nutzung besonderer Unicode-Zeichen.">
+<!ENTITY sortmethod.alphabetical "Einfacher Vergleich des Ordnernamens">
+<!ENTITY sortmethod.custom "Benutzerdefinierte Sortierfunktion">
+<!ENTITY sortmethod.default.description "Dies ist SeaMonkeys eigene Sortiermethode, die besondere Unicode-Zeichen nicht berücksichtigt.">
+<!ENTITY sortmethod.alphabetical.description "Dies ist eine übliche Sortierfunktion, die auf einfachem Zeichenvergleich der Namen basiert. Sie erlaubt das Erstellen verschiedener Ordnerkategorien durch besondere Unicode-Zeichen.">
 <!ENTITY sortmethod.custom.description "Die Ordner lassen sich über die obigen Schaltflächen verschieben. Später erstellte Ordner werden am Ende der Liste hinzugefügt. Die Veränderungen können später hier rückgängig gemacht werden.">
 <!ENTITY sortmethod.samplelegend "(Beispielhafte Konten-/Ordneransicht)">
 <!ENTITY button.move_up "Nach oben">
@@ -12,20 +12,20 @@
 <!ENTITY button.refresh "Konten-/Ordnerliste aktualisieren">
 <!ENTITY button.close "Schließen">
 <!ENTITY button.restart "SeaMonkey neu starten">
-<!ENTITY accountssort.description "Diese Ansicht erlaubt die Sortierung der Konten in der Konten-/Ordneransicht. Im nächsten Tab können die Ordner innerhalb eines Kontos sortiert werden.">
+<!ENTITY accountssort.description "Diese Ansicht erlaubt, die Konten in der Konten-/Ordneransicht zu sortieren. Im nächsten Tab können die Ordner innerhalb eines Kontos sortiert werden.">
 <!ENTITY accountsort.warning "Standardmäßig erscheinen E-Mail-Konten, Unix-Movemail-Konten sowie Blog- &amp; News-Feed-Konten an oberster Position, danach folgen die &quot;Lokalen Ordner&quot; und als letztes Newsgruppen-Konten. Dies kann geändert werden, indem das Konto &quot;Lokale Ordner&quot; oder eins der Newsgruppen-Konten als Standardkonto ausgewählt wird, wodurch es an die oberste Position gesetzt wird.">
-<!ENTITY accountsort.restartwarning "Zur Übernahme der Änderungen muss SeaMonkey neu gestartet werden.">
+<!ENTITY accountsort.restartwarning "Zum Übernehmen der Änderungen muss SeaMonkey neu gestartet werden.">
 <!ENTITY tab.accounts "Konten sortieren">
 <!ENTITY tab.folders "Ordner sortieren">
 <!ENTITY gb.move "Ausgewähltes Konto verschieben">
 <!ENTITY gb.movefolder "Ausgewählten Ordner verschieben">
 <!ENTITY gb.first "Erstes Konto in der Konten-/Ordneransicht">
 <!ENTITY gb.extra "Weitere Informationen">
-<!ENTITY gbfirst.default "Dies ist das Standardkonto.">
+<!ENTITY gbfirst.default "Standardkonto (siehe Beschreibung darunter):">
 <!ENTITY tc.foldername "Ordnername">
-<!ENTITY mi.firstmail "Erstes Blogs &amp; News-Feeds- oder E-Mail-Konto in der Liste">
+<!ENTITY mi.firstmail "Erstes E-Mail- oder Blogs &amp; News-Feeds-Konto in der Liste">
 <!ENTITY accountsort.localfolders "Lokale Ordner">
-<!ENTITY accountsort.noaccountsetupyet "Es wurde noch kein Konto eingerichtet.">
+<!ENTITY accountsort.noaccountsetupyet "Es wurde noch kein Konto eingerichtet!">
 <!ENTITY tab.extra "Erweitert">
 <!ENTITY extra.startup "Startordner">
 <!ENTITY extra.description "Tab für verschiedene ordnerbezogene Einstellungen">
