@@ -2,18 +2,19 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
-Cu.import("resource://tbsortfolders/logging.jsm");
-let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.folderpane");
+// Logging using the latest from https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Log.jsm
+// Assuming this is 68+ only.
+Cu.import("resource://gre/modules/Log.jsm");
+let tblog = Log.repository.getLogger("tbsortfolders.ui");
+tblog.level = Log.Level.Debug;
+tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
+tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
-if (Services.appinfo.version >= 64.0) {
-  Cu.import("resource:///modules/MailUtils.jsm");
-} else {
-  Cu.import("resource:///modules/MailUtils.js");
-}
+Cu.import("resource:///modules/MailUtils.jsm");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
-                 
+
 var g_accounts = Object();
 const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
 var tbsf_data = {};

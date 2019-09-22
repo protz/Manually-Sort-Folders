@@ -9,7 +9,7 @@
   "applications": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
-      "strict_min_version": "63.0"
+      "strict_min_version": "68.0"
     }
   },
   "icons": {

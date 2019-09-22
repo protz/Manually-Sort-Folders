@@ -6,16 +6,15 @@
   const Ci = Components.interfaces;
   const Cu = Components.utils;
 
-  Cu.import("resource://tbsortfolders/logging.jsm");
-  let tblog = tbsortfolders.Logging.getLogger("tbsortfolders.folderpane");
+  Cu.import("resource://gre/modules/Log.jsm");
+  let tblog = Log.repository.getLogger("tbsortfolders.folderPane");
+  tblog.level = Log.Level.Debug;
+  tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
+  tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
   Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
-  if (Services.appinfo.version >= 64.0) {
-    Cu.import("resource:///modules/MailUtils.jsm");
-  } else {
-    Cu.import("resource:///modules/MailUtils.js");
-  }
+  Cu.import("resource:///modules/MailUtils.jsm");
 
   tblog.debug("Init");
 
