@@ -29,4 +29,5 @@ past eight years, I’ve only updated this add-on twice, as it is very stable; s
 best bet is to just stick with the publicly available version on 
 [ATN](https://addons.thunderbird.net/addon/manually-sort-folders/).
 
-Screenshots and stable version avaiable at [ATN](https://addons.thunderbird.net/addon/manually-sort-folders/).
+* Screenshots on [the wiki](https://github.com/protz/Manually-Sort-Folders/wiki)
+* Stable version on [ATN](https://addons.thunderbird.net/addon/manually-sort-folders/)
