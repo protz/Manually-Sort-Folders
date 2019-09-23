@@ -25,20 +25,20 @@
   var tbsf_prefs_functions;
   const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
 
-  var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
-  var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-  tblog.debug("TB Accounts: "+tb_accounts);
-  tblog.debug("TB Default account: "+tb_default_account);
+//   var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
+//   var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
+//   tblog.debug("TB Accounts: "+tb_accounts);
+//   tblog.debug("TB Default account: "+tb_default_account);
 
-  let tbsf_accounts = null;
-  let tbsf_default_account = null;
-  try {
-    tbsf_accounts = tbsf_prefs.getStringPref("accounts");
-    tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-    tblog.debug("TBSF Accounts: "+tbsf_accounts);
-    tblog.debug("TBSF Default account: "+tbsf_default_account);
-  } catch (x) {
-  }
+//   let tbsf_accounts = null;
+//   let tbsf_default_account = null;
+//   try {
+//     tbsf_accounts = tbsf_prefs.getStringPref("accounts");
+//     tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
+//     tblog.debug("TBSF Accounts: "+tbsf_accounts);
+//     tblog.debug("TBSF Default account: "+tbsf_default_account);
+//   } catch (x) {
+//   }
 
   tblog.debug("Add observer");
 
@@ -56,18 +56,12 @@
 //    }
 
     let current_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
-    let tbsf_default_account = null;
-    try {
-      tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
-    } catch (x) {
-    }
+    let tbsf_default_account = tbsf_prefs.getStringPref("defaultaccount");
 //    tblog.debug("Current Default account: "+current_default_account);
 //    tblog.debug("Stored Default account: "+tbsf_default_account);
 
-    if (current_default_account !== tbsf_default_account && tbsf_default_account !== null) {
-      mail_accountmanager_prefs.setStringPref("defaultaccount",tbsf_default_account);
-//      tblog.debug("Default account restored");
-    }
+    if (tbsf_default_account && current_default_account !== tbsf_default_account)
+      mail_accountmanager_prefs.setStringPref("defaultaccount", tbsf_default_account);
 
 /*
     let current_tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
