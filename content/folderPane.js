@@ -171,7 +171,7 @@
     if (firstRun && inRestoreTab) {
       let startup_folder = tbsf_prefs.getStringPref("startup_folder");
       if (startup_folder != "") {
-        let folder = MailUtils.getFolderForURI(startup_folder);
+        let folder = MailUtils.getExistingFolder(startup_folder);
         if (folder)
           oldSelectFolder.call(this, folder, true);
         else

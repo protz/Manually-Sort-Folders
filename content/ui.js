@@ -621,7 +621,7 @@ function extra_on_load() {
   let picker = document.getElementById("startupFolder");
   let folder;
   if (startup_folder)
-    folder = MailUtils.getFolderForURI(startup_folder);
+    folder = MailUtils.getExistingFolder(startup_folder);
   if (folder) {
     picker.folder = folder;
     picker.setAttribute("label", folder.prettyName);
