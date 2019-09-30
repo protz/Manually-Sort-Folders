@@ -13,7 +13,7 @@
 <!ENTITY button.close "Schließen">
 <!ENTITY button.restart "Thunderbird neu starten">
 <!ENTITY accountssort.description "Diese Ansicht erlaubt die Sortierung der Konten in der Konten-/Ordneransicht. Im nächsten Tab können die Ordner innerhalb eines Kontos sortiert werden.">
-<!ENTITY accountsort.warning "E-Mail-Konten, Unix-Movemail-Konten sowie Blog- &amp; News-Feed-Konten müssen an oberster Position einsortiert erscheinen. Danach folgen die &quot;Lokalen Ordner&quot; und als letztes Newsgruppen-Konten. Diese Regelung kann umgangen werden, indem das Konto &quot;Lokale Ordner&quot; oder eins der Newsgruppen-Konten als Standardkonto ausgewählt wird, wodurch es an die oberste Position gesetzt wird.">
+<!ENTITY accountsort.warning "Standardmäßig erscheinen E-Mail-Konten, Unix-Movemail-Konten sowie Blog- &amp; News-Feed-Konten an oberster Position, danach folgen die &quot;Lokalen Ordner&quot; und als letztes Newsgruppen-Konten. Dies kann geändert werden, indem das Konto &quot;Lokale Ordner&quot; oder eins der Newsgruppen-Konten als Standardkonto ausgewählt wird, wodurch es an die oberste Position gesetzt wird.">
 <!ENTITY accountsort.restartwarning "Zur Übernahme der Änderungen muss Thunderbird neu gestartet werden.">
 <!ENTITY tab.accounts "Konten sortieren">
 <!ENTITY tab.folders "Ordner sortieren">
