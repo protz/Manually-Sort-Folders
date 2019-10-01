@@ -3,7 +3,7 @@ Manually Sort Folders
 
 Tested on:  
 
-OpenSuSE 15.1 with Thunderbird 68.0 (email accounts only)  
+openSUSE 15.1 with Thunderbird 68.0 (email accounts only)  
 Windows 10 x64 with Thunderbird 68.0 (64-bit) (email accounts only)  
 
 NOT tested:  
