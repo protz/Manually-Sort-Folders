@@ -45,13 +45,9 @@
 
 /* Account pane */
 
-#account-pane {
+#account-pane, #folders-pane {
   display: flex;
   flex-direction: row;
-}
-
-#account-move-up:hover, #account-move-down:hover {
-  cursor: pointer;
 }
 
 #account-pane {
@@ -62,11 +58,17 @@
   text-align: right;
 }
 
-.account-entry:hover {
+.account-entry:hover, .folder-entry:hover {
   cursor: pointer;
 }
 
-.account-entry.selected {
+/* Generic */
+
+.selected {
   background-color: -moz-cellhighlight;
   color: -moz-cellhighlighttext
+}
+
+.clickable {
+  cursor: pointer;
 }

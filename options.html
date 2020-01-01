@@ -10,12 +10,12 @@
   <body>
     <div class="tabbox">
       <div class="tablabels">
-        <span class="tablabel">Sort accounts</span>
-        <span class="tablabel">Sort folders</span>
-        <span class="tablabel">Set startup folder</span>
+        <span class="tablabel" data-panel="panel-accounts">Sort accounts</span>
+        <span class="tablabel" data-panel="panel-folders">Sort folders</span>
+        <span class="tablabel" data-panel="panel-startup">Set startup folder</span>
       </div>
       <div class="tabpanels">
-        <div class="tabpanel active" id="panel-accounts">
+        <div class="tabpanel" id="panel-accounts">
           <div>
             <input type="checkbox" id="custom-sort" />
             <label for="custom-sort">Override Thunderbird's default sort order</label>
@@ -24,16 +24,27 @@
             <ul id="account-list">
             </ul>
             <div id="account-controls">
-              <span id="account-move-up">⬆️</span>
-              <span id="account-move-down">⬇️</span>
+              <span class="clickable" id="account-move-up">⬆️</span>
+              <span class="clickable" id="account-move-down">⬇️</span>
             </div>
           </div>
           <div id="account-buttons">
             <button id="account-apply">Apply</button>
           </div>
         </div>
-        <div class="tabpanel" id="panel-folders">
-          Folders
+        <div class="tabpanel active" id="panel-folders">
+          <div>
+            Sort folders for:
+            <select id="folders-account"></select>
+          </div>
+          <div id="folders-pane">
+            <ul id="folder-list">
+            </ul>
+            <div id="folder-controls">
+              <span class="clickable" id="folder-move-up">⬆️</span>
+              <span class="clickable" id="folder-move-down">⬇️</span>
+            </div>
+          </div>
         </div>
         <div class="tabpanel" id="panel-startup">
           Startup
