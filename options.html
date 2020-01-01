@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css" type="text/css">
+    <title>Manually Sort Folders</title>
+    <script src="options.js"></script>
+  </head>
+  <body>
+    <div class="tabbox">
+      <div class="tablabels">
+        <span class="tablabel">Sort accounts</span>
+        <span class="tablabel">Sort folders</span>
+        <span class="tablabel">Set startup folder</span>
+      </div>
+      <div class="tabpanels">
+        <div class="tabpanel active" id="panel-accounts">
+          <div>
+            <input type="checkbox" id="custom-sort" />
+            <label for="custom-sort">Override Thunderbird's default sort order</label>
+          </div>
+          <div id="account-pane">
+            <ul id="account-list">
+            </ul>
+            <div id="account-controls">
+              <span id="account-move-up">⬆️</span>
+              <span id="account-move-down">⬇️</span>
+            </div>
+          </div>
+          <div id="account-buttons">
+            <button id="account-apply">Apply</button>
+          </div>
+        </div>
+        <div class="tabpanel" id="panel-folders">
+          Folders
+        </div>
+        <div class="tabpanel" id="panel-startup">
+          Startup
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

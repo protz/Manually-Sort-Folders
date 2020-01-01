@@ -1,0 +1,72 @@
+/* Tab panels */
+
+.tabbox {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 1em;
+}
+
+.tablabels {
+  border-bottom: 1px solid black;
+}
+
+.tablabel {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+.tablabel:hover {
+  cursor: pointer;
+}
+
+.tabpanels {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.tabpanel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tabpanel:not(.active) {
+  display: none;
+}
+
+/* Account pane */
+
+#account-pane {
+  display: flex;
+  flex-direction: row;
+}
+
+#account-move-up:hover, #account-move-down:hover {
+  cursor: pointer;
+}
+
+#account-pane {
+  flex: 1;
+}
+
+#account-buttons {
+  text-align: right;
+}
+
+.account-entry:hover {
+  cursor: pointer;
+}
+
+.account-entry.selected {
+  background-color: -moz-cellhighlight;
+  color: -moz-cellhighlighttext
+}
