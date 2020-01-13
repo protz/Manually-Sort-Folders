@@ -1,14 +1,3 @@
-/* Tab navigation */
-function initTabs() {
-  for (let l of document.querySelectorAll(".tablabel")) {
-    let panel = l.dataset.panel;
-    l.addEventListener("click", function (event) {
-      document.querySelector(".tabpanel.active").classList.remove("active");
-      document.getElementById(panel).classList.add("active");
-    });
-  }
-}
-
 /* Higher-order helpers */
 function moveUp(parent) {
   return (event) => {
@@ -35,6 +24,18 @@ function select(parent) {
   }
 }
 
+/* Tab navigation */
+function initTabs() {
+  for (let l of document.querySelectorAll(".tablabel")) {
+    let panel = l.dataset.panel;
+    l.addEventListener("click", function (event) {
+      document.querySelector(".tabpanel.active").classList.remove("active");
+      document.getElementById(panel).classList.add("active");
+    });
+    l.addEventListener("click", select(document.querySelector(".tablabels")));
+  }
+}
+
 /* Account pane */
 function mkAccount(a) {
   let li = document.createElement("li");
@@ -45,46 +46,42 @@ function mkAccount(a) {
   return li;
 }
 
-function showHideAccount() {
-  let check = document.querySelector("#custom-sort");
-  let pane = document.querySelector("#account-pane");
-  if (check.checked)
-    pane.style.display = "";
-  else
-    pane.style.display = "none";
-}
-
-async function applyAccountChanges() {
-  let check = document.querySelector("#custom-sort");
-  if (check.checked) {
-    let accounts = [];
-    for (let li of document.querySelectorAll(".account-entry"))
-      accounts.push(li.dataset.id);
-    await browser.accounts.setCustomSort(accounts);
-  } else {
-    await browser.accounts.clearCustomSort();
-  }
-}
-
-async function initAccountPane() {
-  /* Set UI in accordance with what's in the prefs*/
-  let userSort = await browser.accounts.hasCustomSort();
-  document.querySelector("#custom-sort").checked = userSort;
-  showHideAccount();
-
+async function fillAccounts() {
   let accountList = document.getElementById("account-list");
   let accounts = await browser.accounts.list();
   for (let a of accounts) {
     accountList.appendChild(mkAccount(a));
   }
+}
+
+async function applyAccountChanges() {
+  let accounts = [];
+  for (let li of document.querySelectorAll(".account-entry"))
+    accounts.push(li.dataset.id);
+  await browser.accounts.setOrder(accounts);
+}
+
+async function resetAccountChanges() {
+  await browser.accounts.setOrder();
+
+  // Query Thunderbird for the new default sort order.
+  let accountList = document.getElementById("account-list");
+  while (accountList.firstChild)
+    accountList.removeChild(accountList.firstChild);
+  await fillAccounts();
+}
+
+async function initAccountPane() {
+  /* Set UI in accordance with what's in the prefs*/
+  await fillAccounts();
 
   /* Event handlers */
   document.querySelector("#account-move-up").addEventListener("click",
     moveUp(document.querySelector("#account-list")));
   document.querySelector("#account-move-down").addEventListener("click",
     moveDown(document.querySelector("#account-list")));
-  document.querySelector("#custom-sort").addEventListener("change", showHideAccount);
   document.querySelector("#account-apply").addEventListener("click", applyAccountChanges);
+  document.querySelector("#account-reset").addEventListener("click", resetAccountChanges);
 }
 
 /* Folder pane */

@@ -11,6 +11,8 @@
   bottom: 0;
 
   padding: 1em;
+
+  overflow: auto;
 }
 
 .tablabels {
@@ -43,19 +45,15 @@
   display: none;
 }
 
-/* Account pane */
+/* Inside panes */
 
 #account-pane, #folders-pane {
   display: flex;
   flex-direction: row;
 }
 
-#account-pane {
+#account-pane, #folders-pane {
   flex: 1;
-}
-
-#account-buttons {
-  text-align: right;
 }
 
 .account-entry:hover, .folder-entry:hover {
