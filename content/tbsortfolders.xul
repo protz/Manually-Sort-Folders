@@ -5,7 +5,7 @@
 
 <!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/ui.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&general.title;" onload="on_load();">
+        title="&general.title;" onload="on_load();" style="max-height: 800px;">
   <script src="chrome://messenger/content/customElements.js"/>
   <script type="application/javascript" src="chrome://tbsortfolders/content/ui.js" />
 
