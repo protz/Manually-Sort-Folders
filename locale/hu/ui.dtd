@@ -12,7 +12,7 @@
 <!ENTITY button.refresh "Mappa panel frissítése">
 <!ENTITY button.close "Bezárás">
 <!ENTITY button.restart "A Thunderbird újraindítása">
-<!ENTITY accountssort.description "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül.>
+<!ENTITY accountssort.description "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül.">
 <!ENTITY accountsort.warning "A szokásos e-mail fiókok, Unix Movemail fiókok és az RSS-fiókok jönnek először. A Helyi mappák a következőek, a lista alján pedig a Hírforrások szerepelnek. Ezt felülbírálhatja azzal, hogy a Helyi mappákat vagy egy Hírforrást választja alapértelmezettként, így azt téve a lista tetejére.">
 <!ENTITY accountsort.restartwarning "A változások érvénybe lépéséhez újra kell indítania a Thunderbirdöt.">
 <!ENTITY tab.accounts "Fiókok rendezése">
