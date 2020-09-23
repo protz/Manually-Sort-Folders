@@ -457,7 +457,6 @@ function accounts_on_load() {
     li.appendChild(desc);
     li.value = account;
     list.appendChild(li);
-    console.debug(txt);
   };
   let news_account_found = false;
   for (let i = 0; i < accounts.length; ++i) {
