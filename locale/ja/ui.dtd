@@ -3,7 +3,7 @@
 <!ENTITY sortmethod.default "Thunderbird のデフォルトを使用する">
 <!ENTITY sortmethod.alphabetical "単純な文字列の比較を使用する">
 <!ENTITY sortmethod.custom "手動による並べ替えを使用する">
-<!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並べ替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません">
+<!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並べ替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません。">
 <!ENTITY sortmethod.alphabetical.description "これは最も基本的な文字列比較関数を使用する標準の並べ替え機能です。 特別なユニコード符号を使用する Gmail のようなフォルダと異なるカテゴリを作成します。">
 <!ENTITY sortmethod.custom.description "手動でフォルダを分類するときは上のボタンを使用してください。 新規に追加及び名前を変更したフォルダはリストの最下段になります。 それが合わない場合は後で戻すことができます。">
 <!ENTITY sortmethod.samplelegend "(サンプルフォルダ欄)">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "アカウント設定がまだありません！">
 <!ENTITY tab.extra "追加設定">
 <!ENTITY extra.startup "起動フォルダ">
-<!ENTITY extra.description "ここではフォルダ関連の設定をすることで Thunderbird をさらにカスタマイズできます">
+<!ENTITY extra.description "ここではフォルダ関連の設定をすることで Thunderbird をさらにカスタマイズできます。">
 <!ENTITY extra.startupfolder "以下のフォルダが開いた状態で起動する">
 <!ENTITY extra.nofolder "フォルダの選択なし">
 <!ENTITY extra.uselast "最後に開いたフォルダ">
