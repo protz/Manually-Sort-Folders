@@ -1,24 +1,16 @@
 {
   "manifest_version": 2,
   "name": "Manually sort folders",
-  "description": "Reorder accounts; reorder folder; choose startup folder.",
-  "version": "3.0.0",
+  "description": "An extension that allows you to change the way Thunderbird sorts folders in the folder pane.",
+  "version": "2.0.2",
   "author": "Jonathan Protzenko",
   "homepage_url": "http://wiki.github.com/protz/Manually-Sort-Folders/",
   "applications": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
-      "strict_min_version": "72.0a1"
+      "strict_min_version": "78.0"
     }
   },
-  "options_ui": {
-    "open_in_tab": true,
-    "page": "options.html"
-  },
-  "permissions": [
-    "accountsRead",
-    "storage"
-  ],
   "icons": {
     "32": "content/icon.png"
   },
