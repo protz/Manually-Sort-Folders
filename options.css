@@ -1,0 +1,72 @@
+/* Tab panels */
+
+.tabbox {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 1em;
+
+  overflow: auto;
+}
+
+.tablabels {
+  border-bottom: 1px solid black;
+}
+
+.tablabel {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+.tablabel:hover {
+  cursor: pointer;
+}
+
+.tabpanels {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.tabpanel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tabpanel:not(.active) {
+  display: none;
+}
+
+/* Inside panes */
+
+#account-pane, #folders-pane {
+  display: flex;
+  flex-direction: row;
+}
+
+#account-pane, #folders-pane {
+  flex: 1;
+}
+
+.account-entry:hover, .folder-entry:hover {
+  cursor: pointer;
+}
+
+/* Generic */
+
+.selected {
+  background-color: -moz-cellhighlight;
+  color: -moz-cellhighlighttext
+}
+
+.clickable {
+  cursor: pointer;
+}
