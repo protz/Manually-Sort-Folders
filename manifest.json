@@ -8,7 +8,7 @@
   "applications": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
-      "strict_min_version": "72.0a1"
+      "strict_min_version": "78.0"
     }
   },
   "options_ui": {
@@ -21,5 +21,20 @@
   ],
   "icons": {
     "32": "content/icon.png"
-  }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    }
+  }  
 }

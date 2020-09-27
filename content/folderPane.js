@@ -180,6 +180,6 @@
   };
   
   /* Refresh pane */
-  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+  //mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
 
 })()

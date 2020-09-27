@@ -56,7 +56,6 @@ function item_label(tree_item) {
   tblog.error("TBSortFolders: severe error, no item label for "+tree_item);
 }
 
-let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
 let ftvItems = {};
 
 function rebuild_tree(full, collapse) {
@@ -66,7 +65,7 @@ function rebuild_tree(full, collapse) {
   let myFtvItem = function(tree_item) {
     if (!ftvItems[tree_item.id]) {
       let text = item_label(tree_item);
-      let folder = rdfService.GetResource(tree_item.id);
+      let folder = MailUtils.getExistingFolder(tree_item.id);
       folder.QueryInterface(Ci.nsIMsgFolder);
       ftvItems[tree_item.id] = { _folder: folder, text: text };
     }
@@ -212,10 +211,10 @@ function walk_folder(folder,treechildren,depth) {
     let special_name = decode_special(folder.flags);
     tblog.debug("Special name: "+special_name);
 
-    let treeitem = document.createElement('treeitem');
+    let treeitem = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treeitem');
     treeitem.setAttribute('id',folder.URI);
-    let treerow = document.createElement('treerow');
-    let treecell = document.createElement('treecell');
+    let treerow = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treerow');
+    let treecell = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treecell');
     treecell.setAttribute('label',folder.prettyName);
     treecell.setAttribute('value',folder.URI);
     treecell.setAttribute('properties','specialFolder-'+special_name);
@@ -226,7 +225,7 @@ function walk_folder(folder,treechildren,depth) {
 
       treeitem.setAttribute('container','true');
       treeitem.setAttribute('open','true');
-      let treechildrensub = document.createElement('treechildren');
+      let treechildrensub = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treechildren');
       
       walk_folder(folder,treechildrensub,depth+1);
 
@@ -267,7 +266,7 @@ function on_load() {
         continue;
       tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
       name = account.incomingServer.rootFolder.prettyName;
-      let it = document.createElement("menuitem");
+      let it = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
       it.setAttribute("label", name);
       accounts_menu.appendChild(it);
 
@@ -451,8 +450,8 @@ function accounts_on_load() {
   let news_accounts = [];
   let other_accounts = [];
   let add_li = function (list, [account, server, type, name]) {
-    let li = document.createElement("richlistitem");
-    let desc = document.createElement("description");
+    let li = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "richlistitem");
+    let desc = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "description");
     let txt = document.createTextNode(name); 
     desc.appendChild(txt);
     li.appendChild(desc);
@@ -476,7 +475,7 @@ function accounts_on_load() {
       case "nntp":
         news_account_found = true;
         news_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
-        let mi = document.createElement("menuitem");
+        let mi = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
         mi.setAttribute("value", accounts[i]);
         mi.setAttribute("label", names[i]);
         document.getElementById("default_account").appendChild(mi);
@@ -493,7 +492,7 @@ function accounts_on_load() {
         } catch (e) {
         }
         if (!hidden) {
-          let mi = document.createElement("menuitem");
+          let mi = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
           mi.setAttribute("value", accounts[i]);
           mi.setAttribute("label", names[i]);
           document.getElementById("default_account").appendChild(mi);
