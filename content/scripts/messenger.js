@@ -12,13 +12,14 @@ function onLoad(activatedWhileWindowOpen) {
           'chrome,titlebar,toolbar,centerscreen');"
         label="&tbsf.menuentry.label;" />
     </menupopup>
-    <menupopup id="appmenu_taskPopup">
-      <menuitem insertafter="appmenu_addressBook" id="tbsf_appmenu_item"
-        oncommand="window.openDialog('chrome://tbsortfolders/content/tbsortfolders.xhtml', '',
-          'chrome,titlebar,toolbar,centerscreen');"
-        label="&tbsf.menuentry.label;" />
-    </menupopup>`,
-  ["chrome://tbsortfolders/locale/main.dtd"]);
+    <panelview id="appMenu-toolsView">
+      <toolbarseparator id="tbsf_appmenu_separator" insertafter="appmenu_addressBook" />
+      <toolbarbutton insertafter="tbsf_appmenu_separator" id="tbsf_appmenu_item" class="subview-button subviewbutton-iconic"
+      oncommand="window.openDialog('chrome://tbsortfolders/content/tbsortfolders.xhtml', '',
+        'chrome,titlebar,toolbar,centerscreen');"
+      label="&tbsf.menuentry.label;" />
+    </panelview>`,
+    ["chrome://tbsortfolders/locale/main.dtd"]);
 }
 
 function onUnload(deactivatedWhileWindowOpen) {
