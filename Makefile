@@ -1,4 +1,4 @@
-EXCLUDES = $(addprefix --exclude , $(shell find . -iname '.*.sw*'))
+EXCLUDES = $(addprefix --exclude , $(shell find . -iname '.*.sw*') $(shell find . -iname '.vimsession'))
 
 .PHONY: dist upload
 
