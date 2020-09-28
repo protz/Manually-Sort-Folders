@@ -11,6 +11,12 @@ function onLoad(activatedWhileWindowOpen) {
         oncommand="window.openDialog('chrome://tbsortfolders/content/tbsortfolders.xhtml', '',
           'chrome,titlebar,toolbar,centerscreen');"
         label="&tbsf.menuentry.label;" />
+    </menupopup>
+    <menupopup id="appmenu_taskPopup">
+      <menuitem insertafter="appmenu_addressBook" id="tbsf_appmenu_item"
+        oncommand="window.openDialog('chrome://tbsortfolders/content/tbsortfolders.xhtml', '',
+          'chrome,titlebar,toolbar,centerscreen');"
+        label="&tbsf.menuentry.label;" />
     </menupopup>`,
   ["chrome://tbsortfolders/locale/main.dtd"]);
 }
