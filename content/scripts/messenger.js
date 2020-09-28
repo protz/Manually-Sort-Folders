@@ -14,7 +14,7 @@ function onLoad(activatedWhileWindowOpen) {
     </menupopup>
     <panelview id="appMenu-toolsView">
       <toolbarseparator id="tbsf_appmenu_separator" insertafter="appmenu_addressBook" />
-      <toolbarbutton insertafter="tbsf_appmenu_separator" id="tbsf_appmenu_item" class="subview-button subviewbutton-iconic"
+      <toolbarbutton insertafter="tbsf_appmenu_separator" id="tbsf_appmenu_item" class="subviewbutton subviewbutton-iconic"
       oncommand="window.openDialog('chrome://tbsortfolders/content/tbsortfolders.xhtml', '',
         'chrome,titlebar,toolbar,centerscreen');"
       label="&tbsf.menuentry.label;" />
