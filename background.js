@@ -23,8 +23,14 @@ messenger.WindowListener.registerChromeUrl([
   ["locale",   "tbsortfolders", "zh-TW", "locale/zh-TW/"],
 ]);
 
+// For Thunderbird 78.0 and later
 messenger.WindowListener.registerWindow(
   "chrome://messenger/content/messenger.xhtml",
+  "chrome://tbsortfolders/content/scripts/messenger.js");
+
+// For Thunderbird 68
+messenger.WindowListener.registerWindow(
+  "chrome://messenger/content/messenger.xul",
   "chrome://tbsortfolders/content/scripts/messenger.js");
 
 messenger.WindowListener.startListening();
