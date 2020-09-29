@@ -211,10 +211,10 @@ function walk_folder(folder,treechildren,depth) {
     let special_name = decode_special(folder.flags);
     tblog.debug("Special name: "+special_name);
 
-    let treeitem = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treeitem');
+    let treeitem = document.createXULElement('treeitem');
     treeitem.setAttribute('id',folder.URI);
-    let treerow = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treerow');
-    let treecell = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treecell');
+    let treerow = document.createXULElement('treerow');
+    let treecell = document.createXULElement('treecell');
     treecell.setAttribute('label',folder.prettyName);
     treecell.setAttribute('value',folder.URI);
     treecell.setAttribute('properties','specialFolder-'+special_name);
@@ -225,7 +225,7 @@ function walk_folder(folder,treechildren,depth) {
 
       treeitem.setAttribute('container','true');
       treeitem.setAttribute('open','true');
-      let treechildrensub = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", 'treechildren');
+      let treechildrensub = document.createXULElement('treechildren');
       
       walk_folder(folder,treechildrensub,depth+1);
 
@@ -266,7 +266,7 @@ function on_load() {
         continue;
       tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
       name = account.incomingServer.rootFolder.prettyName;
-      let it = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
+      let it = document.createXULElement("menuitem");
       it.setAttribute("label", name);
       accounts_menu.appendChild(it);
 
@@ -452,8 +452,8 @@ function accounts_on_load() {
   let news_accounts = [];
   let other_accounts = [];
   let add_li = function (list, [account, server, type, name]) {
-    let li = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "richlistitem");
-    let desc = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "description");
+    let li = document.createXULElement("richlistitem");
+    let desc = document.createXULElement("description");
     let txt = document.createTextNode(name); 
     desc.appendChild(txt);
     li.appendChild(desc);
@@ -477,7 +477,7 @@ function accounts_on_load() {
       case "nntp":
         news_account_found = true;
         news_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
-        let mi = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
+        let mi = document.createXULElement("menuitem");
         mi.setAttribute("value", accounts[i]);
         mi.setAttribute("label", names[i]);
         document.getElementById("default_account").appendChild(mi);
@@ -494,7 +494,7 @@ function accounts_on_load() {
         } catch (e) {
         }
         if (!hidden) {
-          let mi = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
+          let mi = document.createXULElement("menuitem");
           mi.setAttribute("value", accounts[i]);
           mi.setAttribute("label", names[i]);
           document.getElementById("default_account").appendChild(mi);
