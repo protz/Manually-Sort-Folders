@@ -304,6 +304,8 @@ function on_load() {
 This feature doesn't work in SeaMonkey
     extra_on_load();
 *****************************************************************************/
+
+    document.getElementsByTagName('window')[0].maxHeight = screen.availHeight;
   } catch (e) {
     tblog.debug(e);
     throw e;
