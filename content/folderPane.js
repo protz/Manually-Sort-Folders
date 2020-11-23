@@ -180,6 +180,10 @@
   };
   
   /* Refresh pane */
-  //mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+  function refreshPane() {
+    try { mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode; }
+    catch (e) { setTimeout(refreshPane, 5); }
+  }
+  refreshPane();
 
 })()
