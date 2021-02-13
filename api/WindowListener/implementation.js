@@ -71,6 +71,50 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
     if (this.debug) console.log("WindowListener API: " + msg);
   }
 
+  getMessenger(context) {   
+    let apis = [
+      "storage",
+      "runtime",
+      "extension",
+      "i18n",
+    ];
+
+    function getStorage() {
+      let localstorage = null;
+      try {
+        localstorage = context.apiCan.findAPIPath("storage");
+        localstorage.local.get = (...args) =>
+          localstorage.local.callMethodInParentProcess("get", args);
+        localstorage.local.set = (...args) =>
+          localstorage.local.callMethodInParentProcess("set", args);
+        localstorage.local.remove = (...args) =>
+          localstorage.local.callMethodInParentProcess("remove", args);
+        localstorage.local.clear = (...args) =>
+          localstorage.local.callMethodInParentProcess("clear", args);
+      } catch (e) {
+        console.info("Storage permission is missing");
+      }
+      return localstorage;
+    }
+    
+    let messenger = {};    
+    for (let api of apis) {
+      switch (api) {
+        case "storage":
+          XPCOMUtils.defineLazyGetter(messenger, "storage", () =>
+            getStorage()
+          );
+        break;
+
+        default:
+          XPCOMUtils.defineLazyGetter(messenger, api, () =>
+            context.apiCan.findAPIPath(api)
+          );
+      }
+    }
+    return messenger;
+  }
+
   error(msg) {
     if (this.debug) console.error("WindowListener API: " + msg);
   }
@@ -78,6 +122,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     // track if this is the background/main context
     this.isBackgroundContext = (context.viewType == "background");
+    this.context = context;
 
     this.uniqueRandomID = "AddOnNS" + context.extension.instanceId;
     this.menu_addonsManager_id ="addonsManager";
@@ -244,9 +289,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
             let startupJS = {};
             startupJS.WL = {}
             startupJS.WL.extension = self.extension;
-            startupJS.WL.messenger = Array.from(self.extension.views).find(
-              view => view.viewType === "background").xulBrowser.contentWindow
-              .wrappedJSObject.browser;
+            startupJS.WL.messenger = self.getMessenger(self.context);
             try {
               if (self.pathToStartupScript) {
                 Services.scriptloader.loadSubScript(self.pathToStartupScript, startupJS, "UTF-8");
@@ -528,9 +571,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           // Add extension object to WLDATA object
           window[this.uniqueRandomID].WL.extension = this.extension;
           // Add messenger object to WLDATA object
-          window[this.uniqueRandomID].WL.messenger = Array.from(this.extension.views).find(
-            view => view.viewType === "background").xulBrowser.contentWindow
-            .wrappedJSObject.browser;
+          window[this.uniqueRandomID].WL.messenger = this.getMessenger(this.context);
           // Load script into add-on scope
           Services.scriptloader.loadSubScript(this.registeredWindows[window.location.href], window[this.uniqueRandomID], "UTF-8");
           window[this.uniqueRandomID].onLoad(isAddonActivation);
