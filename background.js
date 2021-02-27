@@ -1,6 +1,6 @@
-messenger.WindowListener.registerDefaultPrefs("defaults/preferences/prefs.js");
+browser.WindowListener.registerDefaultPrefs("defaults/preferences/prefs.js");
 
-messenger.WindowListener.registerChromeUrl([ 
+browser.WindowListener.registerChromeUrl([ 
   ["content",  "tbsortfolders",          "content/"],
   ["resource", "tbsortfolders",          "modules/"],
   ["locale",   "tbsortfolders", "da",    "locale/da/"],
@@ -24,13 +24,13 @@ messenger.WindowListener.registerChromeUrl([
 ]);
 
 // For Thunderbird 78.0 and later
-messenger.WindowListener.registerWindow(
+browser.WindowListener.registerWindow(
   "chrome://messenger/content/messenger.xhtml",
   "chrome://tbsortfolders/content/scripts/messenger.js");
 
 // For Thunderbird 68
-messenger.WindowListener.registerWindow(
+browser.WindowListener.registerWindow(
   "chrome://messenger/content/messenger.xul",
   "chrome://tbsortfolders/content/scripts/messenger.js");
 
-messenger.WindowListener.startListening();
+browser.WindowListener.startListening();
