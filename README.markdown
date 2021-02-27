@@ -3,9 +3,9 @@ Manually Sort Folders
 
 Tested on:  
 
-Windows 10 x64 with Thunderbird 68.0 (64-bit) (email accounts only)
-Windows 10 x64 with Thunderbird 78.8.0 (64-bit) (email accounts only)
-Windows 10 x64 with Thunderbird 86.0b3 (64-bit) (email accounts only)
+Windows 10 x64 with Thunderbird 68.0 (64-bit) (email accounts only)  
+Windows 10 x64 with Thunderbird 78.8.0 (64-bit) (email accounts only)  
+Windows 10 x64 with Thunderbird 86.0b3 (64-bit) (email accounts only)  
 
 NOT tested:  
 
