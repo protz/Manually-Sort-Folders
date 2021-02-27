@@ -201,7 +201,7 @@ function build_folder_tree(account) {
 
 function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
-  while (subFolders.hasMoreElements()) {
+  while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
 
     let indent = ' '.repeat(2*depth);
