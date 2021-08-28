@@ -1,10 +1,11 @@
 <!ENTITY general.title "Sortera mappar manuellt">
 <!ENTITY sortfolders.description "Denna panel låter dig sortera varje enskilt kontos mappar. Välj först ett konto och sedan en sorteringsmetod.">
 <!ENTITY sortmethod.default "Använd Thunderbirds standard">
-<!ENTITY sortmethod.alphabetical "Använd vanlig strängjämförelse">
+<!ENTITY sortmethod.alphabetical.ascending "Använd vanlig strängjämförelse (Stigande ordning)">
+<!ENTITY sortmethod.alphabetical.descending "Använd vanlig strängjämförelse (Nedåtgående ordning)">
 <!ENTITY sortmethod.custom "Använd en manuellt definierad sorteringsfunktion">
-<!ENTITY sortmethod.default.description "Det här är Thunderbirds standardsorteringsfunktion. Till skillnad från GMail tar den inte hänsyn till Unicode-specialtecken.">
-<!ENTITY sortmethod.alphabetical.description "Det här är en standardsorteringsfunktion som endast använder den mest basala strängjämförelsefunktionen. Den låter dig skapa olika mappkategorier, som i GMail, m.h.a. Unicode-specialtecken.">
+<!ENTITY sortmethod.default.description "Det här är Thunderbirds standardsorteringsfunktion.">
+<!ENTITY sortmethod.alphabetical.description "Det här är en standardsorteringsfunktion som endast använder den mest basala strängjämförelsefunktionen.">
 <!ENTITY sortmethod.custom.description "Använd knapparna ovan för att sortera dina mappar manuellt. Om en ny mapp läggs till, så kommer den att placeras sist i listan. Du kan komma tillbaka hit senare om du ändrar dig.">
 <!ENTITY sortmethod.samplelegend "(Välj ur mappanelen ovan)">
 <!ENTITY button.move_up "Flytta uppåt">
@@ -15,6 +16,7 @@
 <!ENTITY accountssort.description "Denna panel låter dig sortera dina konton i mappanelen. Gå till nästa flik om du vill sortera mappar inom ett konto.">
 <!ENTITY accountsort.warning "Vanliga e-postkonton, Unix Movemail-konton och RSS-konton måste komma först. Sedan följer &quot;Lokala mappar&quot; och nederst i listan finns diskussionsgruppskontona. Du kan åsidosätta detta genom att välja antingen &quot;Lokala mappar&quot; eller ett av diskussionsgruppskontona som standardkonto, vilket placerar det överst i listan.">
 <!ENTITY accountsort.restartwarning "Du måste starta om Thunderbird för att ändringarna skall verkställas.">
+<!ENTITY accountsort.note "Du kan ändra ordningen på kontona i den här panelen, men sedan Thunderbird version 91.0 kan du göra det i kontoinställningarna, så vi rekommenderar att du gör det där.">
 <!ENTITY tab.accounts "Sortera konton">
 <!ENTITY tab.folders "Sortera mappar">
 <!ENTITY gb.move "Flytta markerat konto">

@@ -1,0 +1,10 @@
+groupbox {
+    margin: 5px;
+    border: 2px solid #f0f0f0;
+    padding: 0 0 5px 0;
+}
+groupbox caption {
+    background: #f0f0f0;
+    padding: 0.3em;
+    margin: 0 0 5px 0;
+}

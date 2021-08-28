@@ -11,9 +11,22 @@ tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
 tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
+const g_ThunderbirdMajorVersion = Services.appinfo.version.split(".")[0];
+
 Cu.import("resource://tbsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.jsm");
-Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
+
+if (g_ThunderbirdMajorVersion >= 91) {
+  Cu.import("resource:///modules/MailServices.jsm"); // for reorderAccounts
+}
+
+try {
+  Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
+} catch(e) {
+  /* fixIterator was removed together with iteratorutils.jsm on Thunderbird 91.
+   * That's no longer needed.
+   */
+}
 
 var g_accounts = Object();
 const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
@@ -85,6 +98,9 @@ function rebuild_tree(full, collapse) {
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
+  } else if (sort_method == 3) {
+      tblog.debug("Sort method 3");
+      sort_function = (c1, c2) => tbsf_sort_functions[3](myFtvItem(c1), myFtvItem(c2));
   }
   let fresh_data = {};
   let my_sort = function(a_tree_items, indent) {
@@ -200,40 +216,52 @@ function build_folder_tree(account) {
 
 function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
-  while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
-    let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-
-    let indent = ' '.repeat(2*depth);
-    tblog.debug("Folder: "+indent+folder.prettyName);
-    tblog.debug("Folder URI: "+indent+folder.URI);
-    tblog.debug("Folder flags: "+indent+folder.flags);
-    
-    let special_name = decode_special(folder.flags);
-    tblog.debug("Special name: "+special_name);
-
-    let treeitem = document.createXULElement('treeitem');
-    treeitem.setAttribute('id',folder.URI);
-    let treerow = document.createXULElement('treerow');
-    let treecell = document.createXULElement('treecell');
-    treecell.setAttribute('label',folder.prettyName);
-    treecell.setAttribute('value',folder.URI);
-    treecell.setAttribute('properties','specialFolder-'+special_name);
-    treerow.appendChild(treecell);
-    treeitem.appendChild(treerow)
-
-    if (folder.hasSubFolders) {
-
-      treeitem.setAttribute('container','true');
-      treeitem.setAttribute('open','true');
-      let treechildrensub = document.createXULElement('treechildren');
-      
-      walk_folder(folder,treechildrensub,depth+1);
-
-      treeitem.appendChild(treechildrensub)
+  if (Array.isArray(subFolders)) {
+    // Thunderbird 91 and later
+    subFolders.forEach(s => {
+      let folder = s.QueryInterface(Components.interfaces.nsIMsgFolder);
+      walk_folder_append(folder,treechildren,depth);
+    });
+  } else {
+    // before Thunderbird 91
+    while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
+      let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+      walk_folder_append(folder,treechildren,depth);
     }
-    
-    treechildren.appendChild(treeitem);
   }
+}
+
+function walk_folder_append(folder,treechildren,depth) {
+  let indent = ' '.repeat(2*depth);
+  tblog.debug("Folder: "+indent+folder.prettyName);
+  tblog.debug("Folder URI: "+indent+folder.URI);
+  tblog.debug("Folder flags: "+indent+folder.flags);
+    
+  let special_name = decode_special(folder.flags);
+  tblog.debug("Special name: "+special_name);
+
+  let treeitem = document.createXULElement('treeitem');
+  treeitem.setAttribute('id',folder.URI);
+  let treerow = document.createXULElement('treerow');
+  let treecell = document.createXULElement('treecell');
+  treecell.setAttribute('label',folder.prettyName);
+  treecell.setAttribute('value',folder.URI);
+  treecell.setAttribute('properties','specialFolder-'+special_name);
+  treerow.appendChild(treecell);
+  treeitem.appendChild(treerow)
+
+  if (folder.hasSubFolders) {
+
+    treeitem.setAttribute('container','true');
+    treeitem.setAttribute('open','true');
+    let treechildrensub = document.createXULElement('treechildren');
+      
+    walk_folder(folder,treechildrensub,depth+1);
+
+    treeitem.appendChild(treechildrensub)
+  }
+    
+  treechildren.appendChild(treeitem);
 }
 
 
@@ -247,11 +275,18 @@ function on_load() {
     }
 
     let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+    let name_initial = '';
     let name;
     let accounts_menu = document.getElementById("accounts_menu");
     let accounts = [];
-    for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
-      accounts.push(x);
+    if (Array.isArray(account_manager.accounts)) {
+      accounts = account_manager.accounts;
+    } else {
+      if (typeof fixIterator === 'function') {
+        for (let x of fixIterator(account_manager.accounts, Ci.nsIMsgAccount)) {
+          accounts.push(x);
+        }
+      }
     }
     tblog.debug("Total accounts: "+accounts.length);
     if (!accounts.length) {
@@ -265,7 +300,7 @@ function on_load() {
       if (!account.incomingServer)
         continue;
       tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
-      name = account.incomingServer.rootFolder.prettyName;
+      let name = account.incomingServer.rootFolder.prettyName;
       let it = document.createXULElement("menuitem");
       it.setAttribute("label", name);
       accounts_menu.appendChild(it);
@@ -274,8 +309,9 @@ function on_load() {
       //the data
       g_accounts[name] = account;
       if (!tbsf_data[name]) tbsf_data[name] = Array();
+      if (!name_initial) name_initial = name;
     }
-    document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
+    document.getElementById("accounts_menu").parentNode.setAttribute("label", name_initial);
 
 
     tblog.debug("Accounts: "+account_manager.accounts.length);
@@ -422,9 +458,9 @@ function on_close() {
 
 function on_refresh() {
   tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
-  //it's a getter/setter so that actually does sth
-  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    win.gFolderTreeView._rebuild();
+  }
 }
 
 window.addEventListener("unload", on_refresh, false);
@@ -432,13 +468,17 @@ window.addEventListener("unload", on_refresh, false);
 
 /* The functions below are for *account* sorting */
 
-var g_other_accounts = null;
+var g_other_accounts = [];
+var g_active_list = null;
 
 function accounts_on_load() {
   let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
   let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
-  accounts = accounts.filter((x) => x != defaultaccount);
-  accounts = [defaultaccount].concat(accounts);
+  if (g_ThunderbirdMajorVersion < 91) {
+    accounts = accounts.filter((x) => x != defaultaccount);
+    accounts = [defaultaccount].concat(accounts);
+  }
+  accounts = accounts.filter((a) => mail_account_prefs.getPrefType(a+".server") === mail_account_prefs.PREF_STRING); // Avoid error occurs in following getStringPref .
   let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
   let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
@@ -461,8 +501,13 @@ function accounts_on_load() {
     list.appendChild(li);
   };
   let news_account_found = false;
-  for (let i = 0; i < accounts.length; ++i) {
-    switch (types[i]) {
+  if (g_ThunderbirdMajorVersion < 91) {
+    /* Because of Thunderbird bug 244347, we had to treat regular accounts 
+     * (email and RSS), news accounts, and others (local folders fall into 
+     * this category) differently.
+     */
+    for (let i = 0; i < accounts.length; ++i) {
+      switch (types[i]) {
       case "imap":
       case "pop3":
       case "exquilla":
@@ -503,13 +548,29 @@ function accounts_on_load() {
             mi.parentNode.parentNode.value = accounts[i];
         }
         other_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
+      }
+    }
+    g_other_accounts = other_accounts;
+    if (news_account_found) {
+      document.getElementById("news_accounts_list").style.display = "";
+    }
+  } else {
+    /* Since Thunderbird 91, all accounts are treated equally. */
+    let accounts_list = document.getElementById("accounts_list");
+    for (let i = 0; i < accounts.length; ++i) {
+      mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
+      add_li(accounts_list, mail_accounts[0]);
     }
   }
-  g_other_accounts = other_accounts;
-  if (news_account_found) {
-    document.getElementById("news_accounts_list").style.display = "";
+  g_active_list = document.getElementById("accounts_list");
+
+  /* Avoid Thunderbird bug(?) */
+  if (g_active_list.selectedIndex < 0 && g_active_list.getItemAtIndex(0)) {
+    g_active_list.selectedIndex = 0;
   }
-  update_accounts_prefs();
+
+  /* Don't understand why this was needed here. */
+  //update_accounts_prefs();
 }
 
 function update_accounts_prefs() {
@@ -526,25 +587,56 @@ function update_accounts_prefs() {
     let [account, server, type, name] = g_other_accounts[i];
     new_pref = new_pref ? (new_pref + "," + account) : account;
   }
-  let news_accounts = document.getElementById("news_accounts_list");
-  for (let i = 0; i < news_accounts.children.length; ++i) {
-    let child = news_accounts.children[i];
-    new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
+  if (g_ThunderbirdMajorVersion < 91) {
+    let news_accounts = document.getElementById("news_accounts_list");
+    for (let i = 0; i < news_accounts.children.length; ++i) {
+      let child = news_accounts.children[i];
+      new_pref = new_pref ? (new_pref + "," + child.value) : child.value;
+    }
   }
 
   mail_accountmanager_prefs.setStringPref("accounts",new_pref);
   //tbsf_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: "+new_pref);
   
-  let default_account = document.getElementById("default_account").parentNode.value;
-  if (default_account == "-1") {
-    mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
-    tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
-    tblog.debug("Default account: "+first_mail_account);
-  } else {
-    mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
-    tbsf_prefs.setStringPref("defaultaccount",default_account);
-    tblog.debug("Default account: "+default_account);
+  if (g_ThunderbirdMajorVersion < 91) {
+    let default_account = document.getElementById("default_account").parentNode.value;
+    if (default_account == "-1") {
+      mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
+      tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
+      tblog.debug("Default account: "+first_mail_account);
+    } else {
+      mail_accountmanager_prefs.setStringPref("defaultaccount",default_account);
+      tbsf_prefs.setStringPref("defaultaccount",default_account);
+      tblog.debug("Default account: "+default_account);
+    }
+  }
+}
+
+function account_reordered() {
+
+  if (g_ThunderbirdMajorVersion < 91) {
+    return; // The following operations are impossible before Thunderbird 91. Therefore, the only way to reflect the account reordering we have done in prefs is to restart Thunderbird.
+  }
+
+  // Send reordered account list to MailServices.
+  let accountIds = [];
+  for (let account of document.getElementById("accounts_list").children) {
+    accountIds.push(account.value);
+  }
+  MailServices.accounts.reorderAccounts(accountIds);
+
+  // Notify the UI to rebuild the account tree.
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    win.gFolderTreeView._rebuild();
+    let tabmail = win.document.getElementById("tabmail");
+    for (let tabInfo of tabmail.tabInfo) {
+      let tab = tabmail.getTabForBrowser(tabInfo.browser);
+      if (tab && tab.urlbar && tab.urlbar.value == "about:accountsettings") {
+        tab.browser.reload();
+        return;
+      }
+    }
   }
 }
 
@@ -563,8 +655,6 @@ function account_move_up(index, listbox) {
   return true;
 }
 
-var g_active_list = null;
-
 function on_account_move_up() {
   tblog.debug("on_account_move_up");
   if (!g_active_list) return;
@@ -578,6 +668,7 @@ function on_account_move_up() {
   if (account_move_up(i, listbox))
     listbox.selectedIndex = i-1;
   update_accounts_prefs();
+  account_reordered();
 }
 
 function on_account_move_down() {
@@ -593,6 +684,7 @@ function on_account_move_down() {
   if (account_move_up(i+1, listbox))
     listbox.selectedIndex = i+1;
   update_accounts_prefs();
+  account_reordered();
 }
 
 function on_account_restart() {
@@ -602,13 +694,17 @@ function on_account_restart() {
 }
 
 function on_accounts_list_click() {
-  g_active_list = document.getElementById("accounts_list");
-  document.getElementById("news_accounts_list").clearSelection();
+  if (g_ThunderbirdMajorVersion < 91) {
+    g_active_list = document.getElementById("accounts_list");
+    document.getElementById("news_accounts_list").clearSelection();
+  }
 }
 
 function on_news_accounts_list_click() {
-  g_active_list = document.getElementById("news_accounts_list");
-  document.getElementById("accounts_list").clearSelection();
+  if (g_ThunderbirdMajorVersion < 91) {
+    g_active_list = document.getElementById("news_accounts_list");
+    document.getElementById("accounts_list").clearSelection();
+  }
 }
 
 /* These are UI functions for the "Extra settings" tab */

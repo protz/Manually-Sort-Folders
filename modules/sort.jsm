@@ -15,7 +15,7 @@ var tbsf_sort_functions = [
     return a.text.toLowerCase() > b.text.toLowerCase();
   },
 
-  //Strictly alphabetical
+  //Strictly alphabetical (Ascending)
   function(a, b) {
     return a.text.toLowerCase() > b.text.toLowerCase();
   },
@@ -36,5 +36,10 @@ var tbsf_sort_functions = [
       return (a.text.toLowerCase() > b.text.toLowerCase())*2 - 1;
     else
       return data[k1] - data[k2];
+  },
+
+  //Strictly alphabetical (Descending)
+  function(a, b) {
+    return a.text.toLowerCase() < b.text.toLowerCase();
   }
 ]

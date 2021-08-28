@@ -1,10 +1,11 @@
 <!ENTITY general.title "Sorter mapper manuelt">
 <!ENTITY sortfolders.description "Dette panel lader dig sortere hver kontos mapper. Vælg først en konto og så en sorteringsmetode.">
 <!ENTITY sortmethod.default "Brug Thunderbirds standard">
-<!ENTITY sortmethod.alphabetical "Brug almindelig sammenligning af strenge">
+<!ENTITY sortmethod.alphabetical.ascending "Brug almindelig sammenligning af strenge (Stigende rækkefølge)">
+<!ENTITY sortmethod.alphabetical.descending "Brug almindelig sammenligning af strenge (Nedadgående rækkefølge)">
 <!ENTITY sortmethod.custom "Brug en manuel defineret sorteringsfunktion">
-<!ENTITY sortmethod.default.description "Dette er Thunderbirds standard sorteringsfunktion. I modsætning til Gmail tager den ikke hensyn til særlige unicode-symboler.">
-<!ENTITY sortmethod.alphabetical.description "Dette er en standard sorteringsfunktion, der ikke bruger andet end den mest almindelige sammenligningsfunktion. Det gør det muligt at oprette forskellige kategorier af mapper à la Gmail ved at hjælp af særlige unicode-symboler.">
+<!ENTITY sortmethod.default.description "Dette er Thunderbirds standard sorteringsfunktion.">
+<!ENTITY sortmethod.alphabetical.description "Dette er en standard sorteringsfunktion, der ikke bruger andet end den mest almindelige sammenligningsfunktion.">
 <!ENTITY sortmethod.custom.description "Brug knapperne ovenover til manuelt at sortere dine mapper. Hvis en ny mappe bliver tilføjet, bliver den anbragt i slutningen af listen. Du kan komme tilbage hertil senere hvis det ikke passer dig.">
 <!ENTITY sortmethod.samplelegend "(Eksempel på mappeoversigt)">
 <!ENTITY button.move_up "Flyt op">
@@ -15,6 +16,7 @@
 <!ENTITY accountssort.description "Dette panel lader dig sortere kontiene i mappeoversigten. Brug næste faneblad hvis du vil sortere mapper inde i en konto.">
 <!ENTITY accountsort.warning "Almindelige mailkonti, Unix Movemail-konti så vel som feed-konti skal komme først. Lokale mapper kommer derefter og sidst  kommer kontiene med nyhedsgrupper. Du kan tilsidesætte dette ved at vælge enten Lokale mapper eller en af kontiene for nyhedsgrupper som standard, og på den måde sætte den øverst på listen.">
 <!ENTITY accountsort.restartwarning "Du skal genstarte Thunderbird før ændringerne træder i kraft.">
+<!ENTITY accountsort.note "Du kan ændre rækkefølgen af konti i dette panel, men siden Thunderbird version 91.0 har du kunnet gøre det i brugergrænsefladen Kontoindstillinger, så det anbefales at gøre det der.">
 <!ENTITY tab.accounts "Sorter konti">
 <!ENTITY tab.folders "Sorter mapper">
 <!ENTITY gb.move "Flyt valgte konto">
