@@ -3,7 +3,7 @@
   "name": "Manually sort folders",
   "description": "An extension that allows you to change the way Thunderbird sorts folders in the folder pane.",
   "version": "2.1.0",
-  "author": "Jonathan Protzenko",
+  "author": "Jonathan Protzenko and Itagaki Fumihiko",
   "homepage_url": "https://github.com/protz/Manually-Sort-Folders/wiki",
   "applications": {
     "gecko": {
