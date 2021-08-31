@@ -1,10 +1,11 @@
 <!ENTITY general.title "Impostazioni di Manually sort folders">
 <!ENTITY sortfolders.description "È possibile ordinare le cartelle di ogni account. Selezionare un account ed in seguito un metodo di ordinamento">
 <!ENTITY sortmethod.default "Ordine predefinito di Thunderbird">
-<!ENTITY sortmethod.alphabetical "Ordine alfabetico">
+<!ENTITY sortmethod.alphabetical.ascending "Ordine alfabetico (Ordine ascendente)">
+<!ENTITY sortmethod.alphabetical.descending "Ordine alfabetico (Ordine decrescente)">
 <!ENTITY sortmethod.custom "Ordine manuale">
-<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di Thunderbird, che non tiene in considerazione i simboli speciali unicode">
-<!ENTITY sortmethod.alphabetical.description "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico. Permette di creare differenti categorie di cartelle utilizzando anche simboli speciali unicode">
+<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di Thunderbird">
+<!ENTITY sortmethod.alphabetical.description "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico">
 <!ENTITY sortmethod.custom.description "È stato selezionato l'ordine manuale, che permette di spostare su/giù le cartelle dell'account tramite i relativi tasti 'Sposta su' e 'Sposta giù'. Se viene aggiunta una nuova cartella, questa viene inserita in fondo alla lista. Sarà possibile in seguito spostarla">
 <!ENTITY sortmethod.samplelegend "(Esempio del pannello delle cartelle)">
 <!ENTITY button.move_up "Sposta su">
@@ -15,6 +16,7 @@
 <!ENTITY accountssort.description "È possibile ordinare gli account nel pannello delle cartelle. (Per ordinare le cartelle dei singoli account selezionare 'Ordinamento cartelle')">
 <!ENTITY accountsort.warning "Solitamente vengono elencati per primi gli account di posta, account Movemail ed account RSS. In seguito vengono elencate le cartelle locali, ed infine in fondo alla lista sono presenti gli account di gruppi di discussione. È possibile ignorare tale ordine predefinito degli account selezionando le cartelle locali oppure uno degli account di gruppi di discussione impostandolo come predefinito e quindi spostandolo in cima alla lista">
 <!ENTITY accountsort.restartwarning "Riavviare Thunderbird per rendere effettive le modifiche">
+<!ENTITY accountsort.note "Puoi cambiare l'ordine degli account in questo pannello, ma dalla versione 91.0 di Thunderbird, puoi farlo nell'interfaccia utente delle impostazioni dell'account, quindi si raccomanda di farlo lì.">
 <!ENTITY tab.accounts "Ordinamento account">
 <!ENTITY tab.folders "Ordinamento cartelle">
 <!ENTITY gb.move "Spostamento dell'account selezionato">

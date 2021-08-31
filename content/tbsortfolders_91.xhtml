@@ -14,7 +14,7 @@
     &accountsort.noaccountsetupyet;
   </description>
 
-  <tabbox selectedIndex="0" flex="1">
+  <tabbox selectedIndex="1" flex="1">
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
       <tab><label value="&tab.folders;"/></tab>
@@ -28,15 +28,6 @@
         <hbox flex="1">
           <vbox flex="1">
             <richlistbox id="accounts_list" onclick="on_accounts_list_click();" flex="1">
-            </richlistbox>
-            <richlistbox rows="1" disabled="true">
-              <richlistitem>
-                <description>
-                  &accountsort.localfolders;
-                </description>
-              </richlistitem>
-            </richlistbox>
-            <richlistbox flex="1" id="news_accounts_list" style="display: none;" onclick="on_news_accounts_list_click();">
             </richlistbox>
           </vbox>
           <vbox>
@@ -55,28 +46,15 @@
               </hbox>
             </groupbox>
             <groupbox>
-              <caption>&gb.first;</caption>
-              <description style="max-width: 300px;">&gbfirst.default;</description>
-              <menulist oncommand="update_accounts_prefs();">
-                <menupopup id="default_account">
-                  <menuitem value="-1" label="&mi.firstmail;" disabled="true" />
-                </menupopup>
-              </menulist>
-            </groupbox>
-            <groupbox>
               <caption>&gb.extra;</caption>
               <description style="width: 300px">
-                &accountsort.warning;
-              </description>
-              <description style="width: 300px">
-                &accountsort.restartwarning;
+                &accountsort.note;
               </description>
             </groupbox>
           </vbox>
         </hbox>
         <hbox>
           <spacer flex="1" />
-          <button label="&button.restart;" icon="refresh" oncommand="on_account_restart();"/>
           <button label="&button.close;" icon="close" oncommand="on_close();"/>
         </hbox>
       </tabpanel>
