@@ -3,5 +3,5 @@
 all: dist
 
 dist:
-	rm -f tbsortfolders@xulforum.org.xpi
-	zip tbsortfolders@xulforum.org.xpi --exclude Makefile -r *
+	rm -f smsortfolders@xulforum.org.xpi
+	zip smsortfolders@xulforum.org.xpi --exclude Makefile -r *

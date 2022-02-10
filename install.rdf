@@ -4,7 +4,7 @@
   xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
 
-      <em:id>tbsortfolders@xulforum.org</em:id>
+      <em:id>smsortfolders@xulforum.org</em:id>
       <em:type>2</em:type>
       <em:name>Manually sort folders</em:name>
       <em:version>1.0.0</em:version>
@@ -16,7 +16,7 @@
         <Description>
           <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
           <em:minVersion>2.0</em:minVersion>
-          <em:maxVersion>2.*</em:maxVersion>
+          <em:maxVersion>2.53</em:maxVersion>
         </Description>
       </em:targetApplication>
 

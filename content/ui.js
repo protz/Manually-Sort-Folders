@@ -5,18 +5,18 @@ const Cu = Components.utils;
 // Logging using the latest from https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Log.jsm
 // Assuming this is 68+ only.
 Cu.import("resource://gre/modules/Log.jsm");
-let tblog = Log.repository.getLogger("tbsortfolders.ui");
+let tblog = Log.repository.getLogger("smsortfolders.ui");
 tblog.level = Log.Level.Debug;
 tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
 tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://tbsortfolders/sort.jsm");
+Cu.import("resource://smsortfolders/sort.jsm");
 Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
 var g_accounts = Object();
-const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
+const tbsf_prefs = Services.prefs.getBranch("extensions.smsortfolders@xulforum.org.");
 var tbsf_data = {};
 var current_account = null;
 
@@ -45,7 +45,7 @@ function item_key(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("value");
-  tblog.error("TBSortFolders: severe error, no item key for "+tree_item);
+  tblog.error("Smsortfolders: severe error, no item key for "+tree_item);
 }
 
 function item_label(tree_item) {
@@ -53,7 +53,7 @@ function item_label(tree_item) {
   for (let i = 0; i < tree_item.children.length; ++i)
     if (tree_item.children[i].tagName == "treerow")
       return tree_item.children[i].firstChild.getAttribute("label");
-  tblog.error("TBSortFolders: severe error, no item label for "+tree_item);
+  tblog.error("Smsortfolders: severe error, no item label for "+tree_item);
 }
 
 let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
@@ -247,7 +247,7 @@ function walk_folder_append(folder,treechildren,depth) {
 function on_load() {
   try {
     tblog.debug("on_load");
-    let json = tbsf_prefs.getStringPref("tbsf_data");
+    let json = tbsf_prefs.getStringPref("smsf_data");
     try {
       tbsf_data = JSON.parse(json);
     } catch (e) {
@@ -423,7 +423,7 @@ function on_sort_method_changed() {
     document.getElementById("alphabetical_sort_box").style.display = "none";
     document.getElementById("manual_sort_box").style.display = "none";
   }
-  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+  tbsf_prefs.setStringPref("smsf_data", JSON.stringify(tbsf_data));
   rebuild_tree(true, true);
 }
 
@@ -433,7 +433,7 @@ function on_close() {
 }
 
 function on_refresh() {
-  tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+  tbsf_prefs.setStringPref("smsf_data", JSON.stringify(tbsf_data));
 /*****************************************************************************
 In Thunderbird, the procedure here is to refresh the folder tree view.
 However, SeaMonkey doesn't have gFolderTreeView.

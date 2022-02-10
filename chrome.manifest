@@ -1,19 +1,19 @@
-content tbsortfolders content/
-resource tbsortfolders modules/
-overlay chrome://messenger/content/messenger.xul chrome://tbsortfolders/content/overlay.xul
-locale tbsortfolders da locale/da/
-locale tbsortfolders de locale/de/
-locale tbsortfolders en-US locale/en-US/
-locale tbsortfolders es-ES locale/es-ES/
-locale tbsortfolders fr locale/fr/
-locale tbsortfolders it locale/it/
-locale tbsortfolders ja locale/ja/
-locale tbsortfolders nl locale/nl/
-locale tbsortfolders nb-NO locale/nb-NO/
-locale tbsortfolders pl locale/pl/
-locale tbsortfolders pt locale/pt/
-locale tbsortfolders pt-BR locale/pt-BR/
-locale tbsortfolders ru-RU locale/ru-RU/
-locale tbsortfolders sv-SE locale/sv-SE/
-locale tbsortfolders zh-CN locale/zh-CN/
-locale tbsortfolders zh-TW locale/zh-TW/
+content smsortfolders content/
+resource smsortfolders modules/
+overlay chrome://messenger/content/messenger.xul chrome://smsortfolders/content/overlay.xul
+locale smsortfolders da locale/da/
+locale smsortfolders de locale/de/
+locale smsortfolders en-US locale/en-US/
+locale smsortfolders es-ES locale/es-ES/
+locale smsortfolders fr locale/fr/
+locale smsortfolders it locale/it/
+locale smsortfolders ja locale/ja/
+locale smsortfolders nl locale/nl/
+locale smsortfolders nb-NO locale/nb-NO/
+locale smsortfolders pl locale/pl/
+locale smsortfolders pt locale/pt/
+locale smsortfolders pt-BR locale/pt-BR/
+locale smsortfolders ru-RU locale/ru-RU/
+locale smsortfolders sv-SE locale/sv-SE/
+locale smsortfolders zh-CN locale/zh-CN/
+locale smsortfolders zh-TW locale/zh-TW/

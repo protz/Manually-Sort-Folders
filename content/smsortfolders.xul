@@ -3,11 +3,11 @@
 <?xml-stylesheet href="chrome://messenger/skin/msgSelectOffline.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
 
-<!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/ui.dtd">
+<!DOCTYPE window SYSTEM "chrome://smsortfolders/locale/ui.dtd">
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         title="&general.title;" onload="on_load();">
   <script src="chrome://messenger/content/customElements.js"/>
-  <script type="application/javascript" src="chrome://tbsortfolders/content/ui.js" />
+  <script type="application/javascript" src="chrome://smsortfolders/content/ui.js" />
 
   <description style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
     &accountsort.noaccountsetupyet;
@@ -46,11 +46,11 @@
               <caption label="&gb.move;" />
               <hbox>
                 <button oncommand="on_account_move_up();">
-                  <image src="chrome://tbsortfolders/content/style/up.png" />
+                  <image src="chrome://smsortfolders/content/style/up.png" />
                   <label value="&button.move_up;" />
                 </button>
                 <button oncommand="on_account_move_down();">
-                  <image src="chrome://tbsortfolders/content/style/down.png" />
+                  <image src="chrome://smsortfolders/content/style/down.png" />
                   <label value="&button.move_down;" />
                 </button>
                 <spacer flex="1" />
@@ -133,11 +133,11 @@
                 <caption label="&gb.movefolder;" />
                 <hbox>
                   <button oncommand="on_move_up();">
-                    <image src="chrome://tbsortfolders/content/style/up.png" />
+                    <image src="chrome://smsortfolders/content/style/up.png" />
                     <label value="&button.move_up;" />
                   </button>
                   <button oncommand="on_move_down();">
-                    <image src="chrome://tbsortfolders/content/style/down.png" />
+                    <image src="chrome://smsortfolders/content/style/down.png" />
                     <label value="&button.move_down;" />
                   </button>
                   <spacer flex="1" />

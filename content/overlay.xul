@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!DOCTYPE window SYSTEM "chrome://tbsortfolders/locale/main.dtd">
+<!DOCTYPE window SYSTEM "chrome://smsortfolders/locale/main.dtd">
 <overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script type="application/javascript" src="chrome://tbsortfolders/content/folderPane.js" />
+  <script type="application/javascript" src="chrome://smsortfolders/content/folderPane.js" />
   <menu id="tasksMenu" >
     <menupopup id="taskPopup">
       <menuitem insertafter="activityManager" id="tbsf_menu_item"
-        oncommand="window.openDialog('chrome://tbsortfolders/content/', '',
+        oncommand="window.openDialog('chrome://smsortfolders/content/', 'ManuallySortFolders',
           'chrome,titlebar,toolbar,centerscreen');"
         label="&tbsf.menuentry.label;" />
     </menupopup>

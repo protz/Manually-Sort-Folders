@@ -7,18 +7,18 @@
   const Cu = Components.utils;
 
   Cu.import("resource://gre/modules/Log.jsm");
-  let tblog = Log.repository.getLogger("tbsortfolders.folderPane");
+  let tblog = Log.repository.getLogger("smsortfolders.folderPane");
   tblog.level = Log.Level.Debug;
   tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
   tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
   Cu.import("resource://gre/modules/Services.jsm");
-  Cu.import("resource://tbsortfolders/sort.jsm");
+  Cu.import("resource://smsortfolders/sort.jsm");
   Cu.import("resource:///modules/MailUtils.js");
 
   tblog.debug("Init");
 
-  const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
+  const tbsf_prefs = Services.prefs.getBranch("extensions.smsortfolders@xulforum.org.");
   /* This array is populated either when the file is loaded or when the
    * preferences are updated. The keys are the account's pretty names and the
    * values are the sort functions associated to each account. */
@@ -109,7 +109,7 @@ The observer works as expected, but the folder pane will no longer be shown on S
   function update_prefs_functions() {
     let tbsf_data = {};
     try {
-      tbsf_data = JSON.parse(tbsf_prefs.getStringPref("tbsf_data"));
+      tbsf_data = JSON.parse(tbsf_prefs.getStringPref("smsf_data"));
     } catch (e) {
     }
     tbsf_prefs_functions = Object();
@@ -146,7 +146,7 @@ The observer works as expected, but the folder pane will no longer be shown on S
       if (aTopic != "nsPref:changed")
         return;
       switch (aData) {
-        case "tbsf_data":
+        case "smsf_data":
           update_prefs_functions();
           break;
       }
