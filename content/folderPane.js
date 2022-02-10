@@ -194,7 +194,13 @@ However, SeaMonkey doesn't have gFolderTreeView.
 In Thunderbird, the procedure here is to refresh the folder tree view.
 However, SeaMonkey doesn't have gFolderTreeView.
 
-  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+  function refreshPane(win) {
+    try { win.gFolderTreeView._rebuild(); }
+    catch (e) { setTimeout(refreshPane, 5, win); }
+  }
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    refreshPane(win);
+  }
 *****************************************************************************/
 
 })()
