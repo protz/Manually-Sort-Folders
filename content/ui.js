@@ -414,7 +414,7 @@ function on_sort_method_changed() {
     document.getElementById("manual_sort_box").style.display = "";
     if (!tbsf_data[current_account][1])
       tbsf_data[current_account][1] = {};
-  } else if (sort_method == 1) {
+  } else if (sort_method == 1 || sort_method == 3) {
     document.getElementById("default_sort_box").style.display = "none";
     document.getElementById("alphabetical_sort_box").style.display = "";
     document.getElementById("manual_sort_box").style.display = "none";
