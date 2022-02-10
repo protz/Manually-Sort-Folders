@@ -180,10 +180,12 @@
   };
   
   /* Refresh pane */
-  function refreshPane() {
-    try { mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode; }
-    catch (e) { setTimeout(refreshPane, 5); }
+  function refreshPane(win) {
+    try { win.gFolderTreeView._rebuild(); }
+    catch (e) { setTimeout(refreshPane, 5, win); }
   }
-  refreshPane();
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    refreshPane(win);
+  }
 
 })()
