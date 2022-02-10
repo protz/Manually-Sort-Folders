@@ -1,20 +1,22 @@
 <!ENTITY general.title "Сортировка папок вручную">
 <!ENTITY sortfolders.description "Эта панель позволит вам отсортировать папки любой учётной записи. Сначала выберите учётную запись, а затем — метод сортировки.">
-<!ENTITY sortmethod.default "Использовать стандартный метод Thunderbird">
-<!ENTITY sortmethod.alphabetical "Использовать сравнение обычных строк">
+<!ENTITY sortmethod.default "Использовать стандартный метод SeaMonkey">
+<!ENTITY sortmethod.alphabetical.ascending "Использовать сравнение обычных строк (По возрастанию)">
+<!ENTITY sortmethod.alphabetical.descending "Использовать сравнение обычных строк (По убыванию)">
 <!ENTITY sortmethod.custom "Использовать ручную сортировку">
-<!ENTITY sortmethod.default.description "Функция сортировки, используемая в Thunderbird по умолчанию. В отличие от GMail, она не принимает во внимание специальные символы Юникода.">
-<!ENTITY sortmethod.alphabetical.description "Обычная функция сортировки, которая использует самую простую функцию сравнения строк. Она позволяет создавать различные категории папок а-ля GMail, используя специальные символы Юникода.">
+<!ENTITY sortmethod.custom "Использовать ручную сортировку">
+<!ENTITY sortmethod.default.description "Функция сортировки, используемая в SeaMonkey по умолчанию.">
+<!ENTITY sortmethod.alphabetical.description "Обычная функция сортировки, которая использует самую простую функцию сравнения строк.">
 <!ENTITY sortmethod.custom.description "Используя расположенные выше кнопки самостоятельно рассортируйте ваши папки. При добавлении новой папки она будет помещена в конец списка. Вы можете вернуться сюда позже, если это вас не устраивает.">
 <!ENTITY sortmethod.samplelegend "(Образец панели папок)">
 <!ENTITY button.move_up "Выше">
 <!ENTITY button.move_down "Ниже">
 <!ENTITY button.refresh "Обновить панель папок">
 <!ENTITY button.close "Закрыть">
-<!ENTITY button.restart "Перезапустить Thunderbird">
+<!ENTITY button.restart "Перезапустить SeaMonkey">
 <!ENTITY accountssort.description "Эта панель позволит вам упорядочить учётные записи в панели папок. Если вы желаете отсортировать папки в учётной записи — используйте следующую вкладку.">
 <!ENTITY accountsort.warning "Регулярные почтовые учётные записи, учётные записи Unix Movemail, в том числе, учётные записи RSS располагаются первыми. Затем идут «Локальные папки» и, внизу списка, учётные записи новостей. Вы можете изменить это задав «Локальные папки» или одну из учётных записей новостей как значение по умолчанию, переместив её таким образом на самый верх списка.">
-<!ENTITY accountsort.restartwarning "Чтобы изменения вступили в силу необходимо перезапустить Thunderbird.">
+<!ENTITY accountsort.restartwarning "Чтобы изменения вступили в силу необходимо перезапустить SeaMonkey.">
 <!ENTITY tab.accounts "Сортировка учётных записей">
 <!ENTITY tab.folders "Сортировка папок">
 <!ENTITY gb.move "Переместить выбранную учётную запись">
@@ -28,7 +30,7 @@
 <!ENTITY accountsort.noaccountsetupyet "У вас нет ни одной учётной записи!">
 <!ENTITY tab.extra "Дополнительные настройки">
 <!ENTITY extra.startup "Папка запуска">
-<!ENTITY extra.description "С помощью этой вкладки вы сможете настроить различные параметры Thunderbird, связанные с папками">
+<!ENTITY extra.description "С помощью этой вкладки вы сможете настроить различные параметры SeaMonkey, связанные с папками">
 <!ENTITY extra.startupfolder "По умолчанию, открывать при запуске">
 <!ENTITY extra.nofolder "папка не выбрана">
 <!ENTITY extra.uselast "последнюю открытую папку">

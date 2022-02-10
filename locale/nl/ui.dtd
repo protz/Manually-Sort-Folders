@@ -1,20 +1,21 @@
 <!ENTITY general.title "Mappen handmatig sorteren">
 <!ENTITY sortfolders.description "Met dit venster kunt u de mappen van elke account sorteren. Selecteer eerst een account en daarna een sorteermethode.">
-<!ENTITY sortmethod.default "Standaard van Thunderbird gebruiken">
-<!ENTITY sortmethod.alphabetical "Vergelijken op platte tekst">
+<!ENTITY sortmethod.default "Standaard van SeaMonkey gebruiken">
+<!ENTITY sortmethod.alphabetical.ascending "Vergelijken op platte tekst (Oplopende volgorde)">
+<!ENTITY sortmethod.alphabetical.descending "Vergelijken op platte tekst (Aflopende volgorde)">
 <!ENTITY sortmethod.custom "Handmatig ingestelde sorteerfunctie gebruiken">
-<!ENTITY sortmethod.default.description "Dit is de standaardsorteerfunctie van Thunderbird. Anders dan GMail worden speciale Unicode-symbolen niet meegenomen.">
-<!ENTITY sortmethod.alphabetical.description "Dit is een standaardsorteerfunctie die niets anders gebruikt dan de meest basale tekstvergelijkingsfunctie. U kunt er verschillende foldercategorieën mee maken zoals in GMail door gebruik te maken van speciale Unicode-symbolen.">
+<!ENTITY sortmethod.default.description "Dit is de standaardsorteerfunctie van SeaMonkey.">
+<!ENTITY sortmethod.alphabetical.description "Dit is een standaardsorteerfunctie die niets anders gebruikt dan de meest basale tekstvergelijkingsfunctie.">
 <!ENTITY sortmethod.custom.description "Gebruik bovenstaande knoppen om uw mappen handmatig te sorteren. Als een nieuwe map wordt toegevoegd, wordt deze aan het einde van de lijst geplaatst. U kunt later hier terugkomen als u dat anders zou willen.">
 <!ENTITY sortmethod.samplelegend "(Voorbeeld mappenvenster boven)">
 <!ENTITY button.move_up "Omhoog">
 <!ENTITY button.move_down "Omlaag">
 <!ENTITY button.refresh "Mappenvenster verversen">
 <!ENTITY button.close "Sluiten">
-<!ENTITY button.restart "Thunderbird herstarten">
+<!ENTITY button.restart "SeaMonkey herstarten">
 <!ENTITY accountssort.description "Met dit venster kunt u de accounts ordenen in het mappenvenster. Gebruik het volgende tabblad als u de mappen binnen een account wilt sorteren.">
 <!ENTITY accountsort.warning "Regulier mailaccounts, Unix Movemailaccounts en RSS-accounts dienen eerst te komen. Hierna volgt Lokale mappen, en onderaan de lijst staan de Nieuwsaccounts. U kunt dit wijzigen door Lokale mappen of één van de Nieuwsaccounts als standaard in te stellen, waardoor deze bovenaan de lijst wordt geplaatst.">
-<!ENTITY accountsort.restartwarning "U dient Thunderbird te herstarten om de wijzigingen door te voeren.">
+<!ENTITY accountsort.restartwarning "U dient SeaMonkey te herstarten om de wijzigingen door te voeren.">
 <!ENTITY tab.accounts "Accounts sorteren">
 <!ENTITY tab.folders "Mappen sorteren">
 <!ENTITY gb.move "Geselecteerd account verplaatsen">
@@ -28,7 +29,7 @@
 <!ENTITY accountsort.noaccountsetupyet "U hebt nog geen account ingesteld!">
 <!ENTITY tab.extra "Extra instellingen">
 <!ENTITY extra.startup "Opstartmap">
-<!ENTITY extra.description "Gebruik dit tabblad voor verdere aanpassingen van Thunderbird middels diverse mapgerelateerde instellingen">
+<!ENTITY extra.description "Gebruik dit tabblad voor verdere aanpassingen van SeaMonkey middels diverse mapgerelateerde instellingen">
 <!ENTITY extra.startupfolder "Standaard starten met de volgende map geopend">
 <!ENTITY extra.nofolder "Geen map geselecteerd">
 <!ENTITY extra.uselast "Laatst geopende map gebruiken">

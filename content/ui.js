@@ -12,7 +12,7 @@ tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
-Cu.import("resource:///modules/MailUtils.jsm");
+Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
 var g_accounts = Object();
@@ -86,6 +86,9 @@ function rebuild_tree(full, collapse) {
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
+  } else if (sort_method == 3) {
+      tblog.debug("Sort method 3");
+      sort_function = (c1, c2) => tbsf_sort_functions[3](myFtvItem(c1), myFtvItem(c2));
   }
   let fresh_data = {};
   let my_sort = function(a_tree_items, indent) {
@@ -201,40 +204,43 @@ function build_folder_tree(account) {
 
 function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
-  while (subFolders.hasMoreElements()) {
+  while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-
-    let indent = ' '.repeat(2*depth);
-    tblog.debug("Folder: "+indent+folder.prettyName);
-    tblog.debug("Folder URI: "+indent+folder.URI);
-    tblog.debug("Folder flags: "+indent+folder.flags);
-    
-    let special_name = decode_special(folder.flags);
-    tblog.debug("Special name: "+special_name);
-
-    let treeitem = document.createElement('treeitem');
-    treeitem.setAttribute('id',folder.URI);
-    let treerow = document.createElement('treerow');
-    let treecell = document.createElement('treecell');
-    treecell.setAttribute('label',folder.prettyName);
-    treecell.setAttribute('value',folder.URI);
-    treecell.setAttribute('properties','specialFolder-'+special_name);
-    treerow.appendChild(treecell);
-    treeitem.appendChild(treerow)
-
-    if (folder.hasSubFolders) {
-
-      treeitem.setAttribute('container','true');
-      treeitem.setAttribute('open','true');
-      let treechildrensub = document.createElement('treechildren');
-      
-      walk_folder(folder,treechildrensub,depth+1);
-
-      treeitem.appendChild(treechildrensub)
-    }
-    
-    treechildren.appendChild(treeitem);
+    walk_folder_append(folder,treechildren,depth);
   }
+}
+
+function walk_folder_append(folder,treechildren,depth) {
+  let indent = ' '.repeat(2*depth);
+  tblog.debug("Folder: "+indent+folder.prettyName);
+  tblog.debug("Folder URI: "+indent+folder.URI);
+  tblog.debug("Folder flags: "+indent+folder.flags);
+    
+  let special_name = decode_special(folder.flags);
+  tblog.debug("Special name: "+special_name);
+
+  let treeitem = document.createElement('treeitem');
+  treeitem.setAttribute('id',folder.URI);
+  let treerow = document.createElement('treerow');
+  let treecell = document.createElement('treecell');
+  treecell.setAttribute('label',folder.prettyName);
+  treecell.setAttribute('value',folder.URI);
+  treecell.setAttribute('properties','specialFolder-'+special_name);
+  treerow.appendChild(treecell);
+  treeitem.appendChild(treerow)
+
+  if (folder.hasSubFolders) {
+
+    treeitem.setAttribute('container','true');
+    treeitem.setAttribute('open','true');
+    let treechildrensub = document.createElement('treechildren');
+      
+    walk_folder(folder,treechildrensub,depth+1);
+
+    treeitem.appendChild(treechildrensub)
+  }
+
+  treechildren.appendChild(treeitem);
 }
 
 
@@ -248,6 +254,7 @@ function on_load() {
     }
 
     let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+    let name_initial = '';
     let name;
     let accounts_menu = document.getElementById("accounts_menu");
     let accounts = [];
@@ -266,7 +273,7 @@ function on_load() {
       if (!account.incomingServer)
         continue;
       tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
-      name = account.incomingServer.rootFolder.prettyName;
+      let name = account.incomingServer.rootFolder.prettyName;
       let it = document.createElement("menuitem");
       it.setAttribute("label", name);
       accounts_menu.appendChild(it);
@@ -275,8 +282,9 @@ function on_load() {
       //the data
       g_accounts[name] = account;
       if (!tbsf_data[name]) tbsf_data[name] = Array();
+      if (!name_initial) name_initial = name;
     }
-    document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
+    document.getElementById("accounts_menu").parentNode.setAttribute("label", name_initial);
 
 
     tblog.debug("Accounts: "+account_manager.accounts.length);
@@ -300,7 +308,12 @@ function on_load() {
     on_account_changed();
 
     accounts_on_load();
+/*****************************************************************************
+This feature doesn't work in SeaMonkey
     extra_on_load();
+*****************************************************************************/
+
+    document.getElementsByTagName('window')[0].maxHeight = screen.availHeight;
   } catch (e) {
     tblog.debug(e);
     throw e;
@@ -401,7 +414,7 @@ function on_sort_method_changed() {
     document.getElementById("manual_sort_box").style.display = "";
     if (!tbsf_data[current_account][1])
       tbsf_data[current_account][1] = {};
-  } else if (sort_method == 1) {
+  } else if (sort_method == 1 || sort_method == 3) {
     document.getElementById("default_sort_box").style.display = "none";
     document.getElementById("alphabetical_sort_box").style.display = "";
     document.getElementById("manual_sort_box").style.display = "none";
@@ -421,23 +434,36 @@ function on_close() {
 
 function on_refresh() {
   tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
-  //it's a getter/setter so that actually does sth
-  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+/*****************************************************************************
+In Thunderbird, the procedure here is to refresh the folder tree view.
+However, SeaMonkey doesn't have gFolderTreeView.
+
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    win.gFolderTreeView._rebuild();
+  }
+*****************************************************************************/
 }
+
+function on_restart() {
+  on_refresh();
+  on_account_restart();
+}
+
 
 window.addEventListener("unload", on_refresh, false);
 
 
 /* The functions below are for *account* sorting */
 
-var g_other_accounts = null;
+var g_other_accounts = [];
+var g_active_list = null;
 
 function accounts_on_load() {
   let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
   let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
+  accounts = accounts.filter((a) => mail_account_prefs.getPrefType(a+".server") === mail_account_prefs.PREF_STRING); // Avoid error occurs in following getStringPref .
   let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
   let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
@@ -469,7 +495,10 @@ function accounts_on_load() {
       case "rss":
         mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
         add_li(document.getElementById("accounts_list"), mail_accounts[0]);
+/*****************************************************************************
+This is invalid in SeaMonkey.
         document.getElementById("default_account").firstChild.setAttribute("disabled", false);
+*****************************************************************************/
         /* We're not setting the "first account in the list" value in the UI
          * because it defaults to "first rss or mail account in the list */
         break;
@@ -479,7 +508,10 @@ function accounts_on_load() {
         let mi = document.createElement("menuitem");
         mi.setAttribute("value", accounts[i]);
         mi.setAttribute("label", names[i]);
+/*****************************************************************************
+This is useless in SeaMonkey.
         document.getElementById("default_account").appendChild(mi);
+*****************************************************************************/
         add_li(document.getElementById("news_accounts_list"), news_accounts[0]);
         /* Set the "first account in the list value in the UI */
         if (defaultaccount == accounts[i])
@@ -496,7 +528,10 @@ function accounts_on_load() {
           let mi = document.createElement("menuitem");
           mi.setAttribute("value", accounts[i]);
           mi.setAttribute("label", names[i]);
+/*****************************************************************************
+This is useless in SeaMonkey.
           document.getElementById("default_account").appendChild(mi);
+*****************************************************************************/
           /* Set the "first account in the list" value in the UI */
           if (defaultaccount == accounts[i])
             mi.parentNode.parentNode.value = accounts[i];
@@ -508,7 +543,15 @@ function accounts_on_load() {
   if (news_account_found) {
     document.getElementById("news_accounts_list").style.display = "";
   }
-  update_accounts_prefs();
+  g_active_list = document.getElementById("accounts_list");
+
+  /* Avoid Thunderbird bug(?) */
+  if (g_active_list.selectedIndex < 0 && g_active_list.getItemAtIndex(0)) {
+    g_active_list.selectedIndex = 0;
+  }
+
+  /* Don't understand why this was needed here. */
+  //update_accounts_prefs();
 }
 
 function update_accounts_prefs() {
@@ -535,7 +578,8 @@ function update_accounts_prefs() {
   //tbsf_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: "+new_pref);
   
-  let default_account = document.getElementById("default_account").parentNode.value;
+  let default_account = document.getElementById("default_account");
+  default_account = default_account ? default_account.parentNode.value : -1;
   if (default_account == "-1") {
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
     tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
@@ -561,8 +605,6 @@ function account_move_up(index, listbox) {
 
   return true;
 }
-
-var g_active_list = null;
 
 function on_account_move_up() {
   tblog.debug("on_account_move_up");
@@ -613,6 +655,10 @@ function on_news_accounts_list_click() {
 /* These are UI functions for the "Extra settings" tab */
 
 /* Borrowed from http://mxr.mozilla.org/comm-central/source/mailnews/base/prefs/content/am-copies.js */
+
+/*****************************************************************************
+This feature doesn't work in SeaMonkey
+
 function on_pick_folder(aEvent) {
   let folder = aEvent.target._folder;
   let picker = document.getElementById("startupFolder");
@@ -649,3 +695,4 @@ function on_startup_folder_method_changed(event) {
     tbsf_prefs.setStringPref("startup_folder", "");
   }
 }
+*****************************************************************************/
