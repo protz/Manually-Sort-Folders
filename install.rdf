@@ -10,7 +10,7 @@
       <em:version>1.0.0</em:version>
       <em:description>An extension that allows you to change the way SeaMonkey sorts accounts and folders in the folder pane.</em:description>
       <em:creator>Jonathan Protzenko and Itagaki Fumihiko</em:creator>
-      <em:homepageURL>https://github.com/proz/Manually-Sort-Folders/wiki</em:homepageURL>
+      <em:homepageURL>https://github.com/protz/Manually-Sort-Folders/wiki</em:homepageURL>
 
       <em:targetApplication> <!-- SeaMonkey -->
         <Description>
