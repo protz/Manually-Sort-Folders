@@ -1,9 +1,9 @@
 <!ENTITY general.title "Impostazioni di Manually sort folders">
 <!ENTITY sortfolders.description "È possibile ordinare le cartelle di ogni account. Selezionare un account ed in seguito un metodo di ordinamento">
-<!ENTITY sortmethod.default "Ordine predefinito di Thunderbird">
+<!ENTITY sortmethod.default "Ordine predefinito di SeaMonkey">
 <!ENTITY sortmethod.alphabetical "Ordine alfabetico">
 <!ENTITY sortmethod.custom "Ordine manuale">
-<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di Thunderbird, che non tiene in considerazione i simboli speciali unicode">
+<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di SeaMonkey, che non tiene in considerazione i simboli speciali unicode">
 <!ENTITY sortmethod.alphabetical.description "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico. Permette di creare differenti categorie di cartelle utilizzando anche simboli speciali unicode">
 <!ENTITY sortmethod.custom.description "È stato selezionato l'ordine manuale, che permette di spostare su/giù le cartelle dell'account tramite i relativi tasti 'Sposta su' e 'Sposta giù'. Se viene aggiunta una nuova cartella, questa viene inserita in fondo alla lista. Sarà possibile in seguito spostarla">
 <!ENTITY sortmethod.samplelegend "(Esempio del pannello delle cartelle)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "Sposta giù">
 <!ENTITY button.refresh "Aggiorna il pannello delle cartelle">
 <!ENTITY button.close "Chiudi">
-<!ENTITY button.restart "Riavvia Thunderbird">
+<!ENTITY button.restart "Riavvia SeaMonkey">
 <!ENTITY accountssort.description "È possibile ordinare gli account nel pannello delle cartelle. (Per ordinare le cartelle dei singoli account selezionare 'Ordinamento cartelle')">
 <!ENTITY accountsort.warning "Solitamente vengono elencati per primi gli account di posta, account Movemail ed account RSS. In seguito vengono elencate le cartelle locali, ed infine in fondo alla lista sono presenti gli account di gruppi di discussione. È possibile ignorare tale ordine predefinito degli account selezionando le cartelle locali oppure uno degli account di gruppi di discussione impostandolo come predefinito e quindi spostandolo in cima alla lista">
-<!ENTITY accountsort.restartwarning "Riavviare Thunderbird per rendere effettive le modifiche">
+<!ENTITY accountsort.restartwarning "Riavviare SeaMonkey per rendere effettive le modifiche">
 <!ENTITY tab.accounts "Ordinamento account">
 <!ENTITY tab.folders "Ordinamento cartelle">
 <!ENTITY gb.move "Spostamento dell'account selezionato">
@@ -28,8 +28,8 @@
 <!ENTITY accountsort.noaccountsetupyet "Nessun account impostato">
 <!ENTITY tab.extra "Varie">
 <!ENTITY extra.startup "Cartella da aprire all'avvio">
-<!ENTITY extra.description "È possibile personalizzare ulteriormente Thunderbird selezionando una cartella da aprire all'avvio">
-<!ENTITY extra.startupfolder "Cartella da aprire all'avvio di Thunderbird">
+<!ENTITY extra.description "È possibile personalizzare ulteriormente SeaMonkey selezionando una cartella da aprire all'avvio">
+<!ENTITY extra.startupfolder "Cartella da aprire all'avvio di SeaMonkey">
 <!ENTITY extra.nofolder "(nessuna cartella selezionata)">
 <!ENTITY extra.uselast "Utilizza l'ultima cartella aperta">
 <!ENTITY extra.usecustom "Utilizza una cartella da selezionare">

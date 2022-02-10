@@ -1,9 +1,9 @@
 <!ENTITY general.title "Manually sort folders 設定">
 <!ENTITY sortfolders.description "このパネルで各アカウントのフォルダの並べ替えを可能にします。最初にアカウント、次に並べ替え方法を選択してください。">
-<!ENTITY sortmethod.default "Thunderbird のデフォルトを使用する">
+<!ENTITY sortmethod.default "SeaMonkey のデフォルトを使用する">
 <!ENTITY sortmethod.alphabetical "単純な文字列の比較を使用する">
 <!ENTITY sortmethod.custom "手動による並べ替えを使用する">
-<!ENTITY sortmethod.default.description "これは Thunderbird のデフォルト並べ替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません">
+<!ENTITY sortmethod.default.description "これは SeaMonkey のデフォルト並べ替え機能です。Gmail とは異なり、特別なユニコード符号を考慮しません">
 <!ENTITY sortmethod.alphabetical.description "これは最も基本的な文字列比較関数を使用する標準の並べ替え機能です。 特別なユニコード符号を使用する Gmail のようなフォルダと異なるカテゴリを作成します。">
 <!ENTITY sortmethod.custom.description "手動でフォルダを分類するときは上のボタンを使用してください。 新規に追加及び名前を変更したフォルダはリストの最下段になります。 それが合わない場合は後で戻すことができます。">
 <!ENTITY sortmethod.samplelegend "(サンプルフォルダ欄)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "下へ">
 <!ENTITY button.refresh "フォルダペインの更新">
 <!ENTITY button.close "閉じる">
-<!ENTITY button.restart "Thunderbird の再起動">
+<!ENTITY button.restart "SeaMonkey の再起動">
 <!ENTITY accountssort.description "このパネルではフォルダ欄のアカウントを選べます。アカウント内のフォルダを分類したいときは次のタブを使用してください。">
 <!ENTITY accountsort.warning "通常のメールアカウントは RSS アカウントと同様に Unix Movemail アカウントの最上部に置かれます。 その次にローカルフォルダ、そしてリスト最後はブログとニュースアカウントとなります。 デフォルトとしてローカルフォルダかブログとニュースグループアカウントのどちらかを選んでリスト先頭に配置することによってこれを変えることができます。">
-<!ENTITY accountsort.restartwarning "変更を反映させるためには Thunderbird を再起動してください">
+<!ENTITY accountsort.restartwarning "変更を反映させるためには SeaMonkey を再起動してください">
 <!ENTITY tab.accounts "アカウントの並べ替え">
 <!ENTITY tab.folders "フォルダの並べ替え">
 <!ENTITY gb.move "選択したアカウントの移動">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "アカウント設定がまだありません！">
 <!ENTITY tab.extra "追加設定">
 <!ENTITY extra.startup "起動フォルダ">
-<!ENTITY extra.description "ここではフォルダ関連の設定をすることで Thunderbird をさらにカスタマイズできます">
+<!ENTITY extra.description "ここではフォルダ関連の設定をすることで SeaMonkey をさらにカスタマイズできます">
 <!ENTITY extra.startupfolder "以下のフォルダが開いた状態で起動する">
 <!ENTITY extra.nofolder "フォルダの選択なし">
 <!ENTITY extra.uselast "最後に開いたフォルダ">

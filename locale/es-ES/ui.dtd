@@ -1,9 +1,9 @@
 <!ENTITY general.title "Manually sort folders">
 <!ENTITY sortfolders.description "Este panel permite ordenar las carpetas de cada cuenta. Primero seleccione una cuenta y después elija un método de ordenación.">
-<!ENTITY sortmethod.default "Usar predeterminado de Thunderbird">
+<!ENTITY sortmethod.default "Usar predeterminado de SeaMonkey">
 <!ENTITY sortmethod.alphabetical "Usar comparación de cadena normal">
 <!ENTITY sortmethod.custom "Usar función de ordenación definida manualmente">
-<!ENTITY sortmethod.default.description "Esta es la función de ordenación predeterminada de Thunderbird. No acepta caracteres especiales Unicode.">
+<!ENTITY sortmethod.default.description "Esta es la función de ordenación predeterminada de SeaMonkey. No acepta caracteres especiales Unicode.">
 <!ENTITY sortmethod.alphabetical.description "Esta es una función estándar que utiliza sólo la función más básica de comparación de cadenas. Permite crear diferentes categorías de carpetas a la de Gmail mediante el uso de símbolos especiales Unicode.">
 <!ENTITY sortmethod.custom.description "Use los botones de arriba para ordenar manualmente sus carpetas. Si se añade una nueva carpeta, se pondrá al final de la lista. Usted puede volver aquí más adelante si esto no le conviene.">
 <!ENTITY sortmethod.samplelegend "(Panel de carpetas del ejemplo anterior)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "Abajo">
 <!ENTITY button.refresh "Actualizar panel de carpetas">
 <!ENTITY button.close "Cerrar">
-<!ENTITY button.restart "Reiniciar Thunderbird">
+<!ENTITY button.restart "Reiniciar SeaMonkey">
 <!ENTITY accountssort.description "Este panel le permite ordenar las cuentas del panel de carpetas. Usar próxima pestaña si desea ordenar las carpetas dentro de una cuenta.">
 <!ENTITY accountsort.warning "Cuentas de correo normales, cuentas Unix Movemail y las cuentas RSS deben ir primero. Las carpetas locales son las siguientes, y al final de la lista las cuentas de Noticias. Puede modificar este orden eligiendo como cuenta predeterminada las Carpetas Locales o una de las cuentas de Noticias, pasando esta al comienzo de la lista.">
-<!ENTITY accountsort.restartwarning "Debe reiniciar Thunderbird para que los cambios tengan efecto.">
+<!ENTITY accountsort.restartwarning "Debe reiniciar SeaMonkey para que los cambios tengan efecto.">
 <!ENTITY tab.accounts "Ordenar cuentas">
 <!ENTITY tab.folders "Ordenar carpetas">
 <!ENTITY gb.move "Mover cuenta seleccionada">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "Aún no tiene un cuenta configurada.">
 <!ENTITY tab.extra "Opciones extra">
 <!ENTITY extra.startup "Carpeta de inicio">
-<!ENTITY extra.description "Usar esta pestaña para personalizar Thunderbird usando varias opciones relacionadas con carpetas">
+<!ENTITY extra.description "Usar esta pestaña para personalizar SeaMonkey usando varias opciones relacionadas con carpetas">
 <!ENTITY extra.startupfolder "Comenzar predeterminadamente con la siguiente carpeta abierta">
 <!ENTITY extra.nofolder "Carpeta no seleccionada">
 <!ENTITY extra.uselast "Usar la última carpeta abierta">

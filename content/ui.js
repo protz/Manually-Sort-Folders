@@ -12,7 +12,7 @@ tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://tbsortfolders/sort.jsm");
-Cu.import("resource:///modules/MailUtils.jsm");
+Cu.import("resource:///modules/MailUtils.js");
 Cu.import("resource:///modules/iteratorUtils.jsm"); // for fixIterator
 
 var g_accounts = Object();
@@ -300,7 +300,10 @@ function on_load() {
     on_account_changed();
 
     accounts_on_load();
+/*****************************************************************************
+This feature doesn't work in SeaMonkey
     extra_on_load();
+*****************************************************************************/
   } catch (e) {
     tblog.debug(e);
     throw e;
@@ -421,10 +424,21 @@ function on_close() {
 
 function on_refresh() {
   tbsf_prefs.setStringPref("tbsf_data", JSON.stringify(tbsf_data));
+/*****************************************************************************
+In Thunderbird, the procedure here is to refresh the folder tree view.
+However, SeaMonkey doesn't have gFolderTreeView.
+
   //it's a getter/setter so that actually does sth
   let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
   mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+*****************************************************************************/
 }
+
+function on_restart() {
+  on_refresh();
+  on_account_restart();
+}
+
 
 window.addEventListener("unload", on_refresh, false);
 
@@ -469,7 +483,10 @@ function accounts_on_load() {
       case "rss":
         mail_accounts.unshift([accounts[i], servers[i], types[i], names[i]]);
         add_li(document.getElementById("accounts_list"), mail_accounts[0]);
+/*****************************************************************************
+This is invalid in SeaMonkey.
         document.getElementById("default_account").firstChild.setAttribute("disabled", false);
+*****************************************************************************/
         /* We're not setting the "first account in the list" value in the UI
          * because it defaults to "first rss or mail account in the list */
         break;
@@ -479,7 +496,10 @@ function accounts_on_load() {
         let mi = document.createElement("menuitem");
         mi.setAttribute("value", accounts[i]);
         mi.setAttribute("label", names[i]);
+/*****************************************************************************
+This is useless in SeaMonkey.
         document.getElementById("default_account").appendChild(mi);
+*****************************************************************************/
         add_li(document.getElementById("news_accounts_list"), news_accounts[0]);
         /* Set the "first account in the list value in the UI */
         if (defaultaccount == accounts[i])
@@ -496,7 +516,10 @@ function accounts_on_load() {
           let mi = document.createElement("menuitem");
           mi.setAttribute("value", accounts[i]);
           mi.setAttribute("label", names[i]);
+/*****************************************************************************
+This is useless in SeaMonkey.
           document.getElementById("default_account").appendChild(mi);
+*****************************************************************************/
           /* Set the "first account in the list" value in the UI */
           if (defaultaccount == accounts[i])
             mi.parentNode.parentNode.value = accounts[i];
@@ -535,7 +558,8 @@ function update_accounts_prefs() {
   //tbsf_prefs.setStringPref("accounts",new_pref);
   tblog.debug("Sorted accounts: "+new_pref);
   
-  let default_account = document.getElementById("default_account").parentNode.value;
+  let default_account = document.getElementById("default_account");
+  default_account = default_account ? default_account.parentNode.value : -1;
   if (default_account == "-1") {
     mail_accountmanager_prefs.setStringPref("defaultaccount",first_mail_account);
     tbsf_prefs.setStringPref("defaultaccount",first_mail_account);
@@ -613,6 +637,10 @@ function on_news_accounts_list_click() {
 /* These are UI functions for the "Extra settings" tab */
 
 /* Borrowed from http://mxr.mozilla.org/comm-central/source/mailnews/base/prefs/content/am-copies.js */
+
+/*****************************************************************************
+This feature doesn't work in SeaMonkey
+
 function on_pick_folder(aEvent) {
   let folder = aEvent.target._folder;
   let picker = document.getElementById("startupFolder");
@@ -649,3 +677,4 @@ function on_startup_folder_method_changed(event) {
     tbsf_prefs.setStringPref("startup_folder", "");
   }
 }
+*****************************************************************************/

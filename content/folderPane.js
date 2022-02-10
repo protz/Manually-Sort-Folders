@@ -14,7 +14,7 @@
 
   Cu.import("resource://gre/modules/Services.jsm");
   Cu.import("resource://tbsortfolders/sort.jsm");
-  Cu.import("resource:///modules/MailUtils.jsm");
+  Cu.import("resource:///modules/MailUtils.js");
 
   tblog.debug("Init");
 
@@ -74,10 +74,14 @@
     tblog.debug("Stored accounts: "+tbsf_accounts);
 */
   };
+/*****************************************************************************
+The observer works as expected, but the folder pane will no longer be shown on SeaMonkey.
+
   var observer_foldertree = new MutationObserver(callback_foldertree);
   observer_foldertree.observe(mainWindow.document.getElementById('folderTree'),config);
 
 //  observer_foldertree.disconnect();
+*****************************************************************************/
 
   sortFolderItems = function (aFtvItems) {
     if (!aFtvItems.length)
@@ -152,6 +156,11 @@
 
 
   /* For default startup folder */
+
+/*****************************************************************************
+In Thunderbird, the procedure here is to select the default startup folder.
+However, SeaMonkey doesn't have gFolderTreeView.
+
   let oldRestoreTab = mailTabType.modes.folder.restoreTab;
   let inRestoreTab = false;
   mailTabType.modes.folder.restoreTab = function (x, y) {
@@ -178,8 +187,14 @@
       oldSelectFolder.call(this, x, y);
     }
   };
+*****************************************************************************/
   
   /* Refresh pane */
+/*****************************************************************************
+In Thunderbird, the procedure here is to refresh the folder tree view.
+However, SeaMonkey doesn't have gFolderTreeView.
+
   mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+*****************************************************************************/
 
 })()

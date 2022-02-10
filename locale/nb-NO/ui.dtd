@@ -1,9 +1,9 @@
 <!ENTITY general.title "Sorter mapper manuelt">
 <!ENTITY sortfolders.description "I denne fanen kan du sortere mappene for hver konto. Velg først en konto, så en sorteringsmetode.">
-<!ENTITY sortmethod.default "Forhåndsvalg av Thunderbird">
+<!ENTITY sortmethod.default "Forhåndsvalg av SeaMonkey">
 <!ENTITY sortmethod.alphabetical "Sorter tekst alfabetisk">
 <!ENTITY sortmethod.custom "Egendefinert sortering">
-<!ENTITY sortmethod.default.description "Dette er den forhåndsvalgte sorteringsmetoden til Thunderbird. I motsetning til GMail, så tar den ikke hensyn til spesielle unicode symboler.">
+<!ENTITY sortmethod.default.description "Dette er den forhåndsvalgte sorteringsmetoden til SeaMonkey. I motsetning til GMail, så tar den ikke hensyn til spesielle unicode symboler.">
 <!ENTITY sortmethod.alphabetical.description "Dette valget sorterer mappene alfabetisk. Du kan opprette forskjellige mappekategorier med spesielle unicode symboler som i GMail.">
 <!ENTITY sortmethod.custom.description "Bruk knappene over til å manuelt sortere dine mapper. Når du legger til en ny mappe, vil denne havne sist på listen. Dette kan du selvfølgelig endre senere i denne menyen.">
 <!ENTITY sortmethod.samplelegend "(Eksempelmappe visning over)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "Flytt ned">
 <!ENTITY button.refresh "Oppdater">
 <!ENTITY button.close "Lukk">
-<!ENTITY button.restart "Start Thunderbird på nytt">
+<!ENTITY button.restart "Start SeaMonkey på nytt">
 <!ENTITY accountssort.description "I denne fanen kan du sortere kontoene i mappevisningen. Velg neste fane hvis du ønsker å sortere mappene i en konto.">
 <!ENTITY accountsort.warning "Normale e-postkontoer, Unix Movemail-kontoer, samt RSS-kontoer må komme først. Lokale mapper kommer så, og nederst på listen er Nyhetsgrupper. Du kan overstyre dette enten ved å velge Lokale mapper eller en av Nyhetsgruppene som standard og dermed flytte den øverst på listen.">
-<!ENTITY accountsort.restartwarning "Du må starte Thunderbird på nytt for at endringene skal vises.">
+<!ENTITY accountsort.restartwarning "Du må starte SeaMonkey på nytt for at endringene skal vises.">
 <!ENTITY tab.accounts "Sorter kontoer">
 <!ENTITY tab.folders "Sorter mapper">
 <!ENTITY gb.move "Flytt valgt konto">
@@ -28,8 +28,8 @@
 <!ENTITY accountsort.noaccountsetupyet "Du har ikke satt opp noen kontoer enda!">
 <!ENTITY tab.extra "Flere instillinger">
 <!ENTITY extra.startup "Oppstartsmappe">
-<!ENTITY extra.description "I denne fanen kan du finne flere innstillinger relatert til mapper i Thunderbird.">
-<!ENTITY extra.startupfolder "Start Thunderbird med følgende mappe åpen">
+<!ENTITY extra.description "I denne fanen kan du finne flere innstillinger relatert til mapper i SeaMonkey.">
+<!ENTITY extra.startupfolder "Start SeaMonkey med følgende mappe åpen">
 <!ENTITY extra.nofolder "Ingen mappe er valgt">
 <!ENTITY extra.uselast "Bruk siste åpnede mappe">
 <!ENTITY extra.usecustom "Bruk en forhåndsvalgt mappe">

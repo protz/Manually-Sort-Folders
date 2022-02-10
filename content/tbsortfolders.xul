@@ -17,7 +17,10 @@
     <tabs>
       <tab><label value="&tab.accounts;" /></tab>
       <tab><label value="&tab.folders;"/></tab>
+<!-- 
+     Since I haven't found a way to select a folder in SeaMonkey, this tab is useless.
       <tab><label value="&tab.extra;" /></tab>
+ -->
     </tabs>
     <tabpanels flex="1">
       <tabpanel orient="vertical">
@@ -53,6 +56,9 @@
                 <spacer flex="1" />
               </hbox>
             </groupbox>
+<!--
+    Since I haven't found a way to set defaultaccount in SeaMonkey, this feature is useless.
+
             <groupbox>
               <caption label="&gb.first;" />
               <description style="max-width: 300px;">&gbfirst.default;</description>
@@ -62,6 +68,7 @@
                 </menupopup>
               </menulist>
             </groupbox>
+ -->
             <groupbox>
               <caption label="&gb.extra;" />
               <description style="width: 300px">
@@ -136,16 +143,20 @@
               <groupbox>
                 <caption label="&gb.extra;" />
                 <description width="300px">&sortmethod.custom.description;</description>
+                <description style="width: 300px">&accountsort.restartwarning;</description>
               </groupbox>
             </vbox>
           </vbox>
         </hbox>
         <hbox>
           <spacer flex="1" />
-          <button label="&button.refresh;" icon="refresh" oncommand="on_refresh();"/>
+          <button label="&button.restart;" icon="refresh" oncommand="on_restart();"/>
           <button label="&button.close;" icon="close" oncommand="on_close();"/>
         </hbox>
       </tabpanel>
+<!-- 
+     Since I haven't found a way to select a folder in SeaMonkey, this tab is useless.
+
       <tabpanel orient="vertical">
         <description style="width: 400px">
           &extra.description;
@@ -175,6 +186,7 @@
           <button label="&button.close;" icon="close" oncommand="on_close();"/>
         </hbox>
       </tabpanel>
+ -->
     </tabpanels>
   </tabbox>
 

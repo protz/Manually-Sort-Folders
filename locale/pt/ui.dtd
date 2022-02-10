@@ -1,9 +1,9 @@
 <!ENTITY general.title "Ordenar pastas manualmente">
 <!ENTITY sortfolders.description "Este painel permite-lhe ordenar as pastas de cada conta. Primeiro seleccione a conta e depois o método para ordenar.">
-<!ENTITY sortmethod.default "Usar a pré-definida do Thunderbird">
+<!ENTITY sortmethod.default "Usar a pré-definida do SeaMonkey">
 <!ENTITY sortmethod.alphabetical "Usar uma comparação simples">
 <!ENTITY sortmethod.custom "Usar uma função de ordenação definida manualmente">
-<!ENTITY sortmethod.default.description "Esta é a funcionalidade de ordenação por defeito do Thunderbird. Ao contrário do GMail, não tem em conta símbolos unicode.">
+<!ENTITY sortmethod.default.description "Esta é a funcionalidade de ordenação por defeito do SeaMonkey. Ao contrário do GMail, não tem em conta símbolos unicode.">
 <!ENTITY sortmethod.alphabetical.description "Esta é uma função de ordenação standard que usa apenas a função mais básica de comparação. Permite criar diferentes categorias de pastas tipo GMail usando símbolos Unicode.">
 <!ENTITY sortmethod.custom.description "Use estes botões para ordenar as pastas manualmente. se uma nova pasta for adicionada, será colocada no fim da lista. Pode voltar aqui mais tarde se isso não lhe convier.">
 <!ENTITY sortmethod.samplelegend "(Painel da pasta de amostra acima)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "Mover para baixo">
 <!ENTITY button.refresh "Actualizar painel da pasta">
 <!ENTITY button.close "Fechar">
-<!ENTITY button.restart "Reiniciar Thunderbird">
+<!ENTITY button.restart "Reiniciar SeaMonkey">
 <!ENTITY accountssort.description "Este painel permite-lhe ordenar as contas no painel das pastas. Use o separador seguinte se desejar ordenar as pastas dentro da conta.">
 <!ENTITY accountsort.warning "As contas normais, contas Unix Movemail assim como contas RSS têm de ser as primeiras. As pastas locais são as seguintes e no por último a lista estão as novas contas. Pode substituir isto escolhendo ou as Pastas locais ou uma das contas de grupos de notícias como pré-definidas colocando-a no topo da lista.">
-<!ENTITY accountsort.restartwarning "Tem de reiniciar o Thunderbird para as alterações terem efeito.">
+<!ENTITY accountsort.restartwarning "Tem de reiniciar o SeaMonkey para as alterações terem efeito.">
 <!ENTITY tab.accounts "Ordenar contas">
 <!ENTITY tab.folders "Ordenar pastas">
 <!ENTITY gb.move "Mover a conta seleccionada">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "Ainda não tem uma conta configurada!">
 <!ENTITY tab.extra "Definições extra">
 <!ENTITY extra.startup "Pasta inicial">
-<!ENTITY extra.description "Use este separador para personalizar ainda mais o Thunderbird usando várias definições relacionadas com pastas">
+<!ENTITY extra.description "Use este separador para personalizar ainda mais o SeaMonkey usando várias definições relacionadas com pastas">
 <!ENTITY extra.startupfolder "pro defeito, começar a seguinte pasta aberta">
 <!ENTITY extra.nofolder "nenhuma pasta seleccionada">
 <!ENTITY extra.uselast "Usar última pasta aberta">

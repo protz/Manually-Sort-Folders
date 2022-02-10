@@ -1,9 +1,9 @@
 <!ENTITY general.title "Sortuj foldery ręcznie">
 <!ENTITY sortfolders.description "Tutaj można ręcznie posortować foldery każdego konta. Wybierz konto i metodę sortowania.">
-<!ENTITY sortmethod.default "Używaj domyślnego Thunderbirda">
+<!ENTITY sortmethod.default "Używaj domyślnego SeaMonkeya">
 <!ENTITY sortmethod.alphabetical "Używaj prostego porównania znaków">
 <!ENTITY sortmethod.custom "Używaj funkcji zdefiniowanych ręcznie">
-<!ENTITY sortmethod.default.description "To jest domyślna funkcja sortowania używana przez Thunderbirda. W odróżnieniu od Gmaila, nie pobiera na konto symboli specjalnych Unicode.">
+<!ENTITY sortmethod.default.description "To jest domyślna funkcja sortowania używana przez SeaMonkeya. W odróżnieniu od Gmaila, nie pobiera na konto symboli specjalnych Unicode.">
 <!ENTITY sortmethod.alphabetical.description "To jest standardowa funkcja sortowania używająca tylko podstawowych funkcji porównywania ciągów znaków. Umożliwia ona tworzenie różnych kategorii folderów podobnych do tworzonych przez Gmaila, używając symboli specjalnych Unicode.">
 <!ENTITY sortmethod.custom.description "Użyj przycisków znajdujących się powyżej, by ręcznie posortować foldery. Nowo dodawane foldery będą umieszczane na końcu listy. W każdej chwili możesz tutaj wrócić i dowolnie zmieniać kolejność.">
 <!ENTITY sortmethod.samplelegend "(Przykładowy panel folderów)">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "W dół">
 <!ENTITY button.refresh "Odśwież panel folderów">
 <!ENTITY button.close "Zamknij">
-<!ENTITY button.restart "Uruchom ponownie Thunderbirda">
+<!ENTITY button.restart "Uruchom ponownie SeaMonkeya">
 <!ENTITY accountssort.description "Tutaj można określić kolejność kont w panelu folderów. Przejdź do karty „Sortuj foldery”, by posortować foldery wewnątrz konta.">
 <!ENTITY accountsort.warning "Standardowe konta pocztowe, konta Unix Movemail, a także konta RSS muszą być na początku listy. Za nimi powinny znaleźć się Foldery lokalne i na końcu konta grup dyskusyjnych. Można zmienić to, wybierając Foldery lokalne lub jedno z kont grup dyskusyjnych jako domyślne i umieścić go na szczycie listy.">
-<!ENTITY accountsort.restartwarning "Aby zmiany zostały zastosowane, należy ponownie uruchomić Thunderbirda.">
+<!ENTITY accountsort.restartwarning "Aby zmiany zostały zastosowane, należy ponownie uruchomić SeaMonkeya.">
 <!ENTITY tab.accounts "Sortuj konta">
 <!ENTITY tab.folders "Sortuj foldery">
 <!ENTITY gb.move "Przenieś wybrane konto">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "Nie masz jeszcze skonfigurowanego konta!">
 <!ENTITY tab.extra "Ustawienia dodatkowe">
 <!ENTITY extra.startup "Folder początkowy">
-<!ENTITY extra.description "Użyj tej karty, by dodatkowo dostosować Thunderbirda za pomocą różnych powiązanych z folderami ustawień">
+<!ENTITY extra.description "Użyj tej karty, by dodatkowo dostosować SeaMonkeya za pomocą różnych powiązanych z folderami ustawień">
 <!ENTITY extra.startupfolder "Rozpoczynaj z następującym otwartym folderem">
 <!ENTITY extra.nofolder "Nie wybrano folderu">
 <!ENTITY extra.uselast "Użyj ostatnio otwierany folder">

@@ -1,9 +1,9 @@
 <!ENTITY general.title "手動排序資料夾">
 <!ENTITY sortfolders.description "這個分頁允許你來排列每個帳號的資料夾。先選擇一個帳號，然後再選擇一個排序方法。">
-<!ENTITY sortmethod.default "使用Thunderbird的預設設定">
+<!ENTITY sortmethod.default "使用SeaMonkey的預設設定">
 <!ENTITY sortmethod.alphabetical "依資料夾名稱的字母順序排序">
 <!ENTITY sortmethod.custom "使用自行定義的排序功能">
-<!ENTITY sortmethod.default.description "這是Thunderbird的預設排序方法。它不像GMail，它不會考慮特殊的Unicode符號。">
+<!ENTITY sortmethod.default.description "這是SeaMonkey的預設排序方法。它不像GMail，它不會考慮特殊的Unicode符號。">
 <!ENTITY sortmethod.alphabetical.description "這是一個標準的排序方法，它僅僅利用最基礎的字母排序方法。但它允許像Gmail一樣，利用特殊的Unicode符號來產生不同的資料夾分類。">
 <!ENTITY sortmethod.custom.description "使用上面的按鈕來手動排序你的資料夾。如果加入一個新資料夾，它將放在清單的最後面。如果你不滿意，你可以稍後回來這邊調整。">
 <!ENTITY sortmethod.samplelegend "移動選擇的資料夾">
@@ -11,10 +11,10 @@
 <!ENTITY button.move_down "下移">
 <!ENTITY button.refresh "重新整理資料夾窗格">
 <!ENTITY button.close "關閉">
-<!ENTITY button.restart "重新啟動Thunderbird">
+<!ENTITY button.restart "重新啟動SeaMonkey">
 <!ENTITY accountssort.description "這個分頁允許你來調整資料夾窗格中的帳號。使用下一個分頁來排序帳號中的資料夾。">
 <!ENTITY accountsort.warning "一般信件帳號、Unix Movemail帳號與RSS帳號會在最前面。接下來是本機帳號，在清單最下面的是新聞帳號。你能改變這樣的順序，只要將本機資料夾或任一新聞帳號移到清單中的最上面，便能設定成預設帳號。">
-<!ENTITY accountsort.restartwarning "你必須重新啟動Thunderbird以讓設定值生效。">
+<!ENTITY accountsort.restartwarning "你必須重新啟動SeaMonkey以讓設定值生效。">
 <!ENTITY tab.accounts "排序帳號">
 <!ENTITY tab.folders "排序資料夾">
 <!ENTITY gb.move "移動所選的帳號">
@@ -28,7 +28,7 @@
 <!ENTITY accountsort.noaccountsetupyet "你還未設置一個帳號！">
 <!ENTITY tab.extra "額外的設定">
 <!ENTITY extra.startup "初始資料夾">
-<!ENTITY extra.description "使用此分頁來進一步調整Thunderbird的資料夾相關設定">
+<!ENTITY extra.description "使用此分頁來進一步調整SeaMonkey的資料夾相關設定">
 <!ENTITY extra.startupfolder "啟動時預設以下列的資料夾開啟">
 <!ENTITY extra.nofolder "沒有資料夾被選擇">
 <!ENTITY extra.uselast "使用最後開啟的資料夾">
