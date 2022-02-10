@@ -206,10 +206,11 @@ function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
   while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+    walk_folder_append(folder,treechildren,depth);
   }
 }
 
-function walk_folder_append(folder,treechildred,depth) {
+function walk_folder_append(folder,treechildren,depth) {
   let indent = ' '.repeat(2*depth);
   tblog.debug("Folder: "+indent+folder.prettyName);
   tblog.debug("Folder URI: "+indent+folder.URI);
