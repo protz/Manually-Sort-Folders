@@ -1,7 +1,8 @@
 <!ENTITY general.title "Sorter mapper manuelt">
 <!ENTITY sortfolders.description "Dette panel lader dig sortere hver kontos mapper. Vælg først en konto og så en sorteringsmetode.">
 <!ENTITY sortmethod.default "Brug SeaMonkeys standard">
-<!ENTITY sortmethod.alphabetical "Brug almindelig sammenligning af strenge">
+<!ENTITY sortmethod.alphabetical.ascending "Brug almindelig sammenligning af strenge (Stigende rækkefølge)">
+<!ENTITY sortmethod.alphabetical.descending "Brug almindelig sammenligning af strenge (Nedadgående rækkefølge)">
 <!ENTITY sortmethod.custom "Brug en manuel defineret sorteringsfunktion">
 <!ENTITY sortmethod.default.description "Dette er SeaMonkeys standard sorteringsfunktion. I modsætning til Gmail tager den ikke hensyn til særlige unicode-symboler.">
 <!ENTITY sortmethod.alphabetical.description "Dette er en standard sorteringsfunktion, der ikke bruger andet end den mest almindelige sammenligningsfunktion. Det gør det muligt at oprette forskellige kategorier af mapper à la Gmail ved at hjælp af særlige unicode-symboler.">

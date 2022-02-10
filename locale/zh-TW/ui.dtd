@@ -1,10 +1,11 @@
 <!ENTITY general.title "手動排序資料夾">
 <!ENTITY sortfolders.description "這個分頁允許你來排列每個帳號的資料夾。先選擇一個帳號，然後再選擇一個排序方法。">
 <!ENTITY sortmethod.default "使用SeaMonkey的預設設定">
-<!ENTITY sortmethod.alphabetical "依資料夾名稱的字母順序排序">
+<!ENTITY sortmethod.alphabetical.ascending "依資料夾名稱的字母順序排序 (升序)">
+<!ENTITY sortmethod.alphabetical.descending "依資料夾名稱的字母順序排序 (降序)">
 <!ENTITY sortmethod.custom "使用自行定義的排序功能">
-<!ENTITY sortmethod.default.description "這是SeaMonkey的預設排序方法。它不像GMail，它不會考慮特殊的Unicode符號。">
-<!ENTITY sortmethod.alphabetical.description "這是一個標準的排序方法，它僅僅利用最基礎的字母排序方法。但它允許像Gmail一樣，利用特殊的Unicode符號來產生不同的資料夾分類。">
+<!ENTITY sortmethod.default.description "這是SeaMonkey的預設排序方法。">
+<!ENTITY sortmethod.alphabetical.description "這是一個標準的排序方法，它僅僅利用最基礎的字母排序方法。">
 <!ENTITY sortmethod.custom.description "使用上面的按鈕來手動排序你的資料夾。如果加入一個新資料夾，它將放在清單的最後面。如果你不滿意，你可以稍後回來這邊調整。">
 <!ENTITY sortmethod.samplelegend "移動選擇的資料夾">
 <!ENTITY button.move_up "上移">

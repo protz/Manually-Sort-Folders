@@ -95,7 +95,8 @@
         <menulist oncommand="on_sort_method_changed();" id="sort_method" style="margin-bottom: 1ex">
           <menupopup>
             <menuitem value="0" label="&sortmethod.default;" />
-            <menuitem value="1" label="&sortmethod.alphabetical;" />
+            <menuitem value="1" label="&sortmethod.alphabetical.ascending;" />
+            <menuitem value="3" label="&sortmethod.alphabetical.descending;" />
             <menuitem value="2" label="&sortmethod.custom;" />
           </menupopup>
         </menulist>
@@ -120,10 +121,12 @@
             <groupbox id="default_sort_box">
               <caption label="&gb.extra;" />
               <description width="300px">&sortmethod.default.description;</description>
+              <description style="width: 300px">&accountsort.restartwarning;</description>
             </groupbox>
             <groupbox id="alphabetical_sort_box">
               <caption label="&gb.extra;" />
               <description width="300px">&sortmethod.alphabetical.description;</description>
+              <description style="width: 300px">&accountsort.restartwarning;</description>
             </groupbox>
             <vbox id="manual_sort_box">
               <groupbox>

@@ -1,10 +1,11 @@
 <!ENTITY general.title "Sortuj foldery ręcznie">
 <!ENTITY sortfolders.description "Tutaj można ręcznie posortować foldery każdego konta. Wybierz konto i metodę sortowania.">
 <!ENTITY sortmethod.default "Używaj domyślnego SeaMonkeya">
-<!ENTITY sortmethod.alphabetical "Używaj prostego porównania znaków">
+<!ENTITY sortmethod.alphabetical.ascending "Używaj prostego porównania znaków (Kolejność rosnąca)">
+<!ENTITY sortmethod.alphabetical.descending "Używaj prostego porównania znaków (Kolejność malejąca)">
 <!ENTITY sortmethod.custom "Używaj funkcji zdefiniowanych ręcznie">
-<!ENTITY sortmethod.default.description "To jest domyślna funkcja sortowania używana przez SeaMonkeya. W odróżnieniu od Gmaila, nie pobiera na konto symboli specjalnych Unicode.">
-<!ENTITY sortmethod.alphabetical.description "To jest standardowa funkcja sortowania używająca tylko podstawowych funkcji porównywania ciągów znaków. Umożliwia ona tworzenie różnych kategorii folderów podobnych do tworzonych przez Gmaila, używając symboli specjalnych Unicode.">
+<!ENTITY sortmethod.default.description "To jest domyślna funkcja sortowania używana przez SeaMonkeya.">
+<!ENTITY sortmethod.alphabetical.description "To jest standardowa funkcja sortowania używająca tylko podstawowych funkcji porównywania ciągów znaków.">
 <!ENTITY sortmethod.custom.description "Użyj przycisków znajdujących się powyżej, by ręcznie posortować foldery. Nowo dodawane foldery będą umieszczane na końcu listy. W każdej chwili możesz tutaj wrócić i dowolnie zmieniać kolejność.">
 <!ENTITY sortmethod.samplelegend "(Przykładowy panel folderów)">
 <!ENTITY button.move_up "W górę">

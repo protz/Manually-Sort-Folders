@@ -1,7 +1,8 @@
 <!ENTITY general.title "Konten- &amp; Ordnerreihenfolge ändern">
 <!ENTITY sortfolders.description "Diese Ansicht erlaubt das Sortieren der Ordner eines jeden Kontos. Wählen Sie erst ein Konto aus und anschließend die Sortiermethode.">
 <!ENTITY sortmethod.default "SeaMonkeys eigene Sortiermethode">
-<!ENTITY sortmethod.alphabetical "Einfacher Vergleich des Ordnernamens">
+<!ENTITY sortmethod.alphabetical.ascending "Einfacher Vergleich des Ordnernamens (Aufsteigende Reihenfolge)">
+<!ENTITY sortmethod.alphabetical.descending "Einfacher Vergleich des Ordnernamens (Absteigende Reihenfolge)">
 <!ENTITY sortmethod.custom "Benutzerdefinierte Sortierfunktion">
 <!ENTITY sortmethod.default.description "Dies ist SeaMonkeys eigene Sortiermethode, die besondere Unicode-Zeichen nicht berücksichtigt.">
 <!ENTITY sortmethod.alphabetical.description "Dies ist eine übliche Sortierfunktion, die auf einfachem Zeichenvergleich der Namen basiert. Sie erlaubt das Erstellen verschiedener Ordnerkategorien durch besondere Unicode-Zeichen.">

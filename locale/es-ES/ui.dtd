@@ -1,10 +1,12 @@
 <!ENTITY general.title "Manually sort folders">
 <!ENTITY sortfolders.description "Este panel permite ordenar las carpetas de cada cuenta. Primero seleccione una cuenta y después elija un método de ordenación.">
 <!ENTITY sortmethod.default "Usar predeterminado de SeaMonkey">
-<!ENTITY sortmethod.alphabetical "Usar comparación de cadena normal">
+<!ENTITY sortmethod.alphabetical.ascending "Usar comparación de cadena normal (Orden ascendente)">
+<!ENTITY sortmethod.alphabetical.descending "Usar comparación de cadena normal (Orden descendente)">
 <!ENTITY sortmethod.custom "Usar función de ordenación definida manualmente">
-<!ENTITY sortmethod.default.description "Esta es la función de ordenación predeterminada de SeaMonkey. No acepta caracteres especiales Unicode.">
-<!ENTITY sortmethod.alphabetical.description "Esta es una función estándar que utiliza sólo la función más básica de comparación de cadenas. Permite crear diferentes categorías de carpetas a la de Gmail mediante el uso de símbolos especiales Unicode.">
+<!ENTITY sortmethod.custom "Usar función de ordenación definida manualmente">
+<!ENTITY sortmethod.default.description "Esta es la función de ordenación predeterminada de SeaMonkey.">
+<!ENTITY sortmethod.alphabetical.description "Esta es una función estándar que utiliza sólo la función más básica de comparación de cadenas.">
 <!ENTITY sortmethod.custom.description "Use los botones de arriba para ordenar manualmente sus carpetas. Si se añade una nueva carpeta, se pondrá al final de la lista. Usted puede volver aquí más adelante si esto no le conviene.">
 <!ENTITY sortmethod.samplelegend "(Panel de carpetas del ejemplo anterior)">
 <!ENTITY button.move_up "Arriba">

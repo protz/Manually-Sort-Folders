@@ -1,10 +1,11 @@
 <!ENTITY general.title "手动对文件夹排序">
 <!ENTITY sortfolders.description "这个面板使你对每个账户的文件夹进行排序。首先选择一个账户，然后选择排序方式。">
 <!ENTITY sortmethod.default "使用SeaMonkey的默认设置">
-<!ENTITY sortmethod.alphabetical "采用纯字符串对比">
+<!ENTITY sortmethod.alphabetical.ascending "采用纯字符串对比 (升序)">
+<!ENTITY sortmethod.alphabetical.descending "采用纯字符串对比 (降序)">
 <!ENTITY sortmethod.custom "使用一个自定义的排序功能">
-<!ENTITY sortmethod.default.description "这是SeaMonkey的默认排序分类功能。它不像Gmail，它不会考虑特殊的Unicode字符。">
-<!ENTITY sortmethod.alphabetical.description "这是一个标准的排序功能，使用只是最基本的字符串比较函数。它允许使用特殊Unicode字符创建一个不同类型的文件夹à la GMail">
+<!ENTITY sortmethod.default.description "这是SeaMonkey的默认排序分类功能。">
+<!ENTITY sortmethod.alphabetical.description "这是一个标准的排序功能，使用只是最基本的字符串比较函数。">
 <!ENTITY sortmethod.custom.description "使用以上按钮对你的文件夹手动排序。如果添加一个新的文件夹，它将被放在列表的最后面。你之后还可以返回如果那样不适合你。">
 <!ENTITY sortmethod.samplelegend "（以上示例文件夹窗格）">
 <!ENTITY button.move_up "向上移动">

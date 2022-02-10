@@ -1,10 +1,11 @@
 <!ENTITY general.title "Impostazioni di Manually sort folders">
 <!ENTITY sortfolders.description "È possibile ordinare le cartelle di ogni account. Selezionare un account ed in seguito un metodo di ordinamento">
 <!ENTITY sortmethod.default "Ordine predefinito di SeaMonkey">
-<!ENTITY sortmethod.alphabetical "Ordine alfabetico">
+<!ENTITY sortmethod.alphabetical.ascending "Ordine alfabetico (Ordine ascendente)">
+<!ENTITY sortmethod.alphabetical.descending "Ordine alfabetico (Ordine decrescente)">
 <!ENTITY sortmethod.custom "Ordine manuale">
-<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di SeaMonkey, che non tiene in considerazione i simboli speciali unicode">
-<!ENTITY sortmethod.alphabetical.description "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico. Permette di creare differenti categorie di cartelle utilizzando anche simboli speciali unicode">
+<!ENTITY sortmethod.default.description "È stato selezionato l'ordine predefinito di SeaMonkey">
+<!ENTITY sortmethod.alphabetical.description "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico.">
 <!ENTITY sortmethod.custom.description "È stato selezionato l'ordine manuale, che permette di spostare su/giù le cartelle dell'account tramite i relativi tasti 'Sposta su' e 'Sposta giù'. Se viene aggiunta una nuova cartella, questa viene inserita in fondo alla lista. Sarà possibile in seguito spostarla">
 <!ENTITY sortmethod.samplelegend "(Esempio del pannello delle cartelle)">
 <!ENTITY button.move_up "Sposta su">

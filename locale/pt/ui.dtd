@@ -1,10 +1,11 @@
 <!ENTITY general.title "Ordenar pastas manualmente">
 <!ENTITY sortfolders.description "Este painel permite-lhe ordenar as pastas de cada conta. Primeiro seleccione a conta e depois o método para ordenar.">
 <!ENTITY sortmethod.default "Usar a pré-definida do SeaMonkey">
-<!ENTITY sortmethod.alphabetical "Usar uma comparação simples">
+<!ENTITY sortmethod.alphabetical.ascending "Usar uma comparação simples (Ordem ascendente)">
+<!ENTITY sortmethod.alphabetical.descending "Usar uma comparação simples (Ordem decrescente)">
 <!ENTITY sortmethod.custom "Usar uma função de ordenação definida manualmente">
-<!ENTITY sortmethod.default.description "Esta é a funcionalidade de ordenação por defeito do SeaMonkey. Ao contrário do GMail, não tem em conta símbolos unicode.">
-<!ENTITY sortmethod.alphabetical.description "Esta é uma função de ordenação standard que usa apenas a função mais básica de comparação. Permite criar diferentes categorias de pastas tipo GMail usando símbolos Unicode.">
+<!ENTITY sortmethod.default.description "Esta é a funcionalidade de ordenação por defeito do SeaMonkey.">
+<!ENTITY sortmethod.alphabetical.description "Esta é uma função de ordenação standard que usa apenas a função mais básica de comparação.">
 <!ENTITY sortmethod.custom.description "Use estes botões para ordenar as pastas manualmente. se uma nova pasta for adicionada, será colocada no fim da lista. Pode voltar aqui mais tarde se isso não lhe convier.">
 <!ENTITY sortmethod.samplelegend "(Painel da pasta de amostra acima)">
 <!ENTITY button.move_up "Mover para cima">

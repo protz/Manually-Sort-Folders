@@ -1,10 +1,11 @@
 <!ENTITY general.title "Mappák kézi rendezése">
 <!ENTITY sortfolders.description "Ezzel a panellel minden fiók mappáit sorba rendezheti. Először válassza ki a fiókat, majd a rendezési módszert.">
 <!ENTITY sortmethod.default "Alapértelmezés használata">
-<!ENTITY sortmethod.alphabetical "Egyszerű összehasonlítás használata">
+<!ENTITY sortmethod.alphabetical.ascending "Egyszerű összehasonlítás használata (Felmenő sorrend)">
+<!ENTITY sortmethod.alphabetical.descending "Egyszerű összehasonlítás használata (Lefelé haladó sorrend)">
 <!ENTITY sortmethod.custom "Egyéni rendezési függvény használata">
-<!ENTITY sortmethod.default.description "Ez a SeaMonkey alapértelmezett rendezési függvénye. A GMaillel ellentétben nem veszi figyelembe a speciális Unicode szimbólumokat.">
-<!ENTITY sortmethod.alphabetical.description "Ez az alapértelmezett rendezési függvény, amely nem csinál mást, mint egyszerűen összehasonlítja a karakterláncokat. Különböző mappakategóriák létrehozását teszi lehetővé, mint a GMail, azáltal, hogy speciális Unicode szimbólumokat használ.">
+<!ENTITY sortmethod.default.description "Ez a SeaMonkey alapértelmezett rendezési függvénye.">
+<!ENTITY sortmethod.alphabetical.description "Ez az alapértelmezett rendezési függvény, amely nem csinál mást, mint egyszerűen összehasonlítja a karakterláncokat.">
 <!ENTITY sortmethod.custom.description "Használja a fenti gombokat a mappák kézi rendezéséhez. Ha egy új mappa kerül hozzáadásra, akkor a lista végére kerül. Bármikor visszatérhet ide, ha a sorrend nem felel meg Önnek.">
 <!ENTITY sortmethod.samplelegend "(Minta mappa panel fent)">
 <!ENTITY button.move_up "Mozgatás fel">

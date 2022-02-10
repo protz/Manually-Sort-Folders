@@ -86,6 +86,9 @@ function rebuild_tree(full, collapse) {
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
+  } else if (sort_method == 3) {
+      tblog.debug("Sort method 3");
+      sort_function = (c1, c2) => tbsf_sort_functions[3](myFtvItem(c1), myFtvItem(c2));
   }
   let fresh_data = {};
   let my_sort = function(a_tree_items, indent) {
@@ -203,38 +206,40 @@ function walk_folder(folder,treechildren,depth) {
   let subFolders = folder.subFolders;
   while (typeof subFolders.hasMoreElements === 'function' && subFolders.hasMoreElements()) {
     let folder = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-
-    let indent = ' '.repeat(2*depth);
-    tblog.debug("Folder: "+indent+folder.prettyName);
-    tblog.debug("Folder URI: "+indent+folder.URI);
-    tblog.debug("Folder flags: "+indent+folder.flags);
-    
-    let special_name = decode_special(folder.flags);
-    tblog.debug("Special name: "+special_name);
-
-    let treeitem = document.createElement('treeitem');
-    treeitem.setAttribute('id',folder.URI);
-    let treerow = document.createElement('treerow');
-    let treecell = document.createElement('treecell');
-    treecell.setAttribute('label',folder.prettyName);
-    treecell.setAttribute('value',folder.URI);
-    treecell.setAttribute('properties','specialFolder-'+special_name);
-    treerow.appendChild(treecell);
-    treeitem.appendChild(treerow)
-
-    if (folder.hasSubFolders) {
-
-      treeitem.setAttribute('container','true');
-      treeitem.setAttribute('open','true');
-      let treechildrensub = document.createElement('treechildren');
-      
-      walk_folder(folder,treechildrensub,depth+1);
-
-      treeitem.appendChild(treechildrensub)
-    }
-    
-    treechildren.appendChild(treeitem);
   }
+}
+
+function walk_folder_append(folder,treechildred,depth) {
+  let indent = ' '.repeat(2*depth);
+  tblog.debug("Folder: "+indent+folder.prettyName);
+  tblog.debug("Folder URI: "+indent+folder.URI);
+  tblog.debug("Folder flags: "+indent+folder.flags);
+    
+  let special_name = decode_special(folder.flags);
+  tblog.debug("Special name: "+special_name);
+
+  let treeitem = document.createElement('treeitem');
+  treeitem.setAttribute('id',folder.URI);
+  let treerow = document.createElement('treerow');
+  let treecell = document.createElement('treecell');
+  treecell.setAttribute('label',folder.prettyName);
+  treecell.setAttribute('value',folder.URI);
+  treecell.setAttribute('properties','specialFolder-'+special_name);
+  treerow.appendChild(treecell);
+  treeitem.appendChild(treerow)
+
+  if (folder.hasSubFolders) {
+
+    treeitem.setAttribute('container','true');
+    treeitem.setAttribute('open','true');
+    let treechildrensub = document.createElement('treechildren');
+      
+    walk_folder(folder,treechildrensub,depth+1);
+
+    treeitem.appendChild(treechildrensub)
+  }
+
+  treechildren.appendChild(treeitem);
 }
 
 
@@ -248,6 +253,7 @@ function on_load() {
     }
 
     let account_manager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
+    let name_initial = '';
     let name;
     let accounts_menu = document.getElementById("accounts_menu");
     let accounts = [];
@@ -266,7 +272,7 @@ function on_load() {
       if (!account.incomingServer)
         continue;
       tblog.debug("Account: "+account.incomingServer.rootFolder.prettyName);
-      name = account.incomingServer.rootFolder.prettyName;
+      let name = account.incomingServer.rootFolder.prettyName;
       let it = document.createElement("menuitem");
       it.setAttribute("label", name);
       accounts_menu.appendChild(it);
@@ -275,8 +281,9 @@ function on_load() {
       //the data
       g_accounts[name] = account;
       if (!tbsf_data[name]) tbsf_data[name] = Array();
+      if (!name_initial) name_initial = name;
     }
-    document.getElementById("accounts_menu").parentNode.setAttribute("label", name);
+    document.getElementById("accounts_menu").parentNode.setAttribute("label", name_initial);
 
 
     tblog.debug("Accounts: "+account_manager.accounts.length);
@@ -430,9 +437,9 @@ function on_refresh() {
 In Thunderbird, the procedure here is to refresh the folder tree view.
 However, SeaMonkey doesn't have gFolderTreeView.
 
-  //it's a getter/setter so that actually does sth
-  let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-  mainWindow.gFolderTreeView.mode = mainWindow.gFolderTreeView.mode;
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    win.gFolderTreeView._rebuild();
+  }
 *****************************************************************************/
 }
 
@@ -447,13 +454,15 @@ window.addEventListener("unload", on_refresh, false);
 
 /* The functions below are for *account* sorting */
 
-var g_other_accounts = null;
+var g_other_accounts = [];
+var g_active_list = null;
 
 function accounts_on_load() {
   let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
   let defaultaccount = mail_accountmanager_prefs.getStringPref("defaultaccount");
   accounts = accounts.filter((x) => x != defaultaccount);
   accounts = [defaultaccount].concat(accounts);
+  accounts = accounts.filter((a) => mail_account_prefs.getPrefType(a+".server") === mail_account_prefs.PREF_STRING); // Avoid error occurs in following getStringPref .
   let servers = accounts.map((a) => mail_account_prefs.getStringPref(a+".server"));
   let types = servers.map((s) => mail_server_prefs.getStringPref(s+".type"));
   let names = servers.map(function (s) {
@@ -533,7 +542,15 @@ This is useless in SeaMonkey.
   if (news_account_found) {
     document.getElementById("news_accounts_list").style.display = "";
   }
-  update_accounts_prefs();
+  g_active_list = document.getElementById("accounts_list");
+
+  /* Avoid Thunderbird bug(?) */
+  if (g_active_list.selectedIndex < 0 && g_active_list.getItemAtIndex(0)) {
+    g_active_list.selectedIndex = 0;
+  }
+
+  /* Don't understand why this was needed here. */
+  //update_accounts_prefs();
 }
 
 function update_accounts_prefs() {
@@ -587,8 +604,6 @@ function account_move_up(index, listbox) {
 
   return true;
 }
-
-var g_active_list = null;
 
 function on_account_move_up() {
   tblog.debug("on_account_move_up");

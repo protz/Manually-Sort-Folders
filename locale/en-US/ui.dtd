@@ -1,10 +1,12 @@
 <!ENTITY general.title "Manually sort folders">
 <!ENTITY sortfolders.description "This panel allows you to sort the folders of each account. First select an account, then a sort method.">
 <!ENTITY sortmethod.default "Use SeaMonkey's default">
-<!ENTITY sortmethod.alphabetical "Use plain string compare">
+<!ENTITY sortmethod.alphabetical.ascending "Use plain string compare (Ascending order)">
+<!ENTITY sortmethod.alphabetical.descending "Use plain string compare (Descending order)">
 <!ENTITY sortmethod.custom "Use a manually defined sort function">
-<!ENTITY sortmethod.default.description "This is SeyMonkey's default sort function. Unlike GMail, it doesn't take into account special unicode symbols.">
-<!ENTITY sortmethod.alphabetical.description "This is a standard sort function that uses nothing but the most basic string comparison function. It allows to create different categories of folders à la GMail by using special Unicode symbols.">
+<!ENTITY sortmethod.custom "Use a manually defined sort function">
+<!ENTITY sortmethod.default.description "This is SeyMonkey's default sort function.">
+<!ENTITY sortmethod.alphabetical.description "This is a standard sort function that uses nothing but the most basic string comparison function.">
 <!ENTITY sortmethod.custom.description "Use the buttons above to manually sort your folders. If a new folder is added, it will be put at the end of the list. You can come back here later if that doesn't suit you.">
 <!ENTITY sortmethod.samplelegend "(Sample folder pane above)">
 <!ENTITY button.move_up "Move up">
