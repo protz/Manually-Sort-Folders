@@ -3,7 +3,7 @@ Manually Sort Folders
 
 Tested on:  
 
-Windows 10 x64 with eaMonkey 2.53.10.2 (email accounts only)  
+Windows 10 x64 with SeaMonkey 2.53.10.2 (email accounts only)  
 
 NOT tested:  
 
