@@ -24,6 +24,10 @@
    * values are the sort functions associated to each account. */
   var tbsf_prefs_functions;
   const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
+  {
+    let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
+    tblog.debug("Accounts: "+accounts);
+  }
 
 //   var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
 //   var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
@@ -79,6 +83,7 @@
 
 //  observer_foldertree.disconnect();
 
+  // Override function sortFolderItems(aFtvItems) of TB (in comm/mail/base/content/folderPane.js)
   sortFolderItems = function (aFtvItems) {
     if (!aFtvItems.length)
       return;
