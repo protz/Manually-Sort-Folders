@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Przykładowy panel folderów)">
 <!ENTITY button.move_up "W górę">
 <!ENTITY button.move_down "W dół">
+<!ENTITY button.account_name "Nazwa konta">
 <!ENTITY button.refresh "Odśwież panel folderów">
 <!ENTITY button.close "Zamknij">
 <!ENTITY button.restart "Uruchom ponownie Thunderbirda">
+<!ENTITY checkbox.case_sensitive "Rozróżnianie wielkości liter">
 <!ENTITY accountssort.description "Tutaj można określić kolejność kont w panelu folderów. Przejdź do karty „Sortuj foldery”, by posortować foldery wewnątrz konta.">
 <!ENTITY accountsort.warning "Standardowe konta pocztowe, konta Unix Movemail, a także konta RSS muszą być na początku listy. Za nimi powinny znaleźć się Foldery lokalne i na końcu konta grup dyskusyjnych. Można zmienić to, wybierając Foldery lokalne lub jedno z kont grup dyskusyjnych jako domyślne i umieścić go na szczycie listy.">
 <!ENTITY accountsort.restartwarning "Aby zmiany zostały zastosowane, należy ponownie uruchomić Thunderbirda.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Sortuj foldery">
 <!ENTITY gb.move "Przenieś wybrane konto">
 <!ENTITY gb.movefolder "Przenieś wybrany folder">
+<!ENTITY gb.sort_by "Sortuj według">
 <!ENTITY gb.first "Pierwsze konto w panelu folderów">
 <!ENTITY gb.extra "Dodatkowe informacje">
 <!ENTITY gbfirst.default "To jest także domyślne konto.">

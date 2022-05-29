@@ -687,6 +687,38 @@ function on_account_move_down() {
   account_reordered();
 }
 
+function on_account_alphabetical() {
+  tblog.debug("on_account_alphabetical");
+  if (!g_active_list) return;
+
+  let tmpAry = new Array();
+  for (let i = 0; i < g_active_list.children.length; i++) {
+    tmpAry[i] = new Array();
+    tmpAry[i][0] = g_active_list.children[i].textContent;
+    tmpAry[i][1] = g_active_list.children[i].value;
+  }
+  if (document.getElementById("sort_name_case_sensitive").checked) {
+    tmpAry.sort();
+  } else {
+    tmpAry.sort((a, b) => a[0].toLowerCase() > b[0].toLowerCase());
+  }
+  while (g_active_list.children.length > 0) {
+    g_active_list.children[0].remove();
+  }
+  for (let i = 0; i < tmpAry.length; i++) {
+    let li = document.createXULElement("richlistitem");
+    let desc = document.createXULElement("description");
+    let txt = document.createTextNode(tmpAry[i][0]); 
+    desc.appendChild(txt);
+    li.appendChild(desc);
+    li.value = tmpAry[i][1];
+    g_active_list.appendChild(li);
+  }
+  g_active_list.selectedIndex = 0;
+  update_accounts_prefs();
+  account_reordered();
+}
+
 function on_account_restart() {
   let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
   mainWindow.setTimeout(function () { Services.startup.quit(Services.startup.eForceQuit|Services.startup.eRestart); },1000);

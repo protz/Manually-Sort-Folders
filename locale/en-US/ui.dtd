@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Sample folder pane above)">
 <!ENTITY button.move_up "Move up">
 <!ENTITY button.move_down "Move down">
+<!ENTITY button.account_name "Account name">
 <!ENTITY button.refresh "Refresh folder pane">
 <!ENTITY button.close "Close">
 <!ENTITY button.restart "Restart Thunderbird">
+<!ENTITY checkbox.case_sensitive "Case sensitive">
 <!ENTITY accountssort.description "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account.">
 <!ENTITY accountsort.warning "Per default, regular mail accounts, Unix Movemail accounts as well as RSS accounts come first, &quot;Local Folders&quot; are next, and at the bottom of the list are the News accounts. You can override this by choosing either &quot;Local Folders&quot; or one of the Newsgroup accounts as default, hence putting it on top of the list.">
 <!ENTITY accountsort.restartwarning "You must restart Thunderbird for the changes to take effect.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Sort folders">
 <!ENTITY gb.move "Move selected account">
 <!ENTITY gb.movefolder "Move selected folder">
+<!ENTITY gb.sort_by "Sort by">
 <!ENTITY gb.first "First account in the folder pane">
 <!ENTITY gb.extra "Additional information">
 <!ENTITY gbfirst.default "This is also the default account.">

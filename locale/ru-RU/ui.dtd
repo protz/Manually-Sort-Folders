@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Образец панели папок)">
 <!ENTITY button.move_up "Выше">
 <!ENTITY button.move_down "Ниже">
+<!ENTITY button.account_name "Имя учётных">
 <!ENTITY button.refresh "Обновить панель папок">
 <!ENTITY button.close "Закрыть">
 <!ENTITY button.restart "Перезапустить Thunderbird">
+<!ENTITY checkbox.case_sensitive "Чувствительность к регистру">
 <!ENTITY accountssort.description "Эта панель позволит вам упорядочить учётные записи в панели папок. Если вы желаете отсортировать папки в учётной записи — используйте следующую вкладку.">
 <!ENTITY accountsort.warning "Регулярные почтовые учётные записи, учётные записи Unix Movemail, в том числе, учётные записи RSS располагаются первыми. Затем идут «Локальные папки» и, внизу списка, учётные записи новостей. Вы можете изменить это задав «Локальные папки» или одну из учётных записей новостей как значение по умолчанию, переместив её таким образом на самый верх списка.">
 <!ENTITY accountsort.restartwarning "Чтобы изменения вступили в силу необходимо перезапустить Thunderbird.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Сортировка папок">
 <!ENTITY gb.move "Переместить выбранную учётную запись">
 <!ENTITY gb.movefolder "Переместить выбранную папку">
+<!ENTITY gb.sort_by "Сортировать по">
 <!ENTITY gb.first "Первая учётная запись в панели папок">
 <!ENTITY gb.extra "Дополнительная информация">
 <!ENTITY gbfirst.default "Она же заданная по умолчанию учётная запись.">

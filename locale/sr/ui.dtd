@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(пример табле фасцикле изнад)">
 <!ENTITY button.move_up "Помери нагоре">
 <!ENTITY button.move_down "Помери надоле">
+<!ENTITY button.account_name "Назив налога">
 <!ENTITY button.refresh "Освежи таблу фасцикли">
 <!ENTITY button.close "Затвори">
 <!ENTITY button.restart "Поново покрени Тандерберд">
+<!ENTITY checkbox.case_sensitive "Велика и мала слова">
 <!ENTITY accountssort.description "Ова табла вам омогућава да поређате налоге у табли фасцикли. Користите следећи језичак ако желите да поређате фасцикле унутар њих.">
 <!ENTITY accountsort.warning "Обични налози за е-пошту, Unix Movemail налози, као и RSS налози морају да буду на почетку. Следе локалне фасцикле, а на дну су налози за новости. Ово можете да замените ако поставите локалне фасцикле или неки ог налога за новости као подразумевану, што ће их стаити на врх списка.">
 <!ENTITY accountsort.restartwarning "Морате да поново покренете Тандерберд да би измене биле примењене.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Поређај фасцикле">
 <!ENTITY gb.move "Премести одабрани налог">
 <!ENTITY gb.movefolder "Премести одабрану фасциклу">
+<!ENTITY gb.sort_by "Сортирај по">
 <!ENTITY gb.first "Први налог у табли фасцикли">
 <!ENTITY gb.extra "Додатне информације">
 <!ENTITY gbfirst.default "Ово је и подразумевани налог.">

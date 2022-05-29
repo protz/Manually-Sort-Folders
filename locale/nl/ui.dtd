@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Voorbeeld mappenvenster boven)">
 <!ENTITY button.move_up "Omhoog">
 <!ENTITY button.move_down "Omlaag">
+<!ENTITY button.account_name "Accountnaam">
 <!ENTITY button.refresh "Mappenvenster verversen">
 <!ENTITY button.close "Sluiten">
 <!ENTITY button.restart "Thunderbird herstarten">
+<!ENTITY checkbox.case_sensitive "Hoofdlettergevoelig">
 <!ENTITY accountssort.description "Met dit venster kunt u de accounts ordenen in het mappenvenster. Gebruik het volgende tabblad als u de mappen binnen een account wilt sorteren.">
 <!ENTITY accountsort.warning "Regulier mailaccounts, Unix Movemailaccounts en RSS-accounts dienen eerst te komen. Hierna volgt Lokale mappen, en onderaan de lijst staan de Nieuwsaccounts. U kunt dit wijzigen door Lokale mappen of één van de Nieuwsaccounts als standaard in te stellen, waardoor deze bovenaan de lijst wordt geplaatst.">
 <!ENTITY accountsort.restartwarning "U dient Thunderbird te herstarten om de wijzigingen door te voeren.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Mappen sorteren">
 <!ENTITY gb.move "Geselecteerd account verplaatsen">
 <!ENTITY gb.movefolder "Geselecteerde map verplaatsen">
+<!ENTITY gb.sort_by "Sorteren op">
 <!ENTITY gb.first "Eerste account in het mappenvenster">
 <!ENTITY gb.extra "Aanvullende informatie">
 <!ENTITY gbfirst.default "Dit is ook het standaardaccount.">

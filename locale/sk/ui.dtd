@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Vzorový zoznam priečinkov)">
 <!ENTITY button.move_up "Posunúť hore">
 <!ENTITY button.move_down "Posunúť dolu">
+<!ENTITY button.account_name "Názov účtu">
 <!ENTITY button.refresh "Aktualizovať zoznam priečinkov">
 <!ENTITY button.close "Zavrieť">
 <!ENTITY button.restart "Reštartovať Thunderbird">
+<!ENTITY checkbox.case_sensitive "Rozlišovať malé a veľké písmená">
 <!ENTITY accountssort.description "Tento panel Vám umožní zoradiť účty v zozname priečinkov. Použite ďalšiu záložku, ak chcete zoradiť priečinky vo vnútri účtu.">
 <!ENTITY accountsort.warning "Regulárne mailové účty, Unix Movemail účty, taktiež RSS účty musia ísť prvé. Lokálne priečinky sú ďalšie a naspodu zoznamu sú nové účty. Toto môžete zmeniť, buď vybratím Lokálnych priečinkov alebo jedným z účtov a umiestnením ho na vrch zoznamu.">
 <!ENTITY accountsort.restartwarning "Zmeny sa prejavia po reštarte Thunderbird-u.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Zoradenie priečinkov">
 <!ENTITY gb.move "Posunutie vybratého účtu">
 <!ENTITY gb.movefolder "Presunúť vybratý priečinok">
+<!ENTITY gb.sort_by "Zoradiť podľa">
 <!ENTITY gb.first "Prvý účet v zozname priečinkov">
 <!ENTITY gb.extra "Rozšírené informácie">
 <!ENTITY gbfirst.default "Toto je taktiež aj predvolený účet.">

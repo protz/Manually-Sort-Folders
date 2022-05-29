@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "(Painel de pasta exemplo acima)">
 <!ENTITY button.move_up "Mover para cima">
 <!ENTITY button.move_down "Mover para baixo">
+<!ENTITY button.account_name "Nome da conta">
 <!ENTITY button.refresh "Recarregar o painel de pastas">
 <!ENTITY button.close "Fechar">
 <!ENTITY button.restart "Reiniciar o Thunderbird">
+<!ENTITY checkbox.case_sensitive "Sensível a maiúsculas e minúsculas">
 <!ENTITY accountssort.description "Este painel permite ordenar as contas no painel de pastas. Use a próxima aba, se você desejar ordenar as pastas dentro de uma conta.">
 <!ENTITY accountsort.warning "Contas de correio regular, do Unix Movemail, bem como contas de RSS deve vir em primeiro lugar. As pastas locais são as seguintes e, por último, as contas Notícias. Você pode substituir isto escolhendo pastas locais ou uma das contas de Grupos de Notícias como padrão, portanto, colocando-o no topo da lista.">
 <!ENTITY accountsort.restartwarning "Você deve reiniciar o Thunderbird para que as mudanças tenham efeito.">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "Organiza pastas">
 <!ENTITY gb.move "Mover a conta selecionada">
 <!ENTITY gb.movefolder "Mover a pasta selecionada">
+<!ENTITY gb.sort_by "Ordenar por">
 <!ENTITY gb.first "Primeira conta no painel de pastas">
 <!ENTITY gb.extra "Informação adicional">
 <!ENTITY gbfirst.default "Esta também é a conta padrão.">

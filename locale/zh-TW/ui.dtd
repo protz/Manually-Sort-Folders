@@ -10,9 +10,11 @@
 <!ENTITY sortmethod.samplelegend "移動選擇的資料夾">
 <!ENTITY button.move_up "上移">
 <!ENTITY button.move_down "下移">
+<!ENTITY button.account_name "帳號名稱">
 <!ENTITY button.refresh "重新整理資料夾窗格">
 <!ENTITY button.close "關閉">
 <!ENTITY button.restart "重新啟動Thunderbird">
+<!ENTITY checkbox.case_sensitive "區分大小寫">
 <!ENTITY accountssort.description "這個分頁允許你來調整資料夾窗格中的帳號。使用下一個分頁來排序帳號中的資料夾。">
 <!ENTITY accountsort.warning "一般信件帳號、Unix Movemail帳號與RSS帳號會在最前面。接下來是本機帳號，在清單最下面的是新聞帳號。你能改變這樣的順序，只要將本機資料夾或任一新聞帳號移到清單中的最上面，便能設定成預設帳號。">
 <!ENTITY accountsort.restartwarning "你必須重新啟動Thunderbird以讓設定值生效。">
@@ -21,6 +23,7 @@
 <!ENTITY tab.folders "排序資料夾">
 <!ENTITY gb.move "移動所選的帳號">
 <!ENTITY gb.movefolder "移動所選的資料夾">
+<!ENTITY gb.sort_by "排序方式">
 <!ENTITY gb.first "資料夾窗格中第一個帳號">
 <!ENTITY gb.extra "額外資訊">
 <!ENTITY gbfirst.default "這也是預設的帳號。">
