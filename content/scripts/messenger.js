@@ -14,14 +14,14 @@ function onLoad(activatedWhileWindowOpen) {
     <menupopup id="taskPopup">
       <menuitem insertafter="activityManager" id="tbsf_menu_item"
         oncommand="window.openDialog('chrome://tbsortfolders/content/${xulname}.xhtml', 'ManuallySortFolders',
-          'chrome,titlebar,toolbar,centerscreen');"
+          'chrome,titlebar,toolbar,centerscreen,resizable');"
         label="&tbsf.menuentry.label;" />
     </menupopup>
     <panelview id="appMenu-toolsView">
       <toolbarseparator id="tbsf_appmenu_separator" insertafter="appmenu_addressBook" />
       <toolbarbutton insertafter="tbsf_appmenu_separator" id="tbsf_appmenu_item" class="subviewbutton subviewbutton-iconic"
       oncommand="window.openDialog('chrome://tbsortfolders/content/${xulname}.xhtml', 'ManuallySortFolders',
-        'chrome,titlebar,toolbar,centerscreen');"
+        'chrome,titlebar,toolbar,centerscreen,resizable');"
       label="&tbsf.menuentry.label;" />
     </panelview>`,
     ["chrome://tbsortfolders/locale/main.dtd"]);

@@ -268,6 +268,19 @@ function walk_folder_append(folder,treechildren,depth) {
 function on_load() {
   try {
     tblog.debug("on_load");
+
+    document.getElementsByTagName('window')[0].maxHeight = screen.availHeight - 32;
+
+    let width = tbsf_prefs.getStringPref("width");
+    let height = tbsf_prefs.getStringPref("height");
+    if (width < 500) {
+      width = 500;
+    }
+    if (height < 400) {
+      height = 400;
+    }
+    window.resizeTo(width, height);
+
     let json = tbsf_prefs.getStringPref("tbsf_data");
     try {
       tbsf_data = JSON.parse(json);
@@ -336,8 +349,6 @@ function on_load() {
 
     accounts_on_load();
     extra_on_load();
-
-    document.getElementsByTagName('window')[0].maxHeight = screen.availHeight;
   } catch (e) {
     tblog.debug(e);
     throw e;
@@ -461,6 +472,8 @@ function on_refresh() {
   for (let win of Services.wm.getEnumerator("mail:3pane")) {
     win.gFolderTreeView._rebuild();
   }
+  tbsf_prefs.setStringPref("width", window.outerWidth);
+  tbsf_prefs.setStringPref("height", window.outerHeight);
 }
 
 window.addEventListener("unload", on_refresh, false);
