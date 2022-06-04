@@ -49,7 +49,7 @@
   let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");  
   let config = {attributes:true,attributeFilter:["maxpos"],childList:true,subtree:true};
   var callback_foldertree =  function (mutationList, observer) {
-//    tblog.debug("Observer activated");
+    tblog.debug("Observer activated");
 
 //    for (let mutation of mutationList) {
 //      if (mutation.type == 'childList') {
@@ -160,6 +160,7 @@
   let oldRestoreTab = mailTabType.modes.folder.restoreTab;
   let inRestoreTab = false;
   mailTabType.modes.folder.restoreTab = function (x, y) {
+    tblog.debug("restoreTab");
     inRestoreTab = true;
     oldRestoreTab.call(this, x, y);
     inRestoreTab = false;
@@ -167,6 +168,7 @@
   let oldSelectFolder = gFolderTreeView.selectFolder;
   let firstRun = true;
   gFolderTreeView.selectFolder = function (x, y) {
+    tblog.debug("selectFolder firstRun:"+firstRun.toString()+" inRestoreTab:"+inRestoreTab.toString());
     if (firstRun && inRestoreTab) {
       let startup_folder = tbsf_prefs.getStringPref("startup_folder");
       if (startup_folder != "") {
