@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Ausgewähltes Konto verschieben">
 <!ENTITY gb.movefolder "Ausgewählten Ordner verschieben">
 <!ENTITY gb.sort_by "Sortieren nach">
+<!ENTITY gb.sort_siblings_by "Sortieren innerhalb der ausgewählten Ebene nach">
 <!ENTITY gb.first "Erstes Konto in der Konten-/Ordneransicht">
 <!ENTITY gb.extra "Weitere Informationen">
 <!ENTITY gbfirst.default "Standardkonto (siehe Beschreibung darunter):">

@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Posunutie vybratého účtu">
 <!ENTITY gb.movefolder "Presunúť vybratý priečinok">
 <!ENTITY gb.sort_by "Zoradiť podľa">
+<!ENTITY gb.sort_siblings_by "Triedenie vo vybranej úrovni podľa">
 <!ENTITY gb.first "Prvý účet v zozname priečinkov">
 <!ENTITY gb.extra "Rozšírené informácie">
 <!ENTITY gbfirst.default "Toto je taktiež aj predvolený účet.">

@@ -387,10 +387,9 @@ function move_up(tree_item) {
 
 function on_move_up() {
   tblog.debug("on_move_up");
-  let tree = document.getElementById("foldersTree");
-  let i = tree.currentIndex;
-  if (i < 0) return;
-  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
+  const tree = document.getElementById("foldersTree");
+  if (tree.currentIndex < 0) return;
+  const tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   if (tree_item.previousSibling) {
     move_up(tree_item);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
@@ -399,14 +398,37 @@ function on_move_up() {
 
 function on_move_down() {
   tblog.debug("on_move_down");
-  let tree = document.getElementById("foldersTree");
-  let i = tree.currentIndex;
-  if (i < 0) return;
-  let tree_item = tree.view.getItemAtIndex(tree.currentIndex);
+  const tree = document.getElementById("foldersTree");
+  if (tree.currentIndex < 0) return;
+  const tree_item = tree.view.getItemAtIndex(tree.currentIndex);
   if (tree_item.nextSibling) {
     move_up(tree_item.nextSibling);
     tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
   }
+}
+
+function on_alphabetical() {
+  tblog.debug("on_alphabetical");
+  const tree = document.getElementById("foldersTree");
+  if (tree.currentIndex < 0) return;
+  const tree_item = tree.view.getItemAtIndex(tree.currentIndex);
+  const uri = item_key(tree_item);
+  const parent = tree_item.parentNode;
+  if (!parent) return;
+  const compare_function = document.getElementById("sort_folder_name_case_sensitive").checked ?
+        ((a, b) => a > b) : ((a, b) => a.toLowerCase() > b.toLowerCase());
+  let number = tbsf_data[current_account][1][item_key(parent.firstChild)];
+  let siblingArray = [];
+  for (let i = 0; i < parent.children.length; i++) {
+    siblingArray.push(parent.children[i]);
+  }
+  siblingArray.sort((a, b) => compare_function(item_label(a), item_label(b)));
+  siblingArray.forEach(item => {
+    parent.appendChild(item);
+    number = renumber(item, number);
+  });
+  rebuild_tree(true, false);
+  tree.view.selection.select(tree.view.getIndexOfItem(tree_item));
 }
 
 function get_sort_method_for_account(account) {
@@ -707,7 +729,7 @@ function on_account_alphabetical() {
     tmpAry[i][0] = g_active_list.children[i].textContent;
     tmpAry[i][1] = g_active_list.children[i].value;
   }
-  if (document.getElementById("sort_name_case_sensitive").checked) {
+  if (document.getElementById("sort_account_name_case_sensitive").checked) {
     tmpAry.sort();
   } else {
     tmpAry.sort((a, b) => a[0].toLowerCase() > b[0].toLowerCase());

@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Przenieś wybrane konto">
 <!ENTITY gb.movefolder "Przenieś wybrany folder">
 <!ENTITY gb.sort_by "Sortuj według">
+<!ENTITY gb.sort_siblings_by "Sortowanie w obrębie wybranego poziomu według">
 <!ENTITY gb.first "Pierwsze konto w panelu folderów">
 <!ENTITY gb.extra "Dodatkowe informacje">
 <!ENTITY gbfirst.default "To jest także domyślne konto.">

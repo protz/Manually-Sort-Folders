@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Geselecteerd account verplaatsen">
 <!ENTITY gb.movefolder "Geselecteerde map verplaatsen">
 <!ENTITY gb.sort_by "Sorteren op">
+<!ENTITY gb.sort_siblings_by "Sorteren binnen het geselecteerde niveau op">
 <!ENTITY gb.first "Eerste account in het mappenvenster">
 <!ENTITY gb.extra "Aanvullende informatie">
 <!ENTITY gbfirst.default "Dit is ook het standaardaccount.">

@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Move selected account">
 <!ENTITY gb.movefolder "Move selected folder">
 <!ENTITY gb.sort_by "Sort by">
+<!ENTITY gb.sort_siblings_by "Sort within the selected level by">
 <!ENTITY gb.first "First account in the folder pane">
 <!ENTITY gb.extra "Additional information">
 <!ENTITY gbfirst.default "This is also the default account.">

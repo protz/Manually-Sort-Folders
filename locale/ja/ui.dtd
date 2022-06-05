@@ -24,6 +24,7 @@
 <!ENTITY gb.move "選択したアカウントの移動">
 <!ENTITY gb.movefolder "選択したフォルダの移動">
 <!ENTITY gb.sort_by "並べ替え">
+<!ENTITY gb.sort_siblings_by "選択した階層の並べ替え">
 <!ENTITY gb.first "フォルダペイン最上部のアカウント設定">
 <!ENTITY gb.extra "追加情報">
 <!ENTITY gbfirst.default "これはデフォルトアカウントです">

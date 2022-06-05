@@ -24,6 +24,7 @@
 <!ENTITY gb.move "移動所選的帳號">
 <!ENTITY gb.movefolder "移動所選的資料夾">
 <!ENTITY gb.sort_by "排序方式">
+<!ENTITY gb.sort_siblings_by "在選定級別內排序">
 <!ENTITY gb.first "資料夾窗格中第一個帳號">
 <!ENTITY gb.extra "額外資訊">
 <!ENTITY gbfirst.default "這也是預設的帳號。">

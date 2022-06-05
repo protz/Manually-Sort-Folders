@@ -136,6 +136,17 @@
                 </hbox>
               </groupbox>
               <groupbox>
+                <caption>&gb.sort_siblings_by;</caption>
+                <hbox>
+                  <button oncommand="on_alphabetical();">
+                    <image src="chrome://tbsortfolders/content/style/alphabetical.png" />
+                    <label value="&tc.foldername;" />
+                  </button>
+                  <checkbox id="sort_folder_name_case_sensitive" label="&checkbox.case_sensitive;" />
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
                 <caption>&gb.extra;</caption>
                 <description width="300px">&sortmethod.custom.description;</description>
               </groupbox>

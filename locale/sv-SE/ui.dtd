@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Flytta markerat konto">
 <!ENTITY gb.movefolder "Flytta markerad mapp">
 <!ENTITY gb.sort_by "Sortera efter">
+<!ENTITY gb.sort_siblings_by "Sortera inom den valda nivån efter">
 <!ENTITY gb.first "Första konto i mappanelen">
 <!ENTITY gb.extra "Ytterligare information">
 <!ENTITY gbfirst.default "Det här är även standardkontot.">

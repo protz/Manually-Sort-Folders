@@ -24,6 +24,7 @@
 <!ENTITY gb.move "移动选定的账户">
 <!ENTITY gb.movefolder "移动选定的文件夹">
 <!ENTITY gb.sort_by "排序方式">
+<!ENTITY gb.sort_siblings_by "在所选级别内排序">
 <!ENTITY gb.first "文件夹窗格中的第一个账户">
 <!ENTITY gb.extra "更多信息">
 <!ENTITY gbfirst.default "这也是默认账户。">

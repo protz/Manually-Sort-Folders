@@ -24,6 +24,7 @@
 <!ENTITY gb.move "Spostamento dell'account selezionato">
 <!ENTITY gb.movefolder "Spostamento della cartella selezionata">
 <!ENTITY gb.sort_by "Ordinamento per">
+<!ENTITY gb.sort_siblings_by "Ordinamento all'interno del livello selezionato per">
 <!ENTITY gb.first "Primo account nel pannello delle cartelle">
 <!ENTITY gb.extra "Informazioni complementari">
 <!ENTITY gbfirst.default "(Solitamente è anche l'account predefinito)">

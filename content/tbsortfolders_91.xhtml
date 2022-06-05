@@ -52,7 +52,7 @@
                   <image src="chrome://tbsortfolders/content/style/alphabetical.png" />
                   <label value="&button.account_name;" />
                 </button>
-                <checkbox id="sort_name_case_sensitive" label="&checkbox.case_sensitive;" />
+                <checkbox id="sort_account_name_case_sensitive" label="&checkbox.case_sensitive;" />
                 <spacer flex="1" />
               </hbox>
             </groupbox>
@@ -121,6 +121,17 @@
                     <image src="chrome://tbsortfolders/content/style/down.png" />
                     <label value="&button.move_down;" />
                   </button>
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
+                <caption>&gb.sort_siblings_by;</caption>
+                <hbox>
+                  <button oncommand="on_alphabetical();">
+                    <image src="chrome://tbsortfolders/content/style/alphabetical.png" />
+                    <label value="&tc.foldername;" />
+                  </button>
+                  <checkbox id="sort_folder_name_case_sensitive" label="&checkbox.case_sensitive;" />
                   <spacer flex="1" />
                 </hbox>
               </groupbox>
