@@ -144,6 +144,17 @@
                 </hbox>
               </groupbox>
               <groupbox>
+                <caption label="&gb.sort_siblings_by;" />
+                <hbox>
+                  <button oncommand="on_alphabetical();">
+                    <image src="chrome://smsortfolders/content/style/alphabetical.png" />
+                    <label value="&tc.foldername;" />
+                  </button>
+                  <checkbox id="sort_folder_name_case_sensitive" label="&checkbox.case_sensitive;" />
+                  <spacer flex="1" />
+                </hbox>
+              </groupbox>
+              <groupbox>
                 <caption label="&gb.extra;" />
                 <description width="300px">&sortmethod.custom.description;</description>
                 <description style="width: 300px">&accountsort.restartwarning;</description>

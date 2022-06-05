@@ -22,6 +22,7 @@
 <!ENTITY gb.move "A kiválasztott fiók mozgatása">
 <!ENTITY gb.movefolder "A kiválasztott mappa mozgatása">
 <!ENTITY gb.sort_by "Rendezés">
+<!ENTITY gb.sort_siblings_by "Rendezés a kiválasztott szinten belül">
 <!ENTITY gb.first "Első fiók a mappa panelen">
 <!ENTITY gb.extra "További információk">
 <!ENTITY gbfirst.default "Ez az alapértelmezett fiók.">

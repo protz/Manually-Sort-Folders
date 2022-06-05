@@ -22,6 +22,7 @@
 <!ENTITY gb.move "Mover a conta selecionada">
 <!ENTITY gb.movefolder "Mover a pasta selecionada">
 <!ENTITY gb.sort_by "Ordenar por">
+<!ENTITY gb.sort_siblings_by "Ordenar dentro do nível selecionado por">
 <!ENTITY gb.first "Primeira conta no painel de pastas">
 <!ENTITY gb.extra "Informação adicional">
 <!ENTITY gbfirst.default "Esta também é a conta padrão.">

@@ -22,6 +22,7 @@
 <!ENTITY gb.move "Déplacer le compte sélectionné">
 <!ENTITY gb.movefolder "Déplacer le dossier sélectionné">
 <!ENTITY gb.sort_by "Trier par">
+<!ENTITY gb.sort_siblings_by "Trier dans le niveau sélectionné par">
 <!ENTITY gb.first "Compte à afficher en premier">
 <!ENTITY gb.extra "Quelques précisions">
 <!ENTITY gbfirst.default "Ce compte sera également le compte par défaut.">

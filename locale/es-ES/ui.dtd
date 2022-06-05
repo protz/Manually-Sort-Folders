@@ -22,6 +22,7 @@
 <!ENTITY gb.move "Mover cuenta seleccionada">
 <!ENTITY gb.movefolder "Mover carpeta seleccionada">
 <!ENTITY gb.sort_by "Ordenar por">
+<!ENTITY gb.sort_siblings_by "Ordenar dentro del nivel seleccionado por">
 <!ENTITY gb.first "Primera cuenta en el panel de carpetas">
 <!ENTITY gb.extra "Información adicional">
 <!ENTITY gbfirst.default "Esta también es la cuenta predeterminada.">

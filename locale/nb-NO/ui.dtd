@@ -22,6 +22,7 @@
 <!ENTITY gb.move "Flytt valgt konto">
 <!ENTITY gb.movefolder "Flytt valgt mappe">
 <!ENTITY gb.sort_by "Sorter etter">
+<!ENTITY gb.sort_siblings_by "Sorter innenfor det valgte nivået etter">
 <!ENTITY gb.first "Første konto i mappevisning">
 <!ENTITY gb.extra "Tilleggsinformasjon">
 <!ENTITY gbfirst.default "Dette er standard kontoen.">
