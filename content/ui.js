@@ -87,19 +87,16 @@ function rebuild_tree(full, collapse) {
   let sort_function;
   let replace_data = false;
   let sort_method = tbsf_data[current_account][0];
+  tblog.debug("Sort method "+sort_method);
   if (sort_method == 0) {
-      tblog.debug("Sort method 0");
       sort_function = (c1, c2) => tbsf_sort_functions[0](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 1) {
-      tblog.debug("Sort method 1");
       sort_function = (c1, c2) => tbsf_sort_functions[1](myFtvItem(c1), myFtvItem(c2));
   } else if (sort_method == 2) {
-      tblog.debug("Sort method 2");
       sort_function =
         (c1, c2) => tbsf_sort_functions[2](tbsf_data[current_account][1], myFtvItem(c1), myFtvItem(c2));
       replace_data = true;
   } else if (sort_method == 3) {
-      tblog.debug("Sort method 3");
       sort_function = (c1, c2) => tbsf_sort_functions[3](myFtvItem(c1), myFtvItem(c2));
   }
   let fresh_data = {};
