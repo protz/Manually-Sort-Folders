@@ -24,6 +24,10 @@
    * values are the sort functions associated to each account. */
   var tbsf_prefs_functions;
   const mail_accountmanager_prefs = Services.prefs.getBranch("mail.accountmanager.");
+  {
+    let accounts = mail_accountmanager_prefs.getStringPref("accounts").split(",");
+    tblog.debug("Accounts: "+accounts);
+  }
 
 //   var tb_accounts = mail_accountmanager_prefs.getStringPref("accounts");
 //   var tb_default_account = mail_accountmanager_prefs.getStringPref("defaultaccount");
@@ -45,7 +49,7 @@
   let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");  
   let config = {attributes:true,attributeFilter:["maxpos"],childList:true,subtree:true};
   var callback_foldertree =  function (mutationList, observer) {
-//    tblog.debug("Observer activated");
+    tblog.debug("Observer activated");
 
 //    for (let mutation of mutationList) {
 //      if (mutation.type == 'childList') {
