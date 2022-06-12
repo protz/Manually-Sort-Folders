@@ -6,7 +6,7 @@
     <menupopup id="taskPopup">
       <menuitem insertafter="activityManager" id="tbsf_menu_item"
         oncommand="window.openDialog('chrome://smsortfolders/content/', 'ManuallySortFolders',
-          'chrome,titlebar,toolbar,centerscreen');"
+          'chrome,titlebar,toolbar,centerscreen,resizable');"
         label="&tbsf.menuentry.label;" />
     </menupopup>
   </menu>
