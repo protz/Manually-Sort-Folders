@@ -13,6 +13,7 @@
 <!ENTITY button.refresh "Oppdater">
 <!ENTITY button.close "Lukk">
 <!ENTITY button.restart "Start SeaMonkey på nytt">
+<!ENTITY checkbox.case_sensitive "Skiller mellom store og små bokstaver">
 <!ENTITY accountssort.description "I denne fanen kan du sortere kontoene i mappevisningen. Velg neste fane hvis du ønsker å sortere mappene i en konto.">
 <!ENTITY accountsort.warning "Normale e-postkontoer, Unix Movemail-kontoer, samt RSS-kontoer må komme først. Lokale mapper kommer så, og nederst på listen er Nyhetsgrupper. Du kan overstyre dette enten ved å velge Lokale mapper eller en av Nyhetsgruppene som standard og dermed flytte den øverst på listen.">
 <!ENTITY accountsort.restartwarning "Du må starte SeaMonkey på nytt for at endringene skal vises.">
@@ -20,6 +21,7 @@
 <!ENTITY tab.folders "Sorter mapper">
 <!ENTITY gb.move "Flytt valgt konto">
 <!ENTITY gb.movefolder "Flytt valgt mappe">
+<!ENTITY gb.sort_by "Sorter etter">
 <!ENTITY gb.first "Første konto i mappevisning">
 <!ENTITY gb.extra "Tilleggsinformasjon">
 <!ENTITY gbfirst.default "Dette er standard kontoen.">

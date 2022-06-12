@@ -13,6 +13,7 @@
 <!ENTITY button.refresh "Actualizar painel da pasta">
 <!ENTITY button.close "Fechar">
 <!ENTITY button.restart "Reiniciar SeaMonkey">
+<!ENTITY checkbox.case_sensitive "Sensível a maiúsculas e minúsculas">
 <!ENTITY accountssort.description "Este painel permite-lhe ordenar as contas no painel das pastas. Use o separador seguinte se desejar ordenar as pastas dentro da conta.">
 <!ENTITY accountsort.warning "As contas normais, contas Unix Movemail assim como contas RSS têm de ser as primeiras. As pastas locais são as seguintes e no por último a lista estão as novas contas. Pode substituir isto escolhendo ou as Pastas locais ou uma das contas de grupos de notícias como pré-definidas colocando-a no topo da lista.">
 <!ENTITY accountsort.restartwarning "Tem de reiniciar o SeaMonkey para as alterações terem efeito.">
@@ -20,6 +21,7 @@
 <!ENTITY tab.folders "Ordenar pastas">
 <!ENTITY gb.move "Mover a conta seleccionada">
 <!ENTITY gb.movefolder "Mover pasta seleccionada">
+<!ENTITY gb.sort_by "Ordenar por">
 <!ENTITY gb.first "Primeira conta no painel de pastas">
 <!ENTITY gb.extra "Informação adicional">
 <!ENTITY gbfirst.default "Esta é também a conta pré-definida.">

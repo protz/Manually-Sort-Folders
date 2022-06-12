@@ -4,7 +4,6 @@
 <!ENTITY sortmethod.alphabetical.ascending "Usar comparación de cadena normal (Orden ascendente)">
 <!ENTITY sortmethod.alphabetical.descending "Usar comparación de cadena normal (Orden descendente)">
 <!ENTITY sortmethod.custom "Usar función de ordenación definida manualmente">
-<!ENTITY sortmethod.custom "Usar función de ordenación definida manualmente">
 <!ENTITY sortmethod.default.description "Esta es la función de ordenación predeterminada de SeaMonkey.">
 <!ENTITY sortmethod.alphabetical.description "Esta es una función estándar que utiliza sólo la función más básica de comparación de cadenas.">
 <!ENTITY sortmethod.custom.description "Use los botones de arriba para ordenar manualmente sus carpetas. Si se añade una nueva carpeta, se pondrá al final de la lista. Usted puede volver aquí más adelante si esto no le conviene.">
@@ -14,6 +13,7 @@
 <!ENTITY button.refresh "Actualizar panel de carpetas">
 <!ENTITY button.close "Cerrar">
 <!ENTITY button.restart "Reiniciar SeaMonkey">
+<!ENTITY checkbox.case_sensitive "Mayúsculas/minúsculas sí importan">
 <!ENTITY accountssort.description "Este panel le permite ordenar las cuentas del panel de carpetas. Usar próxima pestaña si desea ordenar las carpetas dentro de una cuenta.">
 <!ENTITY accountsort.warning "Cuentas de correo normales, cuentas Unix Movemail y las cuentas RSS deben ir primero. Las carpetas locales son las siguientes, y al final de la lista las cuentas de Noticias. Puede modificar este orden eligiendo como cuenta predeterminada las Carpetas Locales o una de las cuentas de Noticias, pasando esta al comienzo de la lista.">
 <!ENTITY accountsort.restartwarning "Debe reiniciar SeaMonkey para que los cambios tengan efecto.">
@@ -21,6 +21,7 @@
 <!ENTITY tab.folders "Ordenar carpetas">
 <!ENTITY gb.move "Mover cuenta seleccionada">
 <!ENTITY gb.movefolder "Mover carpeta seleccionada">
+<!ENTITY gb.sort_by "Ordenar por">
 <!ENTITY gb.first "Primera cuenta en el panel de carpetas">
 <!ENTITY gb.extra "Información adicional">
 <!ENTITY gbfirst.default "Esta también es la cuenta predeterminada.">

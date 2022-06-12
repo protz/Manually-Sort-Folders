@@ -4,7 +4,6 @@
 <!ENTITY sortmethod.alphabetical.ascending "Use plain string compare (Ascending order)">
 <!ENTITY sortmethod.alphabetical.descending "Use plain string compare (Descending order)">
 <!ENTITY sortmethod.custom "Use a manually defined sort function">
-<!ENTITY sortmethod.custom "Use a manually defined sort function">
 <!ENTITY sortmethod.default.description "This is SeyMonkey's default sort function.">
 <!ENTITY sortmethod.alphabetical.description "This is a standard sort function that uses nothing but the most basic string comparison function.">
 <!ENTITY sortmethod.custom.description "Use the buttons above to manually sort your folders. If a new folder is added, it will be put at the end of the list. You can come back here later if that doesn't suit you.">
@@ -14,6 +13,7 @@
 <!ENTITY button.refresh "Refresh folder pane">
 <!ENTITY button.close "Close">
 <!ENTITY button.restart "Restart SeaMonkey">
+<!ENTITY checkbox.case_sensitive "Case sensitive">
 <!ENTITY accountssort.description "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account.">
 <!ENTITY accountsort.warning "Per default, regular mail accounts, Unix Movemail accounts as well as RSS accounts come first, &quot;Local Folders&quot; are next, and at the bottom of the list are the News accounts. You can override this by choosing either &quot;Local Folders&quot; or one of the Newsgroup accounts as default, hence putting it on top of the list.">
 <!ENTITY accountsort.restartwarning "You must restart SeaMonkey for the changes to take effect.">
@@ -21,6 +21,7 @@
 <!ENTITY tab.folders "Sort folders">
 <!ENTITY gb.move "Move selected account">
 <!ENTITY gb.movefolder "Move selected folder">
+<!ENTITY gb.sort_by "Sort by">
 <!ENTITY gb.first "First account in the folder pane">
 <!ENTITY gb.extra "Additional information">
 <!ENTITY gbfirst.default "This is also the default account.">

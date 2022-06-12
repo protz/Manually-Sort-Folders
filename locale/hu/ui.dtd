@@ -13,6 +13,7 @@
 <!ENTITY button.refresh "Mappa panel frissítése">
 <!ENTITY button.close "Bezárás">
 <!ENTITY button.restart "A SeaMonkey újraindítása">
+<!ENTITY checkbox.case_sensitive "Nagybetű/kisbetű érzékeny">
 <!ENTITY accountssort.description "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül.">
 <!ENTITY accountsort.warning "A szokásos e-mail fiókok, Unix Movemail fiókok és az RSS-fiókok jönnek először. A Helyi mappák a következőek, a lista alján pedig a Hírforrások szerepelnek. Ezt felülbírálhatja azzal, hogy a Helyi mappákat vagy egy Hírforrást választja alapértelmezettként, így azt téve a lista tetejére.">
 <!ENTITY accountsort.restartwarning "A változások érvénybe lépéséhez újra kell indítania a SeaMonkeyöt.">
@@ -20,6 +21,7 @@
 <!ENTITY tab.folders "Mappák rendezése">
 <!ENTITY gb.move "A kiválasztott fiók mozgatása">
 <!ENTITY gb.movefolder "A kiválasztott mappa mozgatása">
+<!ENTITY gb.sort_by "Rendezés">
 <!ENTITY gb.first "Első fiók a mappa panelen">
 <!ENTITY gb.extra "További információk">
 <!ENTITY gbfirst.default "Ez az alapértelmezett fiók.">

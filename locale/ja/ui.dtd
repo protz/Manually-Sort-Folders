@@ -13,6 +13,7 @@
 <!ENTITY button.refresh "フォルダペインの更新">
 <!ENTITY button.close "閉じる">
 <!ENTITY button.restart "SeaMonkey の再起動">
+<!ENTITY checkbox.case_sensitive "大文字と小文字を区別">
 <!ENTITY accountssort.description "このパネルではフォルダペインのアカウントの順序を変更することができます。各アカウント内のフォルダを並べ替えるには次のタブ [フォルダの並べ替え] を使用してください。">
 <!ENTITY accountsort.warning "通常のメールアカウントは RSS アカウントと同様に Unix Movemail アカウントの最上部に置かれます。 その次にローカルフォルダ、そしてリスト最後はブログとニュースアカウントとなります。 デフォルトとしてローカルフォルダかブログとニュースグループアカウントのどちらかを選んでリスト先頭に配置することによってこれを変えることができます。">
 <!ENTITY accountsort.restartwarning "変更を反映させるためには SeaMonkey を再起動してください">
@@ -20,6 +21,7 @@
 <!ENTITY tab.folders "フォルダの並べ替え">
 <!ENTITY gb.move "選択したアカウントの移動">
 <!ENTITY gb.movefolder "選択したフォルダの移動">
+<!ENTITY gb.sort_by "並べ替え">
 <!ENTITY gb.first "フォルダペイン最上部のアカウント設定">
 <!ENTITY gb.extra "追加情報">
 <!ENTITY gbfirst.default "これはデフォルトアカウントです">
