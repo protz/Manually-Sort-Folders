@@ -260,7 +260,7 @@ function walk_folder_append(folder,treechildren,depth) {
 
     treeitem.appendChild(treechildrensub)
   }
-    
+
   treechildren.appendChild(treeitem);
 }
 
