@@ -16,6 +16,8 @@
   Cu.import("resource://tbsortfolders/sort.jsm");
   Cu.import("resource:///modules/MailUtils.jsm");
 
+  const ThunderbirdMajorVersion = Services.appinfo.version.split(".")[0];
+
   tblog.debug("Init");
 
   const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
@@ -157,35 +159,49 @@
 
 
   /* For default startup folder */
-  let oldRestoreTab = mailTabType.modes.folder.restoreTab;
-  let inRestoreTab = false;
-  mailTabType.modes.folder.restoreTab = function (x, y) {
-    tblog.debug("restoreTab");
-    inRestoreTab = true;
-    oldRestoreTab.call(this, x, y);
-    inRestoreTab = false;
-  };
-  let oldSelectFolder = gFolderTreeView.selectFolder;
-  let firstRun = true;
-  gFolderTreeView.selectFolder = function (x, y) {
-    tblog.debug("selectFolder firstRun:"+firstRun.toString()+" inRestoreTab:"+inRestoreTab.toString());
-    if (firstRun && inRestoreTab) {
-      let startup_folder = tbsf_prefs.getStringPref("startup_folder");
-      if (startup_folder != "") {
-        let folder = MailUtils.getExistingFolder(startup_folder);
-        if (folder)
-          oldSelectFolder.call(this, folder, true);
-        else
+  const startup_folder = tbsf_prefs.getStringPref("startup_folder");
+  if (startup_folder) {
+    tblog.debug("startup folder: "+startup_folder);
+    if (ThunderbirdMajorVersion < 98) {
+      /*
+        On Thunderbird 97 or older, it was possible for add-ons
+        to intervene in the startup behavior of Thunderbird.
+      */
+      const oldRestoreTab = mailTabType.modes.folder.restoreTab;
+      let inRestoreTab = false;
+      mailTabType.modes.folder.restoreTab = function (x, y) {
+        tblog.debug("restoreTab");
+        inRestoreTab = true;
+        oldRestoreTab.call(this, x, y);
+        inRestoreTab = false;
+      };
+      const oldSelectFolder = gFolderTreeView.selectFolder;
+      let firstRun = true;
+      gFolderTreeView.selectFolder = function (x, y) {
+        tblog.debug("selectFolder firstRun:"+firstRun.toString()+" inRestoreTab:"+inRestoreTab.toString());
+        if (firstRun && inRestoreTab) {
+          const folder = MailUtils.getExistingFolder(startup_folder);
+          if (folder)
+            oldSelectFolder.call(this, folder, true);
+          else
+            oldSelectFolder.call(this, x, y);
+          firstRun = false;
+        } else {
           oldSelectFolder.call(this, x, y);
-      } else {
-        oldSelectFolder.call(this, x, y);
+        }
       }
-      firstRun = false;
     } else {
-      oldSelectFolder.call(this, x, y);
+      /*
+        Since Thunderbird 98, add-on startup has been delayed until Thunderbird is mostly done.
+        So there is no way other than immediately selecting the folder.
+      */
+      const folder = MailUtils.getExistingFolder(startup_folder);
+      if (folder) {
+        gFolderTreeView.selectFolder(folder, true);
+      }
     }
-  };
-  
+  }
+
   /* Refresh pane */
   function refreshPane(win) {
     try { win.gFolderTreeView._rebuild(); }
