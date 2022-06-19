@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Este panel le permite ordenar las cuentas del panel de carpetas. Usar próxima pestaña si desea ordenar las carpetas dentro de una cuenta.">
 <!ENTITY accountsort.warning "Cuentas de correo normales, cuentas Unix Movemail y las cuentas RSS deben ir primero. Las carpetas locales son las siguientes, y al final de la lista las cuentas de Noticias. Puede modificar este orden eligiendo como cuenta predeterminada las Carpetas Locales o una de las cuentas de Noticias, pasando esta al comienzo de la lista.">
 <!ENTITY accountsort.restartwarning "Debe reiniciar Thunderbird para que los cambios tengan efecto.">
-<!ENTITY accountsort.note "Puedes cambiar el orden de las cuentas en este panel, pero desde la versión 91.0 de Thunderbird, puedes hacerlo en la UI de Configuración de la Cuenta, por lo que se recomienda hacerlo allí.">
+<!ENTITY accountsort.note "Puede cambiar el orden de las cuentas en este panel. (También puedes hacerlo en la interfaz de usuario de configuración de cuentas en Thunderbird 91 y posteriores).">
 <!ENTITY tab.accounts "Ordenar cuentas">
 <!ENTITY tab.folders "Ordenar carpetas">
 <!ENTITY gb.move "Mover cuenta seleccionada">

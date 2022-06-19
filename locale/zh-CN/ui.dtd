@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "此面板允许你对文件夹窗格中的账户排序。使用下一个标签，如果你想对某一个账户中的文件夹排序。">
 <!ENTITY accountsort.warning "普通邮件账户，Unix Movemail账户和RSS账户必须要首先考虑。本地文件夹其次，列表的最下面是新账户。你可以选择本地文件夹或者新闻组账户作为默认，因此把它放到列表最上面以废除这个账户。">
 <!ENTITY accountsort.restartwarning "你必须重启Thunderbird使改变生效">
-<!ENTITY accountsort.note "您可以在这个面板中改变账户的顺序，但是从Thunderbird 91.0版本开始，您可以在账户设置界面中进行改变，所以建议在那里进行改变">
+<!ENTITY accountsort.note "您可以在此面板中更改帐户的顺序。 （在 Thunderbird 91 及更高版本上，您也可以在帐户设置 UI 中执行此操作。）">
 <!ENTITY tab.accounts "对账户排序">
 <!ENTITY tab.folders "对文件夹排序">
 <!ENTITY gb.move "移动选定的账户">

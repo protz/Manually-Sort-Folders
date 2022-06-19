@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Este painel permite ordenar as contas no painel de pastas. Use a próxima aba, se você desejar ordenar as pastas dentro de uma conta.">
 <!ENTITY accountsort.warning "Contas de correio regular, do Unix Movemail, bem como contas de RSS deve vir em primeiro lugar. As pastas locais são as seguintes e, por último, as contas Notícias. Você pode substituir isto escolhendo pastas locais ou uma das contas de Grupos de Notícias como padrão, portanto, colocando-o no topo da lista.">
 <!ENTITY accountsort.restartwarning "Você deve reiniciar o Thunderbird para que as mudanças tenham efeito.">
-<!ENTITY accountsort.note "Você pode alterar a ordem das contas neste painel, mas desde a versão 91.0 do Thunderbird, você pode fazê-lo na UI Account Settings, por isso é recomendável fazê-lo lá.">
+<!ENTITY accountsort.note "Você pode alterar a ordem das contas neste painel. (No Thunderbird 91 e posteriores, você também pode fazê-lo na UI de Configuração de Contas).">
 <!ENTITY tab.accounts "Organiza contas">
 <!ENTITY tab.folders "Organiza pastas">
 <!ENTITY gb.move "Mover a conta selecionada">

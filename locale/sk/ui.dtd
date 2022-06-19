@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Tento panel Vám umožní zoradiť účty v zozname priečinkov. Použite ďalšiu záložku, ak chcete zoradiť priečinky vo vnútri účtu.">
 <!ENTITY accountsort.warning "Regulárne mailové účty, Unix Movemail účty, taktiež RSS účty musia ísť prvé. Lokálne priečinky sú ďalšie a naspodu zoznamu sú nové účty. Toto môžete zmeniť, buď vybratím Lokálnych priečinkov alebo jedným z účtov a umiestnením ho na vrch zoznamu.">
 <!ENTITY accountsort.restartwarning "Zmeny sa prejavia po reštarte Thunderbird-u.">
-<!ENTITY accountsort.note "Poradie účtov môžete zmeniť v tomto paneli, ale od verzie 91.0 programu Thunderbird to môžete urobiť v používateľskom rozhraní Nastavenia účtu, preto sa odporúča urobiť to tam.">
+<!ENTITY accountsort.note "Na tomto paneli môžete zmeniť poradie účtov. (V Thunderbirde 91 a novšom to môžete urobiť aj v používateľskom rozhraní Nastavenia účtu.)">
 <!ENTITY tab.accounts "Zoradenie účtov">
 <!ENTITY tab.folders "Zoradenie priečinkov">
 <!ENTITY gb.move "Posunutie vybratého účtu">

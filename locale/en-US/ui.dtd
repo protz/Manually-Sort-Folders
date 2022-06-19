@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account.">
 <!ENTITY accountsort.warning "Per default, regular mail accounts, Unix Movemail accounts as well as RSS accounts come first, &quot;Local Folders&quot; are next, and at the bottom of the list are the News accounts. You can override this by choosing either &quot;Local Folders&quot; or one of the Newsgroup accounts as default, hence putting it on top of the list.">
 <!ENTITY accountsort.restartwarning "You must restart Thunderbird for the changes to take effect.">
-<!ENTITY accountsort.note "You can change the order of accounts in this panel, but since Thunderbird version 91.0, you can do it in the Account Settings UI, so it is recommended to do it there.">
+<!ENTITY accountsort.note "You can change the order of accounts in this panel. (On Thunderbird 91 and later, you can also do it in the Account Settings UI.)">
 <!ENTITY tab.accounts "Sort accounts">
 <!ENTITY tab.folders "Sort folders">
 <!ENTITY gb.move "Move selected account">

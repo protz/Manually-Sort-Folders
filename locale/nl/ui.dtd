@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Met dit venster kunt u de accounts ordenen in het mappenvenster. Gebruik het volgende tabblad als u de mappen binnen een account wilt sorteren.">
 <!ENTITY accountsort.warning "Regulier mailaccounts, Unix Movemailaccounts en RSS-accounts dienen eerst te komen. Hierna volgt Lokale mappen, en onderaan de lijst staan de Nieuwsaccounts. U kunt dit wijzigen door Lokale mappen of één van de Nieuwsaccounts als standaard in te stellen, waardoor deze bovenaan de lijst wordt geplaatst.">
 <!ENTITY accountsort.restartwarning "U dient Thunderbird te herstarten om de wijzigingen door te voeren.">
-<!ENTITY accountsort.note "U kunt de volgorde van de accounts wijzigen in dit paneel, maar sinds Thunderbird versie 91.0 kunt u dit doen in de Account Settings UI, dus het is aanbevolen om het daar te doen.">
+<!ENTITY accountsort.note "U kunt de volgorde van de accounts in dit paneel wijzigen. (Op Thunderbird 91 en later, kunt u dit ook doen in de Account Settings UI).">
 <!ENTITY tab.accounts "Accounts sorteren">
 <!ENTITY tab.folders "Mappen sorteren">
 <!ENTITY gb.move "Geselecteerd account verplaatsen">

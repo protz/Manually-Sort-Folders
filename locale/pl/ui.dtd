@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Tutaj można określić kolejność kont w panelu folderów. Przejdź do karty „Sortuj foldery”, by posortować foldery wewnątrz konta.">
 <!ENTITY accountsort.warning "Standardowe konta pocztowe, konta Unix Movemail, a także konta RSS muszą być na początku listy. Za nimi powinny znaleźć się Foldery lokalne i na końcu konta grup dyskusyjnych. Można zmienić to, wybierając Foldery lokalne lub jedno z kont grup dyskusyjnych jako domyślne i umieścić go na szczycie listy.">
 <!ENTITY accountsort.restartwarning "Aby zmiany zostały zastosowane, należy ponownie uruchomić Thunderbirda.">
-<!ENTITY accountsort.note "Kolejność kont możesz zmienić w tym panelu, ale od wersji 91.0 Thunderbirda możesz to zrobić w UI Ustawienia kont, więc zalecane jest, aby zrobić to tam.">
+<!ENTITY accountsort.note "W tym panelu możesz zmienić kolejność kont. (W Thunderbirdzie 91 i nowszych możesz to zrobić także w interfejsie użytkownika Ustawienia konta).">
 <!ENTITY tab.accounts "Sortuj konta">
 <!ENTITY tab.folders "Sortuj foldery">
 <!ENTITY gb.move "Przenieś wybrane konto">

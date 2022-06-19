@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül.">
 <!ENTITY accountsort.warning "A szokásos e-mail fiókok, Unix Movemail fiókok és az RSS-fiókok jönnek először. A Helyi mappák a következőek, a lista alján pedig a Hírforrások szerepelnek. Ezt felülbírálhatja azzal, hogy a Helyi mappákat vagy egy Hírforrást választja alapértelmezettként, így azt téve a lista tetejére.">
 <!ENTITY accountsort.restartwarning "A változások érvénybe lépéséhez újra kell indítania a Thunderbirdöt.">
-<!ENTITY accountsort.note "A fiókok sorrendjét ezen a panelen is megváltoztathatja, de a Thunderbird 91.0-s verziója óta ezt a fiókbeállítások felhasználói felületen is megteheti, ezért ajánlatos ezt ott megtenni.">
+<!ENTITY accountsort.note "Ezen a panelen megváltoztathatja a számlák sorrendjét. (A Thunderbird 91 és újabb verziókban ezt a fiókbeállítások felhasználói felületen is megteheti.)">
 <!ENTITY tab.accounts "Fiókok rendezése">
 <!ENTITY tab.folders "Mappák rendezése">
 <!ENTITY gb.move "A kiválasztott fiók mozgatása">

@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Cet onglet permet de choisir l'ordre dans lequel s'affichent les comptes dans le panneau latéral. Pour trier les dossiers d'un compte donné, veuillez vous référer à l'onglet suivant.">
 <!ENTITY accountsort.warning "Les comptes de courrier, MoveMail ou RSS viennent en premier, suivis par les dossiers locaux, puis par les comptes de News. Les dossiers locaux ou l'un des comptes de news peuvent apparaître en premier dans la liste grâce à l'option ci-dessus.">
 <!ENTITY accountsort.restartwarning "Il est nécessaire de redémarrer Thunderbird pour que les changements soient pris en compte.">
-<!ENTITY accountsort.note "Vous pouvez modifier l'ordre des comptes dans ce panneau, mais depuis la version 91.0 de Thunderbird, vous pouvez le faire dans UI des paramètres des comptes, il est donc recommandé de le faire là.">
+<!ENTITY accountsort.note "Vous pouvez modifier l'ordre des comptes dans ce panneau. (Sur Thunderbird 91 et plus, vous pouvez également le faire dans l'interface utilisateur des paramètres de compte).">
 <!ENTITY tab.accounts "Trier les comptes">
 <!ENTITY tab.folders "Trier les dossiers">
 <!ENTITY gb.move "Déplacer le compte sélectionné">

@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "I denne fanen kan du sortere kontoene i mappevisningen. Velg neste fane hvis du ønsker å sortere mappene i en konto.">
 <!ENTITY accountsort.warning "Normale e-postkontoer, Unix Movemail-kontoer, samt RSS-kontoer må komme først. Lokale mapper kommer så, og nederst på listen er Nyhetsgrupper. Du kan overstyre dette enten ved å velge Lokale mapper eller en av Nyhetsgruppene som standard og dermed flytte den øverst på listen.">
 <!ENTITY accountsort.restartwarning "Du må starte Thunderbird på nytt for at endringene skal vises.">
-<!ENTITY accountsort.note "You can change the order of accounts in this panel, but since Thunderbird version 91.0, you can do it in the Account Settings UI, so it is recommended to do it there.">
+<!ENTITY accountsort.note "Du kan endre rekkefølgen på kontoene i dette panelet. (På Thunderbird 91 og nyere kan du også gjøre det i brukergrensesnittet for kontoinnstillinger.)">
 <!ENTITY tab.accounts "Sorter kontoer">
 <!ENTITY tab.folders "Sorter mapper">
 <!ENTITY gb.move "Flytt valgt konto">

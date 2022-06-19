@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "這個分頁允許你來調整資料夾窗格中的帳號。使用下一個分頁來排序帳號中的資料夾。">
 <!ENTITY accountsort.warning "一般信件帳號、Unix Movemail帳號與RSS帳號會在最前面。接下來是本機帳號，在清單最下面的是新聞帳號。你能改變這樣的順序，只要將本機資料夾或任一新聞帳號移到清單中的最上面，便能設定成預設帳號。">
 <!ENTITY accountsort.restartwarning "你必須重新啟動Thunderbird以讓設定值生效。">
-<!ENTITY accountsort.note "您可以在此面板中更改帳戶順序，但從 Thunderbird 91.0 版本開始，您可以在帳戶設置 UI 中進行，因此建議在那裡進行。">
+<!ENTITY accountsort.note "您可以在此面板中更改帳戶的順序。 （在 Thunderbird 91 及更高版本上，您也可以在帳戶設置 UI 中執行此操作。）">
 <!ENTITY tab.accounts "排序帳號">
 <!ENTITY tab.folders "排序資料夾">
 <!ENTITY gb.move "移動所選的帳號">

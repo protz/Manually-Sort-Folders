@@ -18,7 +18,7 @@
 <!ENTITY accountssort.description "Denna panel låter dig sortera dina konton i mappanelen. Gå till nästa flik om du vill sortera mappar inom ett konto.">
 <!ENTITY accountsort.warning "Vanliga e-postkonton, Unix Movemail-konton och RSS-konton måste komma först. Sedan följer &quot;Lokala mappar&quot; och nederst i listan finns diskussionsgruppskontona. Du kan åsidosätta detta genom att välja antingen &quot;Lokala mappar&quot; eller ett av diskussionsgruppskontona som standardkonto, vilket placerar det överst i listan.">
 <!ENTITY accountsort.restartwarning "Du måste starta om Thunderbird för att ändringarna skall verkställas.">
-<!ENTITY accountsort.note "Du kan ändra ordningen på kontona i den här panelen, men sedan Thunderbird version 91.0 kan du göra det i kontoinställningarna, så vi rekommenderar att du gör det där.">
+<!ENTITY accountsort.note "Du kan ändra ordningen på kontona i den här panelen. (I Thunderbird 91 och senare kan du också göra det i kontoinställningsgränssnittet.)">
 <!ENTITY tab.accounts "Sortera konton">
 <!ENTITY tab.folders "Sortera mappar">
 <!ENTITY gb.move "Flytta markerat konto">
@@ -41,4 +41,3 @@
 <!ENTITY extra.usecustom "Använd en egenvald mapp">
 <!ENTITY extra.usethisfolder "Använd denna mapp">
 <!ENTITY extra.startupfolder.notice "* Den här funktionen kanske inte fungerar tillförlitligt i Thunderbird 97 och tidigare versioner.">
-
