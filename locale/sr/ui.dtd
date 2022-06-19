@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Користи последњу отворену фасциклу">
 <!ENTITY extra.usecustom "Користи прилагођену фасциклу">
 <!ENTITY extra.usethisfolder "Користи ову фасциклу">
+<!ENTITY extra.startupfolder.notice "* Ова функција можда неће радити поуздано на Тхундербирд-у 97 и старијим верзијама.">

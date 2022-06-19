@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Zuletzt geöffneten Ordner verwenden">
 <!ENTITY extra.usecustom "Benutzerdefinierten Ordner verwenden">
 <!ENTITY extra.usethisfolder "Diesen Ordner verwenden">
+<!ENTITY extra.startupfolder.notice "* Diese Funktion funktioniert möglicherweise nicht zuverlässig in Thunderbird 97 und früheren Versionen.">

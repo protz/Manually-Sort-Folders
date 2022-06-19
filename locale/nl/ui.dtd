@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Laatst geopende map gebruiken">
 <!ENTITY extra.usecustom "Aangepaste map gebruiken">
 <!ENTITY extra.usethisfolder "Deze map gebruiken">
+<!ENTITY extra.startupfolder.notice "* Deze functie werkt mogelijk niet betrouwbaar in Thunderbird 97 en eerdere versies.">

@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "последнюю открытую папку">
 <!ENTITY extra.usecustom "папку по вашему выбору">
 <!ENTITY extra.usethisfolder "выбрать эту папку">
+<!ENTITY extra.startupfolder.notice "* Эта функция может работать ненадежно в Thunderbird 97 и более ранних версиях.">

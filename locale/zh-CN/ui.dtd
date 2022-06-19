@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "使用上次打开的文件夹">
 <!ENTITY extra.usecustom "使用自定义文件夹">
 <!ENTITY extra.usethisfolder "使用这个文件夹">
+<!ENTITY extra.startupfolder.notice "* 此功能可能无法在 Thunderbird 97 及更早版本上可靠运行。">

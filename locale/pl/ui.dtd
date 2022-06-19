@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Użyj ostatnio otwierany folder">
 <!ENTITY extra.usecustom "użyj własny folder">
 <!ENTITY extra.usethisfolder "Użyj ten folder">
+<!ENTITY extra.startupfolder.notice "* Ta funkcja może nie działać niezawodnie w programie Thunderbird 97 i wcześniejszych wersjach.">

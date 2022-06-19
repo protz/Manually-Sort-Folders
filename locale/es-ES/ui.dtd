@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Usar la última carpeta abierta">
 <!ENTITY extra.usecustom "Usar una carpeta personalizada">
 <!ENTITY extra.usethisfolder "Usar esta carpeta">
+<!ENTITY extra.startupfolder.notice "* Es posible que esta función no funcione de forma fiable en Thunderbird 97 y versiones anteriores.">

@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Usar última pasta aberta">
 <!ENTITY extra.usecustom "Usar uma pasta personalizada">
 <!ENTITY extra.usethisfolder "Usar esta pasta">
+<!ENTITY extra.startupfolder.notice "* Esta característica pode não funcionar de forma fiável nas versões Thunderbird 97 e anteriores.">

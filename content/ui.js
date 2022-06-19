@@ -799,17 +799,21 @@ function extra_on_load() {
     menu.value = "0";
     picker.disabled = true;
   }
+  on_startup_folder_method_changed();
 }
 
-function on_startup_folder_method_changed(event) {
-  let menu = event.target;
-  let picker = document.getElementById("startupFolder");
-  if (menu.value == "1") {
+function on_startup_folder_method_changed() {
+  const method = document.getElementById("startup_folder_method").getAttribute("value");
+  const picker = document.getElementById("startupFolder");
+  let notice = false;
+  if (method == "1") {
     picker.disabled = false;
     if (picker.folder)
       tbsf_prefs.setStringPref("startup_folder", picker.folder.URI);
+    notice = (g_ThunderbirdMajorVersion < 98);
   } else {
     picker.disabled = true;
     tbsf_prefs.setStringPref("startup_folder", "");
   }
+  document.getElementById("startup_folder_notice").style.display = notice ? "" : "none";
 }

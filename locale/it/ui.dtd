@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Utilizza l'ultima cartella aperta">
 <!ENTITY extra.usecustom "Utilizza una cartella da selezionare">
 <!ENTITY extra.usethisfolder "Utilizza questa cartella">
+<!ENTITY extra.startupfolder.notice "* Questa funzione potrebbe non funzionare in modo affidabile in Thunderbird 97 e versioni precedenti.">

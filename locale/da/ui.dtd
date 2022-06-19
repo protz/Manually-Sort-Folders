@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Anvend senest åbnede mappe">
 <!ENTITY extra.usecustom "Anvend brugervalgt mappe">
 <!ENTITY extra.usethisfolder "Anvend denne mappe">
+<!ENTITY extra.startupfolder.notice "* Denne funktion fungerer muligvis ikke pålideligt i Thunderbird 97 og tidligere versioner.">

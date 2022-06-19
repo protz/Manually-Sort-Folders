@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "Použiť naposledy otvorený priečinok">
 <!ENTITY extra.usecustom "Použiť vlastný priečinok">
 <!ENTITY extra.usethisfolder "Použiť tento priečinok">
+<!ENTITY extra.startupfolder.notice "* Táto funkcia nemusí spoľahlivo fungovať v programe Thunderbird 97 a starších verziách.">

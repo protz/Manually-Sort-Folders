@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "最後に開いたフォルダ">
 <!ENTITY extra.usecustom "カスタムフォルダ">
 <!ENTITY extra.usethisfolder "現在のフォルダ">
+<!ENTITY extra.startupfolder.notice "※Thunderbird 97以前では、この機能が確実に働かない場合があります。">

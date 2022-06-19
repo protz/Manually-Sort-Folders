@@ -167,7 +167,7 @@
           <caption>&extra.startup;</caption>
           <label flex="1" value="&extra.startupfolder;" />
           <hbox>
-            <menulist oncommand="on_startup_folder_method_changed(event);" id="startup_folder_method" value="1">
+            <menulist oncommand="on_startup_folder_method_changed();" id="startup_folder_method" value="1">
               <menupopup>
                 <menuitem value="0" label="&extra.uselast;" />
                 <menuitem value="1" label="&extra.usecustom;" />
@@ -181,6 +181,7 @@
                          fileHereLabel="&extra.usethisfolder;"/>
             </menulist>
           </hbox>
+          <description id="startup_folder_notice">&extra.startupfolder.notice;</description>
         </groupbox>
         <spacer flex="1" />
         <hbox>

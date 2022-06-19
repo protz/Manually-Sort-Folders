@@ -40,3 +40,4 @@
 <!ENTITY extra.uselast "A legutóbb megnyitott mappa megnyitása">
 <!ENTITY extra.usecustom "Egyéni mappa használata">
 <!ENTITY extra.usethisfolder "Ezen mappa használata">
+<!ENTITY extra.startupfolder.notice "* Ez a funkció a Thunderbird 97 és korábbi verziókban nem feltétlenül működik megbízhatóan.">
