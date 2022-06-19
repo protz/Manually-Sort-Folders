@@ -7,7 +7,7 @@
       <em:id>smsortfolders@xulforum.org</em:id>
       <em:type>2</em:type>
       <em:name>Manually sort folders</em:name>
-      <em:version>1.0.0</em:version>
+      <em:version>1.1.0</em:version>
       <em:description>An extension that allows you to change the way SeaMonkey sorts accounts and folders in the folder pane.</em:description>
       <em:creator>Jonathan Protzenko and Itagaki Fumihiko</em:creator>
       <em:homepageURL>https://github.com/protz/Manually-Sort-Folders/wiki</em:homepageURL>
