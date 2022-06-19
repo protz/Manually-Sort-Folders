@@ -5,7 +5,9 @@ Tested on:
 
 Windows 10 x64 with Thunderbird 68.0 (64-bit)  
 Windows 10 x64 with Thunderbird 78.0 (64-bit)  
-Windows 10 x64 with Thunderbird 91.0.3 (64-bit)  
+Windows 10 x64 with Thunderbird 91.10.0 (64-bit)  
+Windows 10 x64 with Thunderbird 102.0b2 (64-bit)  
+Linux with Thunderbird 102.0b7
 
 NOT tested:  
 
