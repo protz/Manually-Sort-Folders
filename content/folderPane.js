@@ -157,6 +157,22 @@
   };
   myPrefObserver.register();
 
+  /* Refresh pane */
+  function refreshPane(win) {
+    try { win.gFolderTreeView._rebuild(); }
+    catch (e) { setTimeout(refreshPane, 5, win); }
+  }
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    refreshPane(win);
+  }
+
+  /* Ensures that the selected folder is on the screen. */
+  {
+    const selected = gFolderTreeView.getSelectedFolders()[0];
+    if (selected) {
+      gFolderTreeView._treeElement.ensureRowIsVisible(gFolderTreeView.getIndexOfFolder(selected));
+    }
+  }
 
   /* For default startup folder */
   const startup_folder = tbsf_prefs.getStringPref("startup_folder");
@@ -182,7 +198,7 @@
         if (firstRun && inRestoreTab) {
           const folder = MailUtils.getExistingFolder(startup_folder);
           if (folder)
-            oldSelectFolder.call(this, folder, true);
+            oldSelectFolder.call(this, folder);
           else
             oldSelectFolder.call(this, x, y);
           firstRun = false;
@@ -197,18 +213,13 @@
       */
       const folder = MailUtils.getExistingFolder(startup_folder);
       if (folder) {
-        gFolderTreeView.selectFolder(folder, true);
+        if (!gFolderTreeView.selectFolder(folder)) {
+          tblog.debug("selectFolder failed");
+        }
+      } else {
+        tblog.debug(startup_folder+" not found");
       }
     }
-  }
-
-  /* Refresh pane */
-  function refreshPane(win) {
-    try { win.gFolderTreeView._rebuild(); }
-    catch (e) { setTimeout(refreshPane, 5, win); }
-  }
-  for (let win of Services.wm.getEnumerator("mail:3pane")) {
-    refreshPane(win);
   }
 
 })()

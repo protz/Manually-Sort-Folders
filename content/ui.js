@@ -781,7 +781,7 @@ function on_pick_folder(aEvent) {
   let folder = aEvent.target._folder;
   let picker = document.getElementById("startupFolder");
   picker.folder = folder;
-  picker.setAttribute("label", folder.prettyName);
+  picker.setAttribute("label", folder.prettyName+' ('+folder.URI+')');
   tbsf_prefs.setStringPref("startup_folder", folder.URI);
 }
 
@@ -793,7 +793,7 @@ function extra_on_load() {
     folder = MailUtils.getExistingFolder(startup_folder);
   if (folder) {
     picker.folder = folder;
-    picker.setAttribute("label", folder.prettyName);
+    picker.setAttribute("label", folder.prettyName+' ('+folder.URI+')');
   } else {
     let menu = document.getElementById("startup_folder_method");
     menu.value = "0";
@@ -816,4 +816,5 @@ function on_startup_folder_method_changed() {
     tbsf_prefs.setStringPref("startup_folder", "");
   }
   document.getElementById("startup_folder_notice").style.display = notice ? "" : "none";
+
 }
