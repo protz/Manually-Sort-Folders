@@ -198,7 +198,7 @@
         if (firstRun && inRestoreTab) {
           const folder = MailUtils.getExistingFolder(startup_folder);
           if (folder)
-            oldSelectFolder.call(this, folder);
+            oldSelectFolder.call(this, folder, true);
           else
             oldSelectFolder.call(this, x, y);
           firstRun = false;
@@ -213,7 +213,7 @@
       */
       const folder = MailUtils.getExistingFolder(startup_folder);
       if (folder) {
-        if (!gFolderTreeView.selectFolder(folder)) {
+        if (!gFolderTreeView.selectFolder(folder, true)) {
           tblog.debug("selectFolder failed");
         }
       } else {

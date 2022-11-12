@@ -781,7 +781,7 @@ function on_pick_folder(aEvent) {
   let folder = aEvent.target._folder;
   let picker = document.getElementById("startupFolder");
   picker.folder = folder;
-  picker.setAttribute("label", folder.prettyName+' ('+folder.URI+')');
+  picker.setAttribute("label", folder.prettyName+'  ('+folder.URI+')');
   tbsf_prefs.setStringPref("startup_folder", folder.URI);
 }
 
@@ -793,11 +793,12 @@ function extra_on_load() {
     folder = MailUtils.getExistingFolder(startup_folder);
   if (folder) {
     picker.folder = folder;
-    picker.setAttribute("label", folder.prettyName+' ('+folder.URI+')');
+    picker.setAttribute("label", folder.prettyName+'  ('+folder.URI+')');
   } else {
     let menu = document.getElementById("startup_folder_method");
     menu.value = "0";
     picker.disabled = true;
+    picker.style.display = "none";
   }
   on_startup_folder_method_changed();
 }
@@ -807,11 +808,13 @@ function on_startup_folder_method_changed() {
   const picker = document.getElementById("startupFolder");
   let notice = false;
   if (method == "1") {
+    picker.style.display = "";
     picker.disabled = false;
     if (picker.folder)
       tbsf_prefs.setStringPref("startup_folder", picker.folder.URI);
     notice = (g_ThunderbirdMajorVersion < 98);
   } else {
+    picker.style.display = "none";
     picker.disabled = true;
     tbsf_prefs.setStringPref("startup_folder", "");
   }

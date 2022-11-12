@@ -8,11 +8,14 @@ tabbox tabs tab[visuallyselected="true"]:not(:-moz-window-inactive) { color: uns
 
 groupbox {
     margin: 5px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--color-gray-20);
     padding: 0 0 5px 0;
 }
 groupbox caption {
-    background: #f0f0f0;
+    background: var(--color-gray-20);
     padding: 0.3em;
     margin: 0 0 5px 0;
+}
+treechildren::-moz-tree-image {
+  -moz-context-properties: fill, fill-opacity, stroke;
 }
