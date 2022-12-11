@@ -1,5 +1,9 @@
 
-(function () {
+(async function () {
+
+  /* Utility */
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   /* For folder sorting */
 
   const Cc = Components.classes;
@@ -158,12 +162,24 @@
   myPrefObserver.register();
 
   /* Refresh pane */
+  let refreshCount = 0;
+  for (let win of Services.wm.getEnumerator("mail:3pane")) {
+    ++refreshCount;
+  }
+  tblog.debug("Refresh pane ("+refreshCount+")");
   function refreshPane(win) {
-    try { win.gFolderTreeView._rebuild(); }
-    catch (e) { setTimeout(refreshPane, 5, win); }
+    try {
+      win.gFolderTreeView._rebuild();
+      --refreshCount;
+    } catch (e) {
+      setTimeout(refreshPane, 5, win);
+    }
   }
   for (let win of Services.wm.getEnumerator("mail:3pane")) {
     refreshPane(win);
+  }
+  while (refreshCount > 0) {
+    await sleep(10);
   }
 
   /* Ensures that the selected folder is on the screen. */
@@ -211,15 +227,30 @@
         Since Thunderbird 98, add-on startup has been delayed until Thunderbird is mostly done.
         So there is no way other than immediately selecting the folder.
       */
-      const folder = MailUtils.getExistingFolder(startup_folder);
-      if (folder) {
-        if (!gFolderTreeView.selectFolder(folder, true)) {
-          tblog.debug("selectFolder failed");
+      const retryMax = 10;
+      for (let retry = 1; retry <= retryMax; retry++) {
+        let folder = MailUtils.getExistingFolder(startup_folder);
+        if (folder) {
+          if (gFolderTreeView.selectFolder(folder, true)) {
+            tblog.debug("selectFolder succeeded");
+          } else {
+            tblog.debug("selectFolder failed");
+          }
+          break;
+        } else {
+          if (retry < retryMax) {
+            tblog.debug(startup_folder+" not found ("+retry+") ..retry");
+            await sleep(200);
+          } else { 
+            tblog.debug(startup_folder+" not found ("+retry+") ..giving up");
+         }
         }
-      } else {
-        tblog.debug(startup_folder+" not found");
       }
     }
+  } else {
+    tblog.debug("No startup folder specified");
   }
+
+  tblog.debug("Init done");
 
 })()

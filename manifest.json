@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Manually sort folders",
   "description": "__MSG_extensionDescription__",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "author": "Jonathan Protzenko and Itagaki Fumihiko",
   "homepage_url": "https://github.com/protz/Manually-Sort-Folders/wiki",
   "applications": {
