@@ -1,9 +1,5 @@
 
 (async function () {
-
-  /* Utility */
-  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
   /* For folder sorting */
 
   const Cc = Components.classes;
@@ -161,26 +157,107 @@
   };
   myPrefObserver.register();
 
-  /* Refresh pane */
-  let refreshCount = 0;
-  for (let win of Services.wm.getEnumerator("mail:3pane")) {
-    ++refreshCount;
+  /* Startup folder */
+  let startup_folder = tbsf_prefs.getStringPref("startup_folder");
+  if (startup_folder) {
+    tblog.debug("startup folder: "+startup_folder);
+  } else {
+    tblog.debug("No startup folder specified");
   }
-  tblog.debug("Refresh pane ("+refreshCount+")");
-  function refreshPane(win) {
-    try {
-      win.gFolderTreeView._rebuild();
-      --refreshCount;
-    } catch (e) {
-      setTimeout(refreshPane, 5, win);
+
+  if (startup_folder && ThunderbirdMajorVersion < 98) {
+    /*
+      On Thunderbird 97 and earlier, it was possible for add-ons to intervene in
+      the startup behavior of Thunderbird.
+    */
+    const oldRestoreTab = mailTabType.modes.folder.restoreTab;
+    let inRestoreTab = false;
+    mailTabType.modes.folder.restoreTab = function (x, y) {
+      tblog.debug("restoreTab");
+      inRestoreTab = true;
+      oldRestoreTab.call(this, x, y);
+      inRestoreTab = false;
+    };
+    const oldSelectFolder = gFolderTreeView.selectFolder;
+    const change_folder = startup_folder;
+    let firstRun = true;
+    gFolderTreeView.selectFolder = function (x, y) {
+      tblog.debug("selectFolder firstRun:"+firstRun.toString()+" inRestoreTab:"+inRestoreTab.toString());
+      if (firstRun && inRestoreTab) {
+        const folder = MailUtils.getExistingFolder(change_folder);
+        if (folder) {
+          oldSelectFolder.call(this, folder, true);
+          /* Ensures that the selected folder is on the screen. */
+          const selected = gFolderTreeView.getSelectedFolders()[0];
+          if (selected) {
+            gFolderTreeView._treeElement.ensureRowIsVisible(gFolderTreeView.getIndexOfFolder(selected));
+          }
+        } else {
+          oldSelectFolder.call(this, x, y);
+        }
+        firstRun = false;
+      } else {
+        oldSelectFolder.call(this, x, y);
+      }
     }
+    tblog.debug("Overriding selectFolder");
+    startup_folder = null;
   }
+
+  /*
+    Refresh pane and select folder
+
+    The start of this add-on may be too early to call gFolderTreeView._rebuild()
+    and MailUtils.getExistingFolder().
+
+    So I structured a 10-times retry loop to counter any exceptions or failures
+    that may occur due to that.
+  */
+  async function selectFolder(win, startup_folder) {
+    let tries = 0;
+    let ms = 100;
+
+    // Stop after 10 tries. Or use other break condition, like total time spend.
+    while (tries < 10) {
+      try {
+        /*
+          Refresh pane -- possible exception.
+        */
+        win.gFolderTreeView._rebuild();
+        if (startup_folder) {
+          /*
+            Select folder
+            Since Thunderbird 98, add-on startup has been delayed until
+            Thunderbird is mostly done. So there is no way other than
+            immediately selecting the folder. However, there is a report of a
+            case where getExistingFolder returns null for the existing folder.
+          */
+          let folder = MailUtils.getExistingFolder(startup_folder);
+          if (folder && gFolderTreeView.selectFolder(folder, true)) {
+            return true;
+          }
+        } else {
+          return true;
+        }
+      } catch (e) {
+        // Nothing.
+      }
+      tries++;
+      await new Promise(resolve => setTimeout(resolve, ms));
+    }
+    return false;
+  }
+
+  let selectPromises = [];
   for (let win of Services.wm.getEnumerator("mail:3pane")) {
-    refreshPane(win);
+    selectPromises.push(selectFolder(win, startup_folder));
   }
-  while (refreshCount > 0) {
-    await sleep(10);
-  }
+
+  let results = await Promise.all(selectPromises);
+  tblog.debug("Refreshing the pane"
+              + (startup_folder ? " and selecting folder" : "")
+              + ": "
+              + (results ? "Success" : "Failure"));
 
   /* Ensures that the selected folder is on the screen. */
   {
@@ -188,67 +265,6 @@
     if (selected) {
       gFolderTreeView._treeElement.ensureRowIsVisible(gFolderTreeView.getIndexOfFolder(selected));
     }
-  }
-
-  /* For default startup folder */
-  const startup_folder = tbsf_prefs.getStringPref("startup_folder");
-  if (startup_folder) {
-    tblog.debug("startup folder: "+startup_folder);
-    if (ThunderbirdMajorVersion < 98) {
-      /*
-        On Thunderbird 97 or older, it was possible for add-ons
-        to intervene in the startup behavior of Thunderbird.
-      */
-      const oldRestoreTab = mailTabType.modes.folder.restoreTab;
-      let inRestoreTab = false;
-      mailTabType.modes.folder.restoreTab = function (x, y) {
-        tblog.debug("restoreTab");
-        inRestoreTab = true;
-        oldRestoreTab.call(this, x, y);
-        inRestoreTab = false;
-      };
-      const oldSelectFolder = gFolderTreeView.selectFolder;
-      let firstRun = true;
-      gFolderTreeView.selectFolder = function (x, y) {
-        tblog.debug("selectFolder firstRun:"+firstRun.toString()+" inRestoreTab:"+inRestoreTab.toString());
-        if (firstRun && inRestoreTab) {
-          const folder = MailUtils.getExistingFolder(startup_folder);
-          if (folder)
-            oldSelectFolder.call(this, folder, true);
-          else
-            oldSelectFolder.call(this, x, y);
-          firstRun = false;
-        } else {
-          oldSelectFolder.call(this, x, y);
-        }
-      }
-    } else {
-      /*
-        Since Thunderbird 98, add-on startup has been delayed until Thunderbird is mostly done.
-        So there is no way other than immediately selecting the folder.
-      */
-      const retryMax = 10;
-      for (let retry = 1; retry <= retryMax; retry++) {
-        let folder = MailUtils.getExistingFolder(startup_folder);
-        if (folder) {
-          if (gFolderTreeView.selectFolder(folder, true)) {
-            tblog.debug("selectFolder succeeded");
-          } else {
-            tblog.debug("selectFolder failed");
-          }
-          break;
-        } else {
-          if (retry < retryMax) {
-            tblog.debug(startup_folder+" not found ("+retry+") ..retry");
-            await sleep(200);
-          } else { 
-            tblog.debug(startup_folder+" not found ("+retry+") ..giving up");
-         }
-        }
-      }
-    }
-  } else {
-    tblog.debug("No startup folder specified");
   }
 
   tblog.debug("Init done");
