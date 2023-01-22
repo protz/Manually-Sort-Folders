@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Utilizza una cartella da selezionare">
 <!ENTITY extra.usethisfolder "Utilizza questa cartella">
 <!ENTITY extra.startupfolder.notice "* Questa funzione potrebbe non funzionare in modo affidabile in Thunderbird 97 e versioni precedenti.">
+<!ENTITY extra.misc "Varie">
+<!ENTITY extra.hide_folder_icons "Nascondi le icone delle cartelle (è necessario riavviare questo componente aggiuntivo)">

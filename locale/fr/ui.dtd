@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Choisir un dossier particulier">
 <!ENTITY extra.usethisfolder "Utiliser ce dossier">
 <!ENTITY extra.startupfolder.notice "* Cette fonction peut ne pas fonctionner de manière fiable dans Thunderbird 97 et les versions antérieures.">
+<!ENTITY extra.misc "Divers.">
+<!ENTITY extra.hide_folder_icons "Masquer les icônes des dossiers (Il faut redémarrer cet add-on)">

@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Anvend brugervalgt mappe">
 <!ENTITY extra.usethisfolder "Anvend denne mappe">
 <!ENTITY extra.startupfolder.notice "* Denne funktion fungerer muligvis ikke pålideligt i Thunderbird 97 og tidligere versioner.">
+<!ENTITY extra.misc "Div.">
+<!ENTITY extra.hide_folder_icons "Skjul mappeikoner (Skal genstarte denne tilføjelse)">

@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Använd en egenvald mapp">
 <!ENTITY extra.usethisfolder "Använd denna mapp">
 <!ENTITY extra.startupfolder.notice "* Den här funktionen kanske inte fungerar tillförlitligt i Thunderbird 97 och tidigare versioner.">
+<!ENTITY extra.misc "Övrigt">
+<!ENTITY extra.hide_folder_icons "Dölj mappikoner (Du måste starta om det här tillägget)">

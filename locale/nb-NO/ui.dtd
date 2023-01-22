@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Bruk en forhåndsvalgt mappe">
 <!ENTITY extra.usethisfolder "Bruk denne mappen">
 <!ENTITY extra.startupfolder.notice "* Denne funksjonen fungerer kanskje ikke pålitelig i Thunderbird 97 og tidligere versjoner.">
+<!ENTITY extra.misc "Diverse">
+<!ENTITY extra.hide_folder_icons "Skjul mappeikoner (Må starte dette tillegget på nytt)">

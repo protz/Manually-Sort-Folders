@@ -6,11 +6,12 @@ const g_ThunderbirdMajorVersion = Services.appinfo.version.split(".")[0];
 Services.scriptloader.loadSubScript("chrome://tbsortfolders/content/folderPane.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
+  const tbsf_prefs = Services.prefs.getBranch("extensions.tbsortfolders@xulforum.org.");
   let xulname = 'tbsortfolders';
   if (g_ThunderbirdMajorVersion >= 91) {
     xulname += '_91';
   }
-  WL.injectElements(`
+  let additionalElements = `
     <menupopup id="taskPopup">
       <menuitem insertafter="activityManager" id="tbsf_menu_item"
         oncommand="window.openDialog('chrome://tbsortfolders/content/${xulname}.xhtml', 'ManuallySortFolders',
@@ -23,8 +24,20 @@ function onLoad(activatedWhileWindowOpen) {
       oncommand="window.openDialog('chrome://tbsortfolders/content/${xulname}.xhtml', 'ManuallySortFolders',
         'chrome,titlebar,toolbar,centerscreen,resizable');"
       label="&tbsf.menuentry.label;" />
-    </panelview>`,
-    ["chrome://tbsortfolders/locale/main.dtd"]);
+    </panelview>`;
+  if (tbsf_prefs.getStringPref("hide_folder_icons")) {
+    additionalElements += `
+     <vbox id="folderPaneBox">
+      <html:style insertafter="folderPaneHeader">
+        #folderTree > treechildren::-moz-tree-image {
+         list-style-image: none;
+         width: 0;
+         height: 0;
+        }
+      </html:style>
+     </vbox>`;
+  }
+  WL.injectElements(additionalElements, ["chrome://tbsortfolders/locale/main.dtd"]);
 }
 
 function onUnload(deactivatedWhileWindowOpen) {

@@ -273,8 +273,8 @@ function on_load() {
 
     let width = tbsf_prefs.getStringPref("width");
     let height = tbsf_prefs.getStringPref("height");
-    if (width < 500) {
-      width = 500;
+    if (width < 600) {
+      width = 600;
     }
     if (height < 400) {
       height = 400;
@@ -801,6 +801,8 @@ function extra_on_load() {
     picker.style.display = "none";
   }
   on_startup_folder_method_changed();
+
+  document.getElementById("hideFolderIcons").checked = Boolean(tbsf_prefs.getStringPref("hide_folder_icons"));
 }
 
 function on_startup_folder_method_changed() {
@@ -820,4 +822,8 @@ function on_startup_folder_method_changed() {
   }
   document.getElementById("startup_folder_notice").style.display = notice ? "" : "none";
 
+}
+
+function on_hide_folder_icons_changed() {
+  tbsf_prefs.setStringPref("hide_folder_icons", document.getElementById("hideFolderIcons").checked ? "True" : "");
 }

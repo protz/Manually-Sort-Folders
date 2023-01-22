@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Benutzerdefinierten Ordner verwenden">
 <!ENTITY extra.usethisfolder "Diesen Ordner verwenden">
 <!ENTITY extra.startupfolder.notice "* Diese Funktion funktioniert möglicherweise nicht zuverlässig in Thunderbird 97 und früheren Versionen.">
+<!ENTITY extra.misc "Sonstiges">
+<!ENTITY extra.hide_folder_icons "Ordnersymbole ausblenden (Dieses Add-on muss neu gestartet werden)">

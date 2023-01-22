@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "użyj własny folder">
 <!ENTITY extra.usethisfolder "Użyj ten folder">
 <!ENTITY extra.startupfolder.notice "* Ta funkcja może nie działać niezawodnie w programie Thunderbird 97 i wcześniejszych wersjach.">
+<!ENTITY extra.misc "Misc.">
+<!ENTITY extra.hide_folder_icons "Ukryj ikony folderów (Wymaga ponownego uruchomienia tego dodatku)">

@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "使用自訂的資料夾">
 <!ENTITY extra.usethisfolder "使用這個資料夾">
 <!ENTITY extra.startupfolder.notice "* 此功能可能無法在 Thunderbird 97 及更早版本上可靠運行。">
+<!ENTITY extra.misc "雜項">
+<!ENTITY extra.hide_folder_icons "隱藏文件夾圖標（需要重啟這個插件）">

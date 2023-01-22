@@ -41,3 +41,5 @@
 <!ENTITY extra.usecustom "Usar uma pasta personalizada">
 <!ENTITY extra.usethisfolder "Usar esta pasta">
 <!ENTITY extra.startupfolder.notice "* Esta característica pode não funcionar de forma fiável nas versões Thunderbird 97 e anteriores.">
+<!ENTITY extra.misc "Diversos">
+<!ENTITY extra.hide_folder_icons "Ocultar ícones de pastas (Necessidade de reiniciar este suplemento)">
