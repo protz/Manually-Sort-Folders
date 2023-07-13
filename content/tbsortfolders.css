@@ -1,11 +1,3 @@
-/* This fix for MacOS is by @2BeeOrNot */
-@supports (-moz-osx-font-smoothing: auto) { /* macOS only */
-/* selected tab is white text on white background */
-tabbox tabs tab[visuallyselected="true"]:not(:-moz-window-inactive) { color: unset !important; }
-/* this pushes the tab label to the right of left side of tab */
-.tab-middle.box-inherit { display: none !important; }
-}
-
 groupbox {
     margin: 5px;
     border: 2px solid var(--color-gray-20);
