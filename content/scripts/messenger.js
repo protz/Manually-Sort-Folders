@@ -1,5 +1,7 @@
 // Import any needed modules.
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 const g_ThunderbirdMajorVersion = Services.appinfo.version.split(".")[0];
 
 // Load an additional JavaScript file.

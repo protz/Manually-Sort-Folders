@@ -10,7 +10,9 @@ tblog.level = Log.Level.Debug;
 tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
 tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
-Cu.import("resource://gre/modules/Services.jsm");
+var Services = globalThis.Services || ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+).Services;
 const g_ThunderbirdMajorVersion = Services.appinfo.version.split(".")[0];
 
 Cu.import("resource://tbsortfolders/sort.jsm");

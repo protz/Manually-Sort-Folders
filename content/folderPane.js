@@ -12,7 +12,10 @@
   tblog.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
   tblog.addAppender(new Log.DumpAppender(new Log.BasicFormatter()));
 
-  Cu.import("resource://gre/modules/Services.jsm");
+  var Services = globalThis.Services || ChromeUtils.import(
+    "resource://gre/modules/Services.jsm"
+  ).Services;
+
   Cu.import("resource://tbsortfolders/sort.jsm");
   Cu.import("resource:///modules/MailUtils.jsm");
 
