@@ -1,0 +1,144 @@
+{
+    "accountsort.localfolders": {
+        "message": "Lokale mapper"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Du har ikke satt opp noen kontoer enda!"
+    },
+    "accountsort.note": {
+        "message": "Du kan endre rekkefølgen på kontoene i dette panelet. (På Thunderbird 91 og nyere kan du også gjøre det i brukergrensesnittet for kontoinnstillinger.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "Du må starte Thunderbird på nytt for at endringene skal vises."
+    },
+    "accountsort.warning": {
+        "message": "Normale e-postkontoer, Unix Movemail-kontoer, samt RSS-kontoer må komme først. Lokale mapper kommer så, og nederst på listen er Nyhetsgrupper. Du kan overstyre dette enten ved å velge Lokale mapper eller en av Nyhetsgruppene som standard og dermed flytte den øverst på listen."
+    },
+    "accountssort.description": {
+        "message": "I denne fanen kan du sortere kontoene i mappevisningen. Velg neste fane hvis du ønsker å sortere mappene i en konto."
+    },
+    "button.account_name": {
+        "message": "Kontonavn"
+    },
+    "button.close": {
+        "message": "Lukk"
+    },
+    "button.move_down": {
+        "message": "Flytt ned"
+    },
+    "button.move_up": {
+        "message": "Flytt opp"
+    },
+    "button.refresh": {
+        "message": "Oppdater"
+    },
+    "button.restart": {
+        "message": "Start Thunderbird på nytt"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Skiller mellom store og små bokstaver"
+    },
+    "extensionDescription": {
+        "description": "Beskrivelse av utvidelsen",
+        "message": "Lar deg endre rekkefølgen på mapper i mapperuten."
+    },
+    "extra.description": {
+        "message": "I denne fanen kan du finne flere innstillinger relatert til mapper i Thunderbird."
+    },
+    "extra.hide_folder_icons": {
+        "message": "Skjul mappeikoner (Må starte dette tillegget på nytt)"
+    },
+    "extra.misc": {
+        "message": "Diverse"
+    },
+    "extra.nofolder": {
+        "message": "Ingen mappe er valgt"
+    },
+    "extra.startup": {
+        "message": "Oppstartsmappe"
+    },
+    "extra.startupfolder": {
+        "message": "Start Thunderbird med følgende mappe åpen"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Denne funksjonen fungerer kanskje ikke pålitelig i Thunderbird 97 og tidligere versjoner."
+    },
+    "extra.usecustom": {
+        "message": "Bruk en forhåndsvalgt mappe"
+    },
+    "extra.uselast": {
+        "message": "Bruk siste åpnede mappe"
+    },
+    "extra.usethisfolder": {
+        "message": "Bruk denne mappen"
+    },
+    "gb.extra": {
+        "message": "Tilleggsinformasjon"
+    },
+    "gb.first": {
+        "message": "Første konto i mappevisning"
+    },
+    "gb.move": {
+        "message": "Flytt valgt konto"
+    },
+    "gb.movefolder": {
+        "message": "Flytt valgt mappe"
+    },
+    "gb.sort_by": {
+        "message": "Sorter etter"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Sorter innenfor det valgte nivået etter"
+    },
+    "gbfirst.default": {
+        "message": "Dette er standard kontoen."
+    },
+    "general.title": {
+        "message": "Sorter mapper manuelt"
+    },
+    "mi.firstmail": {
+        "message": "Første RRS eller E-postkonto i lista"
+    },
+    "sortfolders.description": {
+        "message": "I denne fanen kan du sortere mappene for hver konto. Velg først en konto, så en sorteringsmetode."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Sorter tekst alfabetisk (Ascending order)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Sorter tekst alfabetisk (Descending order)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Dette valget sorterer mappene alfabetisk."
+    },
+    "sortmethod.custom": {
+        "message": "Egendefinert sortering"
+    },
+    "sortmethod.custom.description": {
+        "message": "Bruk knappene over til å manuelt sortere dine mapper. Når du legger til en ny mappe, vil denne havne sist på listen. Dette kan du selvfølgelig endre senere i denne menyen."
+    },
+    "sortmethod.default": {
+        "message": "Forhåndsvalg av Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "Dette er den forhåndsvalgte sorteringsmetoden til Thunderbird."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Eksempelmappe visning over)"
+    },
+    "tab.accounts": {
+        "message": "Sorter kontoer"
+    },
+    "tab.extra": {
+        "message": "Flere instillinger"
+    },
+    "tab.folders": {
+        "message": "Sorter mapper"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Sorter mapper manuelt"
+    },
+    "tc.foldername": {
+        "message": "Mappenavn"
+    }
+}

@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Dossiers locaux"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Vous n'avez pas encore configuré de compte !"
+    },
+    "accountsort.note": {
+        "message": "Vous pouvez modifier l'ordre des comptes dans ce panneau. (Sur Thunderbird 91 et plus, vous pouvez également le faire dans l'interface utilisateur des paramètres de compte)."
+    },
+    "accountsort.restartwarning": {
+        "message": "Il est nécessaire de redémarrer Thunderbird pour que les changements soient pris en compte."
+    },
+    "accountsort.warning": {
+        "message": "Les comptes de courrier, MoveMail ou RSS viennent en premier, suivis par les dossiers locaux, puis par les comptes de News. Les dossiers locaux ou l'un des comptes de news peuvent apparaître en premier dans la liste grâce à l'option ci-dessus."
+    },
+    "accountssort.description": {
+        "message": "Cet onglet permet de choisir l'ordre dans lequel s'affichent les comptes dans le panneau latéral. Pour trier les dossiers d'un compte donné, veuillez vous référer à l'onglet suivant."
+    },
+    "button.account_name": {
+        "message": "Nom du compte"
+    },
+    "button.close": {
+        "message": "Fermer"
+    },
+    "button.move_down": {
+        "message": "Descendre"
+    },
+    "button.move_up": {
+        "message": "Monter"
+    },
+    "button.refresh": {
+        "message": "Rafraîchir la liste des dossiers"
+    },
+    "button.restart": {
+        "message": "Redémarrer Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Différences majuscules/minuscule"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Permet de modifier l'ordre des dossiers dans le volet des dossiers."
+    },
+    "extra.description": {
+        "message": "Cet onglet vous permet de personnaliser Thunderbird à l'aide de divers réglages concernant les dossiers."
+    },
+    "extra.hide_folder_icons": {
+        "message": "Masquer les icônes des dossiers (Il faut redémarrer cet add-on)"
+    },
+    "extra.misc": {
+        "message": "Divers."
+    },
+    "extra.nofolder": {
+        "message": "Pas de dossier sélectionné"
+    },
+    "extra.startup": {
+        "message": "Dossier à afficher au démarrage de Thunderbird."
+    },
+    "extra.startupfolder": {
+        "message": "Par défaut, afficher le dossier suivant au démarrage de Thunderbird"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Cette fonction peut ne pas fonctionner de manière fiable dans Thunderbird 97 et les versions antérieures."
+    },
+    "extra.usecustom": {
+        "message": "Choisir un dossier particulier"
+    },
+    "extra.uselast": {
+        "message": "Utiliser le dernier dossier ouvert"
+    },
+    "extra.usethisfolder": {
+        "message": "Utiliser ce dossier"
+    },
+    "gb.extra": {
+        "message": "Quelques précisions"
+    },
+    "gb.first": {
+        "message": "Compte à afficher en premier"
+    },
+    "gb.move": {
+        "message": "Déplacer le compte sélectionné"
+    },
+    "gb.movefolder": {
+        "message": "Déplacer le dossier sélectionné"
+    },
+    "gb.sort_by": {
+        "message": "Trier par"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Trier dans le niveau sélectionné par"
+    },
+    "gbfirst.default": {
+        "message": "Ce compte sera également le compte par défaut."
+    },
+    "general.title": {
+        "message": "Trier les dossiers manuellement"
+    },
+    "mi.firstmail": {
+        "message": "Premier compte courrier/RSS dans la liste"
+    },
+    "sortfolders.description": {
+        "message": "Cet onglet permet de trier les dossiers d'un compte donné."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Trier alphabétiquement (Ordre ascendant)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Trier alphabétiquement (Ordre décroissant)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Il s'agit d'une fonction de tri standard qui n'utilise rien d'autre que la fonction de comparaison de chaînes la plus élémentaire."
+    },
+    "sortmethod.custom": {
+        "message": "Choisir à la main l'ordre de tri"
+    },
+    "sortmethod.custom.description": {
+        "message": "Utilisez les boutons pour ordonner les dossiers comme vous le souhaitez. Si un dossier est ajouté ultérieurement, il apparaîtra en fin de liste. Dans l'hypothèse où cela ne vous convient pas, revenez ici pour choisir un emplacement pour le nouveau dossier."
+    },
+    "sortmethod.default": {
+        "message": "Utiliser la méthode par défaut de Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "La fonction de tri par défaut de Thunderbird."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Exemple de résultat ci-dessus)"
+    },
+    "tab.accounts": {
+        "message": "Trier les comptes"
+    },
+    "tab.extra": {
+        "message": "Avancé"
+    },
+    "tab.folders": {
+        "message": "Trier les dossiers"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Trier les dossiers manuellement"
+    },
+    "tc.foldername": {
+        "message": "Dossier"
     }
 }

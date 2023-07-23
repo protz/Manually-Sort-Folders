@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Lokala mappar"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Du har inte konfigurerat något konto ännu!"
+    },
+    "accountsort.note": {
+        "message": "Du kan ändra ordningen på kontona i den här panelen. (I Thunderbird 91 och senare kan du också göra det i kontoinställningsgränssnittet.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "Du måste starta om Thunderbird för att ändringarna skall verkställas."
+    },
+    "accountsort.warning": {
+        "message": "Vanliga e-postkonton, Unix Movemail-konton och RSS-konton måste komma först. Sedan följer &quot;Lokala mappar&quot; och nederst i listan finns diskussionsgruppskontona. Du kan åsidosätta detta genom att välja antingen &quot;Lokala mappar&quot; eller ett av diskussionsgruppskontona som standardkonto, vilket placerar det överst i listan."
+    },
+    "accountssort.description": {
+        "message": "Denna panel låter dig sortera dina konton i mappanelen. Gå till nästa flik om du vill sortera mappar inom ett konto."
+    },
+    "button.account_name": {
+        "message": "Kontonamn"
+    },
+    "button.close": {
+        "message": "Stäng"
+    },
+    "button.move_down": {
+        "message": "Flytta nedåt"
+    },
+    "button.move_up": {
+        "message": "Flytta uppåt"
+    },
+    "button.refresh": {
+        "message": "Uppdatera mappanelen"
+    },
+    "button.restart": {
+        "message": "Starta om Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Skiftlägeskänslig"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Låter dig ändra ordningen på mappar i mapprutan."
+    },
+    "extra.description": {
+        "message": "Använd denna flik för att ytterligare anpassa Thunderbird m.h.a. olika mapprelaterade inställningar"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Dölj mappikoner (Du måste starta om det här tillägget)"
+    },
+    "extra.misc": {
+        "message": "Övrigt"
+    },
+    "extra.nofolder": {
+        "message": "Ingen mapp har markerats"
+    },
+    "extra.startup": {
+        "message": "Startmapp"
+    },
+    "extra.startupfolder": {
+        "message": "Som standard, starta med följande mapp öppnad"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Den här funktionen kanske inte fungerar tillförlitligt i Thunderbird 97 och tidigare versioner."
+    },
+    "extra.usecustom": {
+        "message": "Använd en egenvald mapp"
+    },
+    "extra.uselast": {
+        "message": "Använd senast öppnade mapp"
+    },
+    "extra.usethisfolder": {
+        "message": "Använd denna mapp"
+    },
+    "gb.extra": {
+        "message": "Ytterligare information"
+    },
+    "gb.first": {
+        "message": "Första konto i mappanelen"
+    },
+    "gb.move": {
+        "message": "Flytta markerat konto"
+    },
+    "gb.movefolder": {
+        "message": "Flytta markerad mapp"
+    },
+    "gb.sort_by": {
+        "message": "Sortera efter"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Sortera inom den valda nivån efter"
+    },
+    "gbfirst.default": {
+        "message": "Det här är även standardkontot."
+    },
+    "general.title": {
+        "message": "Sortera mappar manuellt"
+    },
+    "mi.firstmail": {
+        "message": "Första RSS- eller e-postkonto i listan"
+    },
+    "sortfolders.description": {
+        "message": "Denna panel låter dig sortera varje enskilt kontos mappar. Välj först ett konto och sedan en sorteringsmetod."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Använd vanlig strängjämförelse (Stigande ordning)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Använd vanlig strängjämförelse (Nedåtgående ordning)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Det här är en standardsorteringsfunktion som endast använder den mest basala strängjämförelsefunktionen."
+    },
+    "sortmethod.custom": {
+        "message": "Använd en manuellt definierad sorteringsfunktion"
+    },
+    "sortmethod.custom.description": {
+        "message": "Använd knapparna ovan för att sortera dina mappar manuellt. Om en ny mapp läggs till, så kommer den att placeras sist i listan. Du kan komma tillbaka hit senare om du ändrar dig."
+    },
+    "sortmethod.default": {
+        "message": "Använd Thunderbirds standard"
+    },
+    "sortmethod.default.description": {
+        "message": "Det här är Thunderbirds standardsorteringsfunktion."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Välj ur mappanelen ovan)"
+    },
+    "tab.accounts": {
+        "message": "Sortera konton"
+    },
+    "tab.extra": {
+        "message": "Övrigt"
+    },
+    "tab.folders": {
+        "message": "Sortera mappar"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Sortera mappar manuellt"
+    },
+    "tc.foldername": {
+        "message": "Mappnamn"
     }
 }

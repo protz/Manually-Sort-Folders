@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "ローカルフォルダ"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "アカウント設定がまだありません！"
+    },
+    "accountsort.note": {
+        "message": "このパネルでアカウントの順序を変更することができます。(Thunderbird 91以降ではアカウント設定UIでも行えます。)"
+    },
+    "accountsort.restartwarning": {
+        "message": "変更を反映させるためには Thunderbird を再起動してください"
+    },
+    "accountsort.warning": {
+        "message": "通常のメールアカウントは RSS アカウントと同様に Unix Movemail アカウントの最上部に置かれます。 その次にローカルフォルダ、そしてリスト最後はブログとニュースアカウントとなります。 デフォルトとしてローカルフォルダかブログとニュースグループアカウントのどちらかを選んでリスト先頭に配置することによってこれを変えることができます。"
+    },
+    "accountssort.description": {
+        "message": "このパネルではフォルダペインのアカウントの順序を変更することができます。各アカウント内のフォルダを並べ替えるには次のタブ [フォルダの並べ替え] を使用してください。"
+    },
+    "button.account_name": {
+        "message": "アカウント名"
+    },
+    "button.close": {
+        "message": "閉じる"
+    },
+    "button.move_down": {
+        "message": "下へ"
+    },
+    "button.move_up": {
+        "message": "上へ"
+    },
+    "button.refresh": {
+        "message": "フォルダペインの更新"
+    },
+    "button.restart": {
+        "message": "Thunderbird の再起動"
+    },
+    "checkbox.case_sensitive": {
+        "message": "大文字と小文字を区別"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "フォルダペインでのフォルダの並び順を変更することができます。"
+    },
+    "extra.description": {
+        "message": "このタブでは様々なフォルダ関連の設定で Thunderbird をさらにカスタマイズできます。"
+    },
+    "extra.hide_folder_icons": {
+        "message": "フォルダーアイコンを非表示にする (このアドオンの再始動が必要)"
+    },
+    "extra.misc": {
+        "message": "その他"
+    },
+    "extra.nofolder": {
+        "message": "フォルダの選択なし"
+    },
+    "extra.startup": {
+        "message": "起動フォルダ"
+    },
+    "extra.startupfolder": {
+        "message": "以下のフォルダが開いた状態で起動する"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Thunderbird 97以前では、この機能が確実に働かない場合があります。"
+    },
+    "extra.usecustom": {
+        "message": "カスタムフォルダ"
+    },
+    "extra.uselast": {
+        "message": "最後に開いたフォルダ"
+    },
+    "extra.usethisfolder": {
+        "message": "現在のフォルダ"
+    },
+    "gb.extra": {
+        "message": "追加情報"
+    },
+    "gb.first": {
+        "message": "フォルダペイン最上部のアカウント設定"
+    },
+    "gb.move": {
+        "message": "選択したアカウントの移動"
+    },
+    "gb.movefolder": {
+        "message": "選択したフォルダの移動"
+    },
+    "gb.sort_by": {
+        "message": "並べ替え"
+    },
+    "gb.sort_siblings_by": {
+        "message": "選択した階層の並べ替え"
+    },
+    "gbfirst.default": {
+        "message": "これはデフォルトアカウントです"
+    },
+    "general.title": {
+        "message": "Manually sort folders 設定"
+    },
+    "mi.firstmail": {
+        "message": "フォルダペイン最上部を RSS またはメールアカウントにする"
+    },
+    "sortfolders.description": {
+        "message": "このパネルでは各アカウントのフォルダを並べ替えることができます。まずアカウントを選び、次に並べ替え方法を選んでください。"
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "名前で並べ替え (昇順)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "名前で並べ替え (降順)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "これは単純な文字列比較による並べ替えです。"
+    },
+    "sortmethod.custom": {
+        "message": "手動で並べ替え"
+    },
+    "sortmethod.custom.description": {
+        "message": "上のボタンを使用してフォルダを並べ替えてください。"
+    },
+    "sortmethod.default": {
+        "message": "Thunderbird のデフォルトの順序"
+    },
+    "sortmethod.default.description": {
+        "message": "これは Thunderbird のデフォルトの順序です。"
+    },
+    "sortmethod.samplelegend": {
+        "message": "(サンプルフォルダ欄)"
+    },
+    "tab.accounts": {
+        "message": "アカウントの並べ替え"
+    },
+    "tab.extra": {
+        "message": "追加設定"
+    },
+    "tab.folders": {
+        "message": "フォルダの並べ替え"
+    },
+    "tbsf.menuentry.label": {
+        "message": "フォルダの並べ替え"
+    },
+    "tc.foldername": {
+        "message": "フォルダ名"
     }
 }

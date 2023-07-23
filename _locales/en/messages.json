@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Local Folders"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "You have no account setup yet!"
+    },
+    "accountsort.note": {
+        "message": "You can change the order of accounts in this panel. (On Thunderbird 91 and later, you can also do it in the Account Settings UI.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "You must restart Thunderbird for the changes to take effect."
+    },
+    "accountsort.warning": {
+        "message": "Per default, regular mail accounts, Unix Movemail accounts as well as RSS accounts come first, &quot;Local Folders&quot; are next, and at the bottom of the list are the News accounts. You can override this by choosing either &quot;Local Folders&quot; or one of the Newsgroup accounts as default, hence putting it on top of the list."
+    },
+    "accountssort.description": {
+        "message": "This panel allows you to order the accounts in the folder pane. Use next tab if you wish to sort folders inside an account."
+    },
+    "button.account_name": {
+        "message": "Account name"
+    },
+    "button.close": {
+        "message": "Close"
+    },
+    "button.move_down": {
+        "message": "Move down"
+    },
+    "button.move_up": {
+        "message": "Move up"
+    },
+    "button.refresh": {
+        "message": "Refresh folder pane"
+    },
+    "button.restart": {
+        "message": "Restart Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Case sensitive"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Allows you to change the order of folders in the folder pane."
+    },
+    "extra.description": {
+        "message": "Use this tab to further customize Thunderbird using various folder-related settings"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Hide folder icons (Need to restart this add-on)"
+    },
+    "extra.misc": {
+        "message": "Misc."
+    },
+    "extra.nofolder": {
+        "message": "No folder selected"
+    },
+    "extra.startup": {
+        "message": "Startup folder"
+    },
+    "extra.startupfolder": {
+        "message": "By default, start with the following folder open"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* This feature may not work reliably on Thunderbird 97 and earlier versions."
+    },
+    "extra.usecustom": {
+        "message": "Use a custom folder"
+    },
+    "extra.uselast": {
+        "message": "Use last opened folder"
+    },
+    "extra.usethisfolder": {
+        "message": "Use this folder"
+    },
+    "gb.extra": {
+        "message": "Additional information"
+    },
+    "gb.first": {
+        "message": "First account in the folder pane"
+    },
+    "gb.move": {
+        "message": "Move selected account"
+    },
+    "gb.movefolder": {
+        "message": "Move selected folder"
+    },
+    "gb.sort_by": {
+        "message": "Sort by"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Sort within the selected level by"
+    },
+    "gbfirst.default": {
+        "message": "This is also the default account."
+    },
+    "general.title": {
+        "message": "Manually sort folders"
+    },
+    "mi.firstmail": {
+        "message": "First RSS or Mail account in the list"
+    },
+    "sortfolders.description": {
+        "message": "This panel allows you to sort the folders of each account. First select an account, then a sort method."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Use plain string compare (Ascending order)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Use plain string compare (Descending order)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "This is a standard sort function that uses nothing but the most basic string comparison function."
+    },
+    "sortmethod.custom": {
+        "message": "Use a manually defined sort function"
+    },
+    "sortmethod.custom.description": {
+        "message": "Use the buttons above to manually sort your folders. If a new folder is added, it will be put at the end of the list. You can come back here later if that doesn't suit you."
+    },
+    "sortmethod.default": {
+        "message": "Use Thunderbird's default"
+    },
+    "sortmethod.default.description": {
+        "message": "This is Thunderbird's default sort function."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Sample folder pane above)"
+    },
+    "tab.accounts": {
+        "message": "Sort accounts"
+    },
+    "tab.extra": {
+        "message": "Extra settings"
+    },
+    "tab.folders": {
+        "message": "Sort folders"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Manually sort folders"
+    },
+    "tc.foldername": {
+        "message": "Folder Name"
     }
 }

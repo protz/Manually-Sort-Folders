@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "本地文件夹"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "你还没有设置账户呢！"
+    },
+    "accountsort.note": {
+        "message": "您可以在此面板中更改帐户的顺序。 （在 Thunderbird 91 及更高版本上，您也可以在帐户设置 UI 中执行此操作。）"
+    },
+    "accountsort.restartwarning": {
+        "message": "你必须重启Thunderbird使改变生效"
+    },
+    "accountsort.warning": {
+        "message": "普通邮件账户，Unix Movemail账户和RSS账户必须要首先考虑。本地文件夹其次，列表的最下面是新账户。你可以选择本地文件夹或者新闻组账户作为默认，因此把它放到列表最上面以废除这个账户。"
+    },
+    "accountssort.description": {
+        "message": "此面板允许你对文件夹窗格中的账户排序。使用下一个标签，如果你想对某一个账户中的文件夹排序。"
+    },
+    "button.account_name": {
+        "message": "帐户名"
+    },
+    "button.close": {
+        "message": "关闭"
+    },
+    "button.move_down": {
+        "message": "向下移动"
+    },
+    "button.move_up": {
+        "message": "向上移动"
+    },
+    "button.refresh": {
+        "message": "刷新文件夹窗格"
+    },
+    "button.restart": {
+        "message": "重启Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "区分大小写"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "允许你改变文件夹窗格中文件夹的顺序。"
+    },
+    "extra.description": {
+        "message": "使用这个标签用各种不同的文件夹相关设置进一步定制Thunderbird"
+    },
+    "extra.hide_folder_icons": {
+        "message": "隐藏文件夹图标（需要重启此插件）"
+    },
+    "extra.misc": {
+        "message": "杂项"
+    },
+    "extra.nofolder": {
+        "message": "没有选择文件夹"
+    },
+    "extra.startup": {
+        "message": "起始文件夹"
+    },
+    "extra.startupfolder": {
+        "message": "默认，以以下打开的文件夹开始"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* 此功能可能无法在 Thunderbird 97 及更早版本上可靠运行。"
+    },
+    "extra.usecustom": {
+        "message": "使用自定义文件夹"
+    },
+    "extra.uselast": {
+        "message": "使用上次打开的文件夹"
+    },
+    "extra.usethisfolder": {
+        "message": "使用这个文件夹"
+    },
+    "gb.extra": {
+        "message": "更多信息"
+    },
+    "gb.first": {
+        "message": "文件夹窗格中的第一个账户"
+    },
+    "gb.move": {
+        "message": "移动选定的账户"
+    },
+    "gb.movefolder": {
+        "message": "移动选定的文件夹"
+    },
+    "gb.sort_by": {
+        "message": "排序方式"
+    },
+    "gb.sort_siblings_by": {
+        "message": "在所选级别内排序"
+    },
+    "gbfirst.default": {
+        "message": "这也是默认账户。"
+    },
+    "general.title": {
+        "message": "手动对文件夹排序"
+    },
+    "mi.firstmail": {
+        "message": "列表中的第一个RSS订阅或电子邮件账户"
+    },
+    "sortfolders.description": {
+        "message": "这个面板使你对每个账户的文件夹进行排序。首先选择一个账户，然后选择排序方式。"
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "采用纯字符串对比 (升序)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "采用纯字符串对比 (降序)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "这是一个标准的排序功能，使用只是最基本的字符串比较函数。"
+    },
+    "sortmethod.custom": {
+        "message": "使用一个自定义的排序功能"
+    },
+    "sortmethod.custom.description": {
+        "message": "使用以上按钮对你的文件夹手动排序。如果添加一个新的文件夹，它将被放在列表的最后面。你之后还可以返回如果那样不适合你。"
+    },
+    "sortmethod.default": {
+        "message": "使用Thunderbird的默认设置"
+    },
+    "sortmethod.default.description": {
+        "message": "这是Thunderbird的默认排序分类功能。"
+    },
+    "sortmethod.samplelegend": {
+        "message": "（以上示例文件夹窗格）"
+    },
+    "tab.accounts": {
+        "message": "对账户排序"
+    },
+    "tab.extra": {
+        "message": "其它设置"
+    },
+    "tab.folders": {
+        "message": "对文件夹排序"
+    },
+    "tbsf.menuentry.label": {
+        "message": "手动对文件夹排序"
+    },
+    "tc.foldername": {
+        "message": "文件夹名"
     }
 }

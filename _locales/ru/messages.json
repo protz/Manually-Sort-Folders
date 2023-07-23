@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Локальные папки"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "У вас нет ни одной учётной записи!"
+    },
+    "accountsort.note": {
+        "message": "Вы можете изменить порядок учетных записей на этой панели. (В Thunderbird 91 и более поздних версиях это также можно сделать в пользовательском интерфейсе Настройки учетных записей)."
+    },
+    "accountsort.restartwarning": {
+        "message": "Чтобы изменения вступили в силу необходимо перезапустить Thunderbird."
+    },
+    "accountsort.warning": {
+        "message": "Регулярные почтовые учётные записи, учётные записи Unix Movemail, в том числе, учётные записи RSS располагаются первыми. Затем идут «Локальные папки» и, внизу списка, учётные записи новостей. Вы можете изменить это задав «Локальные папки» или одну из учётных записей новостей как значение по умолчанию, переместив её таким образом на самый верх списка."
+    },
+    "accountssort.description": {
+        "message": "Эта панель позволит вам упорядочить учётные записи в панели папок. Если вы желаете отсортировать папки в учётной записи — используйте следующую вкладку."
+    },
+    "button.account_name": {
+        "message": "Имя учётных"
+    },
+    "button.close": {
+        "message": "Закрыть"
+    },
+    "button.move_down": {
+        "message": "Ниже"
+    },
+    "button.move_up": {
+        "message": "Выше"
+    },
+    "button.refresh": {
+        "message": "Обновить панель папок"
+    },
+    "button.restart": {
+        "message": "Перезапустить Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Чувствительность к регистру"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Позволяет изменить порядок папок в панели папок."
+    },
+    "extra.description": {
+        "message": "С помощью этой вкладки вы сможете настроить различные параметры Thunderbird, связанные с папками"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Скрыть значки папок (необходимо перезапустить это дополнение)"
+    },
+    "extra.misc": {
+        "message": "Разное"
+    },
+    "extra.nofolder": {
+        "message": "папка не выбрана"
+    },
+    "extra.startup": {
+        "message": "Папка запуска"
+    },
+    "extra.startupfolder": {
+        "message": "По умолчанию, открывать при запуске"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Эта функция может работать ненадежно в Thunderbird 97 и более ранних версиях."
+    },
+    "extra.usecustom": {
+        "message": "папку по вашему выбору"
+    },
+    "extra.uselast": {
+        "message": "последнюю открытую папку"
+    },
+    "extra.usethisfolder": {
+        "message": "выбрать эту папку"
+    },
+    "gb.extra": {
+        "message": "Дополнительная информация"
+    },
+    "gb.first": {
+        "message": "Первая учётная запись в панели папок"
+    },
+    "gb.move": {
+        "message": "Переместить выбранную учётную запись"
+    },
+    "gb.movefolder": {
+        "message": "Переместить выбранную папку"
+    },
+    "gb.sort_by": {
+        "message": "Сортировать по"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Сортировка в пределах выбранного уровня по"
+    },
+    "gbfirst.default": {
+        "message": "Она же заданная по умолчанию учётная запись."
+    },
+    "general.title": {
+        "message": "Сортировка папок вручную"
+    },
+    "mi.firstmail": {
+        "message": "Первая учётная запись RSS или почты в списке"
+    },
+    "sortfolders.description": {
+        "message": "Эта панель позволит вам отсортировать папки любой учётной записи. Сначала выберите учётную запись, а затем — метод сортировки."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Использовать сравнение обычных строк (По возрастанию)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Использовать сравнение обычных строк (По убыванию)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Обычная функция сортировки, которая использует самую простую функцию сравнения строк."
+    },
+    "sortmethod.custom": {
+        "message": "Использовать ручную сортировку"
+    },
+    "sortmethod.custom.description": {
+        "message": "Используя расположенные выше кнопки самостоятельно рассортируйте ваши папки. При добавлении новой папки она будет помещена в конец списка. Вы можете вернуться сюда позже, если это вас не устраивает."
+    },
+    "sortmethod.default": {
+        "message": "Использовать стандартный метод Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "Функция сортировки, используемая в Thunderbird по умолчанию."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Образец панели папок)"
+    },
+    "tab.accounts": {
+        "message": "Сортировка учётных записей"
+    },
+    "tab.extra": {
+        "message": "Дополнительные настройки"
+    },
+    "tab.folders": {
+        "message": "Сортировка папок"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Сортировка папок вручную"
+    },
+    "tc.foldername": {
+        "message": "Имя папки"
     }
 }
