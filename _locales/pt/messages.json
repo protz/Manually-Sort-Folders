@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Pastas locais"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Ainda não tem uma conta configurada!"
+    },
+    "accountsort.note": {
+        "message": "Pode alterar a ordem das contas neste painel. (No Thunderbird 91 e mais tarde, pode também fazê-lo na UI Account Settings)."
+    },
+    "accountsort.restartwarning": {
+        "message": "Tem de reiniciar o Thunderbird para as alterações terem efeito."
+    },
+    "accountsort.warning": {
+        "message": "As contas normais, contas Unix Movemail assim como contas RSS têm de ser as primeiras. As pastas locais são as seguintes e no por último a lista estão as novas contas. Pode substituir isto escolhendo ou as Pastas locais ou uma das contas de grupos de notícias como pré-definidas colocando-a no topo da lista."
+    },
+    "accountssort.description": {
+        "message": "Este painel permite-lhe ordenar as contas no painel das pastas. Use o separador seguinte se desejar ordenar as pastas dentro da conta."
+    },
+    "button.account_name": {
+        "message": "Nome da conta"
+    },
+    "button.close": {
+        "message": "Fechar"
+    },
+    "button.move_down": {
+        "message": "Mover para baixo"
+    },
+    "button.move_up": {
+        "message": "Mover para cima"
+    },
+    "button.refresh": {
+        "message": "Actualizar painel da pasta"
+    },
+    "button.restart": {
+        "message": "Reiniciar Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Sensível a maiúsculas e minúsculas"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Permite-lhe alterar a ordem das pastas no painel de pastas."
+    },
+    "extra.description": {
+        "message": "Use este separador para personalizar ainda mais o Thunderbird usando várias definições relacionadas com pastas"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Ocultar ícones de pastas (Necessidade de reiniciar este suplemento)"
+    },
+    "extra.misc": {
+        "message": "Diversos"
+    },
+    "extra.nofolder": {
+        "message": "nenhuma pasta seleccionada"
+    },
+    "extra.startup": {
+        "message": "Pasta inicial"
+    },
+    "extra.startupfolder": {
+        "message": "pro defeito, começar a seguinte pasta aberta"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Esta característica pode não funcionar de forma fiável nas versões Thunderbird 97 e anteriores."
+    },
+    "extra.usecustom": {
+        "message": "Usar uma pasta personalizada"
+    },
+    "extra.uselast": {
+        "message": "Usar última pasta aberta"
+    },
+    "extra.usethisfolder": {
+        "message": "Usar esta pasta"
+    },
+    "gb.extra": {
+        "message": "Informação adicional"
+    },
+    "gb.first": {
+        "message": "Primeira conta no painel de pastas"
+    },
+    "gb.move": {
+        "message": "Mover a conta seleccionada"
+    },
+    "gb.movefolder": {
+        "message": "Mover pasta seleccionada"
+    },
+    "gb.sort_by": {
+        "message": "Ordenar por"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Ordenar dentro do nível selecionado por"
+    },
+    "gbfirst.default": {
+        "message": "Esta é também a conta pré-definida."
+    },
+    "general.title": {
+        "message": "Ordenar pastas manualmente"
+    },
+    "mi.firstmail": {
+        "message": "Primeiro RSS ou conta de correio na lista"
+    },
+    "sortfolders.description": {
+        "message": "Este painel permite-lhe ordenar as pastas de cada conta. Primeiro seleccione a conta e depois o método para ordenar."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Usar uma comparação simples (Ordem ascendente)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Usar uma comparação simples (Ordem decrescente)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Esta é uma função de ordenação standard que usa apenas a função mais básica de comparação."
+    },
+    "sortmethod.custom": {
+        "message": "Usar uma função de ordenação definida manualmente"
+    },
+    "sortmethod.custom.description": {
+        "message": "Use estes botões para ordenar as pastas manualmente. se uma nova pasta for adicionada, será colocada no fim da lista. Pode voltar aqui mais tarde se isso não lhe convier."
+    },
+    "sortmethod.default": {
+        "message": "Usar a pré-definida do Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "Esta é a funcionalidade de ordenação por defeito do Thunderbird."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Painel da pasta de amostra acima)"
+    },
+    "tab.accounts": {
+        "message": "Ordenar contas"
+    },
+    "tab.extra": {
+        "message": "Definições extra"
+    },
+    "tab.folders": {
+        "message": "Ordenar pastas"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Ordenar pastas manualmente"
+    },
+    "tc.foldername": {
+        "message": "Nome da pasta"
     }
 }

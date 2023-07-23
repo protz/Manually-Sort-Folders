@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "本機資料夾"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "你還未設置一個帳號！"
+    },
+    "accountsort.note": {
+        "message": "您可以在此面板中更改帳戶的順序。 （在 Thunderbird 91 及更高版本上，您也可以在帳戶設置 UI 中執行此操作。）"
+    },
+    "accountsort.restartwarning": {
+        "message": "你必須重新啟動Thunderbird以讓設定值生效。"
+    },
+    "accountsort.warning": {
+        "message": "一般信件帳號、Unix Movemail帳號與RSS帳號會在最前面。接下來是本機帳號，在清單最下面的是新聞帳號。你能改變這樣的順序，只要將本機資料夾或任一新聞帳號移到清單中的最上面，便能設定成預設帳號。"
+    },
+    "accountssort.description": {
+        "message": "這個分頁允許你來調整資料夾窗格中的帳號。使用下一個分頁來排序帳號中的資料夾。"
+    },
+    "button.account_name": {
+        "message": "帳號名稱"
+    },
+    "button.close": {
+        "message": "關閉"
+    },
+    "button.move_down": {
+        "message": "下移"
+    },
+    "button.move_up": {
+        "message": "上移"
+    },
+    "button.refresh": {
+        "message": "重新整理資料夾窗格"
+    },
+    "button.restart": {
+        "message": "重新啟動Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "區分大小寫"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "允許您更改文件夾窗格中文件夾的順序。"
+    },
+    "extra.description": {
+        "message": "使用此分頁來進一步調整Thunderbird的資料夾相關設定"
+    },
+    "extra.hide_folder_icons": {
+        "message": "隱藏文件夾圖標（需要重啟這個插件）"
+    },
+    "extra.misc": {
+        "message": "雜項"
+    },
+    "extra.nofolder": {
+        "message": "沒有資料夾被選擇"
+    },
+    "extra.startup": {
+        "message": "初始資料夾"
+    },
+    "extra.startupfolder": {
+        "message": "啟動時預設以下列的資料夾開啟"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* 此功能可能無法在 Thunderbird 97 及更早版本上可靠運行。"
+    },
+    "extra.usecustom": {
+        "message": "使用自訂的資料夾"
+    },
+    "extra.uselast": {
+        "message": "使用最後開啟的資料夾"
+    },
+    "extra.usethisfolder": {
+        "message": "使用這個資料夾"
+    },
+    "gb.extra": {
+        "message": "額外資訊"
+    },
+    "gb.first": {
+        "message": "資料夾窗格中第一個帳號"
+    },
+    "gb.move": {
+        "message": "移動所選的帳號"
+    },
+    "gb.movefolder": {
+        "message": "移動所選的資料夾"
+    },
+    "gb.sort_by": {
+        "message": "排序方式"
+    },
+    "gb.sort_siblings_by": {
+        "message": "在選定級別內排序"
+    },
+    "gbfirst.default": {
+        "message": "這也是預設的帳號。"
+    },
+    "general.title": {
+        "message": "手動排序資料夾"
+    },
+    "mi.firstmail": {
+        "message": "在清單中第一個RSS或信件帳號"
+    },
+    "sortfolders.description": {
+        "message": "這個分頁允許你來排列每個帳號的資料夾。先選擇一個帳號，然後再選擇一個排序方法。"
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "依資料夾名稱的字母順序排序 (升序)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "依資料夾名稱的字母順序排序 (降序)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "這是一個標準的排序方法，它僅僅利用最基礎的字母排序方法。"
+    },
+    "sortmethod.custom": {
+        "message": "使用自行定義的排序功能"
+    },
+    "sortmethod.custom.description": {
+        "message": "使用上面的按鈕來手動排序你的資料夾。如果加入一個新資料夾，它將放在清單的最後面。如果你不滿意，你可以稍後回來這邊調整。"
+    },
+    "sortmethod.default": {
+        "message": "使用Thunderbird的預設設定"
+    },
+    "sortmethod.default.description": {
+        "message": "這是Thunderbird的預設排序方法。"
+    },
+    "sortmethod.samplelegend": {
+        "message": "移動選擇的資料夾"
+    },
+    "tab.accounts": {
+        "message": "排序帳號"
+    },
+    "tab.extra": {
+        "message": "額外的設定"
+    },
+    "tab.folders": {
+        "message": "排序資料夾"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Manually sort folders 選項"
+    },
+    "tc.foldername": {
+        "message": "資料夾名稱"
     }
 }

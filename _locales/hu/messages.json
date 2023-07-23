@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Helyi mappák"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Még nincs fiókja beállítva!"
+    },
+    "accountsort.note": {
+        "message": "Ezen a panelen megváltoztathatja a számlák sorrendjét. (A Thunderbird 91 és újabb verziókban ezt a fiókbeállítások felhasználói felületen is megteheti.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "A változások érvénybe lépéséhez újra kell indítania a Thunderbirdöt."
+    },
+    "accountsort.warning": {
+        "message": "A szokásos e-mail fiókok, Unix Movemail fiókok és az RSS-fiókok jönnek először. A Helyi mappák a következőek, a lista alján pedig a Hírforrások szerepelnek. Ezt felülbírálhatja azzal, hogy a Helyi mappákat vagy egy Hírforrást választja alapértelmezettként, így azt téve a lista tetejére."
+    },
+    "accountssort.description": {
+        "message": "Ezzel a panellel sorba rendezheti a fiókokat a mappa panelen. Használja a következő lapot, ha a mappákat akarja sorba rendezni egy fiókon belül."
+    },
+    "button.account_name": {
+        "message": "Fiók neve"
+    },
+    "button.close": {
+        "message": "Bezárás"
+    },
+    "button.move_down": {
+        "message": "Mozgatás le"
+    },
+    "button.move_up": {
+        "message": "Mozgatás fel"
+    },
+    "button.refresh": {
+        "message": "Mappa panel frissítése"
+    },
+    "button.restart": {
+        "message": "A Thunderbird újraindítása"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Nagybetű/kisbetű érzékeny"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Lehetővé teszi a mappák sorrendjének megváltoztatását a mappapanelben."
+    },
+    "extra.description": {
+        "message": "Használja ezt a lapot a Thunderbird különböző mappákkal kapcsolatos beállításokkal történő testreszabásához"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Mappaikonok elrejtése (újra kell indítani ezt a bővítményt)"
+    },
+    "extra.misc": {
+        "message": "Egyéb"
+    },
+    "extra.nofolder": {
+        "message": "Nincs mappa kiválasztva"
+    },
+    "extra.startup": {
+        "message": "Kezdeti mappa"
+    },
+    "extra.startupfolder": {
+        "message": "Alapértelmezetten indítson a következő mappa megnyitásával"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Ez a funkció a Thunderbird 97 és korábbi verziókban nem feltétlenül működik megbízhatóan."
+    },
+    "extra.usecustom": {
+        "message": "Egyéni mappa használata"
+    },
+    "extra.uselast": {
+        "message": "A legutóbb megnyitott mappa megnyitása"
+    },
+    "extra.usethisfolder": {
+        "message": "Ezen mappa használata"
+    },
+    "gb.extra": {
+        "message": "További információk"
+    },
+    "gb.first": {
+        "message": "Első fiók a mappa panelen"
+    },
+    "gb.move": {
+        "message": "A kiválasztott fiók mozgatása"
+    },
+    "gb.movefolder": {
+        "message": "A kiválasztott mappa mozgatása"
+    },
+    "gb.sort_by": {
+        "message": "Rendezés"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Rendezés a kiválasztott szinten belül"
+    },
+    "gbfirst.default": {
+        "message": "Ez az alapértelmezett fiók."
+    },
+    "general.title": {
+        "message": "Mappák kézi rendezése"
+    },
+    "mi.firstmail": {
+        "message": "Első RSS vagy levelezőfiók a listában"
+    },
+    "sortfolders.description": {
+        "message": "Ezzel a panellel minden fiók mappáit sorba rendezheti. Először válassza ki a fiókat, majd a rendezési módszert."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Egyszerű összehasonlítás használata (Felmenő sorrend)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Egyszerű összehasonlítás használata (Lefelé haladó sorrend)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Ez az alapértelmezett rendezési függvény, amely nem csinál mást, mint egyszerűen összehasonlítja a karakterláncokat."
+    },
+    "sortmethod.custom": {
+        "message": "Egyéni rendezési függvény használata"
+    },
+    "sortmethod.custom.description": {
+        "message": "Használja a fenti gombokat a mappák kézi rendezéséhez. Ha egy új mappa kerül hozzáadásra, akkor a lista végére kerül. Bármikor visszatérhet ide, ha a sorrend nem felel meg Önnek."
+    },
+    "sortmethod.default": {
+        "message": "Alapértelmezés használata"
+    },
+    "sortmethod.default.description": {
+        "message": "Ez a Thunderbird alapértelmezett rendezési függvénye."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Minta mappa panel fent)"
+    },
+    "tab.accounts": {
+        "message": "Fiókok rendezése"
+    },
+    "tab.extra": {
+        "message": "További beállítások"
+    },
+    "tab.folders": {
+        "message": "Mappák rendezése"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Mappák kézi rendezése"
+    },
+    "tc.foldername": {
+        "message": "Mappanév"
     }
 }

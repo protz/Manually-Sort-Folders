@@ -5,11 +5,11 @@
   "version": "2.3.0",
   "author": "Jonathan Protzenko and Itagaki Fumihiko",
   "homepage_url": "https://github.com/protz/Manually-Sort-Folders/wiki",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
-      "strict_min_version": "68.0",
-      "strict_max_version": "103.0"
+      "strict_min_version": "115.0",
+      "strict_max_version": "115.*"
     }
   },
   "icons": {
@@ -20,13 +20,41 @@
       "background.js"
     ]
   },
+  "permissions": [
+    "accountsRead", "storage"
+  ],
+  "options_ui": {
+    "page": "/options/options.html",
+    "open_in_tab": true,
+    "browser_style": true
+  },
   "experiment_apis": {
-    "WindowListener": {
-      "schema": "api/WindowListener/schema.json",
+    "CustomFolderSort": {
+      "schema": "api/CustomFolderSort/schema.json",
       "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["WindowListener"]],
-        "script": "api/WindowListener/implementation.js"
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "CustomFolderSort"
+          ]
+        ],
+        "script": "api/CustomFolderSort/implementation.js"
+      }
+    },
+    "LegacyPrefs": {
+      "schema": "api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "LegacyPrefs"
+          ]
+        ],
+        "script": "api/LegacyPrefs/implementation.js"
       }
     }
   },

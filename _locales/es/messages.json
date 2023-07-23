@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Carpetas Locales"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Aún no tiene un cuenta configurada."
+    },
+    "accountsort.note": {
+        "message": "Puede cambiar el orden de las cuentas en este panel. (También puedes hacerlo en la interfaz de usuario de configuración de cuentas en Thunderbird 91 y posteriores)."
+    },
+    "accountsort.restartwarning": {
+        "message": "Debe reiniciar Thunderbird para que los cambios tengan efecto."
+    },
+    "accountsort.warning": {
+        "message": "Cuentas de correo normales, cuentas Unix Movemail y las cuentas RSS deben ir primero. Las carpetas locales son las siguientes, y al final de la lista las cuentas de Noticias. Puede modificar este orden eligiendo como cuenta predeterminada las Carpetas Locales o una de las cuentas de Noticias, pasando esta al comienzo de la lista."
+    },
+    "accountssort.description": {
+        "message": "Este panel le permite ordenar las cuentas del panel de carpetas. Usar próxima pestaña si desea ordenar las carpetas dentro de una cuenta."
+    },
+    "button.account_name": {
+        "message": "Nombre de la cuenta"
+    },
+    "button.close": {
+        "message": "Cerrar"
+    },
+    "button.move_down": {
+        "message": "Abajo"
+    },
+    "button.move_up": {
+        "message": "Arriba"
+    },
+    "button.refresh": {
+        "message": "Actualizar panel de carpetas"
+    },
+    "button.restart": {
+        "message": "Reiniciar Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Mayúsculas/minúsculas sí importan"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Permite cambiar el orden de las carpetas en el panel de carpetas."
+    },
+    "extra.description": {
+        "message": "Usar esta pestaña para personalizar Thunderbird usando varias opciones relacionadas con carpetas"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Ocultar iconos de carpetas (Es necesario reiniciar este complemento)"
+    },
+    "extra.misc": {
+        "message": "Varios"
+    },
+    "extra.nofolder": {
+        "message": "Carpeta no seleccionada"
+    },
+    "extra.startup": {
+        "message": "Carpeta de inicio"
+    },
+    "extra.startupfolder": {
+        "message": "Comenzar predeterminadamente con la siguiente carpeta abierta"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Es posible que esta función no funcione de forma fiable en Thunderbird 97 y versiones anteriores."
+    },
+    "extra.usecustom": {
+        "message": "Usar una carpeta personalizada"
+    },
+    "extra.uselast": {
+        "message": "Usar la última carpeta abierta"
+    },
+    "extra.usethisfolder": {
+        "message": "Usar esta carpeta"
+    },
+    "gb.extra": {
+        "message": "Información adicional"
+    },
+    "gb.first": {
+        "message": "Primera cuenta en el panel de carpetas"
+    },
+    "gb.move": {
+        "message": "Mover cuenta seleccionada"
+    },
+    "gb.movefolder": {
+        "message": "Mover carpeta seleccionada"
+    },
+    "gb.sort_by": {
+        "message": "Ordenar por"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Ordenar dentro del nivel seleccionado por"
+    },
+    "gbfirst.default": {
+        "message": "Esta también es la cuenta predeterminada."
+    },
+    "general.title": {
+        "message": "Manually sort folders"
+    },
+    "mi.firstmail": {
+        "message": "Primer RDD o cuenta de correo en la lista"
+    },
+    "sortfolders.description": {
+        "message": "Este panel permite ordenar las carpetas de cada cuenta. Primero seleccione una cuenta y después elija un método de ordenación."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Usar comparación de cadena normal (Orden ascendente)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Usar comparación de cadena normal (Orden descendente)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Esta es una función estándar que utiliza sólo la función más básica de comparación de cadenas."
+    },
+    "sortmethod.custom": {
+        "message": "Usar función de ordenación definida manualmente"
+    },
+    "sortmethod.custom.description": {
+        "message": "Use los botones de arriba para ordenar manualmente sus carpetas. Si se añade una nueva carpeta, se pondrá al final de la lista. Usted puede volver aquí más adelante si esto no le conviene."
+    },
+    "sortmethod.default": {
+        "message": "Usar predeterminado de Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "Esta es la función de ordenación predeterminada de Thunderbird."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Panel de carpetas del ejemplo anterior)"
+    },
+    "tab.accounts": {
+        "message": "Ordenar cuentas"
+    },
+    "tab.extra": {
+        "message": "Opciones extra"
+    },
+    "tab.folders": {
+        "message": "Ordenar carpetas"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Manually sort folders"
+    },
+    "tc.foldername": {
+        "message": "Nombre de carpeta"
     }
 }

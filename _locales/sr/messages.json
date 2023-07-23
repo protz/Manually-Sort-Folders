@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Локале фасцикле"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Још увек нема подешених налога!"
+    },
+    "accountsort.note": {
+        "message": "У овом панелу можете променити редослед налога. (На Тхундербирд-у 91 и новијим верзијама, то такође можете да урадите у корисничком интерфејсу за подешавања налога.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "Морате да поново покренете Тандерберд да би измене биле примењене."
+    },
+    "accountsort.warning": {
+        "message": "Обични налози за е-пошту, Unix Movemail налози, као и RSS налози морају да буду на почетку. Следе локалне фасцикле, а на дну су налози за новости. Ово можете да замените ако поставите локалне фасцикле или неки ог налога за новости као подразумевану, што ће их стаити на врх списка."
+    },
+    "accountssort.description": {
+        "message": "Ова табла вам омогућава да поређате налоге у табли фасцикли. Користите следећи језичак ако желите да поређате фасцикле унутар њих."
+    },
+    "button.account_name": {
+        "message": "Назив налога"
+    },
+    "button.close": {
+        "message": "Затвори"
+    },
+    "button.move_down": {
+        "message": "Помери надоле"
+    },
+    "button.move_up": {
+        "message": "Помери нагоре"
+    },
+    "button.refresh": {
+        "message": "Освежи таблу фасцикли"
+    },
+    "button.restart": {
+        "message": "Поново покрени Тандерберд"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Велика и мала слова"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Омогућава вам да промените редослед фасцикли у окну фасцикли."
+    },
+    "extra.description": {
+        "message": "Користите овај језичак за прилагођавање Тандерберда коришћењем разних подешавања везаним за фасцикле"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Сакриј иконе директоријума (треба поново покренути овај додатак)"
+    },
+    "extra.misc": {
+        "message": "Мисц."
+    },
+    "extra.nofolder": {
+        "message": "Није одабрана фасцикла"
+    },
+    "extra.startup": {
+        "message": "Почетна фасцикла"
+    },
+    "extra.startupfolder": {
+        "message": "Подразумевано, почни са отвореном следећом фасциклом"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Ова функција можда неће радити поуздано на Тхундербирд-у 97 и старијим верзијама."
+    },
+    "extra.usecustom": {
+        "message": "Користи прилагођену фасциклу"
+    },
+    "extra.uselast": {
+        "message": "Користи последњу отворену фасциклу"
+    },
+    "extra.usethisfolder": {
+        "message": "Користи ову фасциклу"
+    },
+    "gb.extra": {
+        "message": "Додатне информације"
+    },
+    "gb.first": {
+        "message": "Први налог у табли фасцикли"
+    },
+    "gb.move": {
+        "message": "Премести одабрани налог"
+    },
+    "gb.movefolder": {
+        "message": "Премести одабрану фасциклу"
+    },
+    "gb.sort_by": {
+        "message": "Сортирај по"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Сортирај у оквиру изабраног нивоа по"
+    },
+    "gbfirst.default": {
+        "message": "Ово је и подразумевани налог."
+    },
+    "general.title": {
+        "message": "Ручно поређај фасцикле"
+    },
+    "mi.firstmail": {
+        "message": "Први RSS налог или налог за е-пошту на списку"
+    },
+    "sortfolders.description": {
+        "message": "Ова табла вам омогућава да поређате фасцикле сваког налога. Прво одаберите налог, а онда начин ређања."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Користи поређење чистих ниски (Узлазни ред)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Користи поређење чистих ниски (Силазним ред)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Ово је стандардна функција ређања, која користи најједноставнији начин поређења."
+    },
+    "sortmethod.custom": {
+        "message": "користи ручно одређену функцију ређања"
+    },
+    "sortmethod.custom.description": {
+        "message": "Користите дугмад изнад да бисте ручно поређали фасцикле. Ако додате нову фасциклу, биће додана на дно списка. Можете да се вратите овамо назад, ако вам то не одговара."
+    },
+    "sortmethod.default": {
+        "message": "користи подразумевано Тандербердово"
+    },
+    "sortmethod.default.description": {
+        "message": "Ово је подразумевана Тандербердова функција ређања."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(пример табле фасцикле изнад)"
+    },
+    "tab.accounts": {
+        "message": "Поређај налоге"
+    },
+    "tab.extra": {
+        "message": "Додатна подешавања"
+    },
+    "tab.folders": {
+        "message": "Поређај фасцикле"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Ручно поређај фасцикле"
+    },
+    "tc.foldername": {
+        "message": "Назив фасцикле"
     }
 }

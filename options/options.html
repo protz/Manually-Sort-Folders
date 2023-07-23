@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Options</title>
+  <link rel="stylesheet" href="chrome://messenger/skin/icons.css">
+  <link rel="stylesheet" href="chrome://messenger/skin/colors.css">
+  <link rel="stylesheet" href="chrome://messenger/skin/folderColors.css">
+
+  <link rel="stylesheet" href="options.css">
+  <script src="i18n.js"></script>
+  <script src="options.js"></script>
+</head>
+
+<body>
+  <h1>__MSG_general.title__</h1>
+
+  <div class="description" style="font-weight: bold; color: #c00; display: none;" id="err_no_accounts">
+    __MSG_accountsort.noaccountsetupyet__
+  </div>
+
+  <!-- https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/zug%C3%A4ngliche_Registerkarten -->
+  <div id="tabpanel">
+    <ul role="tablist" id="tablist">
+      <li id="link1" role="tab" aria-controls="panel-1" aria-selected="false">
+        __MSG_tab.accounts__
+      </li>
+      <li id="link2" role="tab" aria-controls="panel-2" aria-selected="true">
+        __MSG_tab.folders__
+      </li>
+      <li id="link2" role="tab" aria-controls="panel-3" aria-selected="false">
+        __MSG_tab.extra__
+      </li>
+    </ul>
+
+    <div id="tabcontent">
+
+      <div id="panel-1" role="tabpanel" aria-labelledby="link1" aria-hidden="true">
+        <div class="description">
+          __MSG_accountssort.description__
+        </div>
+        <div class="hbox">
+          <div class="vbox">
+            <select id="accounts_list" size="10">
+            </select>
+          </div>
+          <div class="vbox">
+            <fieldset>
+              <legend>__MSG_gb.move__</legend>
+              <div class="hbox">
+                <button id="account_up_button">
+                  <img src="/images/up.png" />
+                  <figcaption>__MSG_button.move_up__</figcaption>
+                </button>
+                <div class="spacer"></div>
+                <button id="account_down_button">
+                  <img src="/images/down.png" />
+                  <figcaption>__MSG_button.move_down__</figcaption>
+                </button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>__MSG_gb.sort_by__</legend>
+              <div class="hbox center">
+                <button id="account_alpha_button">
+                  <img src="/images/alphabetical.png" />
+                  <figcaption>__MSG_button.account_name__</figcaption>
+                </button>
+                <div class="spacer"></div>
+                <div class="hbox center">
+                  <input type="checkbox" id="sort_account_name_case_sensitive">
+                  <label for="sort_account_name_case_sensitive">__MSG_checkbox.case_sensitive__</label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>__MSG_gb.extra__</legend>
+              <div class="description">
+                __MSG_accountsort.note__
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-2" role="tabpanel" aria-labelledby="link2" aria-hidden="false">
+        <div class="description">__MSG_sortfolders.description__</div>
+        <div class="vbox">
+          <select id="folder_accounts_list">
+          </select>
+          <select id="folder_sort_method" style="margin-bottom: 1ex">
+            <option value="0">__MSG_sortmethod.default__</option>
+            <option value="1">__MSG_sortmethod.alphabetical.ascending__</option>
+            <option value="3">__MSG_sortmethod.alphabetical.descending__</option>
+            <option value="2">__MSG_sortmethod.custom__</option>
+          </select>
+        </div>
+        <div class="hbox">
+          <ul id="foldersTree">
+          </ul>
+          <div class="vbox">
+            <fieldset id="default_sort_box">
+              <legend>__MSG_gb.extra__</legend>
+              <div class="description">__MSG_sortmethod.default.description__</div>
+            </fieldset>
+            <fieldset id="alphabetical_sort_box">
+              <legend>__MSG_gb.extra__</legend>
+              <div class="description">__MSG_sortmethod.alphabetical.description__</div>
+            </fieldset>
+            <div class="vbox" id="manual_sort_box">
+              <fieldset>
+                <legend>__MSG_gb.movefolder__</legend>
+                <div class="hbox center">
+                  <button id="folder_up_button">
+                    <img src="/images/up.png" />
+                    <figcaption>__MSG_button.move_up__</figcaption>
+                  </button>
+                  <div class="spacer"></div>
+                  <button id="folder_down_button">
+                    <img src="/images/down.png" />
+                    <figcaption>__MSG_button.move_down__</figcaption>
+                  </button>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>__MSG_gb.sort_siblings_by__</legend>
+                <div class="hbox center">
+                  <button id="folder_alpha_button">
+                    <img src="/images/alphabetical.png" />
+                    <figcaption>__MSG_tc.foldername__</figcaption>
+                  </button>
+                  <div class="spacer"></div>
+                  <div class="hbox">
+                    <input type="checkbox" id="sort_folder_name_case_sensitive">
+                    <label for="sort_folder_name_case_sensitive">__MSG_checkbox.case_sensitive__</label>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>__MSG_gb.extra__</legend>
+                <div class="description">__MSG_sortmethod.custom.description__</div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-3" role="tabpanel" aria-labelledby="link3" aria-hidden="true">
+        <div class="description">
+          __MSG_extra.description__
+        </div>
+        <fieldset>
+          <legend>__MSG_extra.startup__</legend>
+          <div class="description">__MSG_extra.startupfolder__</div>
+          <div class="hbox">
+            <select id="extra_startup_folder">
+              <option value="last">__MSG_extra.uselast__</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>__MSG_extra.misc__</legend>
+          <div class="hbox center">
+            <input type="checkbox" id="extra_hide_folder_icons">
+            <label for="extra_hide_folder_icons">__MSG_extra.hide_folder_icons__</label>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+  <div id="save_area" class="hbox right">
+    <button label="Save" id="save_button">Save</button>
+    <div id="save_message" hidden>Saved!</div>
+  </div>
+</body>
+
+</html>

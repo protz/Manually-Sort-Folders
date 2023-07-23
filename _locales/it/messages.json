@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Cartelle locali"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Nessun account impostato"
+    },
+    "accountsort.note": {
+        "message": "In questo pannello è possibile modificare l'ordine degli account. (Su Thunderbird 91 e successivi, è possibile farlo anche nell'interfaccia utente delle Impostazioni account)."
+    },
+    "accountsort.restartwarning": {
+        "message": "Riavviare Thunderbird per rendere effettive le modifiche"
+    },
+    "accountsort.warning": {
+        "message": "Solitamente vengono elencati per primi gli account di posta, account Movemail ed account RSS. In seguito vengono elencate le cartelle locali, ed infine in fondo alla lista sono presenti gli account di gruppi di discussione. È possibile ignorare tale ordine predefinito degli account selezionando le cartelle locali oppure uno degli account di gruppi di discussione impostandolo come predefinito e quindi spostandolo in cima alla lista"
+    },
+    "accountssort.description": {
+        "message": "È possibile ordinare gli account nel pannello delle cartelle. (Per ordinare le cartelle dei singoli account selezionare 'Ordinamento cartelle')"
+    },
+    "button.account_name": {
+        "message": "Nome del account"
+    },
+    "button.close": {
+        "message": "Chiudi"
+    },
+    "button.move_down": {
+        "message": "Sposta giù"
+    },
+    "button.move_up": {
+        "message": "Sposta su"
+    },
+    "button.refresh": {
+        "message": "Aggiorna il pannello delle cartelle"
+    },
+    "button.restart": {
+        "message": "Riavvia Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Sensibile alle maiuscole e alle minuscole"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Consente di modificare l'ordine delle cartelle nel riquadro delle cartelle."
+    },
+    "extra.description": {
+        "message": "È possibile personalizzare ulteriormente Thunderbird selezionando una cartella da aprire all'avvio"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Nascondi le icone delle cartelle (è necessario riavviare questo componente aggiuntivo)"
+    },
+    "extra.misc": {
+        "message": "Varie"
+    },
+    "extra.nofolder": {
+        "message": "(nessuna cartella selezionata)"
+    },
+    "extra.startup": {
+        "message": "Cartella da aprire all'avvio"
+    },
+    "extra.startupfolder": {
+        "message": "Cartella da aprire all'avvio di Thunderbird"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Questa funzione potrebbe non funzionare in modo affidabile in Thunderbird 97 e versioni precedenti."
+    },
+    "extra.usecustom": {
+        "message": "Utilizza una cartella da selezionare"
+    },
+    "extra.uselast": {
+        "message": "Utilizza l'ultima cartella aperta"
+    },
+    "extra.usethisfolder": {
+        "message": "Utilizza questa cartella"
+    },
+    "gb.extra": {
+        "message": "Informazioni complementari"
+    },
+    "gb.first": {
+        "message": "Primo account nel pannello delle cartelle"
+    },
+    "gb.move": {
+        "message": "Spostamento dell'account selezionato"
+    },
+    "gb.movefolder": {
+        "message": "Spostamento della cartella selezionata"
+    },
+    "gb.sort_by": {
+        "message": "Ordinamento per"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Ordinamento all'interno del livello selezionato per"
+    },
+    "gbfirst.default": {
+        "message": "(Solitamente è anche l'account predefinito)"
+    },
+    "general.title": {
+        "message": "Impostazioni di Manually sort folders"
+    },
+    "mi.firstmail": {
+        "message": "Primo account RSS o di posta nella lista"
+    },
+    "sortfolders.description": {
+        "message": "È possibile ordinare le cartelle di ogni account. Selezionare un account ed in seguito un metodo di ordinamento"
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Ordine alfabetico (Ordine ascendente)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Ordine alfabetico (Ordine decrescente)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "È stato selezionato l'ordine alfabetico, che si basa semplicemente sull'ordine alfabetico"
+    },
+    "sortmethod.custom": {
+        "message": "Ordine manuale"
+    },
+    "sortmethod.custom.description": {
+        "message": "È stato selezionato l'ordine manuale, che permette di spostare su/giù le cartelle dell'account tramite i relativi tasti 'Sposta su' e 'Sposta giù'. Se viene aggiunta una nuova cartella, questa viene inserita in fondo alla lista. Sarà possibile in seguito spostarla"
+    },
+    "sortmethod.default": {
+        "message": "Ordine predefinito di Thunderbird"
+    },
+    "sortmethod.default.description": {
+        "message": "È stato selezionato l'ordine predefinito di Thunderbird"
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Esempio del pannello delle cartelle)"
+    },
+    "tab.accounts": {
+        "message": "Ordinamento account"
+    },
+    "tab.extra": {
+        "message": "Varie"
+    },
+    "tab.folders": {
+        "message": "Ordinamento cartelle"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Impostazioni di Manually sort folders…"
+    },
+    "tc.foldername": {
+        "message": "Nome della cartella"
     }
 }

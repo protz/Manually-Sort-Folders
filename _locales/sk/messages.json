@@ -1,6 +1,144 @@
 {
+    "accountsort.localfolders": {
+        "message": "Lokálne priečinky"
+    },
+    "accountsort.noaccountsetupyet": {
+        "message": "Nemáte zatiaľ žiadny účet!"
+    },
+    "accountsort.note": {
+        "message": "Na tomto paneli môžete zmeniť poradie účtov. (V Thunderbirde 91 a novšom to môžete urobiť aj v používateľskom rozhraní Nastavenia účtu.)"
+    },
+    "accountsort.restartwarning": {
+        "message": "Zmeny sa prejavia po reštarte Thunderbird-u."
+    },
+    "accountsort.warning": {
+        "message": "Regulárne mailové účty, Unix Movemail účty, taktiež RSS účty musia ísť prvé. Lokálne priečinky sú ďalšie a naspodu zoznamu sú nové účty. Toto môžete zmeniť, buď vybratím Lokálnych priečinkov alebo jedným z účtov a umiestnením ho na vrch zoznamu."
+    },
+    "accountssort.description": {
+        "message": "Tento panel Vám umožní zoradiť účty v zozname priečinkov. Použite ďalšiu záložku, ak chcete zoradiť priečinky vo vnútri účtu."
+    },
+    "button.account_name": {
+        "message": "Názov účtu"
+    },
+    "button.close": {
+        "message": "Zavrieť"
+    },
+    "button.move_down": {
+        "message": "Posunúť dolu"
+    },
+    "button.move_up": {
+        "message": "Posunúť hore"
+    },
+    "button.refresh": {
+        "message": "Aktualizovať zoznam priečinkov"
+    },
+    "button.restart": {
+        "message": "Reštartovať Thunderbird"
+    },
+    "checkbox.case_sensitive": {
+        "message": "Rozlišovať malé a veľké písmená"
+    },
     "extensionDescription": {
         "description": "Description of the extension",
         "message": "Umožňuje zmeniť poradie priečinkov na paneli priečinkov."
+    },
+    "extra.description": {
+        "message": "Použite túto záložku pre jemnejšie úpravy nastavení priečinkov Thunderbirdu"
+    },
+    "extra.hide_folder_icons": {
+        "message": "Skryť ikony priečinkov (Je potrebné reštartovať tento doplnok)"
+    },
+    "extra.misc": {
+        "message": "Rôzne"
+    },
+    "extra.nofolder": {
+        "message": "Nevybratý žiadny priečinok"
+    },
+    "extra.startup": {
+        "message": "Štartovací priečinok"
+    },
+    "extra.startupfolder": {
+        "message": "Začať otvorením tohto priečinku"
+    },
+    "extra.startupfolder.notice": {
+        "message": "* Táto funkcia nemusí spoľahlivo fungovať v programe Thunderbird 97 a starších verziách."
+    },
+    "extra.usecustom": {
+        "message": "Použiť vlastný priečinok"
+    },
+    "extra.uselast": {
+        "message": "Použiť naposledy otvorený priečinok"
+    },
+    "extra.usethisfolder": {
+        "message": "Použiť tento priečinok"
+    },
+    "gb.extra": {
+        "message": "Rozšírené informácie"
+    },
+    "gb.first": {
+        "message": "Prvý účet v zozname priečinkov"
+    },
+    "gb.move": {
+        "message": "Posunutie vybratého účtu"
+    },
+    "gb.movefolder": {
+        "message": "Presunúť vybratý priečinok"
+    },
+    "gb.sort_by": {
+        "message": "Zoradiť podľa"
+    },
+    "gb.sort_siblings_by": {
+        "message": "Triedenie vo vybranej úrovni podľa"
+    },
+    "gbfirst.default": {
+        "message": "Toto je taktiež aj predvolený účet."
+    },
+    "general.title": {
+        "message": "Ručné zoradenie priečinkov"
+    },
+    "mi.firstmail": {
+        "message": "Prvý RSS alebo poštový účet v zozname"
+    },
+    "sortfolders.description": {
+        "message": "Tento panel Vám umožní zoradiť priečinky každého účtu. Najprv vyberte účet a potom metódu zoradenia."
+    },
+    "sortmethod.alphabetical.ascending": {
+        "message": "Použiť zoradenie jednoduchým porovnaním reťazcov (Vzostupné poradie)"
+    },
+    "sortmethod.alphabetical.descending": {
+        "message": "Použiť zoradenie jednoduchým porovnaním reťazcov (Zostupné poradie)"
+    },
+    "sortmethod.alphabetical.description": {
+        "message": "Toto je štandardná metóda zoradenia, ktorá používa jednoduché porovnanie reťazcov."
+    },
+    "sortmethod.custom": {
+        "message": "Použiť ručne definované zoradenie"
+    },
+    "sortmethod.custom.description": {
+        "message": "Použite tlačidlá 'Posunúť hore' a 'Posunúť dolu' pre ručné zoradenie priečinkov. Ak pridáte nový priečinok, umiestní sa na koniec zoznamu. Umiestnenie priečinka môžete zmeniť neskôr."
+    },
+    "sortmethod.default": {
+        "message": "Použiť predvolenú metódu zoradenia z Thunderbird-u"
+    },
+    "sortmethod.default.description": {
+        "message": "Toto je predvolená metóda zoradenia Thunderbird-u."
+    },
+    "sortmethod.samplelegend": {
+        "message": "(Vzorový zoznam priečinkov)"
+    },
+    "tab.accounts": {
+        "message": "Zoradenie účtov"
+    },
+    "tab.extra": {
+        "message": "Extra nastavenia"
+    },
+    "tab.folders": {
+        "message": "Zoradenie priečinkov"
+    },
+    "tbsf.menuentry.label": {
+        "message": "Ručné zoradenie priečinkov"
+    },
+    "tc.foldername": {
+        "message": "Názov priečinku"
     }
 }
