@@ -5,7 +5,7 @@
   "version": "2.3.0",
   "author": "Jonathan Protzenko and Itagaki Fumihiko",
   "homepage_url": "https://github.com/protz/Manually-Sort-Folders/wiki",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
       "strict_min_version": "68.0",
@@ -19,6 +19,14 @@
     "scripts": [
       "background.js"
     ]
+  },
+  "permissions": [
+    "accountsRead", "storage"
+  ],
+  "options_ui": {
+    "page": "/options/options.html",
+    "open_in_tab": true,
+    "browser_style": true
   },
   "experiment_apis": {
     "WindowListener": {
