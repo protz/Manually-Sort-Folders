@@ -8,8 +8,8 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
-      "strict_min_version": "68.0",
-      "strict_max_version": "103.0"
+      "strict_min_version": "115.0",
+      "strict_max_version": "115.*"
     }
   },
   "icons": {
