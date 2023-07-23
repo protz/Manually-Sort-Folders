@@ -29,12 +29,32 @@
     "browser_style": true
   },
   "experiment_apis": {
-    "WindowListener": {
-      "schema": "api/WindowListener/schema.json",
+    "CustomFolderSort": {
+      "schema": "api/CustomFolderSort/schema.json",
       "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["WindowListener"]],
-        "script": "api/WindowListener/implementation.js"
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "CustomFolderSort"
+          ]
+        ],
+        "script": "api/CustomFolderSort/implementation.js"
+      }
+    },
+    "LegacyPrefs": {
+      "schema": "api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "LegacyPrefs"
+          ]
+        ],
+        "script": "api/LegacyPrefs/implementation.js"
       }
     }
   },

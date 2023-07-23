@@ -1,0 +1,37 @@
+[
+  {
+    "namespace": "CustomFolderSort",
+    "functions": [
+      {
+        "name": "patch",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "tabId"
+          },
+          {
+            "type": "any",
+            "name": "preferences"
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "tabId"
+          },
+          {
+            "type": "any",
+            "name": "preferences"
+          }
+        ]
+      }      
+    ]
+  }
+]
